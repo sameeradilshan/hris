@@ -17,7 +17,7 @@
     <!-- Site wrapper -->
     <div class="wrapper">
         <!-- Navbar -->
-        <?php $this->load->view('executiveViews/components/topBar'); ?>
+       
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
@@ -35,7 +35,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <!-- <h1>Blank Page</h1> -->
+                            <h1>Promotions And Increments</h1> 
                         </div>
                         <div class="col-sm-6">
                         </div>
@@ -52,31 +52,77 @@
                         <h3 class="card-title">Promotion And Increments</h3>
 
                         <div class="card-tools">
-                            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
-                                data-target="#myModal">
+						<button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
+                                data-target="#addPromotion">
                                 <i class="fa fa-plus"></i> Add Promotion
                             </button>
-                        </div>
-					</div>
-					 <!-- The Modal -->
-					 <div class="modal" id="addPromotion">
+						</div>
+						
+						 <!-- The Modal -->
+						 <div class="modal" id="addPromotion">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
 
                                         <!-- Modal Header -->
                                         <div class="modal-header">
-                                            <h4 class="modal-title">Add New Employee Leaves</h4>
+                                            <h4 class="modal-title">Add Employee Promotion & Increments</h4>
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                                         </div>
 
-                                        <!-- Modal body -->
-                                        <div class="modal-body">
-
-
+                                        <!-- Modal body -->                                        
+										<div class="modal-body">
+												
+											<form id="incrementdataform">	
+                                                <div class="form-group">
+                                                    <label>Employee Name</label>
+                                                    <input type="text" class="form-control form-control-sm"
+                                                        placeholder="Jhon Doe" name="empName" id="empName">
+												</div>
+												<div class="row">
+												<div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Employee No</label>
+                                                    <input type="text" class="form-control form-control-sm"
+                                                        placeholder="Jhon Doe" name="empNo" id="empNo">
+												</div>
+												</div>
+												<div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>NIC No</label>
+                                                    <input type="text" class="form-control form-control-sm"
+                                                        placeholder="Jhon Doe" name="empNICNo" id="empNICNo">
+												</div>
+												</div>
+												</div>
+												<div class="form-group">
+                                                    <label>Department</label>
+                                                    <input type="text" class="form-control form-control-sm"
+                                                        placeholder="Jhon Doe" name="department" id="department">
+												</div>
+												<div class="form-group">
+                                                    <label>Promotion/Increment </label>
+                                                    <input type="text" class="form-control form-control-sm"
+                                                        placeholder="Jhon Doe" name="increment" id="increment">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Promotion/Increment Date</label>
+                                                    <input type="text" class="form-control form-control-sm"
+                                                        placeholder="Jhon Doe" name="date" id="date">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Promotion/ Increment Details</label>
+                                                    <input type="text" class="form-control form-control-sm"
+                                                        placeholder="Jhon Doe" name="incrementDetails" id="incrementDetails">
+                                                </div>
+                                                
+												
+											</form>      
                                         </div>
 
                                         <!-- Modal footer -->
                                         <div class="modal-footer">
+											<input type="button" class="btn btn-info" name="submit"
+                                                    value="Submit" id="formSubmit">
                                             <button type="button" class="btn btn-danger"
                                                 data-dismiss="modal">Close</button>
                                         </div>
@@ -84,111 +130,110 @@
                                     </div>
                                 </div>
                             </div>
+                    </div>
                     <div class="card-body">
 
                         <!-- row start -->
                         <div class="row" style="background-color:#efefef; padding:20px;   border-radius: 25px;">
-                            <div class="col-md-3">
+                         <div class="row col-12">   
+						<div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Employee Name</label>
-                                    <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe">
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">NIC</label>
-                                    <input type="text" class="form-control  form-control-sm" placeholder="Jhon Doe">
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label>Department</label>
-                                    <select class="form-control  form-control-sm">
-                                        <option>option 1</option>
-                                        <option>option 2</option>
-                                        <option>option 3</option>
-                                        <option>option 4</option>
-                                        <option>option 5</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <button style="margin-top:32px; width:100px;" type="button"
-                                        class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal">
-                                        <i class="fa fa-search"></i> Search
+                                    <button style="margin-top:32px; width:200px;" type="button"
+                                        class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal" onclick="window.open('approvedPromotionDatalView')">
+                                        <i class="fa fa-search"></i> Approved Promotions
                                     </button>
                                 </div>
                             </div>
+							<div class="col-md-4">
+									<div class="form-group">
+										<button style="margin-top:32px; width:200px;" type="button"
+											class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal" onclick="window.open('declinePromotionDatalView')">
+											<i class="fa fa-search"></i> Declined Promotions
+										</button>
+									</div>
+								</div>
+                           
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <button style="margin-top:32px; width:200px;" type="button"
+                                        class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal" onclick="window.open('reportPromotionDatalView')">
+                                        <i class="fa fa-search"></i>All Promotions 
+                                    </button>
+                                </div>
+                            </div>
+						</div>
                         </div>
                         <!-- row end -->
 
                         <!-- row start -->
                         <div class="row">
                             <div class="col-md-12">
-                                <br><br>
+								<br><br>
+								<div class="table-responsive">
+								<div  style="overflow-x :auto; min-width:800px; ">
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>NIC No</th>
-                                            <th>Employee Name</th>
-                                            <th>Department</th>
-                                            <th>Promotion Detailes</th>
-                                            <th>Date</th>
+                                            <th scope="col">Emp No</th>
+											<th scope="col">Employee Name</th>
+											<th scope="col">Department</th>
+                                            <th scope="col">Promotion Detailes</th>
+											<th scope="col">Date</th>
+											<th scope="col">Promotion/Increment</th>
+											<th scope="col">Approval</th>
+											<th scope="col">Approved By</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Trident</td>
-                                            <td>Internet
-                                                Explorer 4.0
-                                            </td>
-                                            <td>Win 95+</td>
-                                            <td> 4</td>
-                                            <td>X</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Trident</td>
-                                            <td>Internet
-                                                Explorer 5.0
-                                            </td>
-                                            <td>Win 95+</td>
-                                            <td>5</td>
-                                            <td>C</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Trident</td>
-                                            <td>Internet
-                                                Explorer 5.5
-                                            </td>
-                                            <td>Win 95+</td>
-                                            <td>5.5</td>
-                                            <td>A</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Other browsers</td>
-                                            <td>All others</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>U</td>
-                                        </tr>
-                                    </tbody>
-                                    <tfoot>
+									<tbody>
+												<?php
+												foreach($incrementDataView as $incrementData){
+													
+												//	var_dump($resignationDataView);
+													
+													echo'  
+														<tr role="row" class="odd">
+														
+															<td>'.$incrementData->empNo.'</td>
+															<td>'.$incrementData->empName.'</td>
+															<td>'.$incrementData->departmentName.'</td>
+															<td>'.$incrementData->incrementDetails.'</td>
+															<td>'.$incrementData->date.'</td>
+															<td>'.$incrementData->increment.'</td>
+															
+															<td><div class="btn-group">';
+													if($incrementData->incrementStatus	==0){
+														echo '<button type="button" onclick="approvalFunction('.$incrementData->IncrementId.')" class="btn btn-info">Approve</button>
+														<button type="button" onclick="rejectFucntion('.$incrementData->IncrementId.')" class="btn btn-danger">Decline</button>';
+													}
+													
+
+												
+													  echo '</div></td>
+													  <td>HrExecutive</td>
+														</tr>
+														 
+													';
+												}
+												?>
+                                                
+                                                
+                                            </tbody>
+                                    <!-- <tfoot>
                                         <tr>
                                             <th>Rendering engine</th>
                                             <th>Browser</th>
                                             <th>Platform(s)</th>
                                             <th>Engine version</th>
-                                            <th>CSS grade</th>
+											<th>CSS grade</th>
+											<th>CSS grade</th>
                                         </tr>
-                                    </tfoot>
-                                </table>
+                                    </tfoot> -->
+								</table>
+								</div>
+								</div>
                             </div>
                         </div>
                         <!-- row end -->
-
-
-
 
 
                     </div>
@@ -199,11 +244,6 @@
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-
-
-
-
-
 
 
 
@@ -232,6 +272,111 @@
             "autoWidth": false
         });
     });
+
+	$('#formSubmit').click(function() {
+		alert($('#empName').val())
+        var param2 = {
+
+            empName: 		$('#empName').val(),
+            empNo: 			$('#empNo').val(),
+            empNICNo: 		$('#empNICNo').val(),
+            incrementDetails:	$('#incrementDetails').val(),
+            date: 			$('#date').val(),
+            increment:		$('#increment').val(),
+			department:		$('#department').val(),
+           
+
+
+        }
+		console.log(param2);
+		$.post("<?php echo base_url(); ?>index.php/HrExecutive/incrementManagement", param2, function(
+        data1) {
+
+			console.log(data1)
+            var response = JSON.parse(data1);
+			console.log(response)
+             if (response.status) {
+				Swal.fire(
+				'Good job!',
+				'You clicked the button!',
+				'success'
+							)
+
+				window.location.href = "incrementDataView";
+             } else {
+					Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: 'Something went wrong!',
+					footer: '<a href>Why do I have this issue?</a>'
+					})
+					window.location.href = "incrementDataView";
+         }
+
+
+
+        });
+	
+    })
+//---------------------------------Approval Function----------------------------------------------------------------------
+
+function approvalFunction(IncrementId) {
+		params ={
+			IncrementId:IncrementId,
+			incrementStatus:1
+		}
+		$.post("<?php echo base_url(); ?>index.php/HrExecutive/updateincrement", params, function(
+            data) {
+
+            console.log(data)
+            var response = JSON.parse(data);
+            console.log(response)
+            if (response.status) {
+               alert("succes")
+
+                window.location.href = "incrementDataView";
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    footer: '<a href>Why do I have this issue?</a>'
+                })
+			}
+		});
+	}
+
+	// rejection function-----------------------------------------------------------------------------------------
+
+	function rejectFucntion(IncrementId) {
+		params ={
+			IncrementId:IncrementId,
+			incrementStatus:2
+		}
+		$.post("<?php echo base_url(); ?>index.php/HrExecutive/updateincrement", params, function(
+            data) {
+
+            console.log(data)
+            var response = JSON.parse(data);
+            console.log(response)
+            if (response.status) {
+               alert("succes")
+
+                window.location.href = "incrementDataView";
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    footer: '<a href>Why do I have this issue?</a>'
+                })
+			}
+		});
+	}
+
+
+
+
     </script>
 
 </body>

@@ -63,7 +63,7 @@
                                 <i class="fa fa-plus"></i> Add Departments
                             </button>
 							<!-- The Modal -->
-							<form action="<?php echo base_url(); ?>index.php/Admin/DepartmentMgt" method="post">
+							<form id="department">
                             <div class="modal" id="addDepartments">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -92,8 +92,8 @@
 
                                         <!-- Modal footer -->
                                         <div class="modal-footer">
-										<input type="submit" class="btn btn-danger" name="submit"
-                                                    value="Submit">
+										<input type="button" class="btn btn-info" name="submit"
+                                                    value="Submit" id="formSubmit">
                                             <button type="button" class="btn btn-danger"
                                                 data-dismiss="modal">Close</button>
                                         </div>
@@ -110,14 +110,14 @@
                                 <i class="fa fa-plus"></i> Add Designations
                             </button>
 							<!-- The Modal -->
-							<form action="<?php echo base_url(); ?>index.php/Admin/DesignationMgt" method="post">
+							<form >
                             <div class="modal" id="addDesignations">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
 
                                         <!-- Modal Header -->
                                         <div class="modal-header">
-                                            <h4 class="modal-title">Add New Employee Leaves</h4>
+                                            <h4 class="modal-title">Add New Employee Designation</h4>
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                                         </div>
 
@@ -126,7 +126,7 @@
 												<div class="form-group">
                                                     <label>Department Name</label>
                                                     <input type="text" class="form-control form-control-sm"
-                                                        name="departmentName"  id="departmentName" placeholder="Jhon Doe">
+                                                        name="departmentName"  id="departmentName1" placeholder="Jhon Doe">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Designation Name</label>
@@ -134,9 +134,9 @@
                                                         name="designationName" id="designationName" placeholder="Jhon Doe">
 												</div>
 												<div class="form-group">
-                                                    <label>Designation ID</label>
+                                                    <label>Designation No</label>
                                                     <input type="text" class="form-control form-control-sm"
-                                                        name="designationId" id="designationId" placeholder="Jhon Doe">
+                                                        name="designationId" id="designationNo" placeholder="Jhon Doe">
                                                 </div>
 
 
@@ -144,8 +144,8 @@
 
                                         <!-- Modal footer -->
                                         <div class="modal-footer">
-										<input type="submit" class="btn btn-danger" name="submit"
-                                                    value="Submit">
+										<input type="button" class="btn btn-danger" name="submit"
+                                                    value="Submit" id="formSubmit2">
                                             <button type="button" class="btn btn-danger"
                                                 data-dismiss="modal">Close</button>
                                         </div>
@@ -162,38 +162,36 @@
 
                         <!-- row start -->
                         <div class="row" style="background-color:#efefef; padding:20px;   border-radius: 25px;">
+                            
+                               
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Employee Name</label>
-                                    <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe">
+                                    <button style="margin-top:32px; width:200px;" type="button"
+                                        class="btn btn-sm btn-primary" data-toggle="modal" target="_blank" onclick="window.open('reportDeptEmpDataView')">
+                                        <i class="fa fa-check-circle-o"></i> Departmental Employee
+                                    </button>
                                 </div>
-                            </div>
+							</div>
+							      
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">NIC</label>
-                                    <input type="text" class="form-control  form-control-sm" placeholder="Jhon Doe">
+                                    <button style="margin-top:32px; width:200px;" type="button"
+                                        class="btn btn-sm btn-primary" data-toggle="modal" data-target="#DeclineLeave" onclick="window.open('desgnationEmpDatalView')">
+                                        <i class="fa fa-minus-circle"></i> Designation Employee
+                                    </button>
                                 </div>
-                            </div>
+							</div>
+							      
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label>Department</label>
-                                    <select class="form-control  form-control-sm">
-                                        <option>option 1</option>
-                                        <option>option 2</option>
-                                        <option>option 3</option>
-                                        <option>option 4</option>
-                                        <option>option 5</option>
-                                    </select>
+                                    <button style="margin-top:32px; width:200px;" type="button"
+                                        class="btn btn-sm btn-primary" data-toggle="modal" data-target="#AllLeaves" onclick="window.open('reportLeaveDatalView')">
+                                        <i class="fa fa-search"></i> Employee Designation & Dept 
+                                    </button>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <input type="search" class="form-control form-control-sm" placeholder=""
-                                        aria-controls="example">
-
-                                </div>
-                            </div>
-                        </div>
+						
+					</div>
                         <!-- row end -->
 						<br>	
                         <!-- row start -->
@@ -208,32 +206,32 @@
                                             <th scope="col">Dept ID</th>
 											<th scope="col">Department Name</th>
 											<th scope="col">Designation(s)</th>
-                                            <th scope="col">Designation ID</th>
+                                            <th scope="col">Designation No</th>
                                             
 											                                            
                                         </tr>
                                     </thead>
 									<tbody>
 												<?php
-												//foreach($resignationDataView as $resignationData){
+												foreach($departmentDataView as $departmentData){
 													
-												//	var_dump($resignationDataView);
+													//svar_dump($resignationDataView);
 													
-													// echo'  
-													// 	<tr role="row" class="odd">
+													echo'  
+														<tr role="row" class="odd">
 														
-													// 		<td>'.$resignationData->deptId.'</td>
-													// 		<td>'.$resignationData->departmentName.'</td>
-													// 		<td>'.$resignationData->designationName.'</td>
-													// 		<td>'.$resignationData->designationId.'</td>
+															<td>'.$departmentData->deptId.'</td>
+															<td>'.$departmentData->departmentName.'</td>
+															<td>'.$departmentData->designationName.'</td>
+															<td>'.$departmentData->designationNo.'</td>
 															
 															
-													// 	</tr>
+														</tr>
 														
 												
 														   
-													// ';
-												//}
+													';
+												}
 												?>
                                                 
                                                 
@@ -339,6 +337,99 @@
 			
 		);
     });
+
+	$('#formSubmit').click(function() {
+		//alert($('#evaluationYear').val())
+        var param1 = {
+
+
+            departmentName: 	$('#departmentName').val(),
+            departmentId: 		$('#departmentId').val(),
+           
+
+        }
+
+		console.log(param1);
+		$.post("<?php echo base_url(); ?>index.php/Admin/departmentManagement", param1, function(
+        data1) {
+
+			//window.alert(data1)
+            var response = JSON.parse(data1);
+			console.log(response)
+
+             if (response.status) {
+				Swal.fire(
+				'Good job!',
+				'You clicked the button!',
+				'success'
+							)
+			
+				window.location.href = "departmentDataView";
+             } else {
+					Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: 'Something went wrong!',
+					footer: '<a href>Why do I have this issue?</a>'
+					})
+
+         }
+
+             
+
+        });
+	
+    })
+
+	//designation--------------------------------------------------------------------------
+
+	$('#formSubmit2').click(function() {
+		//alert($('#departmentName1').val())
+        var param2 = {
+
+
+            departmentName: 	$('#departmentName1').val(),
+            designationName: 	$('#designationName').val(),
+			designationNo: 		$('#designationNo').val(),
+           
+
+        }
+
+		window.alert(param2);
+		$.post("<?php echo base_url(); ?>index.php/Admin/designationManagement", param2, function(
+        data2) {
+
+			window.alert(data2)
+            var response = JSON.parse(data2);
+			console.log(response)
+
+             if (response.status) {
+				 alert("success")
+				// Swal.fire(
+				// 'Good job!',
+				// 'You clicked the button!',
+				// 'success'
+				// 			)
+			
+				window.location.href = "departmentDataView";
+             } else {
+					Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: 'Something went wrong!',
+					footer: '<a href>Why do I have this issue?</a>'
+					})
+
+         }
+
+             
+
+        });
+	
+    })
+
+
+
     </script>
 
 </body>

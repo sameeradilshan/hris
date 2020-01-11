@@ -15,7 +15,7 @@
     <!-- Site wrapper -->
     <div class="wrapper">
         <!-- Navbar -->
-    
+
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
@@ -37,7 +37,8 @@
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>index.php/Admin">Home</a></li>
+                                <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>index.php/Admin">Home</a>
+                                </li>
                                 <li class="breadcrumb-item active">User Managenent</li>
                             </ol>
                         </div>
@@ -51,190 +52,230 @@
                 <!-- Default box -->
                 <div class="card">
                     <div class="card-header">
-												<h3 class="card-title">User Management</h3>
-												
+                        <h3 class="card-title">User Management</h3>
+
                         <!-- Modal Button -->
                         <div class="card-tools">
                             <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
                                 data-target="#addNewUser">
                                 <i class="fa fa-plus"></i> Add New User
                             </button>
-							<!-- The Modal -->
-							<form action="<?php echo base_url(); ?>index.php/Admin/UserManagementHandler" method="post">
-                            <div class="modal" id="addNewUser">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
+                            <!-- The Modal -->
+                            <form >
+                                <div class="modal" id="addNewUser">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
 
-                                        <!-- Modal Header -->
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">Add New User</h4>
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        </div>
-
-                                        <!-- Modal body -->
-                                        <div class="modal-body">
-                                            <div class="form-group">
-                                                <label>User Name</label>
-                                                <input type="text" class="form-control form-control-sm" name="userName" id="userName"
-                                                    placeholder="Jhon Doe">
-											</div>
-											<div class="form-group">
-                                                <label>Email</label>
-                                                <input type="text" class="form-control form-control-sm" name="userEmail" id="userEmail"
-                                                    placeholder="Jhon Doe">
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Add New User</h4>
+                                                <button type="button" class="close"
+                                                    data-dismiss="modal">&times;</button>
                                             </div>
-                                            <div class="form-group">
-                                                <label>NIC No</label>
-                                                <input type="text" class="form-control form-control-sm" name="userNIC" id="userNIC"
-                                                    placeholder="Jhon Doe">
-                                            </div>
-                                            
-                                            <div class="form-group">
-                                                <label>Emp No</label>
-                                                <input type="text" class="form-control form-control-sm" name="empId" id="empId"
-                                                    placeholder="Jhon Doe">
-											</div>
-											
 
-                                            <div class="col-md-3">
+                                            <!-- Modal body -->
+                                            <div class="modal-body">
                                                 <div class="form-group">
-                                                    <label>Type</label>
-                                                    <select class="form-control  form-control-sm" name="userType" id="userType">
-                                                        <option>Admin</option>
-                                                        <option>Executive</option>
-                                                        <option>Staff</option>
-
-                                                    </select>
+                                                    <label>User Name</label>
+                                                    <input type="text" class="form-control form-control-sm"
+                                                        name="userName" id="userName" placeholder="Jhon Doe">
                                                 </div>
+                                                <div class="form-group">
+                                                    <label>Email</label>
+                                                    <input type="text" class="form-control form-control-sm"
+                                                        name="userEmail" id="userEmail" placeholder="Jhon Doe">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>NIC No</label>
+                                                    <input type="text" class="form-control form-control-sm"
+                                                        name="userNIC" id="userNIC" placeholder="Jhon Doe">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>Emp No</label>
+                                                    <input type="text" class="form-control form-control-sm" name="empId"
+                                                        id="empId" placeholder="Jhon Doe">
+                                                </div>
+
+
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>Type</label>
+                                                        <select class="form-control  form-control-sm" name="userType"
+                                                            id="userType">
+                                                            <option>Admin</option>
+                                                            <option>Executive</option>
+                                                            <option>Staff</option>
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Add Date</label>
+                                                    <input type="date" class="form-control form-control-sm"
+                                                        name="userAddDate" id="userAddDate" placeholder="Jhon Doe">
+                                                </div>
+
                                             </div>
-                                            <div class="form-group">
-                                                <label>Add Date</label>
-                                                <input type="date" class="form-control form-control-sm" name="userAddDate" id="userAddDate"
-                                                    placeholder="Jhon Doe">
+
+                                            <!-- Modal footer -->
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary"
+                                                    id="formSubmit">Submit</button>
+
+                                                <button type="" class="btn btn-danger"
+                                                    data-dismiss="modal">Close</button>
                                             </div>
 
                                         </div>
-
-                                        <!-- Modal footer -->
-                                        <div class="modal-footer">
-										<button type="submit" class="btn btn-primary"
-                                                >Submit</button>
-                                           
-                                            <button type="" class="btn btn-danger"
-                                                data-dismiss="modal">Close</button>
-                                        </div>
-
                                     </div>
                                 </div>
-							</div>
-							</form>
+                            </form>
                         </div>
                     </div>
 
-                   
+
                 </div>
                 <div class="card-body">
 
 
-                    <div class="row" style="background-color:#efefef; padding:20px;   border-radius: 25px;">
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Employee Name</label>
-                                <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe">
+				<div class="row" style="background-color:#efefef; padding:20px;   border-radius: 25px;">
+                            
+                               
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <button style="margin-top:32px; width:200px;" type="button"
+                                        class="btn btn-sm btn-primary" data-toggle="modal" target="_blank" onclick="window.open('approvedLeaveDatalView')">
+                                        <i class="fa fa-check-circle-o"></i> Approved Leave
+                                    </button>
+                                </div>
+							</div>
+							      
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <button style="margin-top:32px; width:200px;" type="button"
+                                        class="btn btn-sm btn-primary" data-toggle="modal" data-target="#DeclineLeave" onclick="window.open('declineLeaveDatalView')">
+                                        <i class="fa fa-minus-circle"></i> Decline Leave
+                                    </button>
+                                </div>
+							</div>
+							      
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <button style="margin-top:32px; width:200px;" type="button"
+                                        class="btn btn-sm btn-primary" data-toggle="modal" data-target="#AllLeaves" onclick="window.open('reportLeaveDatalView')">
+                                        <i class="fa fa-search"></i> All Leaves
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">NIC</label>
-                                <input type="text" class="form-control  form-control-sm" placeholder="Jhon Doe">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>Type</label>
-                                <select class="form-control  form-control-sm">
-                                    <option>Admin</option>
-                                    <option>Executive</option>
-                                    <option>Staff</option>
+						
+					</div>
 
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <button style="margin-top:32px; width:100px;" type="button"
-                                    class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal">
-                                    <i class="fa fa-search"></i> Search
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="card-body">
+                        <!-- row start -->
+                        <div class="row">
+                            <div class="table-responsive">
+                                <div style="overflow-x :auto; min-width:800px; ">
+                                    <div class="col-md-12">
+                                        <br><br>
+                                        <table id="example1" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">EMP No</th>
+                                                    <th scope="col">NIC No</th>
+                                                    <th scope="col">User Name</th>
+                                                    <th scope="col">User Type</th>
+                                                    <th scope="col">Add Date</th>
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <br><br>
-                            <table id="example1" class="table table-bordered table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>NIC No</th>
-                                        <th>Employee Name</th>
-                                        <th>Type</th>
-                                        <th>Date</th>
 
-                                    </tr>
-                                </thead>
-                                <tbody >
-                                    <tr>
-                                        <td>963240V</td>
-                                        <td>amail
-                                        </td>
-                                        <td>Admin</td>
-                                        <td> 4/2/2019</td>
-                                       
-                                    </tr>
-                                    <tr>
-                                        <td>123458V</td>
-                                        <td>saman
-                                        </td>
-                                        <td>Staff</td>
-                                        <td>5/2/2019</td>
-                                       
-                                    </tr>
-                                    <tr>
-                                    <td>1234668V</td>
-                                        <td>kasun
-                                        </td>
-                                        <td>Execuitive</td>
-                                        <td>5/2/2019</td>
-                                        
-                                    </tr>
-                                    <tr>
-                                        <td>Other browsers</td>
-                                        <td>All others</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                      
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>Rendering engine</th>
-                                        <th>Browser</th>
-                                        <th>Platform(s)</th>
-                                        <th>Engine version</th>
-                                        
-                                    </tr>
-                                </tfoot>
-                            </table>
+
+
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                <?php
+												foreach($userManagementDataView as $usermanageData){
+													
+													//var_dump($resignationDataView);
+													
+													echo'  
+														<tr role="row" class="odd">
+														
+															<td>'.$usermanageData->empNo.'</td>
+															<td>'.$usermanageData->empName.'</td>
+															<td>'.$usermanageData->empNic.'</td>
+															<td>'.$usermanageData->resigDate.'</td>
+															<td>'.$usermanageData->resigDetails.'</td>
+															<td>Admin</td>
+															
+														
+														</tr>
+														 
+													 ';
+												}
+												?>
+
+
+                                            </tbody>
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-5">
+                                    <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">
+                                        <!-- Showing 1 to 10 of 57 entries</div> -->
+                                    </div>
+                                    <div class="col-sm-12 col-md-7">
+                                        <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                                            <ul class="pagination">
+                                                <li class="paginate_button page-item previous disabled"
+                                                    id="example1_previous">
+                                                    <a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0"
+                                                        class="page-link">Previous</a>
+                                                </li>
+                                                <li class="paginate_button page-item active">
+                                                    <a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0"
+                                                        class="page-link">1</a>
+                                                </li>
+                                                <li class="paginate_button page-item ">
+                                                    <a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0"
+                                                        class="page-link">2</a>
+                                                </li>
+                                                <li class="paginate_button page-item ">
+                                                    <a href="#" aria-controls="example1" data-dt-idx="3" tabindex="0"
+                                                        class="page-link">3</a>
+                                                </li>
+                                                <li class="paginate_button page-item ">
+                                                    <a href="#" aria-controls="example1" data-dt-idx="4" tabindex="0"
+                                                        class="page-link">4</a>
+                                                </li>
+                                                <li class="paginate_button page-item ">
+                                                    <a href="#" aria-controls="example1" data-dt-idx="5" tabindex="0"
+                                                        class="page-link">5</a>
+                                                </li>
+                                                <li class="paginate_button page-item ">
+                                                    <a href="#" aria-controls="example1" data-dt-idx="6" tabindex="0"
+                                                        class="page-link">6</a>
+                                                </li>
+                                                <li class="paginate_button page-item next" id="example1_next">
+                                                    <a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0"
+                                                        class="page-link">Next</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+                            <div class="card-footer">
+
+                            </div>
+                            <!-- /.card-footer-->
                         </div>
-                    </div>
-                    <!-- /.card-body -->
-                    <div class="card-footer">
-                        Footer
-                    </div>
-                    <!-- /.card-footer-->
-                </div>
-                <!-- /.card -->
+                        <!-- /.card -->
 
             </section>
             <!-- /.content -->
@@ -259,6 +300,54 @@
 
     <?php $this->load->view('adminViews/components/js'); ?>
 
+    <script>
+    //-------------------------data Table----------------------------------------------------
+    $(function() {
+
+        $("#example1").DataTable({
+            "scrollX": true
+        });
+    });
+</script>
+    //-----------------------form Handling --------------------------------------------------
+<script>
+    $('#formSubmit').click(function() {
+                //alert($('#evaluationYear').val())
+                var param = {
+
+                    userName: $('#userName').val(),
+                    userEmail: $('#userEmail').val(),
+                    userNIC: $('#userNIC').val(),
+                    empId: $('#empId').val(),
+                    userType: $('#userType').val(),
+                    userAddDate: $('#userAddDate').val(), 
+
+
+
+                }
+                console.log(param);
+                $.post("<?php echo base_url(); ?>index.php/Admin/UserManagementHandler", param, function(
+                            data1) {
+
+				console.log(data1)
+				var response = JSON.parse(data1);
+				window.alert(response)
+
+             if (response.status) {
+				alert("succes");
+
+				window.location.href = "userManagementDataView";
+             } else {
+					alert("fail");
+
+         }
+							
+        });
+	
+    })
+
+             
+    </script>
 </body>
 
 </html>

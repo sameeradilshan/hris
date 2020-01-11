@@ -248,10 +248,6 @@
                               
                                 <!-- row end -->
 
-
-
-
-
                             </div>
                             <!-- /.card-body -->
                     <div class="card-footer">

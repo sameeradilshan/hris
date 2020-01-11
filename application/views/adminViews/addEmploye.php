@@ -9,7 +9,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->load->view('adminViews/components/css'); ?>
 
+<style>
+div.card-body {
+	width:900px;
+  margin: auto;
+  border: 2px solid ;
+  background-color:rgb(0, 28, 255,0.02 );
+}
 
+</style>
 
 </head>
 
@@ -68,9 +76,9 @@
                             </li>
                         </ul>
                     </nav> -->
-                    <div class="card-body">
-
-                        <form >
+                    <div class="card-body" >
+						
+                        <form action="<?php echo base_url(); ?>index.php/Admin/EmployeeDetailshandler" method="POST" id="body1">
 
 
                             <h1>Personal Details</h1>
@@ -80,12 +88,12 @@
                             <div class="form-group">
                                 <label>Full Name</label>
                                 <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe"
-                                    name="empFullName" id="empFullName" required>
+                                    name="empFullName" id="empFullName"  >
                             </div>
                             <div class="form-group test3" id="test1">
                                 <label>Name With Initial</label>
                                 <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe"
-                                    name="initialName" id="initialName" required>
+                                    name="initialName" id="initialName"  >
                             </div>
                             <div class="form-group test3" id="test1">
                                 <label>Other Name</label>
@@ -95,7 +103,7 @@
                             <div class="form-group test3" id="test1">
                                 <label>Address(Permanent)</label>
                                 <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe"
-                                    name="empAddress1" id="empAddress1" required>
+                                    name="empAddress1" id="empAddress1"  >
                             </div>
                             <div class="form-group test3" id="test1">
                                 <label>Address(Tempary)</label>
@@ -111,7 +119,7 @@
                                 <div class="form-group col-md-4" id="test1">
                                     <label>NIC Number</label>
                                     <input type="text" class="form-control form-control-sm" placeholder="1999xxxxxx"
-                                        name="empNicNo" id="empNicNo" required>
+                                        name="empNicNo" id="empNicNo"  >
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label>Date Of Birth</label><br>
@@ -664,7 +672,7 @@
                                         <div class="form-group col-md-6 " id="test1">
                                             <label>Employee Number</label>
                                             <input type="text" class="form-control form-control-sm"
-                                                placeholder="1999xxxxxx" name="empNo" id="empNo" required>
+                                                placeholder="1999xxxxxx" name="empNo" id="empNo"  >
                                         </div>
 
                                         <div class="form-group col-md-6">
@@ -990,7 +998,8 @@
                     <div class="card-footer">
                         Footer
                     </div>
-                    <!-- /.card-footer-->
+					<!-- /.card-footer-->
+                    </div>
                 </div>
                 <!-- /.card -->
 
@@ -1064,10 +1073,10 @@
             alIndexNo2: 		$('#alIndexNo2').val(),
             alIndexNo3: 		$('#alIndexNo3').val(),
             alIndexNo4: 		$('#alIndexNo4').val(),
-            alResult1: $('#alResult1').val(),
-            alResult2: $('#alResult2').val(),
-            alResult3: $('#alResult3').val(),
-            alResult4: $('#alResult4').val(),
+            alResult1: 			$('#alResult1').val(),
+            alResult2: 			$('#alResult2').val(),
+            alResult3: 			$('#alResult3').val(),
+            alResult4: 			$('#alResult4').val(),
             alYear1: $('#alYear1').val(),
             alYear2: $('#alYear2').val(),
             alYear3: $('#alYear3').val(),
@@ -1143,44 +1152,39 @@
            
 
         }
-		console.log(param);
-		$.post("<?php echo base_url(); ?>index.php/Admin/EmployeeDetailshandler", param, function(
-        data) {
+		// alert(JSON.stringify(param));
+		// console.log(param);
+		// $.post("<?php echo base_url(); ?>index.php/Admin/EmployeeDetailshandler", param, function(
+        // data) {
 
-			console.log(data)
-            var response = JSON.parse(data);
-			console.log(response)
-             if (response.status) {
-				Swal.fire(
-						'Good job!',
-						'You clicked the button!',
-						'success'
-						)
-				
-             } else {
-				Swal.fire({
-					icon: 'error',
-					title: 'Oops...',
-					text: 'Something went wrong!',
-					footer: '<a href>Why do I have this issue?</a>'
-				})
+		// 	console.log(data)
+        //     var response = JSON.parse(data);
+		// 	console.log(response)
+        //      if (response.status) {
+		// 		Swal.fire(
+		// 		'Good job!',
+		// 		'You clicked the button!',
+		// 		'success'
+		// 		)
 
+		// 		window.location.href = "leaveDataView";
+        //      } else {
+		// 			Swal.fire({
+		// 			icon: 'error',
+		// 			title: 'Oops...',
+		// 			text: 'Something went wrong!',
+		// 			footer: '<a href>Why do I have this issue?</a>'
+		// 			})
 
-        $.post("<?php echo base_url(); ?>index.php/Admin/EmployeeDetailshandler", param, function(
-        data) {
-            var response = JSON.parse(data);
+        //  }
 
-            if (response.status) {
+        // });
+	
+   
+	});
 
-            } else {
-
-            }
-
-        });
-    })
-    </script>
-
-
+</script>
 </body>
 
 </html>
+	

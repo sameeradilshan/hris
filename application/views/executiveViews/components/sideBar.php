@@ -1,5 +1,3 @@
-
-
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="../../index3.html" class="brand-link">
@@ -18,22 +16,20 @@
           <img src="<?php echo base_url(); ?>assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Admin Name</a> 
+          <a href="#" class="d-block">Admin Name</a>
         </div>
       </div>
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
-			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
 							 with font-awesome or any other icon font library -->
 							 
 
            
           <!-- <li class="nav-header">MISCELLANEOUS</li> -->
-          
-
-					<li class="nav-item">
+          <li class="nav-item">
             <a href="<?php echo base_url(); ?>index.php/HrExecutive/employeeDetails" class="nav-link">
               <i class="nav-icon fa fa-user"></i>
               <p>Emplyee Details</p>
@@ -118,7 +114,7 @@
               </a>
             <ul class="nav nav-treeview">
 						<li class="nav-item">
-              <a href="<?php echo base_url(); ?>index.php/HrExecutive/promotion" class="nav-link">
+              <a href="<?php echo base_url(); ?>index.php/HrExecutive/incrementDataView" class="nav-link">
 							<i class="nav-icon fa fa-line-chart"></i>
                   <p>Proformance </p>
                 </a>
@@ -180,7 +176,7 @@
 									</a>
 								</li>
               <li class="nav-item">
-              <a href="<?php echo base_url(); ?>index.php/HrExecutive/PayRollInformation" class="nav-link">
+              <a href="<?php echo base_url(); ?>index.php/HrExecutive/payRollInfoDataView" class="nav-link">
 							<i class="nav-icon fa fa-list-alt"></i>
                   <p>PayRoll Information </p>
                 </a>
@@ -201,13 +197,13 @@
             </a>
 					</li>
 					<li class="nav-item">
-            <a href="<?php echo base_url(); ?>index.php/HrExecutive/departments" class="nav-link">
+            <a href="<?php echo base_url(); ?>index.php/HrExecutive/departmentDataView" class="nav-link">
               <i class="nav-icon fa fa-object-group"></i>
               <p>Departments</p>
             </a>
 					</li>
 					<li class="nav-item">
-            <a href="<?php echo base_url(); ?>index.php/HrExecutive/userManagement" class="nav-link">
+            <a href="<?php echo base_url(); ?>index.php/HrExecutive/userManagementDataView" class="nav-link">
               <i class="nav-icon fa fa-users"></i>
               <p>User Management</p>
             </a>
@@ -225,10 +221,9 @@
   </aside>
 
 	<!-- jQuery -->
-	<script src="<?php echo base_url(); ?>assets/plugins/jquery/jquery.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 
-<!-- AdminLTE App -->
+<!-- HrExecutiveLTE App -->
 <script src="<?php echo base_url(); ?>assets/dist/js/adminlte.js"></script>
-
 

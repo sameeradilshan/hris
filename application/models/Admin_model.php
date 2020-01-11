@@ -86,6 +86,14 @@ class Admin_model extends CI_model{
         return $result;
 
 	}
+//----------------------------increment management-----------------------------------------------
+
+	public function  addIncrementManagement($incrementManagement){
+
+		$result = $this->db->insert("empincrement", $incrementManagement);
+		return $result;
+
+	}
 
 
 //----------------------------monthly performance  insert ---------------------------------------------
@@ -141,13 +149,23 @@ class Admin_model extends CI_model{
 //------------------------------designation -----------------------------------------------------------------
 				public function  addDesignationManagement($designationManagement){
 
-					$result = $this->db->insert("department", $designationManagement);
+					$result = $this->db->insert("empdesignation", $designationManagement);
 					return $result;
 					
 				}	
 
 
 
+//------------------------usermanagement------------------
+public function getUserManagementDataView() {
+	$this->db->select('*');
+	$this->db->from('admin a');
+	$this->db->from('hrexecuitve e');
+	$this->db->from('hruser u');
+	$this->db->where('a.adminStatus' or'e.exeStatus' or'u.userStatus', 0);
+	$query = $this->db->get();
+	return $query->result();
+}
 
 
 
@@ -197,7 +215,15 @@ public function getMonthlyPerfomDataView() {
 	$query = $this->db->get();
 	return $query->result();
 }
+//----------------------------------------increment infoermations------------------------------
 
+public function getincrementDataView() {
+	$this->db->select('*');
+	$this->db->from('empincrement d');
+	$this->db->where('d.incrementStatus', 0);
+	$query = $this->db->get();
+	return $query->result();
+}
 //--------------------------------------year performance evaluation------------------------------
 
 
@@ -218,24 +244,181 @@ public function getPayRollInfoDataView() {
 	$query = $this->db->get();
 	return $query->result();
 }
-
+public function getPayRollInfoDataViewOne($empNo) {
+	$this->db->select('*');
+	$this->db->from('emppayrollinfo d');
+	$this->db->where('d.empNo',$empNo);
+	$this->db->where('d.payrollstatus', 0);
+	$query = $this->db->get();
+	return $query->row();
+}
 
 //-------------------------------------Employee Details--------------------------------------------------
 
-public function getemployeeDetailView() {
-
+public function getemployeeDetailView($empNo) {
 
 	$this->db->select('*');
 	$this->db->from('addemployee d');
-	$this->db->where('d.empNic', );
+	$this->db->from('empedudetails e');
+	$this->db->from('empresultdetails f');
+	$this->db->from('empjobdetails g');
+	$this->db->from('empbamkdetails h');
+	$this->db->from('empfamilydetails i');
+	$this->db->from('empchilddetails j');
+	$this->db->from('empparentdetails k');
+	$this->db->where('d.empNo ', $empNo );
+	$this->db->where('e.empNo ', $empNo );
+	$this->db->where('f.empNo ', $empNo );
+	$this->db->where('g.empNo ', $empNo );
+	$this->db->where('h.empNo ', $empNo );
+	$this->db->where('i.empNo ', $empNo );
+	$this->db->where('j.empNo ', $empNo );
+	$this->db->where('k.empNo ', $empNo );
 	$query = $this->db->get();
 	return $query->result();
 }
+//----------------------------------department--------------------------------------------------------------
+public function getDepartmentDataView() {
 
-//meke nic akan data ganna ona display karanna 
-//mage code eka ekak penahang ..... 
+	$this->db->select('*');
+	$this->db->from('empdesignation d');
+	$this->db->join('department t', 't.departmentName = d.departmentName');
+	$this->db->where('t.deptStatus',0);
+	$query = $this->db->get();
+	return $query->result();
+
+}
+//--------------------------------------Approval Leave Data View report-------------------------------------
+	public function getApprovedLeaveDatalView() {
+
+		$this->db->select('*');
+		$this->db->from('empleave d');	
+		$this->db->where('d.leaveStatus',1);
+		$query = $this->db->get();
+		return $query->result();
+
+	}
+//---------------------------------------Decline Leave Data View report -------------------------------------
+	public function getDeclineLeaveDatalView() {
+
+		$this->db->select('*');
+		$this->db->from('empleave d');	
+		$this->db->where('d.leaveStatus',2);
+		$query = $this->db->get();
+		return $query->result();
+
+	}
+//---------------------------------------approval maonth performance ------------------------------------
+
+
+//---------------------------------------decline maonth performance ------------------------------------
+public function getDeclineMonthlyProformanceDatalView() {
+
+	$this->db->select('*');
+	$this->db->from('empmonthlyevaluation d');	
+	$this->db->where('d.promotionStatus',2);
+	$query = $this->db->get();
+	return $query->result();
+
+}
+//------------------------------------leave reports------------------------------------------------------------
+public function getReportLeaveDatalView() {
+
+	$this->db->select('*');
+	$this->db->from('empleave d');	
+	$this->db->where ("d.leaveStatus ='1' or d.leaveStatus ='2'");
+	$query = $this->db->get();
+	return $query->result();
+
+}
+
+//-------------------------------------increment approval data view--------------------------------------
+
+	public function getApprovedPromotionDatalView() {
+
+		$this->db->select('*');
+		$this->db->from('empincrement d');	
+		$this->db->where('d.incrementStatus',1);
+		$query = $this->db->get();
+		return $query->result();
+
+	}
+
+//-------------------------------------increment decline data view------------------------------------
+	public function getDeclinePromotionDatalView() {
+
+		$this->db->select('*');
+		$this->db->from('empincrement d');	
+		$this->db->where('d.incrementStatus',2);
+		$query = $this->db->get();
+		return $query->result();
+
+	}
+//-------------------------------------increment all data reports---------------------------------------
+	public function getReportPromotionDatalView() {
+
+		$this->db->select('*');
+		$this->db->from('empincrement d');	
+		$this->db->where ("d.incrementStatus ='1' or d.incrementStatus ='2'");
+		$query = $this->db->get();
+		return $query->result();
+
+	}
+//------------------------------------Departmantal employrr data report------------------------------------
+		public function getreportDeptEmpDataView() {
+
+			$this->db->select('*');
+			$this->db->from('empdesignation d');
+			$this->db->join('addemployee t', 't.departmentName = d.departmentName');	
+			$this->db->where ("d.departmentName =g");
+			$query = $this->db->get();
+			return $query->result();
+
+		}
+//------------------------------------employee data view----------------------
+		public function getemployeesDataView() {
+
+			$this->db->select('*');
+			$this->db->from('empincrement d');	
+			$this->db->where ("d.incrementStatus ='1' or d.incrementStatus ='2'");
+			$query = $this->db->get();
+			return $query->result();
+
+		}
+//------------------------------------time sheet data view---------------------------
+				public function gettimeDataView() {
+
+					$this->db->select('*');
+					$this->db->from('timesheet d');	
+					$this->db->where('d.timestatus',0);
+					$query = $this->db->get();
+					return $query->result();
+
+				}
+
+//--------------------------paysheet making information------------------------------------
+				public function getpaySeetMakingInformation($empNo) {
+
+					$this->db->select('*');
+					$this->db->from('emppayrollinfo d');	
+					$this->db->where('d.empNo', $empNo );
+					$query = $this->db->get();
+					return $query->row();
+
+				}
+
+
+
+				//meke nic akan data ganna ona display karanna 
+				//mage code eka ekak penahang ..... 
 // for example------------------------------------------
-
+public function getmonthperfor() {
+	$this->db->select('*');
+	$this->db->from('empmonthlyevaluation d');
+	$this->db->where('d.promotionStatus', 1);
+	$query = $this->db->get();
+	return $query->result();
+}
 
 
 
@@ -256,7 +439,17 @@ public function getemployeeDetailView() {
         $this->db->where('d.empStatus', 0);
         $query = $this->db->get();
         return $query->row();
-    }
+	}
+//-----------------------------get emp data for payroll-------------------
+public function gettData(){
+	$this->db->select('*');
+	$this->db->from('addemployee d');	
+	$this->db->where('d.empStatus', 0);
+	$query = $this->db->get();
+	return $query->result();
+}
+
+
 //add employee form handling finished----------------------------------------------------------------------
 
 
@@ -285,7 +478,96 @@ public function getemployeeDetailView() {
 				return $result;
 
 			}
-//-------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------Year Promotion  Approval ---
+			public function update($dataArr, $whereArr){
+				$result =$this->db->update('empyearproformance',$dataArr,$whereArr );
+				return $result;
+			}
+
+//----------------------------------------leave Approval update-------------------------------------
+			public function updateLeaveApproval($dataArr, $whereArr){
+				$result =$this->db->update('empleave',$dataArr,$whereArr );
+				return $result;
+			}
+
+//-----------------------------------------resignation approval update-------------------------------
+			public function updateResignationApproval($dataArr, $whereArr){
+				$result =$this->db->update('empresignation',$dataArr,$whereArr );
+				return $result;
+			}
+//-------------------------------------update increment approval update ----------------------------------
+
+			public function updateIncrementApproval($dataArr, $whereArr){
+				$result =$this->db->update('empincrement',$dataArr,$whereArr );
+				return $result;
+			}
+//-------------------------------------training approval update----------------------------------
+			public function updateTrainingApproval($dataArr, $whereArr){
+				$result =$this->db->update('empaddtraining',$dataArr,$whereArr );
+				return $result;
+}
+
+//-------------------------------------approval month performance -------------------------------
+
+			public function approvalMonthPerformance($dataArr, $whereArr){
+				$result =$this->db->update('empmonthlyevaluation',$dataArr,$whereArr );
+				return $result;
+			}
+
+//-------------------------------------Edit resignation details---------------------
+
+			public function editResignation($dataArr, $whereArr){
+				$result =$this->db->update('empresignation',$dataArr,$whereArr );
+				return $result;
+			}
+
+//------------------------------------Edit Training details-------------------------------
+			public function editTrainingData($trainingData, $wherearray){
+				$result =$this->db->update('empaddtraining',$trainingData,$wherearray );
+				return $result;
+			}
+
+//---------------------------------------Edit leave Details--------------------------
+			public function editLeaveData($leaveEditData, $wherearray){
+				$result =$this->db->update('empleave',$leaveEditData,$wherearray );
+				return $result;
+			}
+//----------------------------------------Edit monthly performance--------------------
+			public function editmaonthPerformaceData($maonthPerformaceEdit, $wherearray){
+				$result =$this->db->update('empmonthlyevaluation',$maonthPerformaceEdit,$wherearray );
+				return $result;
+			}
+//--------------------------------------Edit payoll Information------------------------------------------
+			public function payRollInformationEdit($maonthPerformaceEdit, $wherearray){
+				$result =$this->db->update('emppayrollinfo',$maonthPerformaceEdit,$wherearray );
+				return $result;
+			}
+
+//----------------------------------- time sheet adding----------------------------------
+		public function  timeSheetData($timeData){
+
+			$result = $this->db->insert("timesheet", $timeData);
+			return $result;
+
+		}
+//-------------------------------------------insert attendane emp No---------------------------------
+		public function  addEmpAttendanceDetails($attandance){
+
+			$result = $this->db->insert("attendance", $attandance);
+			return $result;
+
+		}
+
+
+//---------------------------------------get attendance month-----------------------------------------
+public function getAttendacebymonth($empNo){
+
+	$query=$this->db->query('select count(empNo) as datecame from attendancetable where empNO=$empNo AND date BETWEEN $startDate AND $endDate;');
+	return $query->result();
+	
+
+}
+
 
 }
 ?>

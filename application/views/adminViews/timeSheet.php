@@ -70,7 +70,8 @@
                                 <i class="fa fa-times"></i></button>
 						</div> -->
 						 <!-- The Modal -->
-						 <form action="" method="post">
+						
+						 <form id="form_action" action="<?php echo base_url();?>index.php/Admin/upload" method="post" enctype="multipart/form-data"  accept-charset="utf-8">
 						 <div class="modal" id="addTimesheet">
                                 <div class="modal-dialog modal-md">
                                     <div class="modal-content">
@@ -83,6 +84,7 @@
 
                                         <!-- Modal body -->                                        
 										<div class="modal-body">
+										
 											<h5>Time Sheet</h5>
 											<div class="row">
 												
@@ -91,7 +93,7 @@
 														<label>Time Sheet (CSV file)</label>
 														<input type="text" class="form-control form-control-sm"
 															placeholder="Jhon Doe" name="empName">
-                                                            <input type="file" name="uploadBtn" value="Upload">    
+															<input type="file" name="csv_file" id="csv_file" required accept=".csv" />  
 													</div>
 												</div>
 												
@@ -102,8 +104,7 @@
 
                                         <!-- Modal footer -->
                                         <div class="modal-footer">
-											<input type="submit" class="btn btn-danger" name="submit"
-                                                    value="Import">
+										<button type="submit" name="upload" class="upload" id="upload" value="upload">Import CSV</button>
                                             <button type="button" class="btn btn-danger"
                                                 data-dismiss="modal">Close</button>
                                         </div> 
@@ -111,9 +112,9 @@
                                     </div>
                                 </div>
 							</div>
-						 </form>
-
-
+					
+							</form>
+							<div id="imported_csv_data"></div>
 
                     </div>
 					<div class="card-body">
@@ -160,10 +161,9 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>NIC No</th>
+											<th>Emp No</th>
                                             <th>Employee Name</th>
-                                            <th>Department</th>
-                                            <th>Emp No</th>
+                                                                                    
                                             <th>Date</th>
                                             <th>In Time</th>
                                             <th>Out Time</th>
@@ -172,35 +172,32 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-<!-- 
+
                                                     <?php
 												
-													//foreach($trainingDataView as $trainingData){
-														//var_dump($trainingDataView);
+													foreach($timeDataView as $timeData){
+														//var_dump($timeDataView);
 														
-													// 	echo'  
-													// 		<tr role="row" class="odd">
-													// 			<th scope="row"></th>
-													// 			<td>'.$trainingData->empNo.'</td>
-													// 			<td>'.$trainingData->empName.'</td>
-													// 			<td>'.$trainingData->empNicNo.'</td>
-													// 			<td>'.$trainingData->departmentId.'</td>
-													// 			<td>'.$trainingData->programmeName.'</td>
-													// 			<td>'.$trainingData->venue.'</td>
-													// 			<td>'.$trainingData->date.'</td>
-													// 			<td>'.$trainingData->courseContent.'</td>
-													// 			<td>'.$trainingData->courseDuration.'</td>
-													// 			<td>'.$trainingData->CourseFee.'</td>
+														echo'  
+															<tr role="row" class="odd">
+																
+																<td>'.$timeData->empNo.'</td>
+																<td>'.$timeData->empName.'</td>
+																<td>'.$timeData->date.'</td>
+																<td>'.$timeData->in_time.'</td>
+																<td>'.$timeData->out_time.'</td>
+																
+																
 																
 															
-													// 		</tr>
+															</tr>
 															
 													
                                                    			
-													// 	';
-													// }
+														';
+													}
 												
-												?> -->
+												?> 
 
 
 
@@ -319,6 +316,11 @@
 			
 		);
     });
+
+	
+	
+		
+
     </script>
 
 

@@ -30,9 +30,15 @@
            
           <!-- <li class="nav-header">MISCELLANEOUS</li> -->
           <li class="nav-item">
-            <a href="<?php echo base_url(); ?>index.php/Admin/employeeDetails" class="nav-link">
+            <a href="<?php echo base_url(); ?>index.php/Admin/employeeDetailView" class="nav-link">
               <i class="nav-icon fa fa-user"></i>
               <p>Emplyee Details</p>
+            </a>
+					</li>
+					<li class="nav-item">
+            <a href="<?php echo base_url(); ?>index.php/FullCalendar/index" class="nav-link">
+              <i class="nav-icon fa fa-user"></i>
+              <p>calender</p>
             </a>
 					</li>
 
@@ -93,7 +99,7 @@
 									</a>
 								</li>
               <li class="nav-item">
-								<a href="<?php echo base_url(); ?>index.php/Admin/timeSheet" class="nav-link">
+								<a href="<?php echo base_url(); ?>index.php/Admin/timeDataView" class="nav-link">
 								<i class="nav-icon fa fa-hourglass-end"></i>
 										<p>Time Sheet </p>
 									</a>
@@ -114,7 +120,7 @@
               </a>
             <ul class="nav nav-treeview">
 						<li class="nav-item">
-              <a href="<?php echo base_url(); ?>index.php/Admin/promotion" class="nav-link">
+              <a href="<?php echo base_url(); ?>index.php/Admin/incrementDataView" class="nav-link">
 							<i class="nav-icon fa fa-line-chart"></i>
                   <p>Proformance </p>
                 </a>
@@ -197,13 +203,13 @@
             </a>
 					</li>
 					<li class="nav-item">
-            <a href="<?php echo base_url(); ?>index.php/Admin/departments" class="nav-link">
+            <a href="<?php echo base_url(); ?>index.php/Admin/departmentDataView" class="nav-link">
               <i class="nav-icon fa fa-object-group"></i>
               <p>Departments</p>
             </a>
 					</li>
 					<li class="nav-item">
-            <a href="<?php echo base_url(); ?>index.php/Admin/userManagement" class="nav-link">
+            <a href="<?php echo base_url(); ?>index.php/Admin/userManagementDataView" class="nav-link">
               <i class="nav-icon fa fa-users"></i>
               <p>User Management</p>
             </a>

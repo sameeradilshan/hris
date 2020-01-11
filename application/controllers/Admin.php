@@ -15,6 +15,7 @@ class Admin extends CI_Controller{
 		$this->load->model('Admin_model','',true);
 		$this->load->model('Admin_model','',true);
 	
+		
 
 	}
 
@@ -50,14 +51,11 @@ class Admin extends CI_Controller{
 	{
 		$this->load->view('adminViews\firstPage');
 	}
-	public function promotion()
+	public function overTime()
 	{
-		$this->load->view('adminViews\promotion');
+		$this->load->view('adminViews\overTime');
 	}
-	public function departments()
-	{
-		$this->load->view('adminViews\departments');
-	}
+	
 	
 	public function attendance()
 	{
@@ -72,10 +70,7 @@ class Admin extends CI_Controller{
 	{
 		$this->load->view('adminViews\payRoll');
 	}
-	public function userManagement()
-	{
-		$this->load->view('adminViews\userManagement');
-	}
+	
 	public function PayRollInformation()
 	{
 		$this->load->view('adminViews\PayRollInformation');
@@ -88,6 +83,12 @@ class Admin extends CI_Controller{
 	{
 		$this->load->view('adminViews\timeSheet');
 	}
+	public function report()
+	{
+		$this->load->view('adminViews\timeSheet');
+	}
+	
+	
 	
 // admin views end----------------------------------------------------------------------------------------
 
@@ -124,10 +125,25 @@ class Admin extends CI_Controller{
 			
 
 		if($result){
-			redirect('Admin');
-			}else{
-		 		echo 'data giye ';
-		 	}
+			echo json_encode(
+				array(
+
+					'result' => $result,
+					'status' => true,
+					  
+				)
+			);
+
+		}else{
+
+			echo json_encode(
+				array(
+					  
+					'status' => false,
+					  
+				)
+			);
+		}
 			 
 		}elseif($userType=='Executive'){
 
@@ -141,7 +157,29 @@ class Admin extends CI_Controller{
 
 			);
 			$result=$this->Admin_model-> addExecutive($data);
-			var_dump($result);
+			//var_dump($result);
+
+			if($result){
+				echo json_encode(
+					array(
+
+						'result' => $result,
+						'status' => true,
+						  
+					)
+				);
+
+			}else{
+
+				echo json_encode(
+					array(
+						  
+						'status' => false,
+						  
+					)
+				);
+			}
+			
 
 		}elseif($userType=='Staff'){
 			$data= array(
@@ -155,20 +193,43 @@ class Admin extends CI_Controller{
 			);
 			$result=$this->Admin_model-> addStaffUser($data);
 			if($result){
-				redirect('Admin');
-			}else{
-					 echo 'data giye ';
-				 }
+				echo json_encode(
+					array(
 
+						'result' => $result,
+						'status' => true,
+						  
+					)
+				);
+
+			}else{
+
+				echo json_encode(
+					array(
+						  
+						'status' => false,
+						  
+					)
+				);
+			}
 		}else{
-			echo"error akak";
-		 }
+		
+			echo json_encode(
+				array(
+					  
+					'status' => false,
+					  
+				)
+			);
+		}
 		
 	}	
 
 	
 // employee add ------------------------------------------------------------------------- 
 			public function EmployeeDetailshandler(){
+				// var_dump($this->input->post());
+				// die();
 				
 				$empFullName	=$this->input->post('empFullName');
 				$empInitialName	=$this->input->post('initialName');
@@ -444,6 +505,13 @@ class Admin extends CI_Controller{
 
 					);
 					$result=$this->Admin_model-> addEmployeeParentDetails($empparentdata);
+					if($result){
+						echo("Employee Data adding Succesfully");
+					}else{
+
+					}
+					
+					
 			}
 
 	
@@ -468,65 +536,94 @@ class Admin extends CI_Controller{
 
 				);//var_dump($resignationdata);
 				$result=$this->Admin_model-> addResignation($resignationdata);
-				if($result){
+				if($result ){
 					
-					Echo 'Successful';
-					redirect('Admin/resignationDataView');
-				}
-				else{
-					echo'Error';
-				}				
+			
+					echo json_encode(
+			            array(
+  
+			                'result' => $result,
+			                'status' => true,
+			                  
+			        	)
+		        	);
 
+				}else{
+
+			
+					echo json_encode(
+			            array(
+			                  
+			                'status' => false,
+			                  
+			        	)
+		        	);
+				}
 			}
 //---------------------------------------------------------------------------------------------------
 			public function leaveRequestManagement(){
-				$leaveEmpName	=$this->input->post('leaveEmpName');
-				$leaveEmpNo	=$this->input->post('leaveEmpNo');
-				$leaveEmpNICNo	=$this->input->post('leaveEmpNICNo');
-				$department		=$this->input->post('leaveEmpDeprtment');
-				$leaveReason		=$this->input->post('leaveReason');
-				$leaveType	= $this->input->post('leaveType');
-				$leaveDate = $this->input->post('leaveDate');
-				$leaveEmpNICNo = $this->input->post('leaveEmpNICNo');
-				$noOfDate = $this->input->post('noOfDate');
+				
+				$leaveEmpName	= $this->input->post('leaveEmpName');
+				$leaveEmpNo		= $this->input->post('leaveEmpNo');
+				$leaveEmpNICNo	= $this->input->post('leaveEmpNICNo');
+				$leaveEmpDeprtment	= $this->input->post('leaveEmpDeprtment');
+				$leaveReason	= $this->input->post('leaveReason');
+				$leaveType		= $this->input->post('leaveType');
+				$leaveDate 		= $this->input->post('leaveDate');
+				$leaveDateForm 	= $this->input->post('leaveDateForm');
+				$leaveDateTo 		= $this->input->post('leaveDateTo');
 
 				$leaverequestdata=array(
 
 					'empName' 		=> $leaveEmpName,
 					'empNo'   		=> $leaveEmpNo,
 					'leaveType'		=> $leaveType,
-					'date' 			=> $leaveDate ,
+					'noOfDate' 		=> $leaveDate ,
 					'reason'		=> $leaveReason,
-					'department' 	=> $department,	
+					'department' 	=> $leaveEmpDeprtment,	
 					'leaveEmpNICNo' => $leaveEmpNICNo,
-					'noOfDate' 		=> $noOfDate,
+					'dateFrom' 		=> $leaveDateForm,
+					'dateTo' 		=> $leaveDateTo,
 					
 				);//var_dump($leaverequestdata);	
 				$result=$this->Admin_model-> addLeaveRequestdata($leaverequestdata);
 				if($result){
-					
-					Echo 'Successful';
-					redirect('Admin/leaveDataView');
-				}
-				else{
-					echo'Error';
+
+					echo json_encode(
+			            array(
+  
+			                'result' => $result,
+			                'status' => true,
+			                  
+			        	)
+		        	);
+
+				}else{
+
+					echo json_encode(
+			            array(
+			                  
+			                'status' => false,
+			                  
+			        	)
+		        	);
 				}
 			}
-			
-
 
 //------------------------------------------------------------------
 
-				public function trainingManagement(){
+				public function trainingManagementData(){
+					
 					$trainingEmpName	=$this->input->post('trainingEmpName');
 					$trainingEmpNo		=$this->input->post('trainingEmpNo');
-					$trainingEmpNICNo	=$this->input->post('trainingEmpNIC');
+					$trainingEmpNICNo	=$this->input->post('trainingEmpNICNo');
 					$programmeName		=$this->input->post('trainingProgrameName');
 					$courseContent		=$this->input->post('courseContent');
 					$trainingVenue		=$this->input->post('trainingVenue');
 					$trainingDate 		=$this->input->post('trainingDate');
 					$trainingDuration 	=$this->input->post('trainingDuration');
 					$courseFee 			=$this->input->post('courseFee');
+				
 					
 				$trainingManagementData=array(
 
@@ -540,30 +637,90 @@ class Admin extends CI_Controller{
 					'date' 			=> $trainingDate,
 					'courseFee' 	=> $courseFee,
 					
-				);var_dump($trainingManagementData);	
+				);
+				//var_dump($trainingManagementData);	
 				$result=$this->Admin_model-> addTrainingManagementData($trainingManagementData);	
 				if($result){
-					
-					Echo 'Successful';
-					redirect('Admin/trainingDataView');
-				}
-				else{
-					echo'Error';
+				
+					echo json_encode(
+			            array(
+  
+			                'result' => $result,
+			                'status' => true,
+			                  
+			        	)
+		        	);
+
+				}else{
+
+					echo json_encode(
+			            array(
+			                  
+			                'status' => false,
+			                  
+			        	)
+		        	);
 				}
 			}
 
 //----------------------------------------------------------------------------------------------------
+			public function incrementManagement(){
+
+				$empName 			= $this->input->post('empName');
+				$empNo				= $this->input->post('empNo');
+				$empNICNo			= $this->input->post('empNICNo');
+				$incrementDetails	= $this->input->post('incrementDetails');
+				$date				= $this->input->post('date');
+				$increment			= $this->input->post('increment');			
+				$department			= $this->input->post('department');
+				
+				$incrementManagement=array(
+
+					'empName'			=> $empName,
+					'empNo' 			=> $empNo ,
+					'empNicNo'			=> $empNICNo,					
+					'incrementDetails'	=> $incrementDetails,
+					'date' 				=> $date,
+					'increment' 		=> $increment,
+					'departmentName' 	=> $department,
+
+				);
+				//var_dump($monthlyPerformanceManagement);	
+				$result=$this->Admin_model-> addIncrementManagement($incrementManagement);	
+				if($result){
+
+					echo json_encode(
+			            array(
+  
+			                'result' => $result,
+			                'status' => true,
+			                  
+			        	)
+		        	);
+
+				}else{
+
+					echo json_encode(
+			            array(
+			                  
+			                'status' => false,
+			                  
+			        	)
+		        	);
+				}
+			}
+					
 
 
 			public function monthlyPerformanceManagement(){
 
-				$promotionYear		=$this->input->post('promotionYear');
-				$promotionMonth		=$this->input->post('promotionMonth');
-				$empName			=$this->input->post('empName');
-				$empNo				=$this->input->post('empNo');
-				$empNICNo			=$this->input->post('empNICNo');
-				$promotionAgree		= $this->input->post('promotionAgree');
-				$knowledgeOfWork 	=$this->input->post('knowledgeOfWork');
+				
+				$promotionYear		= $this->input->post('promotionYear');
+				$promotionMonth		= $this->input->post('promotionMonth');
+				$empName			= $this->input->post('empName');
+				$empNo				= $this->input->post('empNo');
+				$empNICNo			= $this->input->post('empNICNo');			
+				$knowledgeOfWork 	= $this->input->post('knowledgeOfWork');
 				$achievements		= $this->input->post('achievements');
 				$quality 			= $this->input->post('quality');
 				$motivationOfTheWork= $this->input->post('motivationOfTheWork');
@@ -573,6 +730,9 @@ class Admin extends CI_Controller{
 				$teamWork			= $this->input->post('teamWork');
 				$adhearance 		= $this->input->post('adhearance');
 				$abilityToWork 		= $this->input->post('abilityToWork');
+
+				$monthlytotal =$knowledgeOfWork +  $achievements+$quality+$motivationOfTheWork+$relationship+$discipline+$attendence+$teamWork+ $adhearance+$abilityToWork;
+
 				
 				$monthlyPerformanceManagement=array(
 
@@ -580,8 +740,7 @@ class Admin extends CI_Controller{
 					'promotionMonth'   	=> $promotionMonth,
 					'empName'			=> $empName,
 					'empNo' 			=> $empNo ,
-					'empNICNo'			=> $empNICNo,
-					'promotionAgree' 	=> $promotionAgree,	
+					'empNICNo'			=> $empNICNo,					
 					'knowledgeOfWork'	=> $knowledgeOfWork,
 					'achievements' 		=> $achievements,
 					'quality' 			=> $quality,
@@ -593,23 +752,58 @@ class Admin extends CI_Controller{
 					'adhearance' 		=> $adhearance,
 					'abilityToWork' 	=> $abilityToWork,
 					
+					'promotionTotal'	=> $monthlytotal,
 
-
-				);//var_dump($monthlyPerformanceManagement);	
+				);
+				//var_dump($monthlyPerformanceManagement);	
 				$result=$this->Admin_model-> addMonthlyPerformanceData($monthlyPerformanceManagement);	
 				if($result){
-					
-					Echo 'Successful';
-					redirect('Admin/monthlyPerfomDataView');
+
+					echo json_encode(
+			            array(
+  
+			                'result' => $result,
+			                'status' => true,
+			                  
+			        	)
+		        	);
+
+				}else{
+
+					echo json_encode(
+			            array(
+			                  
+			                'status' => false,
+			                  
+			        	)
+		        	);
 				}
-				else{
-					echo'Error';
-				}
+
+
 			}
+//-----------------------------------------------------------------------
+
+public function yearPerformanceManagement(){
+
+	$data['yearPerformanceManagement'] = $this->Admin_model->getmonthperfor();
+	$x=0;
+	foreach($data ->result_array() as $row){
+		//echo $row['title'];
+		var_dump($row);
+	}
+			//var_dump('yearPerformanceManagement');
+
+			
+}
 
 
 
-			public function yearPerformanceManagement(){
+
+
+//------------------------------------------------------------------------------
+
+
+			public function yearPerformanceManagemen1(){
 
 				$evaluationYear		=$this->input->post('evaluationYear');
 				$ymEmpName			=$this->input->post('ymEmpName');
@@ -681,21 +875,29 @@ class Admin extends CI_Controller{
 //----------------------------------payroll information----------------------------------------------------
 			public function payRollInformationMgt(){
 
-				$payEmpName			=$this->input->post('empName');
-				$payEmpNo			=$this->input->post('empNo');
-				$payEmpNICNo		=$this->input->post('empNICNo');
-				$payDepartment		=$this->input->post('department');
-				$payBsalary			=$this->input->post('bsalary');
-				$payBRallowance		=$this->input->post('brallowance');
-				$payIncrements		=$this->input->post('increments');
-				$payOTRate			=$this->input->post('otRate');
-				$payEPF				=$this->input->post('epf');
-				$payETF				=$this->input->post('etf');
-				$payNoPayRate		=$this->input->post('noPayRate');
-				$payAbsents			=$this->input->post('absents');
-				$payLone			=$this->input->post('lone');
+				//var_dump('payEmpName');
+
+				$payEmpName			=$this->input->post('payinfoEmpName');
+				$payEmpNo			=$this->input->post('payEmpNo');
+				$payEmpNICNo		=$this->input->post('payEmpNICNo');
+				$payDepartment		=$this->input->post('payDepartment');
+				$payBsalary			=$this->input->post('payBsalary');
+				$payBRallowance		=$this->input->post('payBRallowance');
+				$payIncrements		=$this->input->post('payIncrements');
+				$payOTRate			=$this->input->post('payOTRate');
+				$payEPFPresantage	=$this->input->post('payEPFPresantage');
+				$payETFPresantage	=$this->input->post('payETFPresantage');
+				$payNoPayRate		=$this->input->post('payNoPayRate');
+				$payAbsents			=$this->input->post('payAbsents');
+				$payLone			=$this->input->post('payLone');
 				
-				
+				// EPF calculation
+				$payEPFamount=($payBsalary*$payEPFPresantage)/100 ;
+
+				// ETF calculations
+				$payETFamount=($payBsalary*$payETFPresantage)/100 ;
+
+				//lone calculation
 				
 				$payRollInformationMgt=array(
 
@@ -707,17 +909,55 @@ class Admin extends CI_Controller{
 					'brAllowance' 	=> $payBRallowance,	
 					'increments'	=> $payIncrements,
 					'OTrate' 		=> $payOTRate,
-					'epf' 			=> $payEPF,
-					'etf'			=> $payETF,
+					'epf' 			=> $payEPFamount,
+					'etf'			=> $payETFamount,
 					'noPayRate' 	=> $payNoPayRate,	
 					'absent'		=> $payAbsents,
 					'lone' 			=> $payLone,	
-					
+					'epfPresantage' => $payEPFPresantage,
+					'etfPresantage'	=> $payETFPresantage,
+
 				);
-				//var_dump($payRollInformationMgt);	
+				//var_dump($payRollInformationMgt);
 				$result=$this->Admin_model-> addayRollInformationData($payRollInformationMgt);
 				if($result){
 
+					echo json_encode(
+			            array(
+  
+			                'result' => $result,
+			                'status' => true,
+			                  
+			        	)
+		        	);
+
+				}else{
+
+					echo json_encode(
+			            array(
+			                  
+			                'status' => false,
+			                  
+			        	)
+		        	);
+				}
+			}
+	
+
+//-----------------------------------------------department information------------------------------
+			public function departmentManagement(){
+				$departmentID	=$this->input->post('departmentId');
+				$departmentName	=$this->input->post('departmentName');
+			
+				$departmentManagement=array(
+
+					'deptId'			=>$departmentID,
+					'departmentName'	=>$departmentName,
+				
+
+				);
+				$result=$this->Admin_model-> addDepartmentManagement($departmentManagement);
+				if($result){
 					echo json_encode(
 			            array(
   
@@ -741,61 +981,46 @@ class Admin extends CI_Controller{
 
 			}
 
-//-----------------------------------------------department information------------------------------
-			public function departmentManagement(){
-				$departmentID	=$this->input->post('departmentId');
-				$departmentName	=$this->input->post('departmentName');
-			
-				$departmentManagement=array(
-
-					'deptId'			=>$departmentID,
-					'departmentName'	=>$departmentName,
-				
-
-				);
-				$result=$this->Admin_model-> addDepartmentManagement($departmentManagement);
-				if($result){
-					
-					Echo 'Successful';
-				redirect('Admin/payRollInfoDataView');
-				}
-				else{
-					echo'Error';
-				}	
-
-
-
-			}	
-
 //-----------------------------------------------designation management----------------------------
 			public function designationManagement(){
-				$departmentID	=$this->input->post('departmentId');
+			
 				$departmentName	=$this->input->post('departmentName');
-				$DesignationName=$this->input->post('');
-				$designationID	=$this->input->post('');
+				$designationName=$this->input->post('designationName');
+				$designationNo	=$this->input->post('designationNo');
 
 				$designationManagement=array(
 
-					'deptId'			=>$departmentID,
+					
 					'departmentName'	=>$departmentName,
-					'designationName'	=>$DesignationName,
-					'designationId'		=>$designationID,
+					'designationName'	=>$designationName,
+					'designationNo'		=>$designationNo,
 
 				);
 				$result=$this->Admin_model-> addDesignationManagement($designationManagement);
 				if($result){
 					
-					Echo 'Successful';
-				redirect('Admin/payRollInfoDataView');
+					echo json_encode(
+			            array(
+  
+			                'result' => $result,
+			                'status' => true,
+			                  
+			        	)
+		        	);
+
+				}else{
+
+					echo json_encode(
+			            array(
+			                  
+			                'status' => false,
+			                  
+			        	)
+		        	);
 				}
-				else{
-					echo'Error';
-				}	
 
 
-
-			}	
-
+			}
 
 
 
@@ -819,6 +1044,12 @@ class Admin extends CI_Controller{
 			public function leaveDataView(){
 				$data['leaveDataView']=$this->Admin_model->getLeaveDataView();
 				$this->load->view('adminViews\leave',$data);
+
+			} 
+//--------------------------------------------increment data display---------------------------------------
+			public function incrementDataView(){
+				$data['incrementDataView']=$this->Admin_model->getincrementDataView();
+				$this->load->view('adminViews\promotion',$data);
 
 			} 
 //---------------------------------------------monthly performance data Display-----------------------------
@@ -846,21 +1077,608 @@ class Admin extends CI_Controller{
 
 			} 	
 
+//------------------------------------department dataview----------------------------------------------------
+				public function departmentDataView(){
+					$data['departmentDataView']=$this->Admin_model->getDepartmentDataView();
+					$this->load->view('adminViews\departments',$data);
+
+				} 	
+
+//-----------------------------------user Management Data view---------------
+				public function userManagementDataView(){
+					$data['userManagementDataView']=$this->Admin_model->getUserManagementDataView();
+					$this->load->view('adminViews\userManagement',$data);
+
+				} 
+
 
 //-----------------------------------employee Details---------------------------------------------------------
 			public function employeeDetailView(){
 
-				$Nic	=$this->input->post('SearchNicNo');
-				$data['employeeDetailView']=$this->Admin_model->getemployeeDetailView($Nic);
+				$empNo	=$this->input->post('SearchEmpNo');
+				$data['employeeDetail']=$this->Admin_model->getemployeeDetailView($empNo);
 				$this->load->view('adminViews\employeeDetails',$data);
 
 			} 		
+//-----------------------------------paysheet Information data ---------------------------------
+			public function paySeetMakingInformation(){
+
+				$empNo	=$this->input->post('$empNo');
+				$data['paySeetMakingInformation']=$this->Admin_model->getpaySeetMakingInformation($empNo);
+				$this->load->view('adminViews\PaySheetMaker',$data);
+
+			} 	
+
+
+//-------------------------------------timesheet data view-------------------------------------------------------
+			public function timeDataView(){
+				$data['timeDataView']=$this->Admin_model->gettimeDataView();
+				$this->load->view('adminViews\timeSheet',$data);
+
+			} 
+
+
+//------------------------------------------------reporting ----------------------------------------------------
+
+
+//----------------------------------------------Report Approved leave-------------------------------------------------
+				public function approvedLeaveDatalView(){
+				$data['approvedLeaveDatalView']=$this->Admin_model->getApprovedLeaveDatalView();
+				$this->load->view('adminViews\report2',$data);
+					
+			} 
+//----------------------------------------------Decline leave report----------------------------------------
+			public function declineLeaveDatalView(){
+				$data['declineLeaveDatalView']=$this->Admin_model->getDeclineLeaveDatalView();
+				$this->load->view('adminViews\report3',$data);
+					
+			} 
+//---------------------------------------------leave reports------------------------------------------------
+			public function reportLeaveDatalView(){
+				$data['reportLeaveDatalView']=$this->Admin_model->getReportLeaveDatalView();
+				$this->load->view('adminViews\report4',$data);
+					
+			} 
+
+//--------------------------------------------promotion approval reports----------------------------------------
+			public function approvedPromotionDatalView(){
+				$data['approvedPromotionDatalView']=$this->Admin_model->getApprovedPromotionDatalView();
+				$this->load->view('adminViews\report5',$data);
+					
+			} 
+//-------------------------------------------promotion decline reports-----------------------------------------
+			public function declinePromotionDatalView(){
+				$data['declinePromotionDatalView']=$this->Admin_model->getDeclinePromotionDatalView();
+				$this->load->view('adminViews\report6',$data);
+					
+			} 
+//-------------------------------------------all promotion reports-----------------------------------------------
+			public function reportPromotionDatalView(){
+				$data['reportPromotionDatalView']=$this->Admin_model->getReportPromotionDatalView();
+				$this->load->view('adminViews\report7',$data);
+					
+			} 
+
+// ---------------------------------------Departmental Employee Reports-----------------------------------
+			public function reportDeptEmpDataView(){
+				$data['reportPromotionDatalView']=$this->Admin_model->getreportDeptEmpDataView();
+				$this->load->view('adminViews\report8',$data);
+					
+			} 
+
+
+// proformance approval /rejection-----------------------------------------------------------------------------
+
+			public function apporvelMonthPerformance(){
+				$monthPromoId=$this->input->post('promotionId');
+				$monthPromoStatus=$this->input->post('promotionStatus');
+
+				$data = array('yearPromoStatus' => $monthPromoStatus);
+				$wherearray = array('promotionId' => $monthPromoId);
+
+				$result=$this->Admin_model->approvalMonthPerformance($data,$wherearray);
+
+				if($result){
+
+					echo json_encode(
+			            array(
+  
+			                'result' => $result,
+			                'status' => true,
+			                  
+			        	)
+		        	);
+
+				}else{
+
+					echo json_encode(
+			            array(
+			                  
+			                'status' => false,
+			                  
+			        	)
+		        	);
+				}
+			}
+
+			// proformance approval /rejection-----------------------------------------------------------------------------
+
+			public function dclineMonthPerformance(){
+				$monthPromoId=$this->input->post('promotionId');
+				$monthPromoStatus=$this->input->post('promotionStatus');
+
+				$data = array('promotionStatus' => $monthPromoStatus);
+				$wherearray = array('promotionId' => $monthPromoId);
+
+				$result=$this->Admin_model->approvalMonthPerformance($data,$wherearray);
+
+				if($result){
+
+					echo json_encode(
+			            array(
+  
+			                'result' => $result,
+			                'status' => true,
+			                  
+			        	)
+		        	);
+
+				}else{
+
+					echo json_encode(
+			            array(
+			                  
+			                'status' => false,
+			                  
+			        	)
+		        	);
+				}
+			}
 
 
 
+//----------------------------------leave approval or rejection --------------------------------------
+			public function updateLeave(){
+				$leaveId=$this->input->post('leaveId');
+				$leaveStatus=$this->input->post('leaveStatus');
+
+				$data = array('leaveStatus'=> $leaveStatus);
+				$wherearray =array('leaveId' => $leaveId);
+
+				$result =$this ->Admin_model->updateLeaveApproval($data,$wherearray);
+
+				if($result){
+
+				
+					echo json_encode(
+			            array(
+  
+			                'result' => $result,
+			                'status' => true,
+			                  
+			        	)
+		        	);
+
+				}else{
+
+					echo json_encode(
+			            array(
+			                  
+			                'status' => false,
+			                  
+			        	)
+		        	);
+				}
+			}
+//---------------------------training approval or rejction-------------------------------------------------
+//----------------------------------leave approval or rejection --------------------------------------
+public function approvalTraining(){
+	$trainingId=$this->input->post('trainingId');
+	$trainingStatus=$this->input->post('trainingStatus');
+
+	$data = array('trainingStatus'=> $trainingStatus);
+	$wherearray =array('trainingId' => $trainingId);
+
+	$result =$this ->Admin_model->updateTrainingApproval($data,$wherearray);
+
+	if($result){
+
+	
+		echo json_encode(
+			array(
+
+				'result' => $result,
+				'status' => true,
+				  
+			)
+		);
+
+	}else{
+
+		echo json_encode(
+			array(
+				  
+				'status' => false,
+				  
+			)
+		);
+	}
+}			
+//-------------------------------increment approval----------------------------------------------------------
+			public function updateincrement(){
+
+				$IncrementId=$this->input->post('IncrementId');
+				$incrementStatus=$this->input->post('incrementStatus');
+
+				$data = array('incrementStatus'=> $incrementStatus);
+				$wherearray =array('IncrementId' => $IncrementId);
+
+				$result =$this ->Admin_model->updateIncrementApproval($data,$wherearray);
+
+				if($result){
+
+				
+					echo json_encode(
+						array(
+
+							'result' => $result,
+							'status' => true,
+							
+						)
+					);
+
+				}else{
+
+					echo json_encode(
+						array(
+							
+							'status' => false,
+							
+						)
+					);
+				}
+			}
 
 
 
+//------------------------------emp resignation approval-----------------------------------------------------
+
+public function updateResignation(){
+	$empResigId=$this->input->post('empResigId');
+	$empStatus=$this->input->post('empStatus');
+
+	$data = array('empStatus'=> $empStatus);
+	$wherearray =array('empResigId' => $empResigId);
+
+	$result =$this ->Admin_model->updateResignationApproval($data,$wherearray);
+
+	if($result){
+
+	
+		echo json_encode(
+			array(
+
+				'result' => $result,
+				'status' => true,
+				  
+			)
+		);
+
+	}else{
+
+		echo json_encode(
+			array(
+				  
+				'status' => false,
+				  
+			)
+		);
+	}
+}
+
+//----------------------------------------------------resignation edit data-------------------------------
+			public function resignationupdate(){
+
+				$empName			=$this->input->post('empName');
+				$empNo				=$this->input->post('empNo');
+				$empNICNo			=$this->input->post('empNICNo');
+				$resignationDetails	=$this->input->post('resignationDetails');
+				$resignationDate	=$this->input->post('resignationDate');
+				$resignationId		=$this->input->post('empResigId');
+
+				$resignationdata=array(
+					
+					'empName'		=> $empName,
+					'empNic' 		=> $empNICNo,
+					'resigDetails'	=> $resignationDetails,
+					'resigDate'		=> $resignationDate,
+					'empNo'			=> $empNo,
+					'empResigId'	=> $resignationId,
+
+
+				);
+				$wherearray =array('empResigId' => $resignationId);
+
+				var_dump($resignationdata);
+				$result =$this ->Admin_model->editResignation($resignationdata,$wherearray);
+
+				if($result ){
+					
+
+					echo json_encode(
+						array(
+
+							'result' => $result,
+							'status' => true,
+							
+						)
+					);
+
+				}else{
+
+
+					echo json_encode(
+						array(
+							
+							'status' => false,
+							
+						)
+					);
+				}
+			}
+
+//-------------------------------edit raining data------------------------------------------------
+			public function trainingupdate(){
+
+				$empName				=$this->input->post('empName');
+				$empNo					=$this->input->post('empNo');
+				$empNICNo				=$this->input->post('empNICNo');
+				$trainingProgrameName	=$this->input->post('trainingProgrameName');
+				$courseContent			=$this->input->post('courseContent');
+				$trainingVenue			=$this->input->post('trainingVenue');
+				$trainingDate			=$this->input->post('trainingDate');
+				$trainingDuration		=$this->input->post('trainingDuration');
+				$courseFee				=$this->input->post('courseFee');
+				$trainingId				=$this->input->post('trainingId');
+				
+				
+
+				$trainingData=array(
+					
+					'empName'		=> $empName,
+					'empNicNo' 		=> $empNICNo,
+					'empNo'			=> $empNo,
+					'courseName'	=> $trainingProgrameName,
+					'courseContent'	=> $courseContent,
+					'venue'			=> $trainingVenue,
+					'date'			=> $trainingDate,
+					'courseDuration'=> $trainingDuration,
+					'courseFee'		=> $courseFee,
+				
+				);
+				$wherearray =array('trainingId' => $trainingId);
+				
+				
+				$result =$this ->Admin_model->editTrainingData($trainingData,$wherearray);
+			
+				if($result){
+					
+
+					echo json_encode(
+						array(
+
+							'result' => $result,
+							'status' => true,
+							
+						)
+					);
+
+				}else{
+
+
+					echo json_encode(
+						array(
+							
+							'status' => false,
+							
+						)
+					);
+				}
+			}
+
+//-----------------------leave edit----------------------------		
+public function leaveUpdate(){
+
+				$leaveEmpName	= $this->input->post('leaveEmpName');
+				$leaveEmpNo		= $this->input->post('leaveEmpNo');
+				$leaveEmpNICNo	= $this->input->post('leaveEmpNICNo');
+				$leaveEmpDeprtment	= $this->input->post('leaveEmpDeprtment');
+				$leaveReason	= $this->input->post('leaveReason');
+				$leaveType		= $this->input->post('leaveType');
+				$leaveDate 		= $this->input->post('leaveDate');
+				$leaveDateForm 	= $this->input->post('leaveDateForm');
+				$leaveDateTo 		= $this->input->post('leaveDateTo');
+				$leaveId 		= $this->input->post('leaveId');
+
+				$leaveEditData=array(
+
+					'empName' 		=> $leaveEmpName,
+					'empNo'   		=> $leaveEmpNo,
+					'leaveType'		=> $leaveType,
+					'noOfDate' 		=> $leaveDate ,
+					'reason'		=> $leaveReason,
+					'department' 	=> $leaveEmpDeprtment,	
+					'leaveEmpNICNo' => $leaveEmpNICNo,
+					'dateFrom' 		=> $leaveDateForm,
+					'dateTo' 		=> $leaveDateTo,
+	
+	);
+	$wherearray =array('leaveId' => $leaveId);
+	
+	
+	$result =$this ->Admin_model->editLeaveData($leaveEditData,$wherearray);
+
+	if($result){
+		
+
+		echo json_encode(
+			array(
+
+				'result' => $result,
+				'status' => true,
+				
+			)
+		);
+
+	}else{
+
+
+		echo json_encode(
+			array(
+				
+				'status' => false,
+				
+			)
+		);
+	}
+}
+//--------------------------monthly performance edit--------------------------------------
+public function maonthPerformaceEdit(){
+
+				
+				$promotionYear		= $this->input->post('promotionYear');
+				$promotionMonth		= $this->input->post('promotionMonth');
+				$empName			= $this->input->post('empName');
+				$empNo				= $this->input->post('empNo');
+				$empNICNo			= $this->input->post('empNICNo');			
+				$knowledgeOfWork 	= $this->input->post('knowledgeOfWork');
+				$achievements		= $this->input->post('achievements');
+				$quality 			= $this->input->post('quality');
+				$motivationOfTheWork= $this->input->post('motivationOfTheWork');
+				$relationship 		= $this->input->post('relationship');
+				$attendence 		= $this->input->post('attendence');
+				$discipline			= $this->input->post('discipline');
+				$teamWork			= $this->input->post('teamWork');
+				$adhearance 		= $this->input->post('adhearance');
+				$abilityToWork 		= $this->input->post('abilityToWork');
+				$promotionId 		= $this->input->post('promotionId');
+				
+				$maonthPerformaceEdit=array(
+
+					'promotionYear' 	=> $promotionYear,
+					'promotionMonth'   	=> $promotionMonth,
+					'empName'			=> $empName,
+					'empNo' 			=> $empNo ,
+					'empNICNo'			=> $empNICNo,					
+					'knowledgeOfWork'	=> $knowledgeOfWork,
+					'achievements' 		=> $achievements,
+					'quality' 			=> $quality,
+					'motivationOfTheWork'=> $motivationOfTheWork,
+					'relationship' 		=> $relationship,	
+					'discipline'		=> $discipline,
+					'attendence' 		=> $attendence,
+					'teamWork' 			=> $teamWork,
+					'adhearance' 		=> $adhearance,
+					'abilityToWork' 	=> $abilityToWork,
+				);
+				$wherearray =array('promotionId' => $promotionId);
+				
+				
+				$result =$this ->Admin_model->editmaonthPerformaceData($maonthPerformaceEdit,$wherearray);
+			
+				if($result){
+					
+			
+					echo json_encode(
+						array(
+			
+							'result' => $result,
+							'status' => true,
+							
+						)
+					);
+			
+				}else{
+			
+			
+					echo json_encode(
+						array(
+							
+							'status' => false,
+							
+						)
+					);
+				}
+			
+
+}
+
+//----------------------------------payroll information edit-----------------------------------
+
+		public function payRollInformationEdit(){
+
+			$payEmpName			=$this->input->post('payEmpName');
+			$payEmpNo			=$this->input->post('payEmpNo');
+			$payEmpNICNo		=$this->input->post('payEmpNICNo');
+			$payDepartment		=$this->input->post('payDepartment');
+			$payBsalary			=$this->input->post('payBsalary');
+			$payBRallowance		=$this->input->post('payBRallowance');
+			$payIncrements		=$this->input->post('payIncrements');
+			$payOTRate			=$this->input->post('payOTRate');
+			$payEPF				=$this->input->post('payEPF');
+			$payETF				=$this->input->post('payETF');
+			$payNoPayRate		=$this->input->post('payNoPayRate');
+			$payAbsents			=$this->input->post('payAbsents');
+			$payLone			=$this->input->post('payLone');
+			$editempPayId			=$this->input->post('editempPayId');
+			
+			
+			
+			$payRollInformationEdit=array(
+
+				'empName'		=> $payEmpName,
+				'empNo'   		=> $payEmpNo,
+				'empNicNo'		=> $payEmpNICNo,
+				'department' 	=> $payDepartment,
+				'basicSalary'	=> $payBsalary,
+				'brAllowance' 	=> $payBRallowance,	
+				'increments'	=> $payIncrements,
+				'OTrate' 		=> $payOTRate,
+				'epf' 			=> $payEPF,
+				'etf'			=> $payETF,
+				'noPayRate' 	=> $payNoPayRate,	
+				'absent'		=> $payAbsents,
+				'lone' 			=> $payLone,	
+				
+			);
+			$wherearray =array('empPayId' => $editempPayId);
+			
+			$result=$this->Admin_model-> payRollInformationEdit($payRollInformationEdit,$wherearray);
+			if($result){
+
+				echo json_encode(
+					array(
+
+						'result' => $result,
+						'status' => true,
+						
+					)
+				);
+
+			}else{
+
+				echo json_encode(
+					array(
+						
+						'status' => false,
+						
+					)
+				);
+			}
+
+
+		}
+//-----------------------------------------------------------
 			public function test(){
 
 				$data['allUserData']=$this->Admin_model->getAllUserData();
@@ -870,6 +1688,168 @@ class Admin extends CI_Controller{
 				$this->load->view('example',$data);
 
 			}
+//------------------------------------Time Sheet Upload------------------------
+		public function upload(){
+
+			$structure = 'upload';
+        
+
+ 		/////////////////////////////////////////////////////////////////////////////////
+
+ 		$config['upload_path']          = $structure;
+        $config['allowed_types']        = '*';
+        $config['max_size']             = 50000;
+        $config['max_width']            = 10240;
+        $config['max_height']           = 10240;
+
+        $this->load->library('upload', $config);
+
+        if ( ! $this->upload->do_upload('csv_file'))
+        {
+                $error = array('error' => $this->upload->display_errors());
+
+                //var_dump($error);
+
+                //$this->load->view('upload_form', $error);
+                //echo "not insder";
+        }
+        else
+        {
+                $data1 = array('upload_data' => $this->upload->data());
+                //echo "insder";
+
+               // $this->load->view('upload_success', $data);
+        }
+
+ 		if(isset($data1)){
+ 			$timesheet=$data1['upload_data']['file_name'];
+	        $path=$structure.'/';
+	        $timesheet=$path.$timesheet;
+ 		}else{
+ 			$timesheet='';
+		 }
+
+		//  $myfile = fopen(base_url().$timesheet, "r") or die("Unable to open file!");
+		// 	echo fread($myfile,filesize("webdictionary.txt"));
+
+		$file = fopen(base_url().$timesheet, "r");
+
+		$array=[];
+
+		//Output lines until EOF is reached
+		while(! feof($file)) {
+		$line = fgets($file);
+		$linearray=explode(",",$line);
+		
+		$timeData=array(
+					
+			'empNo'			=> $linearray[0],
+			'empName' 		=> $linearray[1],
+			'date'			=> $linearray[2],
+			'in_time'		=> $linearray[3],
+			'out_time'		=> $linearray[4],
+			
+
+		);
+		$result=$this->Admin_model-> timeSheetData($timeData);
+		if($result){
+
+			echo json_encode(
+				array(
+
+					'result' => $result,
+					'status' => true,
+					  
+				)
+			);
+
+		}else{
+
+			echo json_encode(
+				array(
+					  
+					'status' => false,
+					  
+				)
+			);
+		}
+
+		
+		// var_dump($data);
+		// echo $line. "<br>";
+		
+		}
+
+		fclose($file);
+
+		 var_dump(base_url().$timesheet);
+		 
+	}
+//-----------------------------------------
+public function getempData(){
+	$data['getempData'] = $this->Admin_model->gettData();
+	$data['salaryInfo'] =array();
+
+	//---------------viw
+
+	// foreach ($getempData as $employee) {
+	// 	$i=0;
+	// 	$employee->empName;
+
+	// 	if($salaryInfo[$i]->basicSalry){
+	// 		echo $salaryInfo[$i]->basicSalry;
+	// 	}
+
+	// 	$i++;
+	// }
+
+	//view
+
+	//var_dump($data['getempData']);
+	
+	foreach ($data['getempData'] as $employee) {
+		$salaryInfo=$this->Admin_model->getPayRollInfoDataViewOne($employee->empNo);
+		$startDate='2019-12-01';
+		$endDate='2020-01-01'; 
+
+		$countPermonth=$this->Admin_model->getAttendacebymonth($employee->empNo,$startDate,$endDate);
+		
+		//select count(empNo) as datecame from attendancetable where empNO=$empNo AND date BETWEEN $startDate AND $endDate;
+
+		if($salaryInfo){
+			$basicSalary=$salaryInfo->basicSalary;
+			$brAllowance=$salaryInfo->brAllowance;
+			$increments=$salaryInfo->increments;
+			$OTrate=$salaryInfo->OTrate;
+			$epf=$salaryInfo->epf;
+			$etf=$salaryInfo->etf;
+			$noPayRate=$salaryInfo->noPayRate;
+			$lone=$salaryInfo->lone;
+			$absent=$salaryInfo->absent;
+			$reduction=0;
+
+			if($countPermonth<22){
+				$reduction=(22-$countPermonth) *458;
+			}
+			
+			$total=$basicSalary-$reduction;
+
+
+
+			$arrayName = array('basicSalary' => $basicSalary );
+			array_push($data['salaryInfo'],$arrayName);
+		}else{
+			array_push($data['salaryInfo'],'');
+		}
+	}
+
+	var_dump($data['salaryInfo']);
+		
+		echo '<br/>';
+
+	
 
 }
+}
+
 ?>

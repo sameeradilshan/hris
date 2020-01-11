@@ -71,112 +71,58 @@
 
                                         <!-- Modal body -->                                        
 										<div class="modal-body">
-												<div class="form-group">
-                                                    <label>Year</label>
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        placeholder="Jhon Doe" name="promotionYear">
-												</div>
-												<div class="form-group">
-                                                    <label>Month</label>
-                                                    <select class="form-control  form-control-sm" name="promotionMonth" id="promotionMonth">
-                                                        <option  value="January">January</option>
-                                                        <option  value="February">February</option>
-														<option  value="March">March</option>
-														<option  value="April">April</option>
-                                                        <option  value="May">May</option>
-														<option  value="June">June</option>
-														<option  value="July">July</option>
-                                                        <option  value="August">August</option>
-														<option  value="September">September</option>
-														<option  value="October">October</option>
-                                                        <option  value="November">November</option>
-                                                        <option  value="December">December</option>
-                                                        
-                                                    </select>
-												</div>
+												
+											<form id="incrementdataform">	
                                                 <div class="form-group">
                                                     <label>Employee Name</label>
                                                     <input type="text" class="form-control form-control-sm"
                                                         placeholder="Jhon Doe" name="empName" id="empName">
-                                                </div>
+												</div>
+												<div class="row">
+												<div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Employee No</label>
                                                     <input type="text" class="form-control form-control-sm"
                                                         placeholder="Jhon Doe" name="empNo" id="empNo">
-                                                </div>
+												</div>
+												</div>
+												<div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>NIC No</label>
                                                     <input type="text" class="form-control form-control-sm"
                                                         placeholder="Jhon Doe" name="empNICNo" id="empNICNo">
 												</div>
-												<div class="form-group">
-                                                    <label></label>
-                                                    <select class="form-control  form-control-sm" name="promotionAgree" id="promotionAgree">
-                                                        <option  value="Not Now">Not Now</option>
-                                                        <option  value="Agree">Agree</option>
-                                                        <option  value="Disagree">Disagree</option>
-                                                        
-                                                    </select>
+												</div>
 												</div>
 												<div class="form-group">
-                                                    <label>Knowledge of work & Application</label>
+                                                    <label>Department</label>
                                                     <input type="text" class="form-control form-control-sm"
-                                                        placeholder="Jhon Doe" name="knowledgeOfWork" id="knowledgeOfWork">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Achievements of targets</label>
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        placeholder="Jhon Doe" name="achievements" id="achievements">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Quality & Accuracy of work</label>
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        placeholder="Jhon Doe" name="quality" id="quality">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Cooparation & motivation of the work</label>
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        placeholder="Jhon Doe" name="motivationOfTheWork" id="motivationOfTheWork">
+                                                        placeholder="Jhon Doe" name="department" id="department">
 												</div>
 												<div class="form-group">
-                                                    <label>Relationship with subordiante, peer & supervisors</label>
+                                                    <label>Promotion/Increment </label>
                                                     <input type="text" class="form-control form-control-sm"
-                                                        placeholder="Jhon Doe" name="relationship" id="relationship">
+                                                        placeholder="Jhon Doe" name="increment" id="increment">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Attendence & punctuality</label>
+                                                    <label>Promotion/Increment Date</label>
                                                     <input type="text" class="form-control form-control-sm"
-                                                        placeholder="Jhon Doe" name="attendence" id="attendence">
+                                                        placeholder="Jhon Doe" name="date" id="date">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Discipline</label>
+                                                    <label>Promotion/ Increment Details</label>
                                                     <input type="text" class="form-control form-control-sm"
-                                                        placeholder="Jhon Doe" name="discipline" id="discipline">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Team Work</label>
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        placeholder="Jhon Doe" name="teamWork" id="teamWork">
-												</div>
-												<div class="form-group">
-                                                    <label>Adhearance to company rules & regulation</label>
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        placeholder="Jhon Doe" name="adhearance" id="adhearance">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Ability to work with minimum supervision</label>
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        placeholder="Jhon Doe" name="abilityToWork" id="abilityToWork">
+                                                        placeholder="Jhon Doe" name="incrementDetails" id="incrementDetails">
                                                 </div>
                                                 
 												
-
+											</form>      
                                         </div>
 
                                         <!-- Modal footer -->
                                         <div class="modal-footer">
-											<input type="submit" class="btn btn-danger" name="submit"
-                                                    value="Submit">
+											<input type="button" class="btn btn-info" name="submit"
+                                                    value="Submit" id="formSubmit">
                                             <button type="button" class="btn btn-danger"
                                                 data-dismiss="modal">Close</button>
                                         </div>
@@ -189,38 +135,33 @@
 
                         <!-- row start -->
                         <div class="row" style="background-color:#efefef; padding:20px;   border-radius: 25px;">
-                            <div class="col-md-3">
+                         <div class="row col-12">   
+						<div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Employee Name</label>
-                                    <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe">
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">NIC</label>
-                                    <input type="text" class="form-control  form-control-sm" placeholder="Jhon Doe">
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label>Department</label>
-                                    <select class="form-control  form-control-sm">
-                                        <option>option 1</option>
-                                        <option>option 2</option>
-                                        <option>option 3</option>
-                                        <option>option 4</option>
-                                        <option>option 5</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <button style="margin-top:32px; width:100px;" type="button"
-                                        class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal">
-                                        <i class="fa fa-search"></i> Search
+                                    <button style="margin-top:32px; width:200px;" type="button"
+                                        class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal" onclick="window.open('approvedPromotionDatalView')">
+                                        <i class="fa fa-search"></i> Approved Promotions
                                     </button>
                                 </div>
                             </div>
+							<div class="col-md-4">
+									<div class="form-group">
+										<button style="margin-top:32px; width:200px;" type="button"
+											class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal" onclick="window.open('declinePromotionDatalView')">
+											<i class="fa fa-search"></i> Declined Promotions
+										</button>
+									</div>
+								</div>
+                           
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <button style="margin-top:32px; width:200px;" type="button"
+                                        class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal" onclick="window.open('reportPromotionDatalView')">
+                                        <i class="fa fa-search"></i>All Promotions 
+                                    </button>
+                                </div>
+                            </div>
+						</div>
                         </div>
                         <!-- row end -->
 
@@ -233,29 +174,51 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th scope="col">NIC No</th>
+                                            <th scope="col">Emp No</th>
 											<th scope="col">Employee Name</th>
-											<th scope="col">Employee No</th>
-                                            <th scope="col">Department</th>
+											<th scope="col">Department</th>
                                             <th scope="col">Promotion Detailes</th>
-                                            <th scope="col">Date</th>
+											<th scope="col">Date</th>
+											<th scope="col">Promotion/Increment</th>
+											<th scope="col">Approval</th>
+											<th scope="col">Approved By</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Trident</td>
-                                            <td>Internet
-                                                Explorer 4.0
-                                            </td>
-                                            <td>Win 95+</td>
-                                            <td> 4</td>
-											<td>X</td>
-											<td>X</td>
-                                        </tr>
-                                        
-                                        
-                                    </tbody>
-                                    <tfoot>
+									<tbody>
+												<?php
+												foreach($incrementDataView as $incrementData){
+													
+												//	var_dump($resignationDataView);
+													
+													echo'  
+														<tr role="row" class="odd">
+														
+															<td>'.$incrementData->empNo.'</td>
+															<td>'.$incrementData->empName.'</td>
+															<td>'.$incrementData->departmentName.'</td>
+															<td>'.$incrementData->incrementDetails.'</td>
+															<td>'.$incrementData->date.'</td>
+															<td>'.$incrementData->increment.'</td>
+															
+															<td><div class="btn-group">';
+													if($incrementData->incrementStatus	==0){
+														echo '<button type="button" onclick="approvalFunction('.$incrementData->IncrementId.')" class="btn btn-info">Approve</button>
+														<button type="button" onclick="rejectFucntion('.$incrementData->IncrementId.')" class="btn btn-danger">Decline</button>';
+													}
+													
+
+												
+													  echo '</div></td>
+													  <td>Admin</td>
+														</tr>
+														 
+													';
+												}
+												?>
+                                                
+                                                
+                                            </tbody>
+                                    <!-- <tfoot>
                                         <tr>
                                             <th>Rendering engine</th>
                                             <th>Browser</th>
@@ -264,16 +227,13 @@
 											<th>CSS grade</th>
 											<th>CSS grade</th>
                                         </tr>
-                                    </tfoot>
+                                    </tfoot> -->
 								</table>
 								</div>
 								</div>
                             </div>
                         </div>
                         <!-- row end -->
-
-
-
 
 
                     </div>
@@ -284,11 +244,6 @@
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-
-
-
-
-
 
 
 
@@ -317,6 +272,111 @@
             "autoWidth": false
         });
     });
+
+	$('#formSubmit').click(function() {
+		alert($('#empName').val())
+        var param2 = {
+
+            empName: 		$('#empName').val(),
+            empNo: 			$('#empNo').val(),
+            empNICNo: 		$('#empNICNo').val(),
+            incrementDetails:	$('#incrementDetails').val(),
+            date: 			$('#date').val(),
+            increment:		$('#increment').val(),
+			department:		$('#department').val(),
+           
+
+
+        }
+		console.log(param2);
+		$.post("<?php echo base_url(); ?>index.php/Admin/incrementManagement", param2, function(
+        data1) {
+
+			console.log(data1)
+            var response = JSON.parse(data1);
+			console.log(response)
+             if (response.status) {
+				Swal.fire(
+				'Good job!',
+				'You clicked the button!',
+				'success'
+							)
+
+				window.location.href = "incrementDataView";
+             } else {
+					Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: 'Something went wrong!',
+					footer: '<a href>Why do I have this issue?</a>'
+					})
+					window.location.href = "incrementDataView";
+         }
+
+
+
+        });
+	
+    })
+//---------------------------------Approval Function----------------------------------------------------------------------
+
+function approvalFunction(IncrementId) {
+		params ={
+			IncrementId:IncrementId,
+			incrementStatus:1
+		}
+		$.post("<?php echo base_url(); ?>index.php/Admin/updateincrement", params, function(
+            data) {
+
+            console.log(data)
+            var response = JSON.parse(data);
+            console.log(response)
+            if (response.status) {
+               alert("succes")
+
+                window.location.href = "incrementDataView";
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    footer: '<a href>Why do I have this issue?</a>'
+                })
+			}
+		});
+	}
+
+	// rejection function-----------------------------------------------------------------------------------------
+
+	function rejectFucntion(IncrementId) {
+		params ={
+			IncrementId:IncrementId,
+			incrementStatus:2
+		}
+		$.post("<?php echo base_url(); ?>index.php/Admin/updateincrement", params, function(
+            data) {
+
+            console.log(data)
+            var response = JSON.parse(data);
+            console.log(response)
+            if (response.status) {
+               alert("succes")
+
+                window.location.href = "incrementDataView";
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    footer: '<a href>Why do I have this issue?</a>'
+                })
+			}
+		});
+	}
+
+
+
+
     </script>
 
 </body>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Home</title>
+    <title>Payroll</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->load->view('adminViews/components/css'); ?>
@@ -37,7 +37,7 @@
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>index.php/Admin">Home</a></li>
-                                <li class="breadcrumb-item active">Blank Page</li>
+                                <li class="breadcrumb-item active">Payroll Reports</li>
                             </ol>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                 <!-- Default box -->
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Title</h3>
+                        <h3 class="card-title">Payroll Reports</h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-widget="collapse" data-toggle="tooltip"
@@ -63,8 +63,23 @@
                     </div>
                     <div class="card-body">
 					   Select a month:
+					////////
 					
-					
+					</div>
+					<div class="row">
+						<div class="col-3">
+							<button type="button" class="btn btn-block btn-success btn-lg">Bank</button>
+						</div>
+						<div class="col-md-3">
+							<button type="button" class="btn btn-block btn-success btn-lg">Total Salary</button>
+						</div>
+						<div class="col-3">
+							<button type="button" class="btn btn-block btn-success btn-lg">EPF</button>
+						</div>
+						<div class="col-3">
+							<button type="button" class="btn btn-block btn-success btn-lg">ETF</button>
+						</div>
+					</div>
                     <!-- /.card-body -->
                     <div class="card-footer">
                         Footer

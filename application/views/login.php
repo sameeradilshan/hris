@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 3 | Log in</title>
+    <title>HR Management Log in</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -17,15 +17,25 @@
     <!-- iCheck -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/iCheck/square/blue.css">
     <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
-    </style>
-    <!--    for date validation start-------------------------------------------------------------------------------- -->
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <!--     for date validation start-------------------------------------------------------------------------------- -->
-    <link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
-    </style>
-    <style>
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+	
+	<style type="text/css">
+      .round_div{
+      border: 2px solid #839192 !important;
+      border-radius:25px !important;
+      } 
+      body {
+      background-image: url("<?php echo base_url();?>assets\dist\img\human-resources-1.jpg") ; 
+     
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover; 
+      }
+      
+  </style>
+  
+    
     <style type="text/css">.true_input {
         visibility: hidden;
     }
@@ -34,7 +44,8 @@
         color: red;
         font-size: 12px;
     }
-    </style>
+	</style>
+	
 </head>
 
 <body class="hold-transition login-page">
@@ -112,49 +123,38 @@
     })
     </script>
 
-    <!-- -----------------------for validation part-----------------------  -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.min.js"></script>
-    <!--   -----------------------for validation part----------------------- -->
-    <!-- -----------------------for date validation part---------------------- 
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <!-- -----------------------for date validation part-----------------------  -->
+    <!-------------------------for validation part----------------------- -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.min.js"></script></script>
 
-     <script>
 
-		<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
-		
-		<script>
-		
-		jQuery.validator.setDefaults({
-		debug: true,
-		success: "valid"
-		});
-		$( "#login" ).validate({
-		rules: {
-			email: {
-			required: true,
-			email: true
-			}
-		}
-		});
-		</script> 
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/additional-methods.js"></script>
+    
+    <!-- -----------------------for validation part----------------------- -->
+
+<script type="text/javascript">
+  $(document).ready(function () {
+      $("#form_action").validate({
+          rules: {
+              "email": {
+                  required: true,
+                  minlength: 1
+                   }, 
+              "password":{
+                required:true, 
+              }, 
+
+
+          }
+      });
+  });
+             
 
 
 
-    </script>
+</script>  
 
 
-
-    </script>
 </body>
 
 </html>
-...
 
-.
-..
-.0

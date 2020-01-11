@@ -61,7 +61,7 @@
                                 </button>
                             </div>
                             <!-- The Modal -->
-                            <form action="<?php echo base_url(); ?>index.php/HrExecutive/monthlyPerformanceManagement" method="post">
+                            <form  id="trainingform">
                                 <div class="modal fade" id="training">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -79,50 +79,50 @@
                                                 <div class="form-group">
                                                     <label>Employee Name</label>
                                                     <input type="text" class="form-control form-control-sm"
-                                                        name="trainingEmpName" placeholder="Jhon Doe">
+                                                       required name="trainingEmpName" id="trainingEmpName" placeholder="Jhon Doe">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Emp No</label>
                                                     <input type="text" class="form-control form-control-sm"
-                                                        name="trainingEmpNo" placeholder="Jhon Doe">
+                                                        name="trainingEmpNo"  id="trainingEmpNo" placeholder="Jhon Doe">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>NIC No</label>
                                                     <input type="text" class="form-control form-control-sm"
-                                                        name="trainingEmpNIC" placeholder="Jhon Doe">
+                                                        name="trainingEmpNIC" id="trainingEmpNIC" placeholder="Jhon Doe">
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label>Course/Programe Name</label>
                                                     <input type="text" class="form-control form-control-sm"
-                                                        name="trainingProgrameName" placeholder="Jhon Doe">
+                                                        name="trainingProgrameName" id="trainingProgrameName" placeholder="Jhon Doe">
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label>Course Content</label>
                                                     <input type="text" class="form-control form-control-sm"
-                                                        name="courseContent" placeholder="Jhon Doe">
+                                                        name="courseContent" id="courseContent" placeholder="Jhon Doe">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Institute/Venue</label>
                                                     <input type="text" class="form-control form-control-sm"
-                                                        name="trainingVenue" placeholder="Jhon Doe">
+                                                        name="trainingVenue" id="trainingVenue" placeholder="Jhon Doe">
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label>Date</label>
                                                     <input type="date" class="form-control form-control-sm"
-                                                        name="trainingDate" placeholder="Jhon Doe">
+                                                        name="trainingDate" id="trainingDate" placeholder="Jhon Doe">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Course Duration</label>
                                                     <input type="text" class="form-control form-control-sm"
-                                                        name="trainingDuration" placeholder="Jhon Doe">
+                                                        name="trainingDuration" id="trainingDuration" placeholder="Jhon Doe">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Course/Programe Fee(Rs)</label>
                                                     <input type="text" class="form-control form-control-sm"
-                                                        name="courseFee" placeholder="Jhon Doe">
+                                                        name="courseFee" id="courseFee" placeholder="Jhon Doe">
                                                 </div>
 
 
@@ -131,8 +131,7 @@
 
                                             <!-- Modal footer -->
                                             <div class="modal-footer">
-                                                <input type="submit" class="btn btn-danger" name="submit"
-                                                    value="Submit">
+                                                 <button id='formSubmit' type='button' class="btn btn-info" value="submit" >SUBMIT</button>
                                                 <button type="button" class="btn btn-secondary"
                                                     data-dismiss="modal">Close</button>
                                             </div>
@@ -181,72 +180,33 @@
                                 </div>
                             </div>
                             <!-- row end -->
-							<br>
+						
                             <!-- row start -->
-                            <div id="example1_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
-                                <div class="row">
-
-                                    <div class="row">
-                                        <div class="col-sm-12">
-										<div class="table-responsive">
-										<div  style="overflow-x :auto; min-width:800px; ">
-                                            <table id="example1" class="table table-bordered table-striped dataTable"
-                                                role="grid" aria-describedby="example1_info">
-                                                <thead>
-                                                    <tr role="row">
-                                                        <th scope="col" class="sorting" tabindex="0" aria-controls="example1"
-                                                            rowspan="1" colspan="1"
-                                                            aria-label="Rendering engine: activate to sort column ascending"
-                                                            style="width: 166px;">EMP No
-                                                        </th>
-                                                        <th scope="col" class="sorting_asc" tabindex="0" aria-controls="example1"
-                                                            rowspan="1" colspan="1"
-                                                            aria-label="Browser: activate to sort column descending"
-                                                            aria-sort="ascending" style="width: 215px;">Employee Name
-                                                        </th>
-                                                        <th scope="col" class="sorting_asc" tabindex="0" aria-controls="example1"
-                                                            rowspan="1" colspan="1"
-                                                            aria-label="Browser: activate to sort column descending"
-                                                            aria-sort="ascending" style="width: 215px;">Emp NIC No
-                                                        </th>
-                                                        <th scope="col" class="sorting" tabindex="0" aria-controls="example1"
-                                                            rowspan="1" colspan="1"
-                                                            aria-label="Platform(s): activate to sort column ascending"
-                                                            style="width: 190px;">Department
-                                                        </th>
-                                                        <th scope="col" class="sorting" tabindex="0" aria-controls="example1"
-                                                            rowspan="1" colspan="1"
-                                                            aria-label="CSS grade: activate to sort column ascending"
-                                                            style="width: 100px;">Programe Name
-                                                        </th>
-                                                        <th scope="col" class="sorting" tabindex="0" aria-controls="example1"
-                                                            rowspan="1" colspan="1"
-                                                            aria-label="Engine version: activate to sort column ascending"
-                                                            style="width: 141px;">Instute/Venue
-                                                        </th>
-                                                        <th  scope="col" class="sorting" tabindex="0" aria-controls="example1"
-                                                            rowspan="1" colspan="1"
-                                                            aria-label="CSS grade: activate to sort column ascending"
-                                                            style="width: 100px;">Date
-                                                        </th>
-
-                                                        <th scope="col" class="sorting" tabindex="0" aria-controls="example1"
-                                                            rowspan="1" colspan="1"
-                                                            aria-label="CSS grade: activate to sort column ascending"
-                                                            style="width: 100px;">Course Content
-                                                        </th>
-                                                        <th scope="col" class="sorting" tabindex="0" aria-controls="example1"
-                                                            rowspan="1" colspan="1"
-                                                            aria-label="CSS grade: activate to sort column ascending"
-                                                            style="width: 100px;">Course Duration
-                                                        </th>
-                                                        <th scope="col" class="sorting" tabindex="0" aria-controls="example1"
-                                                            rowspan="1" colspan="1"
-                                                            aria-label="CSS grade: activate to sort column ascending"
-                                                            style="width: 100px;">Course Fee(Rs)
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
+							<div class="row">
+							<div class="table-responsive">
+							<div  style="overflow-x :auto; min-width:800px; ">
+                            <div class="col-md-12">
+                                <br><br>
+                                <table id="example1" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">EMP No</th>
+											<th scope="col">Employee Name</th>
+											<th scope="col">Emp NIC</th>
+                                            <th scope="col">Department</th>
+                                            <th scope="col">Programe Name</th>
+											<th scope="col">Venue</th>
+											<th scope="col">Date</th>
+                                            <th scope="col">Course Content</th>
+                                            <th scope="col">Course Duration</th>
+                                            <th scope="col">Course Fee</th>
+											<!-- <th scope="col"> Approved</th>
+											<th scope="col"> Approved By</th> -->
+											
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
 
                                                     <?php
 												
@@ -255,17 +215,17 @@
 														
 														echo'  
 															<tr role="row" class="odd">
-																<th scope="row"></th>
+															
 																<td>'.$trainingData->empNo.'</td>
 																<td>'.$trainingData->empName.'</td>
 																<td>'.$trainingData->empNicNo.'</td>
-																<td>'.$trainingData->departmentId.'</td>
-																<td>'.$trainingData->programmeName.'</td>
+																<td>'.$trainingData->department.'</td>
+																<td>'.$trainingData->courseName.'</td>
 																<td>'.$trainingData->venue.'</td>
 																<td>'.$trainingData->date.'</td>
 																<td>'.$trainingData->courseContent.'</td>
 																<td>'.$trainingData->courseDuration.'</td>
-																<td>'.$trainingData->CourseFee.'</td>
+																<td>'.$trainingData->courseFee.'</td>
 																
 															
 															</tr>
@@ -345,7 +305,7 @@
                                         </div>
                                         </div>
                                     </div>
-                                </div>
+                                
                                 <!-- row end -->
 
 
@@ -366,13 +326,6 @@
         </div>
         <!-- /.content-wrapper -->
 
-
-
-
-
-
-
-
         <?php $this->load->view('executiveViews/components/footer'); ?>
 
         <!-- Control Sidebar -->
@@ -382,19 +335,78 @@
     </div>
     <!-- ./wrapper -->
 
-    <?php $this->load->view('executiveViews/components/js'); ?>
+	<?php $this->load->view('executiveViews/components/js'); ?>
+	
+	   <!-- pdf ganaration -->
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.flash.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js "></script>
     <script>
     $(function() {
 
 		$("#example1").DataTable({
-			"scrollX" : true
+			"scrollX" : true,
+			dom: 'Bfrtip',
+        	buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+           
 		}		
 			
 		);
     });
+
+	$('#formSubmit').click(function() {
+		//alert($('#trainingEmpName').val())
+        var param2 = {
+
+
+            trainingEmpName: 	$('#trainingEmpName').val(),
+            trainingEmpNo: 		$('#trainingEmpNo').val(),
+            trainingEmpNICNo: 	$('#trainingEmpNIC').val(),
+            trainingProgrameName: 	$('#trainingProgrameName').val(),
+            courseContent: 		$('#courseContent').val(),
+            trainingVenue: 		$('#trainingVenue').val(),
+            trainingDate: 		$('#trainingDate').val(),
+            trainingDuration:	$('#trainingDuration').val(),
+            courseFee: 			$('#courseFee').val(),
+
+
+        }
+		console.log(param2);
+		$.post("<?php echo base_url(); ?>index.php/HrExecutive/trainingManagementData", param2, function(
+        data1) {
+
+			console.log(data1)
+            var response = JSON.parse(data1);
+			console.log(response)
+             if (response.status) {
+				Swal.fire(
+				'Good job!',
+				'You clicked the button!',
+				'success'
+							)
+
+				window.location.href = "trainingDataView";
+             } else {
+					Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: 'Something went wrong!',
+					footer: '<a href>Why do I have this issue?</a>'
+					})
+					window.location.href = "trainingDataView";
+         }
+
+        });
+	
+    })
+
     </script>
-
-
 
 </body>
 

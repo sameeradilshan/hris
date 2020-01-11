@@ -7,7 +7,7 @@
     <title>Home</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?php $this->load->view('adminViews/components/css'); ?>
+    <?php $this->load->view('executiveViews/components/css'); ?>
 
 </head>
 
@@ -17,9 +17,9 @@
         <!-- Navbar -->
       
         <!-- /.navbar -->
-		<?php $this->load->view('adminViews/components/topBar'); ?>
+		<?php $this->load->view('executiveViews/components/topBar'); ?>
         <!-- Main Sidebar Container -->
-        <?php $this->load->view('adminViews/components/sideBar'); ?>
+        <?php $this->load->view('executiveViews/components/sideBar'); ?>
 
 
 
@@ -56,7 +56,7 @@
 						</div>
 						
 						 <!-- The Modal -->
-						 <form action="<?php echo base_url(); ?>index.php/Admin/payRollInformationMgt" method="post">
+						 <form id="pyrollinfo">
 						 <div class="modal" id="addPromotion">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -73,68 +73,68 @@
                                                 <div class="form-group">
                                                     <label>Employee Name</label>
                                                     <input type="text" class="form-control form-control-sm"
-                                                        placeholder="Jhon Doe" name="empName">
+                                                        placeholder="Jhon Doe" name="empName" id="empName">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Employee No</label>
                                                     <input type="text" class="form-control form-control-sm"
-                                                        placeholder="Jhon Doe" name="empNo">
+                                                        placeholder="Jhon Doe" name="empNo" id="empNo">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>NIC No</label>
                                                     <input type="text" class="form-control form-control-sm"
-                                                        placeholder="Jhon Doe" name="empNICNo">
+                                                        placeholder="Jhon Doe" name="empNICNo" id="empNICNo">
 												</div>
 												<div class="form-group">
                                                     <label>Department</label>
                                                     <input type="text" class="form-control form-control-sm"
-                                                        placeholder="Jhon Doe" name="empNICNo">
+                                                        placeholder="Jhon Doe" name="department" id="department">
 												</div>
 												
 												<div class="form-group">
                                                     <label>Basic Salary</label>
                                                     <input type="text" class="form-control form-control-sm"
-                                                        placeholder="Jhon Doe" name="knowledgeOfWork">
+                                                        placeholder="Jhon Doe" name="bsalary" id="bsalary">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>B R Allowance</label>
                                                     <input type="text" class="form-control form-control-sm"
-                                                        placeholder="Jhon Doe" name="achievements">
+                                                        placeholder="Jhon Doe" name="brallowance" id="brallowance">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Increments</label>
                                                     <input type="text" class="form-control form-control-sm"
-                                                        placeholder="Jhon Doe" name="quality">
+                                                        placeholder="Jhon Doe" name="increments" id="increments">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>OT Rate</label>
                                                     <input type="text" class="form-control form-control-sm"
-                                                        placeholder="Jhon Doe" name="motivationOfTheWork">
+                                                        placeholder="Jhon Doe" name="otRate" id="otRate">
 												</div>
 												<div class="form-group">
                                                     <label>EPF </label>
                                                     <input type="text" class="form-control form-control-sm"
-                                                        placeholder="Jhon Doe" name="relationship">
+                                                        placeholder="Jhon Doe" name="epf" id="epf">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>ETF</label>
                                                     <input type="text" class="form-control form-control-sm"
-                                                        placeholder="Jhon Doe" name="attendence">
+                                                        placeholder="Jhon Doe" name="etf" id="etf">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>NoPay Rate</label>
                                                     <input type="text" class="form-control form-control-sm"
-                                                        placeholder="Jhon Doe" name="discipline">
+                                                        placeholder="Jhon Doe" name="noPayRate" id="noPayRate">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Absent</label>
                                                     <input type="text" class="form-control form-control-sm"
-                                                        placeholder="Jhon Doe" name="teamWork">
+                                                        placeholder="Jhon Doe" name="absents" id="absents">
 												</div>
 												<div class="form-group">
                                                     <label>Loan</label>
                                                     <input type="text" class="form-control form-control-sm"
-                                                        placeholder="Jhon Doe" name="adhearance">
+                                                        placeholder="Jhon Doe" name="lone" id="lone">
                                                 </div>
                                                
 												
@@ -144,7 +144,7 @@
                                         <!-- Modal footer -->
                                         <div class="modal-footer">
 											<input type="submit" class="btn btn-danger" name="submit"
-                                                    value="Submit">
+                                                    value="Submit" id="formSubmit">
                                             <button type="button" class="btn btn-danger"
                                                 data-dismiss="modal">Close</button>
                                         </div>
@@ -194,74 +194,70 @@
                         <!-- row end -->
 
                         <!-- row start -->
-                        <div class="row">
+						<div class="row">
+						<div class="table-responsive">
+						<div  style="overflow-x :auto; min-width:800px; ">
                             <div class="col-md-12">
                                 <br><br>
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>NIC No</th>
-                                            <th>Employee Name</th>
-                                            <th>Department</th>
-                                            <th>Basic Salary</th>
-											<th>B R Allowance</th>
-											<th>Increments</th>
-                                            <th>OT Rate</th>
-                                            <th>EPF</th>
-                                            <th>ETF</th>
-											<th>NoPay Rate</th>
-											<th>Absent</th>
-											<th>Loan</th>
+                                            <th scope="col">EMP No</th>
+											<th scope="col">Employee Name</th>
+											<th scope="col">Emp NIC</th>
+                                            <th scope="col">Department</th>
+                                            <th scope="col">Basic Salary</th>
+											<th scope="col">B R Allowance</th>
+											<th scope="col">Increments</th>
+                                            <th scope="col">OT Rate</th>
+                                            <th scope="col">EPF</th>
+                                            <th scope="col">ETF</th>
+											<th scope="col">NoPay Rate</th>
+											<th scope="col">Absent</th>
+											<th scope="col">Loan</th>
+											<th scope="col">Emp Leave</th>
                                             
                                         </tr>
                                     </thead>
                                     <tbody>
 									<?php
 										
-									//	foreach($monthlyPerfomDataView as $mProfData){
-											//var_dump($MonthlyPerfomDataView);
+										foreach($payRollInfoDataView as $payRollData){
+											//var_dump($payRollInfoDataView);
 											
-										// 	echo'  
-										// 		<tr role="row" class="odd">
-										// 		<th scope="row"></th>
-										// 			<td>'.$mProfData->empNo.'</td>
-										// 			<td>'.$mProfData->empName.'</td>
-										// 			<td>'.$mProfData->empNICNo.'</td>
-										// 			<td>'.$mProfData->promotionYear.'</td>
-										// 			<td>'.$mProfData->promotionMonth.'</td>
-										// 			<td>'.$mProfData->knowledgeOfWork.'</td>
-										// 			<td>'.$mProfData->achievements.'</td>
-										// 			<td>'.$mProfData->quality.'</td>
-										// 			<td>'.$mProfData->motivationOfTheWork.'</td>
-										// 			<td>'.$mProfData->relationship.'</td>
-										// 			<td>'.$mProfData->attendence.'</td>
-										// 			<td>'.$mProfData->discipline.'</td>
+											echo'  
+											 	<tr role="row" class="odd">
+											 	
+											 		<td>'.$payRollData->empNo.'</td>
+											 		<td>'.$payRollData->empName.'</td>
+											 		<td>'.$payRollData->empNicNo.'</td>
+											 		<td>'.$payRollData->department.'</td>
+											 		<td>'.$payRollData->basicSalary.'</td>
+											 		<td>'.$payRollData->brAllowance.'</td>
+											 		<td>'.$payRollData->increments.'</td>
+											 		<td>'.$payRollData->OTrate.'</td>
+											 		<td>'.$payRollData->epf.'</td>
+											 		<td>'.$payRollData->etf.'</td>
+											 		<td>'.$payRollData->noPayRate.'</td>
+											 		<td>'.$payRollData->absent.'</td>
+											 		<td>'.$payRollData->lone.'</td>
+													<td>'.$payRollData->empleave.'</td>
 													
+											 	</tr>
 												
-													
-												
-										// 		</tr>
-												
-										
-													
-										// 	';
-										// }
+											 ';
+										}
 									
-									?>
-
-
-
-									
+									?>  
+	
                                     </tbody>
                                     
                                 </table>
-                            </div>
-                        </div>
+							</div>
+						</div>
+						</div>
+						</div>
                         <!-- row end -->
-
-
-
-
 
                     </div>
                 </div>
@@ -272,14 +268,7 @@
         </div>
         <!-- /.content-wrapper -->
 
-
-
-
-
-
-
-
-        <?php $this->load->view('adminViews/components/footer'); ?>
+        <?php $this->load->view('executiveViews/components/footer'); ?>
 
         <!-- Control Sidebar -->
         <!-- <aside class="control-sidebar control-sidebar-dark"> 
@@ -288,18 +277,70 @@
     </div>
     <!-- ./wrapper -->
 
-	<?php $this->load->view('adminViews/components/js'); ?>
+	<?php $this->load->view('executiveViews/components/js'); ?>
 	
 	<script>
     $(function() {
 
         $("#example1").DataTable({
-			"scrollX" : true
+			"scrollX" : true,
+			scrollCollapse: true,
 		}		
 			
 		);
 		
     });
+
+	$('#formSubmit').click(function() {
+		//alert($('#evaluationYear').val())
+        var param2 = {
+
+            payEmpName: 	$('#empName').val(),
+            payEmpNo: 		$('#empNo').val(),
+            payEmpNICNo: 	$('#empNICNo').val(),
+            payDepartment: 	$('#department').val(),
+            payBsalary:		$('#bsalary').val(),
+            payBRallowance: $('#brallowance').val(),
+            payIncrements: 	$('#increments').val(),
+            payOTRate: 		$('#otRate').val(),
+            payEPF: 		$('#epf').val(),
+			payETF: 		$('#etf').val(),
+            payNoPayRate: 	$('#noPayRate').val(),
+			payAbsents: 	$('#absents').val(),
+			payLone: 		$('#lone').val(),
+			
+
+
+        }
+		console.log(param2);
+		$.post("<?php echo base_url(); ?>index.php/HrExecutive/payRollInformationMgt", param2, function(
+        data1) {
+
+			console.log(data1)
+            var response = JSON.parse(data1);
+			console.log(response)
+             if (response.status) {
+				Swal.fire(
+				'Good job!',
+				'You clicked the button!',
+				'success'
+							)
+
+				window.location.href="<?php echo base_url(); ?>index.php/HrExecutive/payRollInfoDataView";
+             } else {
+					Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: 'Something went wrong!',
+					footer: '<a href>Why do I have this issue?</a>'
+					})
+
+         }
+
+        });
+	
+    })
+
     </script>
 
 

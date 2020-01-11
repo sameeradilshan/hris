@@ -120,9 +120,8 @@
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
-                <i class="fa fa-th-large"></i>
-            </a>
+		<a href="<?php echo base_url();?>index.php/Login/Logout" class="btn btn-info ">Sign out</a>
+             
         </li>
     </ul>
 </nav>

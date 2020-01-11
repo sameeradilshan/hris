@@ -18,5 +18,9 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 <!-- form Validation -->
-<script src="https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/v2.2.0/dist/bootstrap-validate.js"></script>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.min.js"></script> 
+   <!-------------------------for validation part----------------------- -->
+
+<!-- data table  -->
 

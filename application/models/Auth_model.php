@@ -44,7 +44,11 @@ class Auth_model extends CI_model{
 
     }
 
-    
+    public function logout(){
+        $this->session->sess_destroy();
+        redirect('login');
+    }
+
 
     
 
