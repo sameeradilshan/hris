@@ -154,8 +154,8 @@
                                 <div class="form-group">
                                     <button style="margin-top:32px; width:200px;" type="button"
                                         class="btn btn-sm btn-primary" data-toggle="modal" target="_blank"
-                                        onclick="window.open('approvedLeaveDatalView')">
-                                        <i class="fa fa-check-circle-o"></i> Approved Leave
+                                        onclick="window.open('approvedResignationDatalView')">
+                                        <i class="fa fa-check-circle-o"></i> Approved Resignation
                                     </button>
                                 </div>
                             </div>
@@ -164,8 +164,8 @@
                                 <div class="form-group">
                                     <button style="margin-top:32px; width:200px;" type="button"
                                         class="btn btn-sm btn-primary" data-toggle="modal" data-target="#DeclineLeave"
-                                        onclick="window.open('declineLeaveDatalView')">
-                                        <i class="fa fa-minus-circle"></i> Decline Leave
+                                        onclick="window.open('declineResignationDatalView')">
+                                        <i class="fa fa-minus-circle"></i> Decline Resignation
                                     </button>
                                 </div>
                             </div>
@@ -174,8 +174,8 @@
                                 <div class="form-group">
                                     <button style="margin-top:32px; width:200px;" type="button"
                                         class="btn btn-sm btn-primary" data-toggle="modal" data-target="#AllLeaves"
-                                        onclick="window.open('reportLeaveDatalView')">
-                                        <i class="fa fa-search"></i> All Leaves
+                                        onclick="window.open('reportResignationDatalView')">
+                                        <i class="fa fa-search"></i> All Resignations
                                     </button>
                                 </div>
                             </div>
@@ -606,7 +606,7 @@
 		$.post("<?php echo base_url(); ?>index.php/Admin/resignationupdate", param, function(
             data) {
 
-			window.log(data);
+			//console.log(data);
             var response = JSON.parse(data);
             console.log(response)
             if (response.status) {

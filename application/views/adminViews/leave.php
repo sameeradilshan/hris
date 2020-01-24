@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->load->view('adminViews/components/css'); ?>
 
+	<!-- form validation css -->
     <style type="text/css">
     .true_input {
         visibility: hidden;
@@ -48,8 +49,9 @@
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active"></li>
+							<li class="breadcrumb-item"><a href="<?php echo base_url(); ?>index.php/Admin">Home</a>
+                                </li>
+                                <li class="breadcrumb-item active">Leaves</li>
                             </ol>
                         </div>
                     </div>
@@ -91,7 +93,7 @@
                                                     <label>Employee Name</label>
                                                     <input type="text" class="form-control form-control-sm"
                                                         placeholder="Jhon Doe"  id="leaveEmpName"
-                                                        name="leaveEmpName">
+                                                        name="leaveEmpName" >
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-6">
@@ -254,7 +256,7 @@
                                                             <th scope="col">Reason</th>
                                                             <th scope="col">Approved By</th>
                                                             <th scope="col">Action</th>
-
+                                                        </tr>		
                                                     </thead>
                                                     <tbody>
                                                         <?php
@@ -509,7 +511,7 @@
 
 
     <script>
-    //	alert('#leaveEmpName');
+    // alert($('#leaveEmpName').val());
     $(document).ready(function() {
         $("#leaveform").validate({
             rules: {
@@ -549,8 +551,8 @@
         });
     });
     $('#formSubmit').click(function() {
-        //alert$('#leaveEmpName').val(),)
-        //alert("#leaveEmpName");
+        
+       // alert($('#leaveEmpName').val());
         var param = {
 
             leaveEmpName: $('#leaveEmpName').val(),
@@ -568,7 +570,7 @@
         }
         // alert(JSON.stringify(param));
 
-        if (param.leaveEmpName !== '' && param.leaveEmpNo !== '') {
+         if (param.leaveEmpName !== '' && param.leaveEmpNo !== '') {
             console.log(param);
             $.post("<?php echo base_url(); ?>index.php/Admin/leaveRequestManagement", param, function(
                 data) {
@@ -595,7 +597,7 @@
                 }
 
             });
-        }
+         }
     })
 
 
@@ -731,25 +733,8 @@ var param = {
         });
 			}
     </script>
-	<!-- -----------------------for validation part-----------------------  -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.min.js"></script> 
-   <!--   -----------------------for validation part----------------------- -->
-<script>
-$(document).ready(function () {
-      $("#leaveform").validate({
-          rules: { 
-               
-              "leaveEmpName": {
-                required:true, 
-               
-              }, 
+	
 
-             
-          }
-      });
-  });
-</script>
 
 </body>
 

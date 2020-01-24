@@ -24,7 +24,26 @@ class Admin extends CI_Controller{
 
 	public function index()
 	{
-		$this->load->view('adminViews\home');
+		
+		$month = date('m');
+		$year = date('Y');
+		
+
+		if($month == 12){
+			$endyear = $year +1;
+			$endmonth= 01;
+		}else{
+			$endyear = $year;
+			$endmonth = $month+1;
+			
+		}
+		
+		$startDate=$year.'-'.$month.'-01';
+		$enddata=$endyear.'-'.$endmonth.'-01';
+		
+		$data['leave']=sizeof($this->Admin_model-> getEmployeeLeave($startDate,$enddata));
+		//var_dump($result);
+		$this->load->view('adminViews\home',$data);
 	}
 	public function employeeDetails()
 	{
@@ -55,7 +74,10 @@ class Admin extends CI_Controller{
 	{
 		$this->load->view('adminViews\overTime');
 	}
-	
+	public function userProfile()
+	{
+		$this->load->view('adminViews\userProfile');
+	}
 	
 	public function attendance()
 	{
@@ -77,7 +99,32 @@ class Admin extends CI_Controller{
 	}
 	public function PaySheetMaker()
 	{
-		$this->load->view('adminViews\paySheetMaker');
+
+		$month = date('m');
+		$year = date('Y');
+
+		
+
+		if($month==12){
+			$nextMonth='01';
+			$nextYear=$year+1;
+		}else{
+			$nextMonth=$month+1;
+			$nextYear=$year;
+		}
+
+		// if($month <10){
+		// 	$month='0'.$month;
+		// }
+		if($nextMonth <10){
+			$nextMonth='0'.$nextMonth;
+		}
+		$stDate=$year.'-'.$month.'-01';
+		$endDate=$nextYear.'-'.$nextMonth.'-01';
+
+		$data['thisMonthPaysheetData']=$this->Admin_model->getThisMonthPaySheets($stDate,$endDate);
+		
+		$this->load->view('adminViews\paySheetMaker',$data);
 	}
 	public function timeSheet()
 	{
@@ -106,45 +153,64 @@ class Admin extends CI_Controller{
 			$userAddDate=$this->input->post('userAddDate');
 			//$password='password';
 
+			
+
+			$hruserpassword='QAZWSXEDCRFVTGBYHNUJMIKOLP1234567890';
+		    $hruserpassword= str_shuffle($hruserpassword);
+		    $hruserpassword= substr($hruserpassword,0,8);
 		
 
 		if($userType=='Admin'){
 
 			$data= array(
-				'adminName'=>$userName,
-				'adminEmail'=>$userEmail,
+				'adminName'=>	$userName,
+				'adminEmail'=>	$userEmail,
 				'adminNIC'=>	$UserNIC,
-				'empId'=>$userEmpId,
-				'Type'=>$userType,
-				'adminAddDate'=>$userAddDate,
+				'empId'		=>	$userEmpId,
+				'Type'		=>	$userType,
+				'adminAddData'=>$userAddDate,
+				'adminPassword'=>$hruserpassword,
 
-			);
+			);//var_dump($data);
 			
+			$msg="Dear  ".$userName.",<br>
+			Thank you for registering as a Partner with  DEEBA Fleet Management System. Please find mentioned below the login link to get started on your venture. </br>
+			Login Page: < Enter link here> <br>
+			User Name: ".$userEmail."<br>
+			Password: <PW> ".$hruserpassword."<br>
+			Thanks and regards.
 
+					";
+
+				
+
+			 $result1=$this->Admin_model->sendEmail($msg,$userEmail);
+			 var_dump($result1);
+			 if($result1){
 			$result=$this->Admin_model->addAdmin($data);
 			
 
-		if($result){
-			echo json_encode(
-				array(
+			if($result){
+				echo json_encode(
+					array(
 
-					'result' => $result,
-					'status' => true,
-					  
-				)
-			);
+						'result' => $result,
+						'status' => true,
+						  
+					)
+				);
 
-		}else{
+			}else{
 
-			echo json_encode(
-				array(
-					  
-					'status' => false,
-					  
-				)
-			);
-		}
-			 
+				echo json_encode(
+					array(
+						  
+						'status' => false,
+						  
+					)
+				);
+			}
+		} 
 		}elseif($userType=='Executive'){
 
 			$data= array(
@@ -154,8 +220,23 @@ class Admin extends CI_Controller{
 				'empId'=>$userEmpId,
 				'userType'=>$userType,
 				'userAddDate'=>$userAddDate,
+				'hrExePassword'=>$hruserpassword,
 
 			);
+			$msg="Dear  ".$userName.",<br>
+			Thank you for registering as a Partner with  DEEBA Fleet Management System. Please find mentioned below the login link to get started on your venture. </br>
+			Login Page: < Enter link here> <br>
+			User Name: ".$userEmail."<br>
+			Password: <PW> ".$hruserpassword."<br>
+			Thanks and regards.
+
+					";
+
+				
+
+			 $result1=$this->Admin_model->sendEmail($msg,$userEmail);
+			 var_dump($result1);
+			 if($result1){
 			$result=$this->Admin_model-> addExecutive($data);
 			//var_dump($result);
 
@@ -179,8 +260,7 @@ class Admin extends CI_Controller{
 					)
 				);
 			}
-			
-
+		}
 		}elseif($userType=='Staff'){
 			$data= array(
 				'empName'=>$userName,
@@ -189,8 +269,22 @@ class Admin extends CI_Controller{
 				'empId'=>$userEmpId,
 				'userType'=>$userType,
 				'userAddDate'=>	$userAddDate,
-
+				'hrUserPassword'=>$hruserpassword
 			);
+			$msg="Dear ".$userName.",<br>
+			Thank you for registering as a Partner with  DEEBA Fleet Management System. Please find mentioned below the login link to get started on your venture. </br>
+			Login Page: < Enter link here> <br>
+			User Name: ".$userEmail."<br>
+			Password: <PW> ".$hruserpassword."<br>
+			Thanks and regards.
+
+					";
+
+				
+
+			 $result1=$this->Admin_model->sendEmail($msg,$userEmail);
+			 var_dump($result1);
+			 if($result1){
 			$result=$this->Admin_model-> addStaffUser($data);
 			if($result){
 				echo json_encode(
@@ -212,7 +306,8 @@ class Admin extends CI_Controller{
 					)
 				);
 			}
-		}else{
+		}
+		else{
 		
 			echo json_encode(
 				array(
@@ -223,8 +318,8 @@ class Admin extends CI_Controller{
 			);
 		}
 		
+		}
 	}	
-
 	
 // employee add ------------------------------------------------------------------------- 
 			public function EmployeeDetailshandler(){
@@ -387,7 +482,10 @@ class Admin extends CI_Controller{
 						'civilState'	=>$civil,
 						'nationality'	=>$nationality,
 						'religious'		=>$religious,
-						'empNo'			=>$empNo,	
+						'empNo'			=>$empNo,
+						'EPFNo'			=>$epfNo,
+						'ETFNo'			=>$etfNo,
+						'bankName'		=>$bankName,	
 					);
 					 $result=$this->Admin_model-> addEmployeePersonalDetails($empdata);
 					
@@ -890,6 +988,8 @@ public function yearPerformanceManagement(){
 				$payNoPayRate		=$this->input->post('payNoPayRate');
 				$payAbsents			=$this->input->post('payAbsents');
 				$payLone			=$this->input->post('payLone');
+				$payEFTComp			=$this->input->post('payEFTComp');
+				$payliving			=$this->input->post('payLiving');
 				
 				// EPF calculation
 				$payEPFamount=($payBsalary*$payEPFPresantage)/100 ;
@@ -897,8 +997,21 @@ public function yearPerformanceManagement(){
 				// ETF calculations
 				$payETFamount=($payBsalary*$payETFPresantage)/100 ;
 
+				// EPF Calculation compny
+				$payETFCompany=($payBsalary*$payEFTComp)/100 ;
+
 				//lone calculation
-				
+				// gross salary
+				$grossSalary = ($payBsalary+ $payBRallowance + $payIncrements+$payliving);
+
+				if($payBsalary>600000){
+					$paye =($payBsalary*4)/100;
+				}elseif( $payBsalary>1200000){
+					$paye =((600000*4)/100 + (600000*8)/100);
+				}else{
+					$paye =0;
+				}
+
 				$payRollInformationMgt=array(
 
 					'empName'		=> $payEmpName,
@@ -916,6 +1029,11 @@ public function yearPerformanceManagement(){
 					'lone' 			=> $payLone,	
 					'epfPresantage' => $payEPFPresantage,
 					'etfPresantage'	=> $payETFPresantage,
+					'epfCompany'	=> $payETFCompany,
+					'grossSalary'	=> $grossSalary,
+					'payeTax'		=> $paye,
+					'livingExpenses'=> $payliving,
+
 
 				);
 				//var_dump($payRollInformationMgt);
@@ -1023,7 +1141,7 @@ public function yearPerformanceManagement(){
 			}
 
 
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //----------------------------------------------------training data display -------------------------
 			public function trainingDataView(){
@@ -1077,6 +1195,40 @@ public function yearPerformanceManagement(){
 
 			} 	
 
+//---------------------------------------paysheet maker data view---------------------------------------------
+			public function paySheetDataView(){
+
+		$month = date('m');
+		$year = date('Y');
+
+		
+
+		if($month==12){
+			$nextMonth='01';
+			$nextYear=$year+1;
+		}else{
+			$nextMonth=$month+1;
+			$nextYear=$year;
+		}
+
+		// if($month <10){
+		// 	$month='0'.$month;
+		// }
+		if($nextMonth <10){
+			$nextMonth='0'.$nextMonth;
+		}
+		$stDate=$year.'-'.$month.'-01';
+		$endDate=$nextYear.'-'.$nextMonth.'-01';
+
+		$data['thisMonthPaysheetData']=$this->Admin_model->getThisMonthPaySheets($stDate,$endDate);
+
+				$data['paySheetDataView']=$this->Admin_model->getPaySheetDataView();
+				$this->load->view('adminViews\paySheetMaker',$data);
+
+			} 	
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
 //------------------------------------department dataview----------------------------------------------------
 				public function departmentDataView(){
 					$data['departmentDataView']=$this->Admin_model->getDepartmentDataView();
@@ -1117,7 +1269,7 @@ public function yearPerformanceManagement(){
 
 			} 
 
-
+/////////////////////////////////////////////////////////////////////////////////////////
 //------------------------------------------------reporting ----------------------------------------------------
 
 
@@ -1159,14 +1311,73 @@ public function yearPerformanceManagement(){
 					
 			} 
 
+
 // ---------------------------------------Departmental Employee Reports-----------------------------------
 			public function reportDeptEmpDataView(){
 				$data['reportPromotionDatalView']=$this->Admin_model->getreportDeptEmpDataView();
 				$this->load->view('adminViews\report8',$data);
 					
 			} 
+//---------------------------------------resignation approval reports----------------------------------------------
+			
+			public function approvedResignationDatalView(){
+				$data['approvedResignationDatalView']=$this->Admin_model->getApprovedResignationDatalView();
+				$this->load->view('adminViews\report9',$data);
+					
+			} 
+//----------------------------------------------Decline resignatio report----------------------------------------
+			public function declineResignationDatalView(){
+				$data['declineResignationDatalView']=$this->Admin_model->getDeclineResignationDatalView();
+				$this->load->view('adminViews\report10',$data);
+					
+			} 
+//---------------------------------------------resignatio reports------------------------------------------------
+			public function reportResignationDatalView(){
+				$data['reportResignationDatalView']=$this->Admin_model->getReportResignationDatalView();
+				$this->load->view('adminViews\report11',$data);
+					
+			} 
+//---------------------------------------------training approval reports---------------------------------------
+			
+			public function approvedTrainingDatalView(){
+				$data['approvedTrainingDatalView']=$this->Admin_model->getApprovedTrainingDatalView();
+				$this->load->view('adminViews\report17',$data);
+					
+			} 
+			//----------------------------------------------training resignatio report----------------------------------------
+			public function declineTrainingDatalView(){
+				$data['declineTrainingDatalView']=$this->Admin_model->getDeclineTrainingDatalView();
+				$this->load->view('adminViews\report12',$data);
+					
+			} 
+			//---------------------------------------------training reports------------------------------------------------
+			public function reportTrainingDatalView(){
+				$data['reportTrainingDatalView']=$this->Admin_model->getReportTrainingDatalView();
+				$this->load->view('adminViews\report13',$data);
+					
+			} 
+			//---------------------------------------monthly performance approval Reports-------------------------
+			public function approvedMonthlyProDatalView(){
+				$data['approvedMonthlyProDatalView']=$this->Admin_model->getApprovedMonthlyProDatalView();
+				$this->load->view('adminViews\report14',$data);
+					
+			} 
+			//-------------------------------------------monthly performance decline reports-----------------------------------------
+			public function declineMonthlyProDatalView(){
+				$data['declineMonthlyProDatalView']=$this->Admin_model->getDeclineMonthlyProDatalView();
+				$this->load->view('adminViews\report15',$data);
+					
+			} 
+			//-------------------------------------------all monthly performance reports-----------------------------------------------
+			public function reportMonthlyProDatalView(){
+				$data['reportMonthlyProDatalView']=$this->Admin_model->getReportMonthlyProDatalView();
+				$this->load->view('adminViews\report16',$data);
+					
+			} 
 
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			
 // proformance approval /rejection-----------------------------------------------------------------------------
 
 			public function apporvelMonthPerformance(){
@@ -1375,6 +1586,41 @@ public function updateResignation(){
 		);
 	}
 }
+//------------------------------paysheet approval-----------------------------------------------------
+
+public function approvalPaysheet(){
+	$payid=$this->input->post('payid');
+	$approvalStatus=$this->input->post('approvalStatus');
+
+	//var_dump($payid);
+	$wherearray= array('payid'=> $payid);
+	 $data =array('approvalStatus' => $approvalStatus);
+
+	$result =$this ->Admin_model->paySheetMakingApproval($data,$wherearray);
+
+	if($result){
+
+	
+		echo json_encode(
+			array(
+
+				'result' => $result,
+				'status' => true,
+				  
+			)
+		);
+
+	}else{
+
+		echo json_encode(
+			array(
+				  
+				'status' => false,
+				  
+			)
+		);
+	}
+}
 
 //----------------------------------------------------resignation edit data-------------------------------
 			public function resignationupdate(){
@@ -1399,7 +1645,7 @@ public function updateResignation(){
 				);
 				$wherearray =array('empResigId' => $resignationId);
 
-				var_dump($resignationdata);
+				//var_dump($resignationdata);
 				$result =$this ->Admin_model->editResignation($resignationdata,$wherearray);
 
 				if($result ){
@@ -1426,8 +1672,60 @@ public function updateResignation(){
 					);
 				}
 			}
+//-------------------------------------edit promotion data---------------------------------------------------------
 
-//-------------------------------edit raining data------------------------------------------------
+public function promotionEdit(){
+
+	$empName 			= $this->input->post('empName');
+	$empNo				= $this->input->post('empNo');
+	$empNICNo			= $this->input->post('empNICNo');
+	$incrementDetails	= $this->input->post('incrementDetails');
+	$date				= $this->input->post('date');
+	$increment			= $this->input->post('increment');			
+	$department			= $this->input->post('department');
+	$IncrementId			= $this->input->post('IncrementId');
+	
+	$promotionEdit=array(
+
+		'empName'			=> $empName,
+		'empNo' 			=> $empNo ,
+		'empNicNo'			=> $empNICNo,					
+		'incrementDetails'	=> $incrementDetails,
+		'date' 				=> $date,
+		'increment' 		=> $increment,
+		'departmentName' 	=> $department,
+
+	);
+	$wherearray =array('IncrementId' => $IncrementId);
+
+				//var_dump($promotionEdit);
+				$result =$this ->Admin_model->editPromotion($promotionEdit,$wherearray);
+
+				if($result ){
+					
+
+					echo json_encode(
+						array(
+
+							'result' => $result,
+							'status' => true,
+							
+						)
+					);
+
+				}else{
+
+
+					echo json_encode(
+						array(
+							
+							'status' => false,
+							
+						)
+					);
+				}
+			}
+//-------------------------------edit training data------------------------------------------------
 			public function trainingupdate(){
 
 				$empName				=$this->input->post('empName');
@@ -1630,7 +1928,9 @@ public function maonthPerformaceEdit(){
 			$payNoPayRate		=$this->input->post('payNoPayRate');
 			$payAbsents			=$this->input->post('payAbsents');
 			$payLone			=$this->input->post('payLone');
-			$editempPayId			=$this->input->post('editempPayId');
+			$editempPayId		=$this->input->post('editempPayId');
+			$editEPFComp		=$this->input->post('payEPFComp');
+			$editpayLiving		=$this->input->post('payLiving');
 			
 			
 			
@@ -1648,7 +1948,9 @@ public function maonthPerformaceEdit(){
 				'etf'			=> $payETF,
 				'noPayRate' 	=> $payNoPayRate,	
 				'absent'		=> $payAbsents,
-				'lone' 			=> $payLone,	
+				'lone' 			=> $payLone,
+				'epfCompany' 	=> $editEPFComp,
+				'livingExpenses'=> $editpayLiving,	
 				
 			);
 			$wherearray =array('empPayId' => $editempPayId);
@@ -1785,7 +2087,8 @@ public function maonthPerformaceEdit(){
 		 var_dump(base_url().$timesheet);
 		 
 	}
-//-----------------------------------------
+//--------------------------------------------------Paysheet makeing------------------------------
+
 public function getempData(){
 	$data['getempData'] = $this->Admin_model->gettData();
 	$data['salaryInfo'] =array();
@@ -1809,47 +2112,181 @@ public function getempData(){
 	
 	foreach ($data['getempData'] as $employee) {
 		$salaryInfo=$this->Admin_model->getPayRollInfoDataViewOne($employee->empNo);
-		$startDate='2019-12-01';
-		$endDate='2020-01-01'; 
-
-		$countPermonth=$this->Admin_model->getAttendacebymonth($employee->empNo,$startDate,$endDate);
+		$startDate='2019-11-01';
+		$endDate='2019-12-01'; 
 		
+		$countPermonth=$this->Admin_model->getAttendacebymonth($employee->empNo,$startDate,$endDate);
+		//var_dump();
 		//select count(empNo) as datecame from attendancetable where empNO=$empNo AND date BETWEEN $startDate AND $endDate;
-
+		
 		if($salaryInfo){
 			$basicSalary=$salaryInfo->basicSalary;
 			$brAllowance=$salaryInfo->brAllowance;
 			$increments=$salaryInfo->increments;
 			$OTrate=$salaryInfo->OTrate;
+			$livingExpenses=$salaryInfo->livingExpenses;
+			$department=$salaryInfo->department;
 			$epf=$salaryInfo->epf;
 			$etf=$salaryInfo->etf;
+			$etf=$salaryInfo->epfCompany;
 			$noPayRate=$salaryInfo->noPayRate;
 			$lone=$salaryInfo->lone;
 			$absent=$salaryInfo->absent;
-			$reduction=0;
+			$epfCompany=$salaryInfo->epfCompany;
+			$grossSalary=$salaryInfo->grossSalary;
+			$payeTax=$salaryInfo->payeTax;
+			$reduction1=0;
+			
+			if($countPermonth[0]->datecame < 22){
+				$reduction1=(22-($countPermonth[0]->datecame)) *458;
 
-			if($countPermonth<22){
-				$reduction=(22-$countPermonth) *458;
+				
 			}
 			
-			$total=$basicSalary-$reduction;
+			//++++++items--------------------------
+			$gSalary=$basicSalary+$increments+ $livingExpenses;
+			$reduction=$reduction1 +$epf;
+			$total=$grossSalary-$reduction;
+
+			$month = date('m');
+			$year = date('Y');
+	
+			if($month==01){
+			$payrollMonth=$month='12';
+			$payrollYear=$year=($year-1);
+			}else{
+				$payrollMonth=$month-1;
+				$payrollYear=$year;
+			}
 
 
+			$arrayName = array(
+				'empNo' 		=>$employee->empNo,
+				'empName' 		=>$employee->nameInitials,
+				'basicSalary' 	=> $basicSalary,
+				'departmentName'=> $department,
+				'brAllowance' 	=> $brAllowance,
+				'increment'		=> $increments,
+				'ot' 			=> $OTrate,
+				'EPF' 			=> $epf,
+				'ETF' 			=> $etf,
+				'EPFCompany'	=>$epfCompany,
+				'Nopay' 		=> $noPayRate,
+				'loan'			=> $lone,
+				'absent' 		=> $absent,
+				'deduction'		=> $reduction,
+				'grossSalary'	=> $gSalary,
+				'NetSalary'		=> $total,
+				'month'			=> $payrollMonth,
+				'year'			=> $payrollYear,
+				'paye'			=> $payeTax,
+				'datecame' 		=> $countPermonth[0]->datecame
+			);
+			$result=$this->Admin_model-> payRollSheetMker($arrayName,);
+			if($result){
 
-			$arrayName = array('basicSalary' => $basicSalary );
-			array_push($data['salaryInfo'],$arrayName);
-		}else{
-			array_push($data['salaryInfo'],'');
+				echo json_encode(
+					array(
+
+						'result' => $result,
+						'status' => true,
+						
+					)
+				);
+
+			}else{
+
+				echo json_encode(
+					array(
+						
+						'status' => false,
+						
+					)
+				);
+			}
+			
 		}
-	}
 
-	var_dump($data['salaryInfo']);
-		
-		echo '<br/>';
+		//$convert_date = date('Y');
+       
+	}
 
 	
 
+	// echo $stDate;
+	// echo $endDate;
+
+	//var_dump($data['salaryInfo']);
+		
+		echo '<br/>';
+
+
 }
+
+		public function bankreport(){
+
+			$paybankName		=$this->input->post('bankName');
+			$payYear			=$this->input->post('Year');
+			$payMonth		=$this->input->post('bankReportMonth');
+			
+			//var_dump($payEmpName);
+			if($paybankName!=='All'){
+				$result=$this->Admin_model->bankReport($payYear,$payMonth);
+			}
+
+			// $bankreportyear =array(	'year' 	=>$payYear,);				
+			// $bankreportMonth =array('month' =>$payMonth,);
+
+			var_dump($result);
+			//$result=$this->Admin_model->bankReport($bankreportyear,$data1,$bankreportMonth);
+		
+			// if($result){
+
+	
+			// 	echo json_encode(
+			// 		array(
+		
+			// 			'result' => $result,
+			// 			'status' => true,
+						  
+			// 		)
+			// 	);
+		
+			// }else{
+		
+			// 	echo json_encode(
+			// 		array(
+						  
+			// 			'status' => false,
+						  
+			// 		)
+			// 	);
+			// }
+	}
+
+//---------------------------passwoed change-------------------------------------
+		public function passwordchange(){
+			
+			$companyAdminId=$this->session->userdata['loggedHRAdmin']['adminId'];	
+			$companyAdm=$this->session->userdata['loggedHRAdmin']['adminPassword'];
+			var_dump($companyAdm);
+
+			$newPasswd			=$this->input->post('newPasswd');
+			$reNewPasswd		=$this->input->post('reNewPasswd');
+			$currentPasswd		=$this->input->post('currentPasswd');
+
+
+			if ($currentPasswd==$companyAdm){
+				if($newPasswd==$reNewPasswd){
+					$result=$this->Admin_model->passwordChange($newPasswd);
+				} //where array akak dala awannay
+			}
+
+			
+			
+		}
+	
+
 }
 
 ?>

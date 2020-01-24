@@ -11,6 +11,21 @@
     <!-- DataTables -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/datatables/dataTables.bootstrap4.min.css">
 
+	<!-- form validation-------------------------------- -->
+    <style type="text/css">
+    .true_input {
+        visibility: hidden;
+    }
+
+    .error {
+        color: red;
+        font-size: 12px;
+    }
+	#editModal{
+		max-height: 100%;
+		overflow-y: auto;
+	}
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -38,6 +53,11 @@
                             <h1>Promotions And Increments</h1> 
                         </div>
                         <div class="col-sm-6">
+						<ol class="breadcrumb float-sm-right">
+							<li class="breadcrumb-item"><a href="<?php echo base_url(); ?>index.php/Admin">Home</a>
+                                </li>
+                                <li class="breadcrumb-item active">Promotion & Increments</li>
+                            </ol>
                         </div>
                     </div>
                 </div><!-- /.container-fluid -->
@@ -203,7 +223,17 @@
 															<td><div class="btn-group">';
 													if($incrementData->incrementStatus	==0){
 														echo '<button type="button" onclick="approvalFunction('.$incrementData->IncrementId.')" class="btn btn-info">Approve</button>
-														<button type="button" onclick="rejectFucntion('.$incrementData->IncrementId.')" class="btn btn-danger">Decline</button>';
+														<button type="button" onclick="rejectFucntion('.$incrementData->IncrementId.')" class="btn btn-danger">Decline</button>
+														<button type="button" data-toggle="modal"  class="btn btn-info" onclick="editFunction({
+															IncrementId:`'.$incrementData->IncrementId.'`,
+															empNo:`'.$incrementData->empNo.'`,
+															empName:`'.$incrementData->empName.'`,
+															departmentName:`'.$incrementData->departmentName.'`,
+															incrementDetails:`'.$incrementData->incrementDetails.'`,
+															date:`'.$incrementData->date.'`,
+															empNicNo:`'.$incrementData->empNicNo.'`,
+															increment:`'.$incrementData->increment.'`,})"><i class="fa fa-edit"></i> Edit</button>';
+													
 													}
 													
 
@@ -243,8 +273,79 @@
             </section>
             <!-- /.content -->
         </div>
-        <!-- /.content-wrapper -->
-
+		<!-- /.content-wrapper -->
+		
+ <!-- edit button----------------------------------- -->
+        <!-- Modal -->
+        <div id="editModal" class="modal">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Resignation Edit</h4>
+                        <button type="button" class="close" data-dismiss="modal" onclick="closeStop()">&times;</button>
+                         
+					</div>
+					<div class="modal-body">
+												
+											
+								<div class="form-group">
+									<label>Employee Name</label>
+									<input type="text" class="form-control form-control-sm"
+										placeholder="Jhon Doe" name="empName" id="editempName">
+								</div>
+								<div class="row">
+								<div class="col-md-6">
+								<div class="form-group">
+									<label>Employee No</label>
+									<input type="text" class="form-control form-control-sm"
+										placeholder="Jhon Doe" name="empNo" id="editempNo">
+								</div>
+								</div>
+								<div class="col-md-6">
+								<div class="form-group">
+									<label>NIC No</label>
+									<input type="text" class="form-control form-control-sm"
+										placeholder="Jhon Doe" name="empNICNo" id="editempNICNo">
+								</div>
+								</div>
+								</div>
+								<div class="form-group">
+									<label>Department</label>
+									<input type="text" class="form-control form-control-sm"
+										placeholder="Jhon Doe" name="department" id="editdepartment">
+								</div>
+								<div class="form-group">
+									<label>Promotion/Increment </label>
+									<input type="text" class="form-control form-control-sm"
+										placeholder="Jhon Doe" name="increment" id="editincrement">
+								</div>
+								<div class="form-group">
+									<label>Promotion/Increment Date</label>
+									<input type="text" class="form-control form-control-sm"
+										placeholder="Jhon Doe" name="date" id="editdate">
+								</div>
+								<div class="form-group">
+									<label>Promotion/ Increment Details</label>
+									<input type="text" class="form-control form-control-sm"
+										placeholder="Jhon Doe" name="incrementDetails" id="editincrementDetails">
+								</div>
+								<div class="form-group">
+									
+									<input type="hidden" class="form-control form-control-sm"
+										placeholder="Jhon Doe" name="incrementDetails" id="IncrementId">
+								</div>
+								
+						
+						</div>
+						<div class="modal-footer">
+                        <button type="button" onclick="closeStop()" class="close_btn btn btn-default pull-left"
+                            data-dismiss="modal">Close</button>
+                        <button type="button" id="stopModelAdd" onclick="addStop()" class="btn btn-primary"
+                            data-dismiss="modal">ADD</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
         <?php $this->load->view('adminViews/components/footer'); ?>
@@ -256,7 +357,26 @@
     </div>
     <!-- ./wrapper -->
 
-    <?php $this->load->view('adminViews/components/js'); ?>
+	<?php $this->load->view('adminViews/components/js'); ?>
+	<!-- form validation -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.min.js"></script> 
+    <script>
+    $(document).ready(function() {
+        $("#incrementdataform").validate({
+            rules: {
+
+                "empName": {
+                    required: true,
+                },
+                "empNo": {
+                    required: true,
+                }
+
+            }
+        });
+    });
+	</script>
+	
     <!-- DataTables -->
     <script src="<?php echo base_url(); ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
@@ -272,9 +392,10 @@
             "autoWidth": false
         });
     });
+// form submission----------------------------------
 
 	$('#formSubmit').click(function() {
-		alert($('#empName').val())
+		//alert($('#empName').val())
         var param2 = {
 
             empName: 		$('#empName').val(),
@@ -289,6 +410,7 @@
 
         }
 		console.log(param2);
+		if (param2.empName !== '' && param2.empNo !== '') {
 		$.post("<?php echo base_url(); ?>index.php/Admin/incrementManagement", param2, function(
         data1) {
 
@@ -316,7 +438,11 @@
 
 
         });
-	
+		}else
+		{
+			alert("Enter Employee Name & Employee No");
+		}
+		
     })
 //---------------------------------Approval Function----------------------------------------------------------------------
 
@@ -374,7 +500,78 @@ function approvalFunction(IncrementId) {
 		});
 	}
 
+//----------------------edit function-------------
+// edit function-----------------------------------------------------------------------------
+function editFunction(object) {
+        //var type=type;
+       // alert(JSON.stringify(object))
 
+        $('#editempName').val(object.empName);
+        $('#editempNo').val(object.empNo);
+        $('#editempNICNo').val(object.empNicNo);
+        $('#editdepartment').val(object.departmentName);
+        $('#editincrementDetails').val(object.incrementDetails);
+        $('#editincrement').val(object.increment);
+		$('#editdate').val(object.date);
+		$('#IncrementId').val(object.IncrementId);
+
+
+        var modal = document.getElementById('editModal');
+
+
+
+        modal.style.display = "block";
+
+
+    }
+	// modal close button-----------------------------------
+	
+    function closeStop() {
+        var modal = document.getElementById('editModal');
+
+        modal.style.display = "none";
+
+    }
+    //------------add button-----------------------------
+
+    function addStop() {
+
+        alert($('#editempName').val());
+
+        var param = {
+
+            empName: 			$('#editempName').val(),
+            empNo: 				$('#editempNo').val(),
+            empNICNo: 			$('#editempNICNo').val(),
+            department: 		$('#editdepartment').val(),
+            incrementDetails: 	$('#editincrementDetails').val(),
+            increment: 			$('#editincrement').val(),
+			date: 				$('#editdate').val(),
+            IncrementId: 		$('#IncrementId').val(),
+
+		}
+		console.log(param);
+		$.post("<?php echo base_url(); ?>index.php/Admin/promotionEdit", param, function(
+            data) {
+
+			console.log(data);
+            var response = JSON.parse(data);
+            console.log(response)
+            if (response.status) {
+                alert("succes");
+
+                window.location.href = "incrementDataView";
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    footer: '<a href>Why do I have this issue?</a>'
+                })
+            }
+        });
+			}
+		
 
 
     </script>

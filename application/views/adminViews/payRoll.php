@@ -36,7 +36,8 @@
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>index.php/Admin">Home</a></li>
+                                <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>index.php/Admin">Home</a>
+                                </li>
                                 <li class="breadcrumb-item active">Payroll Reports</li>
                             </ol>
                         </div>
@@ -62,24 +63,28 @@
                         </div>
                     </div>
                     <div class="card-body">
-					   Select a month:
-					////////
-					
-					</div>
-					<div class="row">
-						<div class="col-3">
-							<button type="button" class="btn btn-block btn-success btn-lg">Bank</button>
-						</div>
-						<div class="col-md-3">
-							<button type="button" class="btn btn-block btn-success btn-lg">Total Salary</button>
-						</div>
-						<div class="col-3">
-							<button type="button" class="btn btn-block btn-success btn-lg">EPF</button>
-						</div>
-						<div class="col-3">
-							<button type="button" class="btn btn-block btn-success btn-lg">ETF</button>
-						</div>
-					</div>
+
+
+
+                    </div>
+                    <div class="row">
+                        <div class="col-3">
+                            <button type="button" class="btn btn-block btn-success btn-lg" data-toggle="modal"
+                                data-target="#Bank">Bank</button>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-block btn-success btn-lg" data-toggle="modal"
+                                data-target="#Salary">Total Salary</button>
+                        </div>
+                        <div class="col-3">
+                            <button type="button" class="btn btn-block btn-success btn-lg" data-toggle="modal"
+                                data-target="#EPF">EPF</button>
+                        </div>
+                        <div class="col-3">
+                            <button type="button" class="btn btn-block btn-success btn-lg" data-toggle="modal"
+                                data-target="#ETF1">ETF</button>
+                        </div>
+                    </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
                         Footer
@@ -93,12 +98,315 @@
         </div>
         <!-- /.content-wrapper -->
 
+        <!-- modal view -->
+        <!-- The Modal  Bank details -->
+        <form id="bankReportForm" action="<?php echo base_url(); ?>index.php/Admin/bankreport" method="post">
+            <div class="modal" id="Bank">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Employee Bank Details</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label>Bank</label>
+                                <select class="form-control  form-control-sm" name="bankName"
+                                    id="bankName">
+                                    <option value="all">All</option>
+                                    <option value="BOC">Bank Of Ceylon</option>
+                                    <option value="PEOPLES">Peoples' Bank</option>
+                                    <option value="NSB">National Savings Bank</option>
 
 
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Year</label>
+                                        <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe"
+                                            name="Year" id="Year">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Month</label>
+                                        <select class="form-control  form-control-sm" name="bankReportMonth"
+                                            id="bankReportMonth">
+                                            <option value="1">January</option>
+                                            <option value="2">February</option>
+                                            <option value="3">March</option>
+                                            <option value="4">April</option>
+                                            <option value="5">May</option>
+                                            <option value="6">June</option>
+                                            <option value="7">July</option>
+                                            <option value="8">August</option>
+                                            <option value="9">September</option>
+                                            <option value="10">October</option>
+                                            <option value="11">November</option>
+                                            <option value="12">December</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Modal footer -->
+
+                        <div class="modal-footer">
+
+                            <input type="submit" class="btn btn-danger" name="submit" value="Generate" id="formSubmit" onclick="window.open('')">
+
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- Salary Reports -->
+        <form id="SalaryReportForm" action="" method="post">
+            <div class="modal" id="Salary">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Employee Salary Report</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label>Department</label>
+                                <select class="form-control  form-control-sm" name="Department" id="Department">
+                                    <option value="all">All</option>
+                                    <option value="humanrResource">Human Resource</option>
+                                    <option value="Operation">Operation</option>
+                                    <option value="Finance">Finance</option>
+                                    <option value="Admin">Admin</option>
+                                    <option value="Production">Production</option>
+                                    <option value="Engineering">Engineering</option>
+                                    <option value="Marketing">Marketing</option>
+                                    <option value="QualityAssurance">Quality Assurance</option>
 
 
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Year</label>
+                                        <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe"
+                                            name="Year" id="Year">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Month</label>
+                                        <select class="form-control  form-control-sm" name="salaryMonth"
+                                            id="salaryMonth">
+                                            <option value="January">January</option>
+                                            <option value="February">February</option>
+                                            <option value="March">March</option>
+                                            <option value="April">April</option>
+                                            <option value="May">May</option>
+                                            <option value="June">June</option>
+                                            <option value="July">July</option>
+                                            <option value="August">August</option>
+                                            <option value="September">September</option>
+                                            <option value="October">October</option>
+                                            <option value="November">November</option>
+                                            <option value="December">December</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Modal footer -->
+
+                        <div class="modal-footer">
+
+                            <input type="submit" class="btn btn-danger" name="submit" value="Generate" id="formSubmit" onclick="window.open('')">
+
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!--Epf Report  -->
+        <form id="EPFReportForm">
+            <div class="modal" id="EPF">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Employee/Employeer ETF Report</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div class="radio">
+                                <label>Select the Type</label>
+                                <br>
+                                <div class="center">
+                                    <input type="radio" name="ETF" id="ETF" value="Employee">Employee
+                                    <input type="radio" name="ETF" id="ETF" value="Employer">Employer
+                                </div>
+                                <br>
+                            </div>
+                            <div class="form-group">
+                                <label>Department</label>
+                                <select class="form-control  form-control-sm" name="Department" id="Department">
+                                    <option value="all">All</option>
+                                    <option value="humanrResource">Human Resource</option>
+                                    <option value="Operation">Operation</option>
+                                    <option value="Finance">Finance</option>
+                                    <option value="Admin">Admin</option>
+                                    <option value="Production">Production</option>
+                                    <option value="Engineering">Engineering</option>
+                                    <option value="Marketing">Marketing</option>
+                                    <option value="QualityAssurance">Quality Assurance</option>
 
 
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Year</label>
+                                        <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe"
+                                            name="Year" id="Year">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Month</label>
+                                        <select class="form-control  form-control-sm" name="epfMonth" id="epfMonth">
+                                            <option value="January">January</option>
+                                            <option value="February">February</option>
+                                            <option value="March">March</option>
+                                            <option value="April">April</option>
+                                            <option value="May">May</option>
+                                            <option value="June">June</option>
+                                            <option value="July">July</option>
+                                            <option value="August">August</option>
+                                            <option value="September">September</option>
+                                            <option value="October">October</option>
+                                            <option value="November">November</option>
+                                            <option value="December">December</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Modal footer -->
+
+                        <div class="modal-footer">
+
+                            <input type="submit" class="btn btn-danger" name="submit" value="Generate" id="formSubmit" onclick="window.open('')">
+
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- ETF Report -------------------------------------------------------------------------------->
+
+        <form id="ETFReportForm">
+            <div class="modal" id="ETF1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Employee ETF Report</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label>Department</label>
+                                <select class="form-control  form-control-sm" name="Department" id="Department">
+                                    <option value="all">All</option>
+                                    <option value="humanrResource">Human Resource</option>
+                                    <option value="Operation">Operation</option>
+                                    <option value="Finance">Finance</option>
+                                    <option value="Admin">Admin</option>
+                                    <option value="Production">Production</option>
+                                    <option value="Engineering">Engineering</option>
+                                    <option value="Marketing">Marketing</option>
+                                    <option value="QualityAssurance">Quality Assurance</option>
+
+
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Year</label>
+                                        <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe"
+                                            name="Year" id="Year">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Month</label>
+                                        <select class="form-control  form-control-sm" name="etfMonth" id="etfMonth">
+                                            <option value="January">January</option>
+                                            <option value="February">February</option>
+                                            <option value="March">March</option>
+                                            <option value="April">April</option>
+                                            <option value="May">May</option>
+                                            <option value="June">June</option>
+                                            <option value="July">July</option>
+                                            <option value="August">August</option>
+                                            <option value="September">September</option>
+                                            <option value="October">October</option>
+                                            <option value="November">November</option>
+                                            <option value="December">December</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Modal footer -->
+
+                        <div class="modal-footer">
+
+                            <input type="submit" class="btn btn-danger" name="submit" value="Generate" id="formSubmit" onclick="window.open('')">
+
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </form>
 
         <?php $this->load->view('adminViews/components/footer'); ?>
 

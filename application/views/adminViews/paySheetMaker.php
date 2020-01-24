@@ -7,7 +7,22 @@
     <title>Home</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?php $this->load->view('adminViews/components/css'); ?>
+	<?php $this->load->view('adminViews/components/css'); ?>
+	
+	<style type="text/css">
+    .true_input {
+        visibility: hidden;
+    }
+
+    .error {
+        color: red;
+        font-size: 12px;
+    }
+	#editModal{
+		max-height: 100%;
+		overflow-y: auto;
+	}
+    </style>
 
 </head>
 
@@ -38,9 +53,13 @@
 
                     </div>
                 </div><!-- /.container-fluid -->
-            </section>
+			</section>
 
-            < <!-- Main content -->
+			<!-- generated numbers -->
+			<input type="hidden" id='noOfGenerated' value="<?php echo sizeof($paySheetDataView);?>" /> 
+			<!--  -->
+
+			             <!-- Main content -->
                 <section class="content">
 
                     <!-- Default box -->
@@ -49,13 +68,15 @@
                             <h3 class="card-title">PaySheet Maker</h3>
 
                             <div class="card-tools">
-                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
-                                    data-target="#addSalarysheet">
-                                    <i class="fa fa-plus"></i> Add New Details
-                                </button>
+							<a href="<?php echo base_url(); ?>index.php/Admin/getempData"><button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
+                                    data-target="" id="generatebtn" disabled>
+                                    <i class="fa fa-plus"></i> Generate 
+								</button></a>
+								
+                               
                             </div>
                             <!---------------------------------------------------  -->
-                            <div class="modal" id="addSalarysheet">
+                            <div class="modal" id="addSalarysheet2">
                                 <div class="modal-dialog modal-sm">
                                     <div class="modal-content">
 
@@ -98,7 +119,7 @@
                             /////////////////////////////////////////////////////////////////////////
                             <!-- The Modal -->
                             <form action="<?php echo base_url(); ?>index.php/Admin/payRollInformationMgt" method="post">
-                                <div class="modal" id="addSalarysheet1">
+                                <div class="modal" id="editModal">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
 
@@ -106,7 +127,7 @@
                                             <div class="modal-header">
                                                 <h4 class="modal-title">PayRoll Sheet Details</h4>
                                                 <button type="button" class="close"
-                                                    data-dismiss="modal">&times;</button>
+                                                    data-dismiss="modal" onclick="closeStop()">&times;</button>
                                             </div>
 
                                             <!-- Modal body -->
@@ -118,14 +139,14 @@
                                                         <div class="form-group">
                                                             <label>Employee Name</label>
                                                             <input type="text" class="form-control form-control-sm"
-                                                                placeholder="Jhon Doe" name="empName" id="empName">
+                                                                placeholder="Jhon Doe" name="empName" id="empName" disabled>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>Employee No</label>
                                                             <input type="text" class="form-control form-control-sm"
-                                                                placeholder="Jhon Doe" name="empNo" id="empNo">
+                                                                placeholder="Jhon Doe" name="empNo" id="empNo1" disabled>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -134,7 +155,7 @@
                                                         <div class="form-group">
                                                             <label>NIC No</label>
                                                             <input type="text" class="form-control form-control-sm"
-                                                                placeholder="Jhon Doe" name="empNICNo" id="empNICNo">
+                                                                placeholder="Jhon Doe" name="empNICNo" id="empNICNo" disabled>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -142,7 +163,7 @@
                                                             <label>Department</label>
                                                             <input type="text" class="form-control form-control-sm"
                                                                 placeholder="Jhon Doe" name="department"
-                                                                id="department">
+                                                                id="department" disabled>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -153,7 +174,7 @@
                                                         <div class="form-group">
                                                             <label>Basic Salary</label>
                                                             <input type="text" class="form-control form-control-sm"
-                                                                placeholder="Jhon Doe" name="bsal" id="bsal">
+                                                                placeholder="Jhon Doe" name="bsal" id="bsal" disabled>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -161,16 +182,30 @@
                                                             <label>B R Allowance</label>
                                                             <input type="text" class="form-control form-control-sm"
                                                                 placeholder="Jhon Doe" name="brallowance"
-                                                                id="brallowance">
+                                                                id="brallowance" disabled>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-md-12">
+                                                    <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label>Total For EPF, ETF</label>
+                                                            <label>EPF</label>
                                                             <input type="text" class="form-control form-control-sm"
-                                                                placeholder="Jhon Doe" name="total1" id="total1">
+                                                                placeholder="Jhon Doe" name="total1" id="totalEPF" disabled>
+                                                        </div>
+													</div>
+													<div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label>ETF</label>
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                placeholder="Jhon Doe" name="total1" id="totalETF" disabled>
+                                                        </div>
+													</div>
+													<div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label>EPF Employee</label>
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                placeholder="Jhon Doe" name="total1" id="totalEPFCom" disabled>
                                                         </div>
                                                     </div>
 
@@ -181,7 +216,7 @@
                                                         <div class="form-group">
                                                             <label>OT</label>
                                                             <input type="text" class="form-control form-control-sm"
-                                                                placeholder="Jhon Doe" name="ot" id="ot">
+                                                                placeholder="Jhon Doe" name="ot" id="ot" disabled>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -189,16 +224,16 @@
                                                             <label>Variable Allowance</label>
                                                             <input type="text" class="form-control form-control-sm"
                                                                 placeholder="Jhon Doe" name="variableallowance"
-                                                                id="variableallowance">
+                                                                id="variableallowance" disabled>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label>Attendance Bonous</label>
+                                                            <label>Increments</label>
                                                             <input type="text" class="form-control form-control-sm"
-                                                                placeholder="Jhon Doe" name="attbonous" id="attbonous">
+                                                                placeholder="Jhon Doe" name="attbonous" id="increments" disabled>
                                                         </div>
                                                     </div>
 
@@ -209,7 +244,7 @@
                                                             <label><b>Gross Salary</b></label>
                                                             <input type="text" class="form-control form-control-sm"
                                                                 placeholder="Jhon Doe" name="grossalary"
-                                                                id="grossalary">
+                                                                id="grossalary" disabled>
                                                         </div>
                                                     </div>
 
@@ -219,23 +254,23 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label>EPF</label>
+                                                            <label>Deduction</label>
                                                             <input type="text" class="form-control form-control-sm"
-                                                                placeholder="Jhon Doe" name="epf" id="epf">
+                                                                placeholder="Jhon Doe" name="deduction" id="deduction" disabled>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>PAYE</label>
                                                             <input type="text" class="form-control form-control-sm"
-                                                                placeholder="Jhon Doe" name="paye" id="paye">
+                                                                placeholder="Jhon Doe" name="paye" id="paye" disabled>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label><b>Net Salary</b></label>
                                                     <input type="text" class="form-control form-control-sm"
-                                                        placeholder="Jhon Doe" name="netsal" id="netsal">
+                                                        placeholder="Jhon Doe" name="netsal" id="netsal" disabled>
                                                 </div>
 
 
@@ -249,8 +284,8 @@
                                                     data-dismiss="modal">Print</button>
                                                 <button type="button" class="btn btn-info"
                                                     data-dismiss="modal">PDF</button>
-                                                <button type="button" class="btn btn-danger"
-                                                    data-dismiss="modal">Close</button>
+													<button type="button" onclick="closeStop()" class="close_btn btn btn-default pull-left"
+                            data-dismiss="modal">Close</button>
                                             </div>
 
                                         </div>
@@ -304,34 +339,98 @@
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>NIC No</th>
-                                                <th>Employee Name</th>
+												<th>Year</th>
+                                                <th>Month</th>
+                                                <th>EMP No</th>
+                                                <th>Emp Name</th>
                                                 <th>Department</th>
                                                 <th>Basic Salary</th>
                                                 <th>B R Allowance</th>
                                                 <th>Increments</th>
                                                 <th>OT Rate</th>
-                                                <th>EPF</th>
+												<th>EPF</th>
+												<th>EPF Company</th>
                                                 <th>ETF</th>
-                                                <th>NoPay Rate</th>
+                                                <th>NoPay </th>
                                                 <th>Absent</th>
-                                                <th>Loan</th>
+												<th>Loan</th>
+												<th>Gross Salary </th>
+                                                <th>Deduction</th>
+												<th>Present Date</th>
+												<th>Net Salary</th>
+												<th>Approval</th>
 
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
 										
-									//	foreach($payrollinformation as $mProfData){
-											//var_dump($payrollinformation);
-											
+									//---------------viw
+
+									foreach ($paySheetDataView as $employee) {
+										echo'
+										<tr role="row" class="odd">
+										<td>'.$employee->year.'</td>
+										<td>'.$employee->month.'</td>
+										<td>'.$employee->empNo.'</td>
+										<td>'.$employee->empName.'</td>
+										<td>'.$employee->departmentName.'</td>
+										<td>'.$employee->basicSalary.'</td>
+										<td>'.$employee->brAllowance.'</td>
+										<td>'.$employee->increment.'</td>
+										<td>'.$employee->ot.'</td>
+										<td>'.$employee->EPF.'</td>
+										<td>'.$employee->EPFCompany.'</td>
+										<td>'.$employee->ETF.'</td>
+										<td>'.$employee->Nopay.'</td>
+										<td>'.$employee->absent.'</td>
+										<td>'.$employee->loan.'</td>
+										<td>'.$employee->grossSalary.'</td>
 										
-										//}
+										<td>'.$employee->deduction.'</td>
+										<td>'.$employee->datecame.'</td>
+										<td>'.$employee->NetSalary.'</td>
+										<td><div class="btn-group">';
+										if($employee->approvalStatus==0){
+											echo '<button type="button" onclick="approvalFunction('.$employee->payid.')" class="btn btn-info">Approve</button>
+											
+											<button type="button" data-toggle="modal"  class="btn btn-success" onclick="editFunction({
+												approvalStatus:`'.$employee->approvalStatus.'`,
+												payid:`'.$employee->payid.'`,
+												year:`'.$employee->year.'`,
+												month:`'.$employee->month.'`,
+												empNo:`'.$employee->empNo.'`,
+												empName:`'.$employee->empName.'`,
+												departmentName:`'.$employee->departmentName.'`,
+												basicSalary:`'.$employee->basicSalary.'`,
+												brAllowance:`'.$employee->brAllowance.'`,
+												increment:`'.$employee->increment.'`,
+												ot:`'.$employee->ot.'`,
+												EPF:`'.$employee->EPF.'`,
+												EPFCompany:`'.$employee->EPFCompany.'`,
+												ETF:`'.$employee->ETF.'`,
+												Nopay:`'.$employee->Nopay.'`,
+												absent:`'.$employee->absent.'`,
+												grossSalary:`'.$employee->grossSalary.'`,
+												deduction:`'.$employee->deduction.'`,
+												NetSalary:`'.$employee->NetSalary.'`,
+												paye:`'.$employee->paye.'`,
+												
+												})"><i class="fa fa-edit"></i> View</button>';
+										
+											}
+													
+
+												
+											echo '</div></td>
+											  
+											  </tr>
+											   
+										  ';
+									  }
+									  ?>
+
 									
-									?>
-
-
-
 
                                         </tbody>
 
@@ -381,8 +480,111 @@
         );
 
     });
-    </script>
+   
 
+
+// edit function-----------------------------------------------------------------------------
+	function editFunction(object) {
+        //var type=type;
+        // alert(JSON.stringify(object));
+		
+
+		
+        $('#empName').val(object.empName);
+        $('#empNo1').val(object.empNo);
+        $('#empNICNo').val(object.empNic);
+        $('#department').val(object.departmentName);
+        $('#bsal').val(object.basicSalary);
+        $('#brallowance').val(object.brAllowance);
+		$('#totalEPF').val(object.EPF);
+        $('#totalETF').val(object.ETF);
+        $('#totalEPFCom').val(object.EPFCompany);
+        $('#ot').val(object.ot);
+        $('#variableallowance').val(object.resigDetails);
+        $('#increments').val(object.increment);
+		$('#grossalary').val(object.grossSalary);
+        $('#deduction').val(object.deduction);
+        $('#paye').val(object.paye);
+        $('#netsal').val(object.NetSalary);
+      
+
+
+        var modal = document.getElementById('editModal');
+
+
+
+        modal.style.display = "block";
+
+
+    }
+	// modal close button-----------------------------------
+	
+    function closeStop() {
+        var modal = document.getElementById('editModal');
+
+        modal.style.display = "none";
+
+    }
+</script>
+<!-- generate button -->
+<script>
+   
+	// -----------------------------------approval /rejection function--------
+
+
+    function approvalFunction(payid) {
+		//var_dump('payid');
+        params = {
+            payid: payid,
+            approvalStatus: 1
+        }
+		
+        $.post("<?php echo base_url(); ?>index.php/Admin/approvalPaysheet", params, function(
+            data) {
+
+            console.log(data)
+            var response = JSON.parse(data);
+            console.log(response)
+            if (response.status) {
+                alert("succes")
+
+                window.location.href = "paySheetDataView";
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    footer: '<a href>Why do I have this issue?</a>'
+                })
+            }
+        });
+    }
+	//------------------------generate button disabled-------------
+	$(document).ready(function(){
+		
+    var countofgenerated = $('#noOfGenerated').val();
+	
+	var d = new Date()
+	var month = (d.getMonth() + 1);
+	var day =  d.getDate();
+	var year = d.getFullYear();
+    
+	if (month.length < 2) 
+		month = '0' + month;
+	if (day.length < 2) 
+		day = '0' + day;
+	
+	
+	
+	if(countofgenerated==0){
+		if(1<day<10){
+			$("#generatebtn").attr("disabled", false);
+	
+		}
+	}
+});
+
+</script>
 
 </body>
 

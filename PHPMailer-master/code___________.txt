@@ -1,0 +1,49 @@
+public function reqCv()
+	{
+		$formdata=$this->input->post();
+
+	 	$CVreqName=$formdata['CVreqName'];
+	 	$CVreqPhoneNumber=$formdata['CVreqPhoneNumber'];
+	 	$CVreqEmail=$formdata['CVreqEmail']; 
+
+	 	$msg = "<strong>Enter Name:</strong> ".$CVreqName." <br/> <strong>Enter Email: </strong>".$CVreqEmail."<br/> <strong>Enter Phone Number:</strong> ".$CVreqPhoneNumber;
+	 	        
+	 	        
+	 	
+ 
+
+
+
+		require 'PHPMailer-master/PHPMailerAutoload.php';
+
+		$mail = new PHPMailer;
+		//$mail->SMTPDebug = 3;                               // Enable verbose debug output
+
+		$mail->isSMTP();                                      // Set mailer to use SMTP
+		$mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+		$mail->SMTPAuth = true;                               // Enable SMTP authentication
+		$mail->Username = 'logispirit@gmail.com';                 // SMTP username
+		$mail->Password = 'matrix123';                           // SMTP password
+		$mail->Port = 587;                                    // TCP port to connect to
+
+		$mail->From = 'logispirit@gmail.com';
+		$mail->FromName = 'Test phpmailer';
+		$mail->addAddress('logispirit@gmail.com');               // Name is optional
+
+		$mail->isHTML(true);                                  // Set email format to HTML
+
+		$mail->Subject = 'Request CV from Thevin Malaka website';
+		$mail->Body    = $msg ;
+		$mail->AltBody = $msg ;
+
+		if(!$mail->send()) {
+		   // echo 'Message could not be sent.';
+		   // echo 'Mailer Error: ' . $mail->ErrorInfo;
+		    redirect('Welcome/not_send');
+		} else {
+		  //  echo 'Message has been sent';
+		    redirect('Welcome/send');
+		}
+	}
+
+	

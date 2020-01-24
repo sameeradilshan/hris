@@ -25,12 +25,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Decline Leave Report</h1>
+                            <h1>Approved Resignation Report</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Decline Leavea</li>
+                                <li class="breadcrumb-item active">Approved Resignation</li>
                             </ol>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                 <!-- Default box -->
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Decline Leaves</h3>
+                        <h3 class="card-title">Approved Resignation</h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-widget="collapse" data-toggle="tooltip"
@@ -64,15 +64,15 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-										<th scope="col">Emp No</th>
-                                                    <th scope="col">Employee Name</th>
-                                                    <th scope="col">Department</th>
-                                                    <th scope="col">Leave Type</th>
-                                                    <th scope="col">Date From</th>
-                                                    <th scope="col">Date To</th>
-                                                    <th scope="col">No Of Date</th>
-                                                    <th scope="col">Reason</th>
-                                                    <th scope="col">Approved By</th>
+										<th scope="col">EMP No</th>
+										<th scope="col">Employee Name</th>
+										<th scope="col">Emp NIC</th>
+										<!-- <th scope="col">Department</th> -->
+										<th scope="col">Resignation Date</th>
+										<th scope="col">Resignation Details</th>
+										<!-- <th scope="col">Edit Details</th> -->
+										<th scope="col">Approved By</th>
+										<th scope="col">Approel</th>
                                                     
 											
                                             
@@ -82,27 +82,40 @@
 									<tbody>
 											<?php
 										
-										foreach($declineLeaveDatalView as $leaveData){
-										//var_dump($leaveDataView);
+										foreach($approvedResignationDatalView as $resignationData){
+													
+											//var_dump($resignationDataView);
 											
 											echo'  
-											<tr role="row" class="odd">
-										
-											<td>'.$leaveData->empNo.'</td>
-											<td>'.$leaveData->empName.'</td>
-											<td>'.$leaveData->department.'</td>
-											<td>'.$leaveData->leaveType.'</td>
-											<td>'.$leaveData->date.'</td>
-											<td>'.$leaveData->noOfDate.'</td>												
-											<td>'.$leaveData->leaveStatus.'</td>
-											<td>'.$leaveData->action.' </td>
-											<td>sameera </td>
-											
-											
-											
-										</tr>
-																																				
+												<tr role="row" class="odd">
+												
+													<td>'.$resignationData->empNo.'</td>
+													<td>'.$resignationData->empName.'</td>
+													<td>'.$resignationData->empNic.'</td>
+													<td>'.$resignationData->resigDate.'</td>
+													<td>'.$resignationData->resigDetails.'</td>
 													
+
+													<td>Admin</td>
+													<td><div class="btn-group">';
+											if($resignationData->empStatus==0){
+												echo '<button type="button" onclick="approvalFunction('.$resignationData->empResigId.')" class="btn btn-info">Approve</button>
+												<button type="button" onclick="rejectFucntion('.$resignationData->empResigId.')" class="btn btn-danger">Decline</button>
+												<button type="button" data-toggle="modal"  class="btn btn-info" onclick="editFunction({
+													empResigId:`'.$resignationData->empResigId.'`,
+													empNo:`'.$resignationData->empNo.'`,
+													empName:`'.$resignationData->empName.'`,
+													empNic:`'.$resignationData->empNic.'`,
+													resigDate:`'.$resignationData->resigDate.'`,
+													resigDetails:`'.$resignationData->resigDetails.'`,})"><i class="fa fa-edit"></i> Edit</button>';
+											}
+											
+
+										
+											  echo '</div></td>
+												
+												</tr>
+												 
 											';
 										}
 											

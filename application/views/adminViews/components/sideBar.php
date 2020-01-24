@@ -16,7 +16,7 @@
           <img src="<?php echo base_url(); ?>assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Admin Name</a>
+          <a href="<?php echo base_url(); ?>index.php/Admin/userProfile" class="d-block">Admin Name</a>
         </div>
       </div>
 
@@ -188,7 +188,7 @@
                 </a>
               </li>
               <li class="nav-item">
-							<a href="<?php echo base_url(); ?>index.php/Admin/PaySheetMaker" class="nav-link">
+							<a href="<?php echo base_url(); ?>index.php/Admin/paySheetDataView" class="nav-link">
 							<i class="nav-icon fa fa-file-o"></i>
                   <p>PaySheet Maker </p>
                 </a>

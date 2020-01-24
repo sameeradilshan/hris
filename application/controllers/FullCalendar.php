@@ -39,6 +39,7 @@ class Fullcalendar extends CI_Controller {
     'start_event'=> $this->input->post('start'),
     'end_event' => $this->input->post('end')
    );
+   var_dump($data);
    $this->fullcalendar_model->insert_event($data);
   }
  }

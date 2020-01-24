@@ -38,7 +38,8 @@
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>index.php/Admin">Home</a></li>
-                                
+								
+								<li class="breadcrumb-item active">Attendance</li>
                             </ol>
                         </div>
                     </div>
@@ -51,7 +52,7 @@
                 <!-- Default box -->
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Title</h3>
+                        <h3 class="card-title">Monthly Attendance </h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-widget="collapse" data-toggle="tooltip"
@@ -64,11 +65,13 @@
                     </div>
                     <div class="card-body">
 					<div class="card-body">
-                            <!-- row start -->
+							<!-- row start -->
+							<form>
                             <div class="row" style="background-color:#efefef; padding:20px;   border-radius: 25px;">
-                                <div class="col-md-3">
+							   
+							<div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Employee Name</label>
+                                        <label for="exampleInputEmail1">Employee No</label>
                                         <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe">
                                     </div>
                                 </div>
@@ -97,8 +100,10 @@
                                             <i class="fa fa-search"></i> Search
                                         </button>
                                     </div>
-                                </div>
-                            </div>
+								</div>
+							
+							</div>
+							</form>
                             <!-- row end -->
 					       <!-- row start -->
 							<div class="row">

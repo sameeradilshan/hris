@@ -312,8 +312,8 @@
     //-----------------------form Handling --------------------------------------------------
 <script>
     $('#formSubmit').click(function() {
-                //alert($('#evaluationYear').val())
-                var param = {
+                //alert($('#userName').val())
+                var param2 = {
 
                     userName: $('#userName').val(),
                     userEmail: $('#userEmail').val(),
@@ -325,22 +325,28 @@
 
 
                 }
-                console.log(param);
-                $.post("<?php echo base_url(); ?>index.php/Admin/UserManagementHandler", param, function(
+               console.log(param2);
+                $.post("<?php echo base_url(); ?>index.php/Admin/UserManagementHandler", param2, function(
                             data1) {
 
-				console.log(data1)
-				var response = JSON.parse(data1);
-				window.alert(response)
+			window.alert(data1)
+            var response = JSON.parse(data1);
+			window.alert(response)
 
              if (response.status) {
-				alert("succes");
+				
+				alert("sucess");
 
 				window.location.href = "userManagementDataView";
              } else {
-					alert("fail");
-
+					Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: 'Something went wrong!',
+					footer: '<a href>Why do I have this issue?</a>'
+					})
          }
+   
 							
         });
 	

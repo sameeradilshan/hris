@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Decline Leave DatalView</title>
+    <title>Approved Promotion DatalView</title>
     <!-- Tell the browser to be responsive to screen width -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">  
 	<?php $this->load->view('adminViews/components/css'); ?>
@@ -25,12 +25,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Decline Leave Report</h1>
+                            <h1>Approved Promotion Report</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Decline Leavea</li>
+                                <li class="breadcrumb-item active">Approved Promotion</li>
                             </ol>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                 <!-- Default box -->
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Decline Leaves</h3>
+                        <h3 class="card-title">Approved Promotion</h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-widget="collapse" data-toggle="tooltip"
@@ -65,14 +65,13 @@
                                     <thead>
                                         <tr>
 										<th scope="col">Emp No</th>
-                                                    <th scope="col">Employee Name</th>
-                                                    <th scope="col">Department</th>
-                                                    <th scope="col">Leave Type</th>
-                                                    <th scope="col">Date From</th>
-                                                    <th scope="col">Date To</th>
-                                                    <th scope="col">No Of Date</th>
-                                                    <th scope="col">Reason</th>
-                                                    <th scope="col">Approved By</th>
+											<th scope="col">Employee Name</th>
+											<th scope="col">Department</th>
+                                            <th scope="col">Promotion Detailes</th>
+											<th scope="col">Date</th>
+											<th scope="col">Promotion/Increment</th>
+											<th scope="col">Approval</th>
+											<th scope="col">Approved By</th>
                                                     
 											
                                             
@@ -82,28 +81,32 @@
 									<tbody>
 											<?php
 										
-										foreach($declineLeaveDatalView as $leaveData){
+										foreach($approvedPromotionDatalView as $incrementData){
 										//var_dump($leaveDataView);
 											
-											echo'  
-											<tr role="row" class="odd">
-										
-											<td>'.$leaveData->empNo.'</td>
-											<td>'.$leaveData->empName.'</td>
-											<td>'.$leaveData->department.'</td>
-											<td>'.$leaveData->leaveType.'</td>
-											<td>'.$leaveData->date.'</td>
-											<td>'.$leaveData->noOfDate.'</td>												
-											<td>'.$leaveData->leaveStatus.'</td>
-											<td>'.$leaveData->action.' </td>
-											<td>sameera </td>
-											
-											
-											
-										</tr>
-																																				
+										echo'  
+														<tr role="row" class="odd">
+														
+															<td>'.$incrementData->empNo.'</td>
+															<td>'.$incrementData->empName.'</td>
+															<td>'.$incrementData->departmentName.'</td>
+															<td>'.$incrementData->incrementDetails.'</td>
+															<td>'.$incrementData->date.'</td>
+															<td>'.$incrementData->increment.'</td>
+															
+															<td><div class="btn-group">';
+													if($incrementData->incrementStatus	==0){
+														echo '<button type="button" onclick="approvalFunction('.$incrementData->IncrementId.')" class="btn btn-info">Approve</button>
+														<button type="button" onclick="rejectFucntion('.$incrementData->IncrementId.')" class="btn btn-danger">Decline</button>';
+													}
 													
-											';
+
+												
+													  echo '</div></td>
+													  <td>Admin</td>
+														</tr>
+														 
+													';
 										}
 											
 											?>

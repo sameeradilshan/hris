@@ -173,7 +173,7 @@
                                     <div class="form-group">
                                         <button style="margin-top:32px; width:200px;" type="button"
                                             class="btn btn-sm btn-primary" data-toggle="modal" target="_blank"
-                                            onclick="window.open('approvedLeaveDatalView')">
+                                            onclick="window.open('approvedTrainingDatalView')">
                                             <i class="fa fa-check-circle-o"></i> Approved Trainee
                                         </button>
                                     </div>
@@ -183,7 +183,7 @@
                                     <div class="form-group">
                                         <button style="margin-top:32px; width:200px;" type="button"
                                             class="btn btn-sm btn-primary" data-toggle="modal"
-                                            data-target="#DeclineLeave" onclick="window.open('declineLeaveDatalView')">
+                                            data-target="#DeclineLeave" onclick="window.open('declineTrainingDatalView')">
                                             <i class="fa fa-minus-circle"></i> Decline Trainee
                                         </button>
                                     </div>
@@ -193,7 +193,7 @@
                                     <div class="form-group">
                                         <button style="margin-top:32px; width:200px;" type="button"
                                             class="btn btn-sm btn-primary" data-toggle="modal" data-target="#AllLeaves"
-                                            onclick="window.open('reportLeaveDatalView')">
+                                            onclick="window.open('reportTrainingDatalView')">
                                             <i class="fa fa-search"></i> All Trainees
                                         </button>
                                     </div>

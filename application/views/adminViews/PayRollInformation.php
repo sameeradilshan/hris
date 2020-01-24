@@ -130,7 +130,12 @@
                                                 <label>EPF Percentage</label>
                                                 <input type="text" class="form-control form-control-sm"
                                                     placeholder="Jhon Doe" name="epf" id="epf">
-                                            </div>
+											</div>
+											<div class="form-group">
+                                                <label>EPF Percentage Company</label>
+                                                <input type="text" class="form-control form-control-sm"
+                                                    placeholder="Jhon Doe" name="epfcomp" id="epfcomp">
+											</div>
                                             <div class="form-group">
                                                 <label>ETF Percentage</label>
                                                 <input type="text" class="form-control form-control-sm"
@@ -150,6 +155,11 @@
                                                 <label>Loan</label>
                                                 <input type="text" class="form-control form-control-sm"
                                                     placeholder="Jhon Doe" name="lone" id="lone">
+											</div>
+											<div class="form-group">
+                                                <label>Leaving Expenses</label>
+                                                <input type="text" class="form-control form-control-sm"
+                                                    placeholder="Jhon Doe" name="living" id="living">
                                             </div>
 
 
@@ -227,13 +237,15 @@
                                                     <th scope="col">OT Rate</th>
                                                     <th scope="col">EPF% </th>
                                                     <th scope="col">EPF</th>
-                                                    <th scope="col">ETF%</th>
+													<th scope="col">ETF%</th>
+													<th scope="col">EPF Company</th>
                                                     <th scope="col">ETF</th>
 
                                                     <th scope="col">NoPay Rate</th>
                                                     <th scope="col">Absent</th>
                                                     <th scope="col">Loan</th>
-                                                    <th scope="col">Emp Leave</th>
+													<th scope="col">Emp Leave</th>
+													<th scope="col">Living Expenses</th>
                                                     <th scope="col">Edit </th>
 
                                                 </tr>
@@ -259,10 +271,12 @@
 													 <td>'.$payRollData->epf.'</td>
 													 <td>'.$payRollData->etfPresantage.'</td>
 													 <td>'.$payRollData->etf.'</td>
+													 <td>'.$payRollData->epfCompany.'</td>
 											 		<td>'.$payRollData->noPayRate.'</td>
 											 		<td>'.$payRollData->absent.'</td>
 											 		<td>'.$payRollData->lone.'</td>
 													<td>'.$payRollData->empleave.'</td>
+													<td>'.$payRollData->livingExpenses.'</td>
 													<td><div class="btn-group">';
 													echo'
 													<button type="button" data-toggle="modal"  class="btn btn-info" onclick="editFunction({
@@ -278,10 +292,12 @@
 														OTrate:`'.$payRollData->OTrate.'`,
 														etfPresantage:`'.$payRollData->epfPresantage.'`,
 														etfPresantage:`'.$payRollData->etfPresantage.'`,
+														etfCompany:`'.$payRollData->epfCompany.'`,
 														noPayRate:`'.$payRollData->noPayRate.'`,
 														absent:`'.$payRollData->absent.'`,
 														lone:`'.$payRollData->lone.'`,
 														empleave:`'.$payRollData->empleave.'`,
+														livingExpenses:`'.$payRollData->livingExpenses.'`,
 														})"><i class="fa fa-edit"></i> Edit</button>';
 												
 														echo '</div></td>
@@ -375,6 +391,11 @@
                             <label>ETF</label>
                             <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe" name="etf"
                                 id="editetfPresantage">
+						</div>
+						<div class="form-group">
+                            <label>ETF Company</label>
+                            <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe" name="etf"
+                                id="editetfCompany">
                         </div>
                         <div class="form-group">
                             <label>NoPay Rate</label>
@@ -390,6 +411,11 @@
                             <label>Loan</label>
                             <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe" name="lone"
                                 id="editlone">
+						</div>
+						<div class="form-group">
+                            <label>Living Expenses</label>
+                            <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe" name="editliving"
+                                id="editliving">
                         </div>
                         <div class="form-group">
 
@@ -452,6 +478,8 @@
             payNoPayRate: $('#noPayRate').val(),
             payAbsents: $('#absents').val(),
             payLone: $('#lone').val(),
+			payEFTComp: $('#epfcomp').val(),
+			payLiving: $('#living').val(),
 
 
 
@@ -503,6 +531,8 @@
         $('#editabsents').val(object.absent);
         $('#editlone').val(object.lone);
         $('#editempleave').val(object.empleave);
+		$('#editetfCompany').val(object.etfCompany);
+		$('#editliving').val(object.livingExpenses);
 
 
         var modal = document.getElementById('editModal');
@@ -545,6 +575,8 @@
             payNoPayRate: $('#editnoPayRate').val(),
             payAbsents: $('#editabsents').val(),
             payLone: $('#editlone').val(),
+			payEPFComp: $('#editetfCompany').val(),
+			payLiving: $('#editliving').val(),
 
 
         }

@@ -4,20 +4,19 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Home</title>
+    <title>Add New Employee</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->load->view('adminViews/components/css'); ?>
 
-<style>
-div.card-body {
-	width:900px;
-  margin: auto;
-  border: 2px solid ;
-  background-color:rgb(0, 28, 255,0.02 );
-}
-
-</style>
+    <style>
+    div.card-body {
+        width: 900px;
+        margin: auto;
+        border: 2px solid;
+        background-color: rgb(0, 28, 255, 0.02);
+    }
+    </style>
 
 </head>
 
@@ -42,6 +41,7 @@ div.card-body {
                     <div class="row mb-2">
                         <div class="col-sm-6">
                             <h1>Employee Management</h1>
+
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -76,9 +76,10 @@ div.card-body {
                             </li>
                         </ul>
                     </nav> -->
-                    <div class="card-body" >
-						
-                        <form action="<?php echo base_url(); ?>index.php/Admin/EmployeeDetailshandler" method="POST" id="body1">
+                    <div class="card-body">
+
+                        <form action="<?php echo base_url(); ?>index.php/Admin/EmployeeDetailshandler" method="POST"
+                            id="body1">
 
 
                             <h1>Personal Details</h1>
@@ -88,12 +89,12 @@ div.card-body {
                             <div class="form-group">
                                 <label>Full Name</label>
                                 <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe"
-                                    name="empFullName" id="empFullName"  >
+                                    name="empFullName" id="empFullName">
                             </div>
                             <div class="form-group test3" id="test1">
                                 <label>Name With Initial</label>
                                 <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe"
-                                    name="initialName" id="initialName"  >
+                                    name="initialName" id="initialName">
                             </div>
                             <div class="form-group test3" id="test1">
                                 <label>Other Name</label>
@@ -103,7 +104,7 @@ div.card-body {
                             <div class="form-group test3" id="test1">
                                 <label>Address(Permanent)</label>
                                 <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe"
-                                    name="empAddress1" id="empAddress1"  >
+                                    name="empAddress1" id="empAddress1">
                             </div>
                             <div class="form-group test3" id="test1">
                                 <label>Address(Tempary)</label>
@@ -119,7 +120,7 @@ div.card-body {
                                 <div class="form-group col-md-4" id="test1">
                                     <label>NIC Number</label>
                                     <input type="text" class="form-control form-control-sm" placeholder="1999xxxxxx"
-                                        name="empNicNo" id="empNicNo"  >
+                                        name="empNicNo" id="empNicNo">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label>Date Of Birth</label><br>
@@ -672,7 +673,7 @@ div.card-body {
                                         <div class="form-group col-md-6 " id="test1">
                                             <label>Employee Number</label>
                                             <input type="text" class="form-control form-control-sm"
-                                                placeholder="1999xxxxxx" name="empNo" id="empNo"  >
+                                                placeholder="1999xxxxxx" name="empNo" id="empNo">
                                         </div>
 
                                         <div class="form-group col-md-6">
@@ -710,7 +711,7 @@ div.card-body {
 
                                 <div class="form-group" id="contract">
 
-                                    <label>Daily Employee Detailes</label><br>
+                                    <label>Daily Employee Details</label><br>
 
                                     <div class="form-row">
 
@@ -803,8 +804,14 @@ div.card-body {
                                     </div>
                                     <div class="form-group col-md-6" id="">
                                         <label>Bank Name </label>
-                                        <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe"
-                                            name="bankName" id="bankName">
+                                        <select class="form-control  form-control-sm" name="bankName" id="bankName">
+                                            <option value="all">All</option>
+                                            <option value="BOC">Bank Of Ceylon</option>
+                                            <option value="PEOPLES">Peoples' Bank</option>
+                                            <option value="NSB">National Savings Bank</option>
+
+
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -824,7 +831,7 @@ div.card-body {
                                 <div class="row">
                                     <div class="col-md-12" id="page4">
 
-                                        <h1>Family Detailes</h1>
+                                        <h1>Family Details</h1>
                                         <hr>
                                     </div>
 
@@ -874,7 +881,7 @@ div.card-body {
                                     </div>
 
                                     <div class="col-md-12">
-                                        <label>Children Detailes</label>
+                                        <label>Children Details</label>
 
                                         <div class="row">
                                             <div class="col-md-4">
@@ -951,7 +958,7 @@ div.card-body {
 
 
                                     <div class="col-md-12">
-                                        <label>Wife/Husband Detailes</label>
+                                        <label>Wife/Husband Details</label>
 
 
                                         <div class="row">
@@ -998,23 +1005,23 @@ div.card-body {
                     <div class="card-footer">
                         Footer
                     </div>
-					<!-- /.card-footer-->
-                    </div>
+                    <!-- /.card-footer-->
                 </div>
-                <!-- /.card -->
-
-            </section>
-            <!-- /.content -->
         </div>
-        <!-- /.content-wrapper -->
-        <input id="nameqws" value="devaka">
+        <!-- /.card -->
 
-        <?php $this->load->view('adminViews/components/footer'); ?>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <input id="nameqws" value="devaka">
 
-        <!-- Control Sidebar -->
-        <!-- <aside class="control-sidebar control-sidebar-dark"> 
+    <?php $this->load->view('adminViews/components/footer'); ?>
+
+    <!-- Control Sidebar -->
+    <!-- <aside class="control-sidebar control-sidebar-dark"> 
   	</aside> -->
-        <!-- /.control-sidebar -->
+    <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
 
@@ -1023,60 +1030,60 @@ div.card-body {
 
     <script>
     $('#submit').click(function() {
-		alert($('#empFullName').val())
+        alert($('#empFullName').val())
         var param = {
-            empFullName: 		$('#empFullName').val(),
-            empInitialName: 	$('#initialName').val(),
-            empNameEmail: 		$('#empEmail').val(),
-            otherName:			$('#otherName').val(),
-            empAdress1: 		$('#empAddress1').val(),
-            empAdress2: 		$('#empAddress2').val(),
-            empNicNo: 			$('#empNicNo').val(),
-            officeNo: 			$('#officeNo').val(),
-            mobileNo: 			$('#mobileNo').val(),
-            homeNo: 			$('#homeNo').val(),
-            gender: 			$('#gender').val(),
-            dob: 				$('#dob').val(),
-            civil: 				$('#civil').val(),
-            nationality: 		$('#nationality').val(),
-            religious: 			$('#religious').val(),
+            empFullName: $('#empFullName').val(),
+            empInitialName: $('#initialName').val(),
+            empNameEmail: $('#empEmail').val(),
+            otherName: $('#otherName').val(),
+            empAdress1: $('#empAddress1').val(),
+            empAdress2: $('#empAddress2').val(),
+            empNicNo: $('#empNicNo').val(),
+            officeNo: $('#officeNo').val(),
+            mobileNo: $('#mobileNo').val(),
+            homeNo: $('#homeNo').val(),
+            gender: $('#gender').val(),
+            dob: $('#dob').val(),
+            civil: $('#civil').val(),
+            nationality: $('#nationality').val(),
+            religious: $('#religious').val(),
             qualificationName1: $('#r1QuaName').val(),
-			qualification1: 	$('#r1QuaQualification').val(),
-            quaSpecilization1: 	$('#r1QuaSp').val(),
-            quaInstitute1: 		$('#r1QuaIns').val(),
-            quaDate1: 			$('#r1QuaDate').val(),
+            qualification1: $('#r1QuaQualification').val(),
+            quaSpecilization1: $('#r1QuaSp').val(),
+            quaInstitute1: $('#r1QuaIns').val(),
+            quaDate1: $('#r1QuaDate').val(),
             qualificationName2: $('#r2QuaName').val(),
-            qualification2: 	$('#r2QuaQualification').val(),
-            quaSpecilization2: 	$('#r2QuaSp').val(),
-            quaInstitute2: 		$('#r2QuaIns').val(),
-            quaDate2: 			$('#r2QuaDate').val(),
+            qualification2: $('#r2QuaQualification').val(),
+            quaSpecilization2: $('#r2QuaSp').val(),
+            quaInstitute2: $('#r2QuaIns').val(),
+            quaDate2: $('#r2QuaDate').val(),
             qualificationName3: $('#r3QuaName').val(),
-            qualification3: 	$('#r3QuaQualification').val(),
-            quaSpecilization3: 	$('#r3QuaSp').val(),
-            quaInstitute3: 		$('#r3QuaIns').val(),
-            quaDate3: 			$('#r3QuaDate').val(),
+            qualification3: $('#r3QuaQualification').val(),
+            quaSpecilization3: $('#r3QuaSp').val(),
+            quaInstitute3: $('#r3QuaIns').val(),
+            quaDate3: $('#r3QuaDate').val(),
             qualificationName4: $('#r4QuaName').val(),
-            qualification4: 	$('#r4QuaQualification').val(),
-            quaSpecilization4: 	$('#r4QuaSp').val(),
-            quaInstitute4: 		$('#r4QuaIns').val(),
-            quaDate4: 			$('#r4QuaDate').val(),
+            qualification4: $('#r4QuaQualification').val(),
+            quaSpecilization4: $('#r4QuaSp').val(),
+            quaInstitute4: $('#r4QuaIns').val(),
+            quaDate4: $('#r4QuaDate').val(),
             qualificationName5: $('#r5QuaName').val(),
-            qualification5: 	$('#r5QuaQualification').val(),
-            quaSpecilization5: 	$('#r5QuaSp').val(),
-            quaInstitute5: 		$('#r5QuaIns').val(),
-            quaDate5: 			$('#r5QuaDate').val(),
-            alSubject1: 		$('#alSubject1').val(),
-            alSubject2: 		$('#alSubject2').val(),
-            alSubject3: 		$('#alSubject3').val(),
-            alSubject4: 		$('#alSubject4').val(),
-            alIndexNo1: 		$('#alIndexNo1').val(),
-            alIndexNo2: 		$('#alIndexNo2').val(),
-            alIndexNo3: 		$('#alIndexNo3').val(),
-            alIndexNo4: 		$('#alIndexNo4').val(),
-            alResult1: 			$('#alResult1').val(),
-            alResult2: 			$('#alResult2').val(),
-            alResult3: 			$('#alResult3').val(),
-            alResult4: 			$('#alResult4').val(),
+            qualification5: $('#r5QuaQualification').val(),
+            quaSpecilization5: $('#r5QuaSp').val(),
+            quaInstitute5: $('#r5QuaIns').val(),
+            quaDate5: $('#r5QuaDate').val(),
+            alSubject1: $('#alSubject1').val(),
+            alSubject2: $('#alSubject2').val(),
+            alSubject3: $('#alSubject3').val(),
+            alSubject4: $('#alSubject4').val(),
+            alIndexNo1: $('#alIndexNo1').val(),
+            alIndexNo2: $('#alIndexNo2').val(),
+            alIndexNo3: $('#alIndexNo3').val(),
+            alIndexNo4: $('#alIndexNo4').val(),
+            alResult1: $('#alResult1').val(),
+            alResult2: $('#alResult2').val(),
+            alResult3: $('#alResult3').val(),
+            alResult4: $('#alResult4').val(),
             alYear1: $('#alYear1').val(),
             alYear2: $('#alYear2').val(),
             alYear3: $('#alYear3').val(),
@@ -1092,7 +1099,7 @@ div.card-body {
             olIndexNo9: $('#olIndexNo9').val(),
             olIndexNo10: $('#olIndexNo10').val(),
             olSubject1: $('#olSubject1').val(),
-            olSubject2: $('#olSubject2').val(),           
+            olSubject2: $('#olSubject2').val(),
             olSubject3: $('#olSubject3').val(),
             olSubject4: $('#olSubject4').val(),
             olSubject5: $('#olSubject5').val(),
@@ -1112,36 +1119,36 @@ div.card-body {
             olResult9: $('#olResult9').val(),
             olResult10: $('#olResult10').val(),
 
-            empNo: 				$('#empNoal').val(),
-            jobDesignation: 	$('#jobDesignation').val(),
-            dateOfDesignation: 	$('#dateOfDesignation').val(),
-            department: 		$('#department').val(),
-            epfNo: 				$('#EPFNo').val(),
-            etfNo: 				$('#ETFNo').val(),
-            contractperiod: 	$('#contractPeriod').val(),
+            empNo: $('#empNoal').val(),
+            jobDesignation: $('#jobDesignation').val(),
+            dateOfDesignation: $('#dateOfDesignation').val(),
+            department: $('#department').val(),
+            epfNo: $('#EPFNo').val(),
+            etfNo: $('#ETFNo').val(),
+            contractperiod: $('#contractPeriod').val(),
             contractExpireDate: $('#contractExpireDate').val(),
-            trainingPeriod: 	$('#trainingPeriod').val(),
+            trainingPeriod: $('#trainingPeriod').val(),
             trainingFinishDate: $('#trainingFinishedDate').val(),
             trainingInstituteName: $('#trainingInstituteName').val(),
 
-            accNo: 		$('#accNo').val(),
-            bankName: 	$('#bankName').val(),
+            accNo: $('#accNo').val(),
+            bankName: $('#bankName').val(),
             branchName: $('#branchName').val(),
-            accType: 	$('#accType').val(),
+            accType: $('#accType').val(),
             childName1: $('#childName1').val(),
-            childDOB1: 	$('#childDOB1').val(),
-            childNIC1: 	$('#childNIC1').val(),
+            childDOB1: $('#childDOB1').val(),
+            childNIC1: $('#childNIC1').val(),
             childName2: $('#childName2').val(),
-            childDOB2: 	$('#childDOB2').val(),
-            childNIC2: 	$('#childNIC2').val(),
+            childDOB2: $('#childDOB2').val(),
+            childNIC2: $('#childNIC2').val(),
             childName3: $('#childName3').val(),
-            childDOB3: 	$('#childDOB3').val(),
-            childNIC3: 	$('#childNIC3').val(),
+            childDOB3: $('#childDOB3').val(),
+            childNIC3: $('#childNIC3').val(),
             childName4: $('#childName4').val(),
-            childDOB4: 	$('#childDOB4').val(),
-            childNIC4: 	$('#childNIC4').val(),
-            hwName: 	$('#hwName').val(),
-            hwNICNo: 	$('#hwNICNo').val(),
+            childDOB4: $('#childDOB4').val(),
+            childNIC4: $('#childNIC4').val(),
+            hwName: $('#hwName').val(),
+            hwNICNo: $('#hwNICNo').val(),
             hwRelation: $('#hwRelation').val(),
             parentsName1: $('#parentsName1').val(),
             parentsRelation1: $('#parentsRelation1').val(),
@@ -1149,42 +1156,40 @@ div.card-body {
             parentsName2: $('#parentsName2').val(),
             parentsRelation2: $('#parentsRelation2').val(),
             parentsNIC2: $('#parentsNIC2').val(),
-           
+
 
         }
-		// alert(JSON.stringify(param));
-		// console.log(param);
-		// $.post("<?php echo base_url(); ?>index.php/Admin/EmployeeDetailshandler", param, function(
+        // alert(JSON.stringify(param));
+        // console.log(param);
+        // $.post("<?php echo base_url(); ?>index.php/Admin/EmployeeDetailshandler", param, function(
         // data) {
 
-		// 	console.log(data)
+        // 	console.log(data)
         //     var response = JSON.parse(data);
-		// 	console.log(response)
+        // 	console.log(response)
         //      if (response.status) {
-		// 		Swal.fire(
-		// 		'Good job!',
-		// 		'You clicked the button!',
-		// 		'success'
-		// 		)
+        // 		Swal.fire(
+        // 		'Good job!',
+        // 		'You clicked the button!',
+        // 		'success'
+        // 		)
 
-		// 		window.location.href = "leaveDataView";
+        // 		window.location.href = "leaveDataView";
         //      } else {
-		// 			Swal.fire({
-		// 			icon: 'error',
-		// 			title: 'Oops...',
-		// 			text: 'Something went wrong!',
-		// 			footer: '<a href>Why do I have this issue?</a>'
-		// 			})
+        // 			Swal.fire({
+        // 			icon: 'error',
+        // 			title: 'Oops...',
+        // 			text: 'Something went wrong!',
+        // 			footer: '<a href>Why do I have this issue?</a>'
+        // 			})
 
         //  }
 
         // });
-	
-   
-	});
 
-</script>
+
+    });
+    </script>
 </body>
 
 </html>
-	

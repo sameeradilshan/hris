@@ -153,7 +153,13 @@ class Admin_model extends CI_model{
 					return $result;
 					
 				}	
+//------------------------------paysheet maker ---------------------------------------------------------------
+			public function  payRollSheetMker($arrayName){
 
+				$result = $this->db->insert("paysheetmaker", $arrayName);
+				return $result;
+				
+			}	
 
 
 //------------------------usermanagement------------------
@@ -201,8 +207,14 @@ public function getLeaveDataView() {
 	$query = $this->db->get();
 	return $query->result();
 }
-//----------------------------------------------------------------------------------------------
-
+//---------------------------------------------paysheet making data view-------------------------------
+public function getPaySheetDataView() {
+	$this->db->select('*');
+	$this->db->from('paysheetmaker d');
+	$this->db->where('d.approvalStatus', 0);
+	$query = $this->db->get();
+	return $query->result();
+}
 
 
 //--------------------------------------monthly performance evaluation------------------------
@@ -308,6 +320,7 @@ public function getDepartmentDataView() {
 		return $query->result();
 
 	}
+	
 //---------------------------------------approval maonth performance ------------------------------------
 
 
@@ -332,6 +345,71 @@ public function getReportLeaveDatalView() {
 
 }
 
+//-----------------------------------------------resignation approval reports---------------------------------------
+		public function getApprovedResignationDatalView() {
+
+			$this->db->select('*');
+			$this->db->from('empresignation d');	
+			$this->db->where('d.empStatus',1);
+			$query = $this->db->get();
+			return $query->result();
+
+		}
+
+//----------------------------------------------resignation decline reports-----------------------------------
+		public function getDeclineResignationDatalView() {
+
+			$this->db->select('*');
+			$this->db->from('empresignation d');	
+			$this->db->where('d.empStatus',2);
+			$query = $this->db->get();
+			return $query->result();
+
+		}
+
+//-----------------------------------------------resignation reports--------------------------------------
+		public function getReportResignationDatalView() {
+
+			$this->db->select('*');
+			$this->db->from('empresignation d');	
+			$this->db->where ("d.empStatus ='1' or d.empStatus ='2'");
+			$query = $this->db->get();
+			return $query->result();
+
+		}
+//----------------------------------------------training reports-----------------------------------------
+//-----------------------------------------------training approval reports---------------------------------------
+public function getApprovedTrainingDatalView() {
+
+	$this->db->select('*');
+	$this->db->from('empaddtraining d');	
+	$this->db->where('d.trainingStatus',1);
+	$query = $this->db->get();
+	return $query->result();
+
+}
+
+//----------------------------------------------training decline reports-----------------------------------
+public function getDeclineTrainingDatalView() {
+
+	$this->db->select('*');
+	$this->db->from('empaddtraining d');	
+	$this->db->where('d.trainingStatus',2);
+	$query = $this->db->get();
+	return $query->result();
+
+}
+
+//-----------------------------------------------training reports--------------------------------------
+public function getReportTrainingDatalView() {
+
+	$this->db->select('*');
+	$this->db->from('empaddtraining d');	
+	$this->db->where ("d.trainingStatus ='1' or d.trainingStatus ='2'");
+	$query = $this->db->get();
+	return $query->result();
+
+}		
 //-------------------------------------increment approval data view--------------------------------------
 
 	public function getApprovedPromotionDatalView() {
@@ -364,6 +442,39 @@ public function getReportLeaveDatalView() {
 		return $query->result();
 
 	}
+//----------------------------------------monthly performance  data report-----------------------------
+
+
+		public function getApprovedMonthlyProDatalView() {
+
+			$this->db->select('*');
+			$this->db->from('empmonthlyevaluation d');	
+			$this->db->where('d.promotionStatus',1);
+			$query = $this->db->get();
+			return $query->result();
+
+		}
+
+//-------------------------------------monthly performance decline data view------------------------------------
+		public function getDeclineMonthlyProDatalView() {
+
+			$this->db->select('*');
+			$this->db->from('empmonthlyevaluation d');	
+			$this->db->where('d.promotionStatus',2);
+			$query = $this->db->get();
+			return $query->result();
+
+		}
+//-------------------------------------monthly performance all data reports---------------------------------------
+		public function getReportMonthlyProDatalView() {
+
+			$this->db->select('*');
+			$this->db->from('empmonthlyevaluation d');	
+			$this->db->where ("d.promotionStatus ='1' or d.promotionStatus ='2'");
+			$query = $this->db->get();
+			return $query->result();
+
+		}	
 //------------------------------------Departmantal employrr data report------------------------------------
 		public function getreportDeptEmpDataView() {
 
@@ -514,10 +625,21 @@ public function gettData(){
 				return $result;
 			}
 
+//------------------------------------approval paysheet ------------------------------------------
+			public function paySheetMakingApproval($dataArr, $whereArr){
+				$result =$this->db->update('paysheetmaker',$dataArr,$whereArr );
+				return $result;
+			}
+
 //-------------------------------------Edit resignation details---------------------
 
 			public function editResignation($dataArr, $whereArr){
 				$result =$this->db->update('empresignation',$dataArr,$whereArr );
+				return $result;
+			}
+// ----------------------------------Edit Promotion And Incerments--------------------------------
+			public function editPromotion($dataArr, $whereArr){
+				$result =$this->db->update('empincrement',$dataArr,$whereArr );
 				return $result;
 			}
 
@@ -560,14 +682,76 @@ public function gettData(){
 
 
 //---------------------------------------get attendance month-----------------------------------------
-public function getAttendacebymonth($empNo){
+public function getAttendacebymonth($empNo,$startDate,$endDate){
 
-	$query=$this->db->query('select count(empNo) as datecame from attendancetable where empNO=$empNo AND date BETWEEN $startDate AND $endDate;');
+	$query=$this->db->query('select count(empNo) as datecame from timesheet where empNo="'.$empNo.'" AND date BETWEEN "'.$startDate.'" AND "'.$endDate.'";');
+	return $query->result();
+	
+
+}
+
+public function getThisMonthPaySheets($startDate,$endDate){
+
+	$query=$this->db->query('select * from timesheet where date BETWEEN "'.$startDate.'" AND "'.$endDate.'";');
 	return $query->result();
 	
 
 }
 
 
+
+/////////////////////////////////////////////////////////
+public function sendEmail($msg,$email){
+
+
+	require 'PHPMailer-master/PHPMailerAutoload.php';
+
+	$mail = new PHPMailer();
+	//$mail->SMTPDebug = 2;                               // Enable verbose debug output
+	//$mail->Debugoutput = 'html';
+	$mail->isSMTP();                                      // Set mailer to use SMTP
+	$mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+	$mail->SMTPAuth = true;                               // Enable SMTP authentication
+	$mail->Username = 'ksdilshan96@gmail.com';                 // SMTP username
+	$mail->Password = 'sameera1996';                           // SMTP password
+	$mail->Port = 587;                                    // TCP port to connect to
+
+	$mail->From = 'ksdilshan96@gmail.com';
+	$mail->FromName = 'HRIS';
+	$mail->addAddress($email);               // Name is optional
+
+	$mail->isHTML(true);                                  // Set email format to HTML
+
+	$mail->Subject = 'welcome';
+	$mail->Body    = $msg ;
+	$mail->AltBody = $msg ;
+
+	if(!$mail->send()) {
+	   return false;
+	} else {
+		return true;
+	}
 }
+
+///////////////////////////////////////////////////////////////////////////
+public function bankReport($bankreportyear,$bankreportMonth){
+	
+	$query=$this->db->query('select * from paysheetmaker where  year="'.$bankreportyear.'" AND month="'.$bankreportMonth.'";');
+	//var_dump($query);
+	return $query->result();
+}
+public function bankReport2($bankreportyear,$bankreportMonth){
+	
+	$query=$this->db->query('select * from paysheetmaker where   year="'.$bankreportyear.'" AND month="'.$bankreportMonth.'";');
+	//var_dump($query);
+	return $query->result();
+}
+public function getEmployeeLeave($startDate,$endDate){
+	$e='select * from empleave where  dateTo BETWEEN "'.$startDate.'" AND "'.$endDate.'";';
+	$query=$this->db->query($e);
+	return $query->result();
+}
+
+}
+
 ?>

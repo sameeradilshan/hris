@@ -87,7 +87,7 @@
 							<!-- small card -->
 							<div class="small-box bg-info">
 							<div class="inner">
-								<h3>150</h3>
+								<h3><?php echo $leave ? $leave : '0';?></h3>
 
 								<p>Leave</p>
 							</div>
