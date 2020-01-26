@@ -221,7 +221,7 @@
                                                         <th scope="col">Course Content</th>
                                                         <th scope="col">Course Duration</th>
                                                         <th scope="col">Course Fee</th>
-                                                        <th scope="col"> Approved</th>
+                                                        <th scope="col"> Entered By</th>
                                                         <th scope="col"> Approved By</th>
 
 
@@ -247,7 +247,7 @@
 																<td>'.$trainingData->courseContent.'</td>
 																<td>'.$trainingData->courseDuration.'</td>
 																<td>'.$trainingData->courseFee.'</td>
-																<td>Admin</td>
+																<td>'.$trainingData->EnteredBy.'</td>
 																
 																<td><div class="btn-group">';
 													if($trainingData->trainingStatus==0){

@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->load->view('adminViews/components/css'); ?>
 
-	
+
 </head>
 
 
@@ -17,7 +17,7 @@
     <!-- Site wrapper -->
     <div class="wrapper">
         <!-- Navbar -->
-        
+
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
@@ -57,162 +57,170 @@
                         <h3 class="card-title">Departments & Detailes</h3>
 
                         <div class="card-tools">
-						<div class="row">	
-                            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
-                                data-target="#addDepartments">
-                                <i class="fa fa-plus"></i> Add Departments
-                            </button>
-							<!-- The Modal -->
-							<form id="department">
-                            <div class="modal" id="addDepartments">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
+                            <div class="row">
+                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
+                                    data-target="#addDepartments">
+                                    <i class="fa fa-plus"></i> Add Departments
+                                </button>
+                                <!-- The Modal -->
+                                <form id="department">
+                                    <div class="modal" id="addDepartments">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
 
-                                        <!-- Modal Header -->
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">Add New Employee Leaves</h4>
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        </div>
-
-                                        <!-- Modal body -->
-                                        <div class="modal-body">
-												<div class="form-group">
-                                                    <label>Department Name</label>
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        name="departmentName" id="departmentName" placeholder="Jhon Doe">
+                                                <!-- Modal Header -->
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">Add New Employee Leaves</h4>
+                                                    <button type="button" class="close"
+                                                        data-dismiss="modal">&times;</button>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label>Department Id</label>
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        name="departmentId" id="departmentId" placeholder="Jhon Doe">
+
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <label>Department Name</label>
+                                                        <input type="text" class="form-control form-control-sm"
+                                                            name="departmentName" id="departmentName"
+                                                            placeholder="Jhon Doe">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Department Id</label>
+                                                        <input type="text" class="form-control form-control-sm"
+                                                            name="departmentId" id="departmentId"
+                                                            placeholder="Jhon Doe">
+                                                    </div>
+
+
                                                 </div>
-                                               
 
+                                                <!-- Modal footer -->
+                                                <div class="modal-footer">
+                                                    <input type="button" class="btn btn-info" name="submit"
+                                                        value="Submit" id="formSubmit">
+                                                    <button type="button" class="btn btn-danger"
+                                                        data-dismiss="modal">Close</button>
+                                                </div>
+
+                                            </div>
                                         </div>
-
-                                        <!-- Modal footer -->
-                                        <div class="modal-footer">
-										<input type="button" class="btn btn-info" name="submit"
-                                                    value="Submit" id="formSubmit">
-                                            <button type="button" class="btn btn-danger"
-                                                data-dismiss="modal">Close</button>
-                                        </div>
-
                                     </div>
-                                </div>
-                            </div>
-							</form>
+                                </form>
 
 
 
-                            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
-                                data-target="#addDesignations">
-                                <i class="fa fa-plus"></i> Add Designations
-                            </button>
-							<!-- The Modal -->
-							<form >
-                            <div class="modal" id="addDesignations">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
+                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
+                                    data-target="#addDesignations">
+                                    <i class="fa fa-plus"></i> Add Designations
+                                </button>
+                                <!-- The Modal -->
+                                <form>
+                                    <div class="modal" id="addDesignations">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
 
-                                        <!-- Modal Header -->
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">Add New Employee Designation</h4>
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        </div>
-
-                                        <!-- Modal body -->
-                                        <div class="modal-body">
-												<div class="form-group">
-                                                    <label>Department Name</label>
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        name="departmentName"  id="departmentName1" placeholder="Jhon Doe">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Designation Name</label>
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        name="designationName" id="designationName" placeholder="Jhon Doe">
-												</div>
-												<div class="form-group">
-                                                    <label>Designation No</label>
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        name="designationId" id="designationNo" placeholder="Jhon Doe">
+                                                <!-- Modal Header -->
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">Add New Employee Designation</h4>
+                                                    <button type="button" class="close"
+                                                        data-dismiss="modal">&times;</button>
                                                 </div>
 
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <label>Department Name</label>
+                                                        <input type="text" class="form-control form-control-sm"
+                                                            name="departmentName" id="departmentName1"
+                                                            placeholder="Jhon Doe">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Designation Name</label>
+                                                        <input type="text" class="form-control form-control-sm"
+                                                            name="designationName" id="designationName"
+                                                            placeholder="Jhon Doe">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Designation No</label>
+                                                        <input type="text" class="form-control form-control-sm"
+                                                            name="designationId" id="designationNo"
+                                                            placeholder="Jhon Doe">
+                                                    </div>
 
+
+                                                </div>
+
+                                                <!-- Modal footer -->
+                                                <div class="modal-footer">
+                                                    <input type="button" class="btn btn-danger" name="submit"
+                                                        value="Submit" id="formSubmit2">
+                                                    <button type="button" class="btn btn-danger"
+                                                        data-dismiss="modal">Close</button>
+                                                </div>
+
+                                            </div>
                                         </div>
-
-                                        <!-- Modal footer -->
-                                        <div class="modal-footer">
-										<input type="button" class="btn btn-danger" name="submit"
-                                                    value="Submit" id="formSubmit2">
-                                            <button type="button" class="btn btn-danger"
-                                                data-dismiss="modal">Close</button>
-                                        </div>
-
                                     </div>
-                                </div>
-                            </div>
-							</form>
+                                </form>
 
-						</div>
+                            </div>
                         </div>
                     </div>
                     <div class="card-body">
 
                         <!-- row start -->
                         <div class="row" style="background-color:#efefef; padding:20px;   border-radius: 25px;">
-                            
-                               
+
+
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <button style="margin-top:32px; width:200px;" type="button"
-                                        class="btn btn-sm btn-primary" data-toggle="modal" target="_blank" onclick="window.open('reportDeptEmpDataView')">
+                                        class="btn btn-sm btn-primary" data-toggle="modal"
+                                        data-target="#departmentReport">
                                         <i class="fa fa-check-circle-o"></i> Departmental Employee
                                     </button>
                                 </div>
-							</div>
-							      
-                            <div class="col-md-3">
+                            </div>
+
+                            <!-- <div class="col-md-3">
                                 <div class="form-group">
                                     <button style="margin-top:32px; width:200px;" type="button"
-                                        class="btn btn-sm btn-primary" data-toggle="modal" data-target="#DeclineLeave" onclick="window.open('desgnationEmpDatalView')">
+                                        class="btn btn-sm btn-primary" data-toggle="modal" data-target="#DeclineLeave" onclick="window.open('reportDeptEmpDataView')" onclick="window.open('desgnationEmpDatalView')">
                                         <i class="fa fa-minus-circle"></i> Designation Employee
                                     </button>
                                 </div>
-							</div>
-							      
-                            <div class="col-md-3">
+							</div> -->
+
+                            <!-- <div class="col-md-3">
                                 <div class="form-group">
                                     <button style="margin-top:32px; width:200px;" type="button"
                                         class="btn btn-sm btn-primary" data-toggle="modal" data-target="#AllLeaves" onclick="window.open('reportLeaveDatalView')">
                                         <i class="fa fa-search"></i> Employee Designation & Dept 
                                     </button>
                                 </div>
-                            </div>
-						
-					</div>
+                            </div> -->
+
+                        </div>
                         <!-- row end -->
-						<br>	
+                        <br>
                         <!-- row start -->
                         <div class="row">
-							<div class="table-responsive">
-							<div  style="overflow-x :auto; min-width:800px; ">
-                            <div class="col-md-12">
-                                <br><br>
-                                <table id="example1" class="table table-bordered table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Dept ID</th>
-											<th scope="col">Department Name</th>
-											<th scope="col">Designation(s)</th>
-                                            <th scope="col">Designation No</th>
-                                            
-											                                            
-                                        </tr>
-                                    </thead>
-									<tbody>
-												<?php
+                            <div class="table-responsive">
+                                <div style="overflow-x :auto; min-width:800px; ">
+                                    <div class="col-md-12">
+                                        <br><br>
+                                        <table id="example1" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Dept ID</th>
+                                                    <th scope="col">Department Name</th>
+                                                    <th scope="col">Designation(s)</th>
+                                                    <th scope="col">Designation No</th>
+
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
 												foreach($departmentDataView as $departmentData){
 													
 													//svar_dump($resignationDataView);
@@ -233,80 +241,151 @@
 													';
 												}
 												?>
-                                                
-                                                
+
+
                                             </tbody>
-                                            
-                                       
-									</table>
-								</div>
-								</div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12 col-md-5">
-                                    <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">
-                                        Showing 1 to 10 of 57 entries</div>
-                                </div>
-                                <div class="col-sm-12 col-md-7">
-                                    <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
-                                        <ul class="pagination">
-                                            <li class="paginate_button page-item previous disabled"
-                                                id="example1_previous">
-                                                <a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0"
-                                                    class="page-link">Previous</a>
-                                            </li>
-                                            <li class="paginate_button page-item active">
-                                                <a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0"
-                                                    class="page-link">1</a>
-                                            </li>
-                                            <li class="paginate_button page-item ">
-                                                <a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0"
-                                                    class="page-link">2</a>
-                                            </li>
-                                            <li class="paginate_button page-item ">
-                                                <a href="#" aria-controls="example1" data-dt-idx="3" tabindex="0"
-                                                    class="page-link">3</a>
-                                            </li>
-                                            <li class="paginate_button page-item ">
-                                                <a href="#" aria-controls="example1" data-dt-idx="4" tabindex="0"
-                                                    class="page-link">4</a>
-                                            </li>
-                                            <li class="paginate_button page-item ">
-                                                <a href="#" aria-controls="example1" data-dt-idx="5" tabindex="0"
-                                                    class="page-link">5</a>
-                                            </li>
-                                            <li class="paginate_button page-item ">
-                                                <a href="#" aria-controls="example1" data-dt-idx="6" tabindex="0"
-                                                    class="page-link">6</a>
-                                            </li>
-                                            <li class="paginate_button page-item next" id="example1_next">
-                                                <a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0"
-                                                    class="page-link">Next</a>
-                                            </li>
-                                        </ul>
+
+
+                                        </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- row end -->
+                        <div class="row">
+                            <div class="col-sm-12 col-md-5">
+                                <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">
+                                    Showing 1 to 10 of 57 entries</div>
+                            </div>
+                            <div class="col-sm-12 col-md-7">
+                                <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                                    <ul class="pagination">
+                                        <li class="paginate_button page-item previous disabled" id="example1_previous">
+                                            <a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0"
+                                                class="page-link">Previous</a>
+                                        </li>
+                                        <li class="paginate_button page-item active">
+                                            <a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0"
+                                                class="page-link">1</a>
+                                        </li>
+                                        <li class="paginate_button page-item ">
+                                            <a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0"
+                                                class="page-link">2</a>
+                                        </li>
+                                        <li class="paginate_button page-item ">
+                                            <a href="#" aria-controls="example1" data-dt-idx="3" tabindex="0"
+                                                class="page-link">3</a>
+                                        </li>
+                                        <li class="paginate_button page-item ">
+                                            <a href="#" aria-controls="example1" data-dt-idx="4" tabindex="0"
+                                                class="page-link">4</a>
+                                        </li>
+                                        <li class="paginate_button page-item ">
+                                            <a href="#" aria-controls="example1" data-dt-idx="5" tabindex="0"
+                                                class="page-link">5</a>
+                                        </li>
+                                        <li class="paginate_button page-item ">
+                                            <a href="#" aria-controls="example1" data-dt-idx="6" tabindex="0"
+                                                class="page-link">6</a>
+                                        </li>
+                                        <li class="paginate_button page-item next" id="example1_next">
+                                            <a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0"
+                                                class="page-link">Next</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- row end -->
 
 
 
 
+
+                </div>
+        </div>
+        <!-- /.card-body -->
+
+        <!-- ---------------------------------------------------------------------- -->
+        <!-- The Modal  Department details -->
+        <form id="bankReportForm" action="<?php echo base_url(); ?>index.php/Admin/reportDeptEmpDataView" method="post">
+            <div class="modal" id="departmentReport">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Employee Department Details</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="form-group">
+                                    <label>Department</label>
+                                    <select class="form-control  form-control-sm" name="Department" id="Department">
+                                        <option value="All">All</option>
+                                        <option value="humanResource">Human Resource</option>
+                                        <option value="Operation">Operation</option>
+                                        <option value="Finance">Finance</option>
+                                        <option value="Admin">Admin</option>
+                                        <option value="Production">Production</option>
+                                        <option value="Engineering">Engineering</option>
+                                        <option value="Marketing">Marketing</option>
+                                        <option value="QualityAssurance">Quality Assurance</option>
+
+
+                                    </select>
+                                </div>
+                            </div>
+                            
+                                <div class="radio">
+                                    <label>Select the Type</label>
+
+									<div class="row">
+                                    <div class="col-4">
+                                        <input type="radio" name="type" id="type" value="Permanent">Permanent
+                                    </div>
+                                    <div class="col-4">
+                                        <input type="radio" name="type" id="type" value="Contract">Contract
+                                    </div>
+                                    <div class="col-4">
+                                        <input type="radio" name="type" id="type" value="Training">Training
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+                        </div>
+
+                        <!-- Modal footer -->
+
+                        <div class="modal-footer">
+
+                            <input type="submit" class="btn btn-danger" name="submit" value="Generate" id="formSubmit"
+                               >
+
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
 
                     </div>
                 </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                    Footer
-                </div>
-                <!-- /.card-footer-->
-        </div>
-        <!-- /.card -->
+            </div>
+        </form>
 
-        </section>
-        <!-- /.content -->
+        <!-- ---------------------------------------- -->
+        <div class="card-footer">
+            Footer
+        </div>
+        <!-- /.card-footer-->
+    </div>
+    <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
 
@@ -326,110 +405,107 @@
     </div>
     <!-- ./wrapper -->
 
-	<?php $this->load->view('adminViews/components/js'); ?>
-	
-	<script>
+    <?php $this->load->view('adminViews/components/js'); ?>
+
+    <script>
     $(function() {
 
-		$("#example1").DataTable({
-			"scrollX" : true
-		}		
-			
-		);
+        $("#example1").DataTable({
+                "scrollX": true
+            }
+
+        );
     });
 
-	$('#formSubmit').click(function() {
-		//alert($('#evaluationYear').val())
+    $('#formSubmit').click(function() {
+        //alert($('#evaluationYear').val())
         var param1 = {
 
 
-            departmentName: 	$('#departmentName').val(),
-            departmentId: 		$('#departmentId').val(),
-           
+            departmentName: $('#departmentName').val(),
+            departmentId: $('#departmentId').val(),
+
 
         }
 
-		console.log(param1);
-		$.post("<?php echo base_url(); ?>index.php/Admin/departmentManagement", param1, function(
-        data1) {
+        console.log(param1);
+        $.post("<?php echo base_url(); ?>index.php/Admin/departmentManagement", param1, function(
+            data1) {
 
-			//window.alert(data1)
+            //window.alert(data1)
             var response = JSON.parse(data1);
-			console.log(response)
+            console.log(response)
 
-             if (response.status) {
-				Swal.fire(
-				'Good job!',
-				'You clicked the button!',
-				'success'
-							)
-			
-				window.location.href = "departmentDataView";
-             } else {
-					Swal.fire({
-					icon: 'error',
-					title: 'Oops...',
-					text: 'Something went wrong!',
-					footer: '<a href>Why do I have this issue?</a>'
-					})
+            if (response.status) {
+                Swal.fire(
+                    'Good job!',
+                    'You clicked the button!',
+                    'success'
+                )
 
-         }
+                window.location.href = "departmentDataView";
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    footer: '<a href>Why do I have this issue?</a>'
+                })
 
-             
+            }
+
+
 
         });
-	
+
     })
 
-	//designation--------------------------------------------------------------------------
+    //designation--------------------------------------------------------------------------
 
-	$('#formSubmit2').click(function() {
-		//alert($('#departmentName1').val())
+    $('#formSubmit2').click(function() {
+        //alert($('#departmentName1').val())
         var param2 = {
 
 
-            departmentName: 	$('#departmentName1').val(),
-            designationName: 	$('#designationName').val(),
-			designationNo: 		$('#designationNo').val(),
-           
+            departmentName: $('#departmentName1').val(),
+            designationName: $('#designationName').val(),
+            designationNo: $('#designationNo').val(),
+
 
         }
 
-		window.alert(param2);
-		$.post("<?php echo base_url(); ?>index.php/Admin/designationManagement", param2, function(
-        data2) {
+        window.alert(param2);
+        $.post("<?php echo base_url(); ?>index.php/Admin/designationManagement", param2, function(
+            data2) {
 
-			window.alert(data2)
+            window.alert(data2)
             var response = JSON.parse(data2);
-			console.log(response)
+            console.log(response)
 
-             if (response.status) {
-				 alert("success")
-				// Swal.fire(
-				// 'Good job!',
-				// 'You clicked the button!',
-				// 'success'
-				// 			)
-			
-				window.location.href = "departmentDataView";
-             } else {
-					Swal.fire({
-					icon: 'error',
-					title: 'Oops...',
-					text: 'Something went wrong!',
-					footer: '<a href>Why do I have this issue?</a>'
-					})
+            if (response.status) {
+                alert("success")
+                // Swal.fire(
+                // 'Good job!',
+                // 'You clicked the button!',
+                // 'success'
+                // 			)
 
-         }
+                window.location.href = "departmentDataView";
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    footer: '<a href>Why do I have this issue?</a>'
+                })
 
-             
+            }
+
+
 
         });
-	
+
     })
-
-
-
     </script>
 
 </body>

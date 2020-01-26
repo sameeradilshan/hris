@@ -102,7 +102,7 @@
 																<td>'.$trainingData->courseContent.'</td>
 																<td>'.$trainingData->courseDuration.'</td>
 																<td>'.$trainingData->courseFee.'</td>
-																<td>Admin</td>
+																<td>'.$trainingData->approvedBy.'</td>
 																
 																<td><div class="btn-group">';
 													if($trainingData->trainingStatus==0){

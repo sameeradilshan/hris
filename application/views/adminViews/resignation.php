@@ -19,10 +19,11 @@
         color: red;
         font-size: 12px;
     }
-	#editModal{
-		max-height: 100%;
-		overflow-y: auto;
-	}
+
+    #editModal {
+        max-height: 100%;
+        overflow-y: auto;
+    }
     </style>
 
 
@@ -110,8 +111,20 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Departmant</label>
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        placeholder="Jhon Doe" name="department" id="department">
+                                                    <select class="form-control  form-control-sm" name="department"
+                                                        id="department">
+                                                       
+                                                        <option value="humanResource">Human Resource</option>
+                                                        <option value="Operation">Operation</option>
+                                                        <option value="Finance">Finance</option>
+                                                        <option value="Admin">Admin</option>
+                                                        <option value="Production">Production</option>
+                                                        <option value="Engineering">Engineering</option>
+                                                        <option value="Marketing">Marketing</option>
+                                                        <option value="QualityAssurance">Quality Assurance</option>
+
+
+                                                    </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Resignation Detailes</label>
@@ -200,7 +213,7 @@
                                                         <th scope="col">Resignation Date</th>
                                                         <th scope="col">Resignation Details</th>
                                                         <!-- <th scope="col">Edit Details</th> -->
-                                                        <th scope="col">Approved By</th>
+                                                        <th scope="col">Entered By</th>
                                                         <th scope="col">Approel</th>
 
 
@@ -221,9 +234,7 @@
 															<td>'.$resignationData->empNic.'</td>
 															<td>'.$resignationData->resigDate.'</td>
 															<td>'.$resignationData->resigDetails.'</td>
-															
-
-															<td>Admin</td>
+															<td>'.$resignationData->EnteredBy.'</td>
 															<td><div class="btn-group">';
 													if($resignationData->empStatus==0){
 														echo '<button type="button" onclick="approvalFunction('.$resignationData->empResigId.')" class="btn btn-info">Approve</button>
@@ -335,7 +346,7 @@
                     <div class="modal-header">
                         <h4 class="modal-title">Resignation Edit</h4>
                         <button type="button" class="close" data-dismiss="modal" onclick="closeStop()">&times;</button>
-                         
+
                     </div>
                     <div class="modal-body" style="min-height:400px;">
                         <div class="form-group">
@@ -560,7 +571,7 @@
     // edit function-----------------------------------------------------------------------------
     function editFunction(object) {
         //var type=type;
-       // alert(JSON.stringify(object))
+        // alert(JSON.stringify(object))
 
         $('#editempName').val(object.empName);
         $('#editempNo').val(object.empNo);
@@ -578,8 +589,8 @@
 
 
     }
-	// modal close button-----------------------------------
-	
+    // modal close button-----------------------------------
+
     function closeStop() {
         var modal = document.getElementById('editModal');
 
@@ -594,19 +605,19 @@
 
         var param = {
 
-            empName: 			$('#editempName').val(),
-            empNo: 				$('#editempNo').val(),
-            empNICNo: 			$('#editempNICNo').val(),
+            empName: $('#editempName').val(),
+            empNo: $('#editempNo').val(),
+            empNICNo: $('#editempNICNo').val(),
             resignationDetails: $('#editresignationDetails').val(),
-            resignationDate: 	$('#editresignationDate').val(),
-            empResigId: 		$('#empResigId').val(),
+            resignationDate: $('#editresignationDate').val(),
+            empResigId: $('#empResigId').val(),
 
-		}
-		console.log(param);
-		$.post("<?php echo base_url(); ?>index.php/Admin/resignationupdate", param, function(
+        }
+        console.log(param);
+        $.post("<?php echo base_url(); ?>index.php/Admin/resignationupdate", param, function(
             data) {
 
-			//console.log(data);
+            //console.log(data);
             var response = JSON.parse(data);
             console.log(response)
             if (response.status) {
@@ -622,8 +633,7 @@
                 })
             }
         });
-			}
-		
+    }
     </script>
 
 

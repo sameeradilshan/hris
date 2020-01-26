@@ -72,7 +72,7 @@
 										<th scope="col">Resignation Details</th>
 										<!-- <th scope="col">Edit Details</th> -->
 										<th scope="col">Approved By</th>
-										<th scope="col">Approel</th>
+										<th scope="col">App. Date</th>
 							
                                             
                                         </tr>
@@ -95,8 +95,9 @@
 													<td>'.$resignationData->resigDetails.'</td>
 													
 
-													<td>Admin</td>
-													<td><div class="btn-group">';
+													<td>'.$resignationData->resignationApproved.'</td>
+													<td>'.$resignationData->appDate.' </td>';
+													
 											if($resignationData->empStatus==0){
 												echo '<button type="button" onclick="approvalFunction('.$resignationData->empResigId.')" class="btn btn-info">Approve</button>
 												<button type="button" onclick="rejectFucntion('.$resignationData->empResigId.')" class="btn btn-danger">Decline</button>

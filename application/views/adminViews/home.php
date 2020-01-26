@@ -104,9 +104,9 @@
 							<!-- small card -->
 							<div class="small-box bg-info">
 							<div class="inner">
-								<h3>150</h3>
+							<h3><?php echo $resignation ? $resignation : '0';?></h3>
 
-								<p>PayRoll</p>
+								<p>Resignation</p>
 							</div>
 							<div class="icon">
 								<i class="fa fa-money"></i>

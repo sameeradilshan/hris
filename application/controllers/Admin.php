@@ -15,19 +15,24 @@ class Admin extends CI_Controller{
 		$this->load->model('Admin_model','',true);
 		$this->load->model('Admin_model','',true);
 	
-		
+			
 
 	}
 
+	public function userName(){
+		//-------------------Admin Name------------
+		$data['userName']=$this->session->userdata['loggedHRAdmin']['adminName'];
+		var_dump($data);
+	}
 // admin views ..................................................................................
 
 
 	public function index()
 	{
-		
+		//------------------emp leave-----
 		$month = date('m');
 		$year = date('Y');
-		
+		$date =date('d');
 
 		if($month == 12){
 			$endyear = $year +1;
@@ -43,6 +48,12 @@ class Admin extends CI_Controller{
 		
 		$data['leave']=sizeof($this->Admin_model-> getEmployeeLeave($startDate,$enddata));
 		//var_dump($result);
+		//emp attendance
+
+		//$data['attendance']=sizeof($this->Admin_model-> getEmployeeaAttendance($startDate,$enddata));
+		$data['resignation']=sizeof($this->Admin_model-> getEmployeeResignation($startDate,$enddata));
+
+		var_dump($data);
 		$this->load->view('adminViews\home',$data);
 	}
 	public function employeeDetails()
@@ -174,8 +185,9 @@ class Admin extends CI_Controller{
 			);//var_dump($data);
 			
 			$msg="Dear  ".$userName.",<br>
-			Thank you for registering as a Partner with  DEEBA Fleet Management System. Please find mentioned below the login link to get started on your venture. </br>
-			Login Page: < Enter link here> <br>
+			Welcome to Sri Lanka Thriposha Ltd. 
+			Please find mentioned below the login link to get started on your venture. </br>
+			Login Page: < https://localhost/HRIS> <br>
 			User Name: ".$userEmail."<br>
 			Password: <PW> ".$hruserpassword."<br>
 			Thanks and regards.
@@ -224,8 +236,9 @@ class Admin extends CI_Controller{
 
 			);
 			$msg="Dear  ".$userName.",<br>
-			Thank you for registering as a Partner with  DEEBA Fleet Management System. Please find mentioned below the login link to get started on your venture. </br>
-			Login Page: < Enter link here> <br>
+			Welcome to Sri Lanka Thriposha Ltd. 
+			Please find mentioned below the login link to get started on your venture. </br>
+			Login Page: < https://localhost/HRIS> <br>
 			User Name: ".$userEmail."<br>
 			Password: <PW> ".$hruserpassword."<br>
 			Thanks and regards.
@@ -272,8 +285,9 @@ class Admin extends CI_Controller{
 				'hrUserPassword'=>$hruserpassword
 			);
 			$msg="Dear ".$userName.",<br>
-			Thank you for registering as a Partner with  DEEBA Fleet Management System. Please find mentioned below the login link to get started on your venture. </br>
-			Login Page: < Enter link here> <br>
+			Welcome to Sri Lanka Thriposha Ltd. 
+			Please find mentioned below the login link to get started on your venture. </br>
+			Login Page: < https://localhost/HRIS> <br>
 			User Name: ".$userEmail."<br>
 			Password: <PW> ".$hruserpassword."<br>
 			Thanks and regards.
@@ -321,6 +335,56 @@ class Admin extends CI_Controller{
 		}
 	}	
 	
+//-----------------------------------------------admin data edit------------------
+			public function admindataEdit(){
+
+				$EditempName		=$this->input->post('EditempName');
+				$EditempNo			=$this->input->post('EditempNo');
+				$EditempNICNo		=$this->input->post('EditempNICNo');
+				$Editemail			=$this->input->post('Editemail');
+				$EdituserAddDate	=$this->input->post('EdituserAddDate');
+				$EdituserType		=$this->input->post('EdituserType');
+
+				$userId=$this->session->userdata['loggedHRAdmin']['adminId'];
+
+
+				//var_dump($userId);
+				
+				$wherearray =array('adminId' => $userId);
+				$datarr= array(
+
+					'adminName'=>	$EditempName,
+					'adminEmail'=>	$Editemail,
+					'adminNIC'=>	$EditempNICNo,
+					'empNo'		=>	$EditempNo,
+					'Type'		=>	$EdituserType,
+					'adminAddData'=>$EdituserAddDate,
+					
+	
+				);//var_dump($datarr);
+				$result=$this->Admin_model->EditAdmin($datarr,$wherearray);
+				if($result){
+					echo json_encode(
+						array(
+	
+							'result' => $result,
+							'status' => true,
+							  
+						)
+					);
+	
+				}else{
+	
+					echo json_encode(
+						array(
+							  
+							'status' => false,
+							  
+						)
+					);
+				}
+			}
+
 // employee add ------------------------------------------------------------------------- 
 			public function EmployeeDetailshandler(){
 				// var_dump($this->input->post());
@@ -455,6 +519,15 @@ class Admin extends CI_Controller{
 				$parentsNIC2		=$this->input->post('parentsNIC2');
 
 
+				 if($contractperiod==''&& $trainingPeriod==''){
+					$empType ='Permanent';
+				 }elseif($contractperiod !==''&& $trainingPeriod==''){
+					$empType ='Contract';
+				 }else{
+					$empType ='Training';
+				 }
+					
+				
 
 				
 				
@@ -485,7 +558,10 @@ class Admin extends CI_Controller{
 						'empNo'			=>$empNo,
 						'EPFNo'			=>$epfNo,
 						'ETFNo'			=>$etfNo,
-						'bankName'		=>$bankName,	
+						'bankName'		=>$bankName,
+						'empType'		=>$empType,
+						'department'	=>$department,
+						'designation'	=>$jobDesignation,
 					);
 					 $result=$this->Admin_model-> addEmployeePersonalDetails($empdata);
 					
@@ -622,6 +698,8 @@ class Admin extends CI_Controller{
 				$resignationDetails	=$this->input->post('resignationDetails');
 				$resignationDate	=$this->input->post('resignationDate');
 
+				$adminName=$this->session->userdata['loggedHRAdmin']['adminName'];
+
 				$resignationdata=array(
 					
 					'empName'		=> $empName,
@@ -629,7 +707,8 @@ class Admin extends CI_Controller{
 					'department'	=> $department,
 					'resigDetails'	=> $resignationDetails,
 					'resigDate'		=> $resignationDate,
-					'empNo'			=> $empNo
+					'empNo'			=> $empNo,
+					'EnteredBy'		=>$adminName,
 
 
 				);//var_dump($resignationdata);
@@ -721,7 +800,8 @@ class Admin extends CI_Controller{
 					$trainingDate 		=$this->input->post('trainingDate');
 					$trainingDuration 	=$this->input->post('trainingDuration');
 					$courseFee 			=$this->input->post('courseFee');
-				
+
+					$adminName=$this->session->userdata['loggedHRAdmin']['adminName'];
 					
 				$trainingManagementData=array(
 
@@ -734,7 +814,7 @@ class Admin extends CI_Controller{
 					'courseDuration'=> $trainingDuration,
 					'date' 			=> $trainingDate,
 					'courseFee' 	=> $courseFee,
-					
+					'EnteredBy' 	=> $adminName,
 				);
 				//var_dump($trainingManagementData);	
 				$result=$this->Admin_model-> addTrainingManagementData($trainingManagementData);	
@@ -1195,6 +1275,17 @@ public function yearPerformanceManagement(){
 
 			} 	
 
+//------------------------------------- user Profile Management-------------------------------------
+ 
+public function userProfileData(){
+	
+	$adminId=$this->session->userdata['loggedHRAdmin']['adminId'];
+
+	$data['userProfileData']=$this->Admin_model->getuserProfileData($adminId);
+	$this->load->view('adminViews\userProfile',$data);
+
+
+}
 //---------------------------------------paysheet maker data view---------------------------------------------
 			public function paySheetDataView(){
 
@@ -1314,8 +1405,28 @@ public function yearPerformanceManagement(){
 
 // ---------------------------------------Departmental Employee Reports-----------------------------------
 			public function reportDeptEmpDataView(){
-				$data['reportPromotionDatalView']=$this->Admin_model->getreportDeptEmpDataView();
-				$this->load->view('adminViews\report8',$data);
+
+				$Department	=$this->input->post('Department');
+				$type		=$this->input->post('type');
+
+				//var_dump($type);
+					if($type=='Permanent'){
+						
+						$data['reportDeptEmpDataView']=$this->Admin_model->getreportDeptEmpDataView($type, $Department);
+						//var_dump($data);
+						$this->load->view('adminViews\report8',$data);
+					}elseif($type=='Contract'){
+
+						$data['reportDeptEmpDataView']=$this->Admin_model->getreportDeptEmpDataView($type, $Department);
+						$this->load->view('adminViews\report8',$data);
+					}else{
+						
+						$data['reportDeptEmpDataView']=$this->Admin_model->getreportDeptEmpDataView($type, $Department);
+						$this->load->view('adminViews\report8',$data);
+					}
+
+				//$data['reportPromotionDatalView']=$this->Admin_model->getreportDeptEmpDataView();
+			//	$this->load->view('adminViews\report8',$data);
 					
 			} 
 //---------------------------------------resignation approval reports----------------------------------------------
@@ -1487,7 +1598,14 @@ public function approvalTraining(){
 	$trainingId=$this->input->post('trainingId');
 	$trainingStatus=$this->input->post('trainingStatus');
 
-	$data = array('trainingStatus'=> $trainingStatus);
+$adminName=$this->session->userdata['loggedHRAdmin']['adminName'];
+
+	$data = array(
+		'trainingStatus'=> $trainingStatus,
+		'approvedBy'=> $adminName,
+
+	
+	);
 	$wherearray =array('trainingId' => $trainingId);
 
 	$result =$this ->Admin_model->updateTrainingApproval($data,$wherearray);
@@ -1558,7 +1676,20 @@ public function updateResignation(){
 	$empResigId=$this->input->post('empResigId');
 	$empStatus=$this->input->post('empStatus');
 
-	$data = array('empStatus'=> $empStatus);
+		$month = date('m');
+		$year = date('Y');
+		$date =date('d');
+		
+
+	$adminName=$this->session->userdata['loggedHRAdmin']['adminName'];
+	$appDate =$year."-".$month."-".$date;
+	//$nameAndDate=$adminName." ".$date."".$month."".$year;
+//var_dump($appDate);
+	$data = array(
+		'empStatus'=> $empStatus,
+		'resignationApproved' =>$adminName,
+		'appDate'=> $appDate,
+);
 	$wherearray =array('empResigId' => $empResigId);
 
 	$result =$this ->Admin_model->updateResignationApproval($data,$wherearray);
@@ -2222,6 +2353,7 @@ public function getempData(){
 
 
 }
+////////////////////////////////////////////////////// bank report///////////
 
 		public function bankreport(){
 
@@ -2229,63 +2361,244 @@ public function getempData(){
 			$payYear			=$this->input->post('Year');
 			$payMonth		=$this->input->post('bankReportMonth');
 			
-			//var_dump($payEmpName);
-			if($paybankName!=='All'){
-				$result=$this->Admin_model->bankReport($payYear,$payMonth);
-			}
-
-			// $bankreportyear =array(	'year' 	=>$payYear,);				
-			// $bankreportMonth =array('month' =>$payMonth,);
-
-			var_dump($result);
-			//$result=$this->Admin_model->bankReport($bankreportyear,$data1,$bankreportMonth);
-		
-			// if($result){
-
-	
-			// 	echo json_encode(
-			// 		array(
-		
-			// 			'result' => $result,
-			// 			'status' => true,
-						  
-			// 		)
-			// 	);
-		
-			// }else{
-		
-			// 	echo json_encode(
-			// 		array(
-						  
-			// 			'status' => false,
-						  
-			// 		)
-			// 	);
-			// }
+			//var_dump($payYear);
+			if($paybankName=='All'){
+				$result['bankreport']=$this->Admin_model->bankReport($payYear,$payMonth);
+				$this->load->view('adminViews\report18',$result);
+				//var_dump($result);
+			}else{
+				$result['bankreport']=$this->Admin_model->bankReporttwo($payYear,$payMonth,$paybankName);
+				$this->load->view('adminViews\report18',$result);
+				//var_dump($result);
+			}		
+			
+			
 	}
 
+///////////////////////////////////salary report/////////////////
+public function salaryreport(){
+
+	$Department			=$this->input->post('Department');
+	$payYear			=$this->input->post('Year');
+	$salaryMonth		=$this->input->post('salaryMonth');
+	
+	//var_dump($Department);
+	if($Department=='All' && $payYear!=='' && $salaryMonth !=='' ){
+		$result['salaryreport']=$this->Admin_model->salaryReport($payYear,$salaryMonth);
+		$this->load->view('adminViews\report19',$result);
+		//var_dump($result);
+	
+	}elseif($Department=='All' && $payYear==''){
+		$result['salaryreport']=$this->Admin_model->salaryReportfore($salaryMonth);
+		$this->load->view('adminViews\fhjkl',$result);
+		//var_dump($result);	
+	}elseif($Department=='All' && $salaryMonth==''){
+		$result['salaryreport']=$this->Admin_model->salaryReportfive($payYear);
+		$this->load->view('adminViews\fhjkl',$result);
+		//var_dump($result);	
+	}elseif($payYear==''){
+		$result['salaryreport']=$this->Admin_model->salaryReporttwo($salaryMonth,$Department);
+		$this->load->view('adminViews\fhjkl',$result);
+		//var_dump($result);
+	}elseif($salaryMonth==''){
+		$result['salaryreport']=$this->Admin_model->salaryReportthree($payYear,$Department);
+		$this->load->view('adminViews\fhjkl',$result);
+		//var_dump($result);			
+	}else{
+		$result['salaryreport']=$this->Admin_model->salaryReportsix($payYear,$salaryMonth,$Department);
+		$this->load->view('adminViews\fhjkl',$result);
+		//var_dump($result);	
+}
+
+
+}
+
+public function EPFreport(){
+
+	$EPF				=$this->input->post('ETF');
+	$Department			=$this->input->post('Department');
+	$payYear			=$this->input->post('epfMonth');
+	$salaryMonth		=$this->input->post('epfMonth');
+
+	//var_dump($EPF);	
+	if($EPF=='EPF'){
+
+		if($Department=='All' && $payYear!=='' && $salaryMonth !=='' ){
+		$result['EPFreport']=$this->Admin_model->epfyReport($payYear,$salaryMonth,$EPF);
+		$this->load->view('adminViews\report20',$result);
+		var_dump($result);
+	
+		}elseif($Department=='All' && $payYear==''){
+			$result['EPFreport']=$this->Admin_model->epfyReportfore($salaryMonth,$EPF);
+			$this->load->view('adminViews\report20',$result);
+			//var_dump($result);	
+		}elseif($Department=='All' && $salaryMonth==''){
+			$result['EPFreport']=$this->Admin_model->epfyReportfive($payYear,$EPF);
+			$this->load->view('adminViews\report20',$result);
+			//var_dump($result);	
+		}elseif($payYear==''){
+			$result['EPFreport']=$this->Admin_model->epfyReporttwo($salaryMonth,$Department,$EPF);
+			$this->load->view('adminViews\report20',$result);
+			//var_dump($result);
+		}elseif($salaryMonth==''){
+			$result['EPFreport']=$this->Admin_model->epfyReportthree($payYear,$Department,$EPF);
+			$this->load->view('adminViews\report20',$result);
+			//var_dump($result);			
+		}else{
+			$result['EPFreport']=$this->Admin_model->epfyReportsix($payYear,$salaryMonth,$Department,$EPF);
+			$this->load->view('adminViews\report20',$result);
+			//var_dump($result);	
+		}
+	}else{
+		if($Department=='All'&& $payYear!=='' && $salaryMonth !=='' ){
+			$result['EPFreport']=$this->Admin_model->epfyReport($payYear,$salaryMonth,$EPF);
+			//var_dump($EPF);
+			$this->load->view('adminViews\report21',$result);
+			//var_dump($result);
+		
+			}elseif($Department=='All' && $payYear==''){
+				$result['EPFreport']=$this->Admin_model->epfyReportfore($salaryMonth,$EPF);
+				$this->load->view('adminViews\report21',$result);
+				//var_dump($result);	
+			}elseif($Department=='All' && $salaryMonth==''){
+				$result['EPFreport']=$this->Admin_model->epfyReportfive($payYear,$EPF);
+				$this->load->view('adminViews\report21',$result);
+				//var_dump($result);	
+			}elseif($payYear==''){
+				$result['EPFreport']=$this->Admin_model->epfyReporttwo($salaryMonth,$Department,$EPF);
+				$this->load->view('adminViews\report21',$result);
+				//var_dump($result);
+			}elseif($salaryMonth==''){
+				$result['EPFreport']=$this->Admin_model->epfyReportthree($payYear,$Department,$EPF);
+				$this->load->view('adminViews\report21',$result);
+				//var_dump($result);			
+			}else{
+				$result['EPFreport']=$this->Admin_model->epfyReportsix($payYear,$salaryMonth,$Department,$EPF);
+				$this->load->view('adminViews\report21',$result);
+				//var_dump($result);	
+			}
+	}
+}
+
+//-----------------------------------------------ETF report--------------------------------------
+
+public function ETFReport(){
+	
+	$Department			=$this->input->post('Department');
+	$payYear			=$this->input->post('etfYear');
+	$salaryMonth		=$this->input->post('etfMonth');
+
+	
+	if($Department=='All' && $payYear!=='' && $salaryMonth !=='' ){
+		$result['ETFReport']=$this->Admin_model->ETFReport($payYear,$salaryMonth);
+		$this->load->view('adminViews\report22',$result);
+		//($result);
+	
+	}elseif($Department=='All' && $payYear==''){
+		//var_dump($Department=='All' && $payYear=='');
+		$result['ETFReport']=$this->Admin_model->ETFReportfore($salaryMonth);
+		$this->load->view('adminViews\report22',$result);
+		//var_dump($result);	
+	}elseif($Department=='All' && $salaryMonth==''){
+		$result['ETFReport']=$this->Admin_model->ETFReportfive($payYear);
+		$this->load->view('adminViews\report22',$result);
+		//var_dump($result);	
+	}elseif($payYear==''){
+		$result['ETFReport']=$this->Admin_model->ETFReporttwo($salaryMonth,$Department);
+		$this->load->view('adminViews\report22',$result);
+		//var_dump($result);
+	}elseif($salaryMonth==''){
+		$result['ETFReport']=$this->Admin_model->ETFReportthree($payYear,$Department);
+		$this->load->view('adminViews\report22',$result);
+		//var_dump($result);			
+	}else{
+		$result['ETFReport']=$this->Admin_model->ETFReportsix($payYear,$salaryMonth,$Department);
+		$this->load->view('adminViews\report22',$result);
+		//var_dump($result);	
+}
+
+}
 //---------------------------passwoed change-------------------------------------
-		public function passwordchange(){
+		public function passwordChange(){
 			
-			$companyAdminId=$this->session->userdata['loggedHRAdmin']['adminId'];	
-			$companyAdm=$this->session->userdata['loggedHRAdmin']['adminPassword'];
-			var_dump($companyAdm);
+			$userId=$this->session->userdata['loggedHRAdmin']['adminId'];	
+			$hrAdminPasswd=$this->session->userdata['loggedHRAdmin']['adminPassword'];
+			//var_dump($hrAdminPasswd);
 
 			$newPasswd			=$this->input->post('newPasswd');
 			$reNewPasswd		=$this->input->post('reNewPasswd');
 			$currentPasswd		=$this->input->post('currentPasswd');
+			//var_dump($currentPasswd);
 
-
-			if ($currentPasswd==$companyAdm){
+			if($hrAdminPasswd==$currentPasswd){
 				if($newPasswd==$reNewPasswd){
-					$result=$this->Admin_model->passwordChange($newPasswd);
-				} //where array akak dala awannay
-			}
+					
+					$result=$this->Admin_model->getpasswordChange($newPasswd,$userId);
+					if($result){
 
-			
+			//var_dump($result);
+							echo json_encode(
+								array(
+					
+									'result' => $result,
+									'status' => true,
+									  
+								)
+							);
+					
+						}else{
+					
+							echo json_encode(
+								array(
+									  
+									'status' => false,
+									  
+								)
+							);
+						}
+				}
+			}
+				
+
+							//var_dump($currentPasswd==$hrAdminPasswd);
+					
 			
 		}
-	
+
+			
+	public function timeSheetChecker(){
+
+		$date	=$this->input->post('fileName');
+		//var_dump($date);
+		$result=$this->Admin_model-> TimeSheetChecker($date);
+		if($result){
+
+			//var_dump($result);
+							echo json_encode(
+								array(
+					
+									'result' => $result,
+									'status' => true,
+									  
+								)
+							);
+					
+						}else{
+					
+							echo json_encode(
+								array(
+									  
+									'status' => false,
+									  
+								)
+							);
+						}
+				
+			
+
+			
+}	
+
 
 }
 

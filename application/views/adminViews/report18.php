@@ -64,15 +64,17 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
+										<th scope="col">Year</th>
+										<th scope="col">Month</th>
 										<th scope="col">EMP No</th>
 										<th scope="col">Employee Name</th>
-										<th scope="col">Emp NIC</th>
+										
 										<!-- <th scope="col">Department</th> -->
-										<th scope="col">Resignation Date</th>
-										<th scope="col">Resignation Details</th>
+										<th scope="col">Department Name </th>
+										<th scope="col">Bank Name</th>
 										<!-- <th scope="col">Edit Details</th> -->
-										<th scope="col">Approved By</th>
-										<th scope="col">Approel</th>
+										<th scope="col">Net Salary</th>
+										<th scope="col">Gross Salary</th>
 							
                                             
                                         </tr>
@@ -81,33 +83,25 @@
 									<tbody>
 											<?php
 										
-										foreach($reportResignationDatalView as $resignationData){
+										foreach($bankreport as $bankreportData){
 													
 											//var_dump($resignationDataView);
 											
 											echo'  
 												<tr role="row" class="odd">
-												
-													<td>'.$resignationData->empNo.'</td>
-													<td>'.$resignationData->empName.'</td>
-													<td>'.$resignationData->empNic.'</td>
-													<td>'.$resignationData->resigDate.'</td>
-													<td>'.$resignationData->resigDetails.'</td>
+													<td>'.$bankreportData->year.'</td>
+													<td>'.$bankreportData->month.'</td>
+													<td>'.$bankreportData->empNo.'</td>
+													<td>'.$bankreportData->empName.'</td>
+													
+													<td>'.$bankreportData->departmentName.'</td>
+													<td>'.$bankreportData->bankName.'</td>
+													<td>'.$bankreportData->NetSalary.'</td>
+													<td>'.$bankreportData->grossSalary.'</td>
 													
 
-													<td>Admin</td>
-													<td><div class="btn-group">';
-											if($resignationData->empStatus==0){
-												echo '<button type="button" onclick="approvalFunction('.$resignationData->empResigId.')" class="btn btn-info">Approve</button>
-												<button type="button" onclick="rejectFucntion('.$resignationData->empResigId.')" class="btn btn-danger">Decline</button>
-												<button type="button" data-toggle="modal"  class="btn btn-info" onclick="editFunction({
-													empResigId:`'.$resignationData->empResigId.'`,
-													empNo:`'.$resignationData->empNo.'`,
-													empName:`'.$resignationData->empName.'`,
-													empNic:`'.$resignationData->empNic.'`,
-													resigDate:`'.$resignationData->resigDate.'`,
-													resigDetails:`'.$resignationData->resigDetails.'`,})"><i class="fa fa-edit"></i> Edit</button>';
-											}
+													';
+											
 											
 
 										

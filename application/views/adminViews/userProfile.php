@@ -55,258 +55,298 @@
                                 <i class="fa fa-times"></i></button>
                         </div>
                     </div>
+
+                    <!-- db get data------------------------------------------------>
+
+
                     <div class="card-body">
                         <div class="row">
+                            <?php 
+							foreach($userProfileData as $userData){
+
+							echo'
                             <div class="col-3">
                                 <button type="button" class="btn btn-block btn-success btn-lg" data-toggle="modal"
-                                    data-target="#view">View User Profile</button>
-                            </div>
+                                    data-target="" onclick="viewFunction({
+										adminId:`'.$userData->adminId.'`,
+										empNo:`'.$userData->empNo.'`,
+										adminName:`'.$userData->adminName.'`,
+										adminEmail:`'.$userData->adminEmail.'`,
+										adminAddData:`'.$userData->adminAddData.'`,
+										type:`'.$userData->type.'`,
+										adminNIC:`'.$userData->adminNIC.'`,})">View User Profile</button>
+							</div>
+							';
+							echo'
                             <div class="col-md-3">
                                 <button type="button" class="btn btn-block btn-success btn-lg" data-toggle="modal"
-                                    data-target="#edit">Edit User Profile</button>
-                            </div>
+								data-target="" onclick="editFunction({
+									EditadminId:`'.$userData->adminId.'`,
+									EditempNo:`'.$userData->empNo.'`,
+									EditadminName:`'.$userData->adminName.'`,
+									EditadminEmail:`'.$userData->adminEmail.'`,
+									EditadminAddData:`'.$userData->adminAddData.'`,
+									Edittype:`'.$userData->type.'`,
+									EditadminNIC:`'.$userData->adminNIC.'`,})">Edit User Profile</button>
+							</div>
+							';
+							echo'
                             <div class="col-3">
                                 <button type="button" class="btn btn-block btn-success btn-lg" data-toggle="modal"
                                     data-target="#pwchange">Change Password</button>
-                            </div>
+							</div>
+							
+							
                             <div class="col-3">
 
                             </div>
+						</div>
+						';
+					}
+					?>
+                            <!-- The Modal -->
+                            <form id="resignationForm">
+                                <div class="modal" id="view">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">User Profile View</h4>
+                                                <button type="button" class="close" onclick="closeStopview()"
+                                                    data-dismiss="modal">&times;</button>
+                                            </div>
+
+                                            <!-- Modal body -->
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-md-9">
+                                                        <div class="form-group">
+                                                            <label>User Name</label>
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                placeholder="Jhon Doe" required name="empName"
+                                                                id="empName">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label>User Type</label>
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                placeholder="Jhon Doe" name="userType" id="userType">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label>Employee No</label>
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                placeholder="Jhon Doe" name="empNo" id="empNo">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label>NIC No</label>
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                placeholder="Jhon Doe" name="empNICNo" id="empNICNo">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label>Email</label>
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                placeholder="Jhon Doe" name="email" id="email">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label>Add Date</label>
+                                                            <input type="date" class="form-control form-control-sm"
+                                                                placeholder="Jhon Doe" name="userAddDate"
+                                                                id="userAddDate">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <!-- Modal footer -->
+
+                                            <div class="modal-footer">
+
+                                                <button type="button" onclick="closeStopview()"
+                                                    class="close_btn btn btn-default pull-left"
+                                                    data-dismiss="modal">Close</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <!--  -->
+
+                            <!-- The Modal -->
+                            <form id="resignationForm">
+                                <div class="modal" id="edituser">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">User Profile Edit</h4>
+                                                <button type="button" class="close" onclick="closeStop()"
+                                                    data-dismiss="modal">&times;</button>
+                                            </div>
+
+                                            <!-- Modal body -->
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-md-9">
+                                                        <div class="form-group">
+                                                            <label>User Name</label>
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                placeholder="Jhon Doe" required name="EditempName"
+                                                                id="EditempName">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label>User Type</label>
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                placeholder="Jhon Doe" name="EdituserType"
+                                                                id="EdituserType">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label>Employee No</label>
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                placeholder="Jhon Doe" name="EditempNo" id="EditempNo">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label>NIC No</label>
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                placeholder="Jhon Doe" name="EditempNICNo"
+                                                                id="EditempNICNo">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label>Email</label>
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                placeholder="Jhon Doe" name="Editemail" id="Editemail">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label>Add Date</label>
+                                                            <input type="date" class="form-control form-control-sm"
+                                                                placeholder="Jhon Doe" name="EdituserAddDate"
+                                                                id="EdituserAddDate">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <!-- Modal footer -->
+
+                                            <div class="modal-footer">
+
+                                                <!-- <input type="submit" class="btn btn-danger" name="submit" value="Save"
+                                                id="formSubmit"> -->
+                                                <button type="button" id="stopModelAdd" onclick="addStop()"
+                                                    class="btn btn-primary" data-dismiss="modal">ADD</button>
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal"
+                                                    onclick="closeStop()">Close</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <!-- User Password Change -->
+
+                            <!-- The Modal -->
+                            <form id="changePassword">
+                                <div class="modal" id="pwchange">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">User Password Change</h4>
+                                                <button type="button" class="close"
+                                                    data-dismiss="modal">&times;</button>
+                                            </div>
+
+                                            <!-- Modal body -->
+                                            <div class="modal-body">
+
+                                                <div class="form-group">
+                                                    <label>Current Password</label>
+                                                    <input type="text" class="form-control form-control-sm"
+                                                        placeholder="Jhon Doe" required name="currentPasswd"
+                                                        id="currentPasswd">
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label>New Password</label>
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                placeholder="Jhon Doe" name="newPasswd" id="newPasswd">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label>Re Type Password</label>
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                placeholder="Jhon Doe" name="reNewPasswd"
+                                                                id="reNewPasswd">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <!-- Modal footer -->
+
+                                            <div class="modal-footer">
+
+                                                <input type="button" class="btn btn-danger" name="submit" value="Change"
+                                                    id="changePasswordBtn">
+
+                                                <button type="button" class="btn btn-danger"
+                                                    data-dismiss="modal">Close</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
 
 
-                        <!-- The Modal -->
-                        <form id="resignationForm">
-                            <div class="modal" id="view">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-
-                                        <!-- Modal Header -->
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">User Profile View</h4>
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        </div>
-
-                                        <!-- Modal body -->
-                                        <div class="modal-body">
-                                            <div class="row">
-                                                <div class="col-md-9">
-                                                    <div class="form-group">
-                                                        <label>User Name</label>
-                                                        <input type="text" class="form-control form-control-sm"
-                                                            placeholder="Jhon Doe" required name="empName" id="empName">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label>User Type</label>
-                                                        <input type="text" class="form-control form-control-sm"
-                                                            placeholder="Jhon Doe" name="empNo" id="empNo">
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label>Employee No</label>
-                                                        <input type="text" class="form-control form-control-sm"
-                                                            placeholder="Jhon Doe" name="empNo" id="empNo">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label>NIC No</label>
-                                                        <input type="text" class="form-control form-control-sm"
-                                                            placeholder="Jhon Doe" name="empNICNo" id="empNICNo">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label>Email</label>
-                                                        <input type="text" class="form-control form-control-sm"
-                                                            placeholder="Jhon Doe" name="empNo" id="empNo">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label>Add Date</label>
-                                                        <input type="text" class="form-control form-control-sm"
-                                                            placeholder="Jhon Doe" name="empNICNo" id="empNICNo">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <!-- Modal footer -->
-
-                                        <div class="modal-footer">
-
-                                            <button type="button" class="btn btn-danger"
-                                                data-dismiss="modal">Close</button>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-
-                        <!--  -->
-
-                        <!-- The Modal -->
-                        <form id="resignationForm">
-                            <div class="modal" id="edit">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-
-                                        <!-- Modal Header -->
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">User Profile Edit</h4>
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        </div>
-
-                                        <!-- Modal body -->
-                                        <div class="modal-body">
-                                            <div class="row">
-                                                <div class="col-md-9">
-                                                    <div class="form-group">
-                                                        <label>User Name</label>
-                                                        <input type="text" class="form-control form-control-sm"
-                                                            placeholder="Jhon Doe" required name="empName" id="empName">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label>User Type</label>
-                                                        <input type="text" class="form-control form-control-sm"
-                                                            placeholder="Jhon Doe" name="empNo" id="empNo">
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label>Employee No</label>
-                                                        <input type="text" class="form-control form-control-sm"
-                                                            placeholder="Jhon Doe" name="empNo" id="empNo">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label>NIC No</label>
-                                                        <input type="text" class="form-control form-control-sm"
-                                                            placeholder="Jhon Doe" name="empNICNo" id="empNICNo">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label>Email</label>
-                                                        <input type="text" class="form-control form-control-sm"
-                                                            placeholder="Jhon Doe" name="empNo" id="empNo">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label>Add Date</label>
-                                                        <input type="text" class="form-control form-control-sm"
-                                                            placeholder="Jhon Doe" name="empNICNo" id="empNICNo">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <!-- Modal footer -->
-
-                                        <div class="modal-footer">
-
-                                            <input type="submit" class="btn btn-danger" name="submit" value="Save"
-                                                id="formSubmit">
-
-                                            <button type="button" class="btn btn-danger"
-                                                data-dismiss="modal">Close</button>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-
-                        <!--  -->
-
-                        <!-- The Modal -->
-                        <form id="changePassword">
-                            <div class="modal" id="pwchange">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-
-                                        <!-- Modal Header -->
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">User Password Change</h4>
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        </div>
-
-                                        <!-- Modal body -->
-                                        <div class="modal-body">
-                                            <div class="form-group">
-                                                <label>Emp No</label>
-                                                <input type="text" class="form-control form-control-sm"
-                                                    placeholder="Jhon Doe" required name="userEmpNo" id="userEmpNo">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Current Password</label>
-                                                <input type="text" class="form-control form-control-sm"
-                                                    placeholder="Jhon Doe" required name="currentPasswd" id="currentPasswd">
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label>New Password</label>
-                                                        <input type="text" class="form-control form-control-sm"
-                                                            placeholder="Jhon Doe" name="newPasswd" id="newPasswd">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label>Re Type Password</label>
-                                                        <input type="text" class="form-control form-control-sm"
-                                                            placeholder="Jhon Doe" name="reNewPasswd" id="reNewPasswd">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <!-- Modal footer -->
-
-                                        <div class="modal-footer">
-
-                                            <input type="button" class="btn btn-danger" name="submit" value="Change"
-                                                id="changePasswordBtn">
-
-                                            <button type="button" class="btn btn-danger"
-                                                data-dismiss="modal">Close</button>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            Footer
+                        </div>
+                        <!-- /.card-footer-->
                     </div>
-                    <!-- /.card-body -->
-                    <div class="card-footer">
-                        Footer
-                    </div>
-                    <!-- /.card-footer-->
-                </div>
-                <!-- /.card -->
+                    <!-- /.card -->
 
             </section>
             <!-- /.content -->
@@ -326,50 +366,144 @@
 
     <script>
     $('#changePasswordBtn').click(function() {
-        //alert($('#evaluationYear').val())
+        //alert($('#trainingEmpName').val())
+        var param2 = {
 
-        var param = {
 
-            userEmpNo: $('#userEmpNo').val(),
             currentPasswd: $('#currentPasswd').val(),
             newPasswd: $('#newPasswd').val(),
             reNewPasswd: $('#reNewPasswd').val(),
-            
 
 
 
         }
-        if (param.userEmpNo !== '') {
-            $.post("<?php echo base_url(); ?>index.php/Admin/resignationHandler", param, function(
-                data) {
+        console.log(param2);
+        $.post("<?php echo base_url(); ?>index.php/Admin/passwordChange", param2, function(
+            data1) {
 
-                console.log(data)
-                var response = JSON.parse(data);
-                console.log(response)
-                if (response.status) {
-                    Swal.fire(
-                        'Good job!',
-                        'You clicked the button!',
-                        'success'
-                    )
+            window.alert(data1)
+            var response = JSON.parse(data1);
+            window.alert(response)
+            if (response.status) {
+                Swal.fire(
+                    'Your Password Changed!',
+                    'You clicked the Ok button and Login again.',
+                    'success'
+                )
 
-                    window.location.href = "resignationDataView";
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Something went wrong!',
-                        footer: '<a href>Why do I have this issue?</a>'
-                    })
+                window.location.href = "userProfile";
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    footer: '<a href>Why do I have this issue?</a>'
+                })
+                window.location.href = "trainingDataView";
+            }
 
-                }
-
-            });
-        }
-        console.log(param);
-
+        });
 
     })
+
+    // view function-----------------------------------------------------------------------------
+    function viewFunction(object) {
+        //var type=type;
+        // alert(JSON.stringify(object))
+
+        $('#empName').val(object.adminName);
+        $('#empNo').val(object.empNo);
+        $('#empNICNo').val(object.adminNIC);
+        $('#userAddDate').val(object.adminAddData);
+        $('#email').val(object.adminEmail);
+        $('#empResigId').val(object.adminId);
+        $('#userType').val(object.type);
+
+
+        var modal = document.getElementById('view');
+
+
+
+        modal.style.display = "block";
+
+
+    }
+    // modal close button-----------------------------------
+
+    function closeStopview() {
+        var modal = document.getElementById('view');
+
+        modal.style.display = "none";
+
+    }
+
+    //------------------edit function------------
+    function editFunction(object) {
+        //var type=type;
+        // alert(JSON.stringify(object))
+
+        $('#EditempName').val(object.EditadminName);
+        $('#EditempNo').val(object.EditempNo);
+        $('#EditempNICNo').val(object.EditadminNIC);
+        $('#EdituserAddDate').val(object.EditadminAddData);
+        $('#Editemail').val(object.EditadminEmail);
+        $('#EditadminId').val(object.EditadminId);
+        $('#EdituserType').val(object.Edittype);
+
+
+        var modal = document.getElementById('edituser');
+
+
+
+        modal.style.display = "block";
+
+
+    }
+    // modal close button-----------------------------------
+
+    function closeStop() {
+        var modal = document.getElementById('edituser');
+
+        modal.style.display = "none";
+
+    }
+    //------------add button-----------------------------
+
+    function addStop() {
+
+        //alert($('#editempName').val());
+
+        var param = {
+
+            EditempName: $('#EditempName').val(),
+            EditempNo: $('#EditempNo').val(),
+            EditempNICNo: $('#EditempNICNo').val(),
+            Editemail: $('#Editemail').val(),
+            EdituserAddDate: $('#EdituserAddDate').val(),
+            EdituserType: $('#EdituserType').val(),
+
+        }
+        //window.alert(param);
+        $.post("<?php echo base_url(); ?>index.php/Admin/admindataEdit", param, function(
+            data) {
+
+            window.alert(data);
+            var response = JSON.parse(data);
+            console.log(response)
+            if (response.status) {
+                alert("succes");
+
+                window.location.href = "userProfileData";
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    footer: '<a href>Why do I have this issue?</a>'
+                })
+            }
+        });
+    }
     </script>
 </body>
 

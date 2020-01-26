@@ -117,7 +117,7 @@
                                 <label>Bank</label>
                                 <select class="form-control  form-control-sm" name="bankName"
                                     id="bankName">
-                                    <option value="all">All</option>
+                                    <option value="All">All</option>
                                     <option value="BOC">Bank Of Ceylon</option>
                                     <option value="PEOPLES">Peoples' Bank</option>
                                     <option value="NSB">National Savings Bank</option>
@@ -137,7 +137,8 @@
                                     <div class="form-group">
                                         <label>Month</label>
                                         <select class="form-control  form-control-sm" name="bankReportMonth"
-                                            id="bankReportMonth">
+											id="bankReportMonth">
+											<option value="">Select a Month</option>
                                             <option value="1">January</option>
                                             <option value="2">February</option>
                                             <option value="3">March</option>
@@ -162,7 +163,7 @@
 
                         <div class="modal-footer">
 
-                            <input type="submit" class="btn btn-danger" name="submit" value="Generate" id="formSubmit" onclick="window.open('')">
+                            <input type="submit" class="btn btn-danger" name="submit" value="Generate" id="formSubmit"  onclick="window.open('')" >
 
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         </div>
@@ -172,7 +173,7 @@
             </div>
         </form>
         <!-- Salary Reports -->
-        <form id="SalaryReportForm" action="" method="post">
+        <form id="SalaryReportForm" action="<?php echo base_url(); ?>index.php/Admin/salaryreport" method="post">
             <div class="modal" id="Salary">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -188,8 +189,8 @@
                             <div class="form-group">
                                 <label>Department</label>
                                 <select class="form-control  form-control-sm" name="Department" id="Department">
-                                    <option value="all">All</option>
-                                    <option value="humanrResource">Human Resource</option>
+                                    <option value="All">All</option>
+                                    <option value="humanResource">Human Resource</option>
                                     <option value="Operation">Operation</option>
                                     <option value="Finance">Finance</option>
                                     <option value="Admin">Admin</option>
@@ -213,19 +214,20 @@
                                     <div class="form-group">
                                         <label>Month</label>
                                         <select class="form-control  form-control-sm" name="salaryMonth"
-                                            id="salaryMonth">
-                                            <option value="January">January</option>
-                                            <option value="February">February</option>
-                                            <option value="March">March</option>
-                                            <option value="April">April</option>
-                                            <option value="May">May</option>
-                                            <option value="June">June</option>
-                                            <option value="July">July</option>
-                                            <option value="August">August</option>
-                                            <option value="September">September</option>
-                                            <option value="October">October</option>
-                                            <option value="November">November</option>
-                                            <option value="December">December</option>
+											id="salaryMonth">
+											<option value="">Select a Month</option>
+                                            <option value="1">January</option>
+                                            <option value="2">February</option>
+                                            <option value="3">March</option>
+                                            <option value="4">April</option>
+                                            <option value="5">May</option>
+                                            <option value="6">June</option>
+                                            <option value="7">July</option>
+                                            <option value="8">August</option>
+                                            <option value="9">September</option>
+                                            <option value="10">October</option>
+                                            <option value="11">November</option>
+                                            <option value="12">December</option>
 
                                         </select>
                                     </div>
@@ -238,7 +240,7 @@
 
                         <div class="modal-footer">
 
-                            <input type="submit" class="btn btn-danger" name="submit" value="Generate" id="formSubmit" onclick="window.open('')">
+                            <input type="submit" class="btn btn-danger" name="submit" value="Generate" id="formSubmit" >
 
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         </div>
@@ -248,7 +250,7 @@
             </div>
         </form>
         <!--Epf Report  -->
-        <form id="EPFReportForm">
+        <form id="EPFReportForm" action="<?php echo base_url(); ?>index.php/Admin/EPFreport" method="post">
             <div class="modal" id="EPF">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -265,8 +267,8 @@
                                 <label>Select the Type</label>
                                 <br>
                                 <div class="center">
-                                    <input type="radio" name="ETF" id="ETF" value="Employee">Employee
-                                    <input type="radio" name="ETF" id="ETF" value="Employer">Employer
+                                    <input type="radio" name="ETF" id="ETF" value="EPF">Employee
+                                    <input type="radio" name="ETF" id="ETF" value="EPFCompany">Employer
                                 </div>
                                 <br>
                             </div>
@@ -298,18 +300,19 @@
                                     <div class="form-group">
                                         <label>Month</label>
                                         <select class="form-control  form-control-sm" name="epfMonth" id="epfMonth">
-                                            <option value="January">January</option>
-                                            <option value="February">February</option>
-                                            <option value="March">March</option>
-                                            <option value="April">April</option>
-                                            <option value="May">May</option>
-                                            <option value="June">June</option>
-                                            <option value="July">July</option>
-                                            <option value="August">August</option>
-                                            <option value="September">September</option>
-                                            <option value="October">October</option>
-                                            <option value="November">November</option>
-                                            <option value="December">December</option>
+											<option value="">Select a Month</option>
+                                            <option value="1">January</option>
+                                            <option value="2">February</option>
+                                            <option value="3">March</option>
+                                            <option value="4">April</option>
+                                            <option value="5">May</option>
+                                            <option value="6">June</option>
+                                            <option value="7">July</option>
+                                            <option value="8">August</option>
+                                            <option value="9">September</option>
+                                            <option value="10">October</option>
+                                            <option value="11">November</option>
+                                            <option value="12">December</option>
 
                                         </select>
                                     </div>
@@ -322,7 +325,7 @@
 
                         <div class="modal-footer">
 
-                            <input type="submit" class="btn btn-danger" name="submit" value="Generate" id="formSubmit" onclick="window.open('')">
+                            <input type="submit" class="btn btn-danger" name="submit" value="Generate" id="formSubmit" >
 
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         </div>
@@ -333,7 +336,7 @@
         </form>
         <!-- ETF Report -------------------------------------------------------------------------------->
 
-        <form id="ETFReportForm">
+        <form id="ETFReportForm" action="<?php echo base_url(); ?>index.php/Admin/ETFreport" method="post">
             <div class="modal" id="ETF1">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -349,7 +352,7 @@
                             <div class="form-group">
                                 <label>Department</label>
                                 <select class="form-control  form-control-sm" name="Department" id="Department">
-                                    <option value="all">All</option>
+                                    <option value="All">All</option>
                                     <option value="humanrResource">Human Resource</option>
                                     <option value="Operation">Operation</option>
                                     <option value="Finance">Finance</option>
@@ -367,25 +370,26 @@
                                     <div class="form-group">
                                         <label>Year</label>
                                         <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe"
-                                            name="Year" id="Year">
+                                            name="etfYear" id="etfYear">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Month</label>
                                         <select class="form-control  form-control-sm" name="etfMonth" id="etfMonth">
-                                            <option value="January">January</option>
-                                            <option value="February">February</option>
-                                            <option value="March">March</option>
-                                            <option value="April">April</option>
-                                            <option value="May">May</option>
-                                            <option value="June">June</option>
-                                            <option value="July">July</option>
-                                            <option value="August">August</option>
-                                            <option value="September">September</option>
-                                            <option value="October">October</option>
-                                            <option value="November">November</option>
-                                            <option value="December">December</option>
+										<option value="">Select a Month</option>
+                                            <option value="1">January</option>
+                                            <option value="2">February</option>
+                                            <option value="3">March</option>
+                                            <option value="4">April</option>
+                                            <option value="5">May</option>
+                                            <option value="6">June</option>
+                                            <option value="7">July</option>
+                                            <option value="8">August</option>
+                                            <option value="9">September</option>
+                                            <option value="10">October</option>
+                                            <option value="11">November</option>
+                                            <option value="12">December</option>
 
                                         </select>
                                     </div>
@@ -398,7 +402,7 @@
 
                         <div class="modal-footer">
 
-                            <input type="submit" class="btn btn-danger" name="submit" value="Generate" id="formSubmit" onclick="window.open('')">
+                            <input type="submit" class="btn btn-danger" name="submit" value="Generate" id="formSubmit" >
 
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         </div>

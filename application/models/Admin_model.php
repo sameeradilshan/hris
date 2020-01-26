@@ -169,6 +169,7 @@ public function getUserManagementDataView() {
 	$this->db->from('hrexecuitve e');
 	$this->db->from('hruser u');
 	$this->db->where('a.adminStatus' or'e.exeStatus' or'u.userStatus', 0);
+	$query=$this->db->query('select * from paysheetmaker where  year="" AND month="" AND departmentName ="" ;');
 	$query = $this->db->get();
 	return $query->result();
 }
@@ -198,6 +199,15 @@ public function getResignationDataView() {
 	return $query->result();
 }
 
+//----------------------------------------------user data display model---------------------------------
+public function getuserProfileData($adminId) {
+	
+	$this->db->select('*');
+	$this->db->from('admin d');
+	$this->db->where('d.adminId',$adminId);
+	$query = $this->db->get();
+	return $query->result();
+}
 //---------------------------------------Leave data view----------------------------------------
 
 public function getLeaveDataView() {
@@ -476,15 +486,14 @@ public function getReportTrainingDatalView() {
 
 		}	
 //------------------------------------Departmantal employrr data report------------------------------------
-		public function getreportDeptEmpDataView() {
+		public function getreportDeptEmpDataView($type,$Department) {
 
-			$this->db->select('*');
-			$this->db->from('empdesignation d');
-			$this->db->join('addemployee t', 't.departmentName = d.departmentName');	
-			$this->db->where ("d.departmentName =g");
-			$query = $this->db->get();
+			
+			//var_dump($Department);
+			$query=$this->db->query('SELECT * FROM addemployee WHERE department="'.$Department.'" AND empType = "'.$type.'";');
+			//var_dump($query);
 			return $query->result();
-
+			
 		}
 //------------------------------------employee data view----------------------
 		public function getemployeesDataView() {
@@ -594,6 +603,14 @@ public function gettData(){
 				$result =$this->db->update('empyearproformance',$dataArr,$whereArr );
 				return $result;
 			}
+//-----------------------------------------------------------Year Promotion  Approval ---
+public function EditAdmin($datarr, $whereArr){
+			//var_dump($datarr);
+			$result =$this->db->update('admin',$datarr,$whereArr);
+			//var_dump($result);
+			return $result;
+}
+
 
 //----------------------------------------leave Approval update-------------------------------------
 			public function updateLeaveApproval($dataArr, $whereArr){
@@ -734,23 +751,171 @@ public function sendEmail($msg,$email){
 }
 
 ///////////////////////////////////////////////////////////////////////////
-public function bankReport($bankreportyear,$bankreportMonth){
+public function bankReport($payYear,$payMonth){
+	//var_dump($payYear);
+	$query=$this->db->query('select * from paysheetmaker where  year="'.$payYear.'" AND month="'.$payMonth.'";');
 	
-	$query=$this->db->query('select * from paysheetmaker where  year="'.$bankreportyear.'" AND month="'.$bankreportMonth.'";');
+	return $query->result();
+}
+public function bankReporttwo($payYear,$payMonth,$paybankName){
+	
+	$query=$this->db->query('select * from paysheetmaker where  year="'.$payYear.'" AND month="'.$payMonth.'" AND bankName ="'.$paybankName.'" ;');
 	//var_dump($query);
 	return $query->result();
 }
-public function bankReport2($bankreportyear,$bankreportMonth){
+
+
+///////////////////////////////////////////////////////////////////////////Salary Report
+public function salaryReport($payYear,$salaryMonth){
+	var_dump($payYear);
+	$query=$this->db->query('select * from paysheetmaker where  year="'.$payYear.'" AND month="'.$salaryMonth.'";');
 	
-	$query=$this->db->query('select * from paysheetmaker where   year="'.$bankreportyear.'" AND month="'.$bankreportMonth.'";');
+	return $query->result();
+}
+public function salaryReporttwo($salaryMonth,$Department){
+	
+	$query=$this->db->query('select * from paysheetmaker where   month="'.$salaryMonth.'" AND departmentName ="'.$Department.'" ;');
 	//var_dump($query);
 	return $query->result();
 }
+public function salaryReportthree($payYear,$Department){
+	//var_dump($payYear);
+	$query=$this->db->query('select * from paysheetmaker where  year="'.$payYear.'" AND  departmentName ="'.$Department.'" ;');
+	
+	return $query->result();
+}
+public function salaryReportfore($salaryMonth){
+	
+	$query=$this->db->query('select * from paysheetmaker where   month="'.$salaryMonth.'" ;');
+	//var_dump($query);
+	return $query->result();
+}
+public function salaryReportfive($payYear){
+	//var_dump($payYear);
+	$query=$this->db->query('select * from paysheetmaker where  year="'.$payYear.'" ;');
+	
+	return $query->result();
+}
+public function salaryReportsix($payYear,$salaryMonth,$Department){
+	
+	$query=$this->db->query('select * from paysheetmaker where  year="'.$payYear.'" AND month="'.$salaryMonth.'" AND departmentName ="'.$Department.'" ;');
+	//var_dump($query);
+	return $query->result();
+}
+
+//-----------------------------------------------------------------------ETF Reports-----
+
+public function epfyReport($payYear,$salaryMonth,$ETF){
+	//var_dump($payYear);
+	$query=$this->db->query('select * from paysheetmaker where  year="'.$payYear.'" AND month="'.$salaryMonth.'" AND month="'.$salaryMonth.'";');
+	
+	return $query->result();
+}
+public function epfyReportfore($salaryMonth,$Department,$ETF){
+	
+	$query=$this->db->query('select * from paysheetmaker where   month="'.$salaryMonth.'" AND departmentName ="'.$Department.'" ;');
+	//var_dump($query);
+	return $query->result();
+}
+public function epfyReportfive($payYear,$Department,$ETF){
+	//var_dump($payYear);
+	$query=$this->db->query('select * from paysheetmaker where  year="'.$payYear.'" AND  departmentName ="'.$Department.'" ;');
+	
+	return $query->result();
+}
+public function epfyReporttwo($salaryMonth,$ETF){
+	
+	$query=$this->db->query('select * from paysheetmaker where   month="'.$salaryMonth.'" ;');
+	//var_dump($query);
+	return $query->result();
+}
+public function epfyReportthree($payYear,$ETF){
+	//var_dump($payYear);
+	$query=$this->db->query('select * from paysheetmaker where  year="'.$payYear.'" ;');
+	
+	return $query->result();
+}
+public function epfyReportsix($payYear,$salaryMonth,$Department,$ETF){
+	
+	$query=$this->db->query('select * from paysheetmaker where  year="'.$payYear.'" AND month="'.$salaryMonth.'" AND departmentName ="'.$Department.'" ;');
+	//var_dump($query);
+	return $query->result();
+}
+
+//-------------------------------------------------------------ETF Reports--------------------------------
+public function ETFReport($payYear,$salaryMonth){
+	//var_dump($payYear);
+	$query=$this->db->query('select * from paysheetmaker where  year="'.$payYear.'" AND month="'.$salaryMonth.'" AND month="'.$salaryMonth.'";');
+	
+	return $query->result();
+}
+public function ETFReporttwo($salaryMonth,$Department){
+	
+	$query=$this->db->query('select * from paysheetmaker where   month="'.$salaryMonth.'" AND departmentName ="'.$Department.'" ;');
+	//var_dump($query);
+	return $query->result();
+}
+public function ETFReportthree($payYear,$Department){
+	//var_dump($payYear);
+	$query=$this->db->query('select * from paysheetmaker where  year="'.$payYear.'" AND  departmentName ="'.$Department.'" ;');
+	
+	return $query->result();
+}
+public function ETFReportfore($salaryMonth){
+	//var_dump($salaryMonth);
+	$query=$this->db->query('select * from paysheetmaker where  month="'.$salaryMonth.'" ;');
+	//var_dump($query);
+	return $query->result();
+}
+public function ETFReportfive($payYear){
+	//var_dump($payYear);
+	$query=$this->db->query('select * from paysheetmaker where  year="'.$payYear.'" ;');
+	
+	return $query->result();
+}
+public function ETFReportsix($payYear,$salaryMonth,$Department){
+	
+	$query=$this->db->query('select * from paysheetmaker where  year="'.$payYear.'" AND month="'.$salaryMonth.'" AND departmentName ="'.$Department.'" ;');
+	//var_dump($query);
+	return $query->result();
+}
+/////////////////////////////////////////////////////////////
+			public function getpasswordChange($newPasswd, $wherearray){
+				//var_dump($newPasswd);
+				$result=$this->db->query('UPDATE admin SET  adminPassword = "'.$newPasswd.'"  WHERE  adminId =  "'.$wherearray.'" ;');
+				return $result;
+				//var_dump($result);
+
+				//return $query->result();
+				//$result =$this->db->update('admin',$newPasswd,$userId );
+				
+				
+				//
+
+}
+		public function TimeSheetChecker($date){
+			//var_dump($date);
+			$query=$this->db->query('SELECT date FROM `timesheet` WHERE `date` ="'.$date.'";');
+			return $query->result();
+				//if ($result->num_rows > 0) 
+				var_dump($query);
+}
+
+//--------------------------Dashboard view button details-------
+
 public function getEmployeeLeave($startDate,$endDate){
 	$e='select * from empleave where  dateTo BETWEEN "'.$startDate.'" AND "'.$endDate.'";';
 	$query=$this->db->query($e);
 	return $query->result();
 }
+
+public function getEmployeeResignation($startDate,$endDate){
+	$e='select * from empresignation where `resigDate` BETWEEN "'.$startDate.'" AND "'.$endDate.'" AND empStatus = 1;';
+	$query=$this->db->query($e);
+	return $query->result();
+}
+
+
 
 }
 

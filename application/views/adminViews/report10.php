@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Decline Leave DatalView</title>
+    <title>All Resignation DatalView</title>
     <!-- Tell the browser to be responsive to screen width -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">  
 	<?php $this->load->view('adminViews/components/css'); ?>
@@ -72,7 +72,7 @@
 										<th scope="col">Resignation Details</th>
 										<!-- <th scope="col">Edit Details</th> -->
 										<th scope="col">Approved By</th>
-										<th scope="col">Approel</th>
+										<th scope="col">App. Date</th>
 									
 										
                                             
@@ -95,9 +95,8 @@
 													<td>'.$resignationData->resigDate.'</td>
 													<td>'.$resignationData->resigDetails.'</td>
 													
-
-													<td>Admin</td>
-													<td><div class="btn-group">';
+													<td>'.$resignationData->resignationApproved.'</td>
+													<td>'.$resignationData->appDate.' </td>';
 											if($resignationData->empStatus==0){
 												echo '<button type="button" onclick="approvalFunction('.$resignationData->empResigId.')" class="btn btn-info">Approve</button>
 												<button type="button" onclick="rejectFucntion('.$resignationData->empResigId.')" class="btn btn-danger">Decline</button>

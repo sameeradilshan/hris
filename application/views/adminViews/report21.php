@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Decline Training DatalView</title>
+    <title>EPF Employer Reports</title>
     <!-- Tell the browser to be responsive to screen width -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">  
 	<?php $this->load->view('adminViews/components/css'); ?>
@@ -25,12 +25,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Decline Training Report</h1>
+                            <h1>All Resignation Report</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Decline Training</li>
+                                <li class="breadcrumb-item active">EPF Employer Reports</li>
                             </ol>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                 <!-- Default box -->
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Decline Training</h3>
+                        <h3 class="card-title">EPF Employee Reports</h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-widget="collapse" data-toggle="tooltip"
@@ -64,20 +64,15 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
+										<th scope="col"> Year</th> 
+										<th scope="col">Month</th>
 										<th scope="col">EMP No</th>
 										<th scope="col">Employee Name</th>
-										<th scope="col">Emp NIC</th>
-										<th scope="col">Department</th>
-										<th scope="col">Programe Name</th>
-										<th scope="col">Venue</th>
-										<th scope="col">Date</th>
-										<th scope="col">Course Content</th>
-										<th scope="col">Course Duration</th>
-										<th scope="col">Course Fee</th>
-										<th scope="col"> Approved</th>
-										<th scope="col"> Approved By</th>
-
-							
+										
+										<th scope="col">Basic Salary </th>
+										<th scope="col">EPFNo </th>
+										<!-- <th scope="col">Edit Details</th> -->
+										<th scope="col">EPF(Company) </th>
                                             
                                         </tr>
                                     </thead>
@@ -85,52 +80,45 @@
 									<tbody>
 											<?php
 										
-										foreach($declineTrainingDatalView as $trainingData){
+										foreach($EPFreport as $EPFreportData){
 													
 											//var_dump($resignationDataView);
 											
 											echo'  
-															<tr role="row" class="odd">
-															
-																<td>'.$trainingData->empNo.'</td>
-																<td>'.$trainingData->empName.'</td>
-																<td>'.$trainingData->empNicNo.'</td>
-																<td>'.$trainingData->department.'</td>
-																<td>'.$trainingData->courseName.'</td>
-																<td>'.$trainingData->venue.'</td>
-																<td>'.$trainingData->date.'</td>
-																<td>'.$trainingData->courseContent.'</td>
-																<td>'.$trainingData->courseDuration.'</td>
-																<td>'.$trainingData->courseFee.'</td>
-																<td>'.$trainingData->approvedBy.'</td>
-																
-																<td><div class="btn-group">';
-													if($trainingData->trainingStatus==0){
-														echo '<button type="button" onclick="approvalFunction('.$trainingData->trainingId.')" class="btn btn-success">Approve</button>
-														<button type="button" onclick="rejectFucntion('.$trainingData->trainingId.')" class="btn btn-danger">Decline</button>
-														<button type="button" data-toggle="modal"  class="btn btn-info" onclick="editFunction({
-
-															trainingId:`'.$trainingData->trainingId.'`,
-															empNo:`'.$trainingData->empNo.'`,
-															empName:`'.$trainingData->empName.'`,
-															department:`'.$trainingData->department.'`,
-															courseName:`'.$trainingData->courseName.'`,
-															venue:`'.$trainingData->venue.'`,
-															date:`'.$trainingData->date.'`,
-															courseContent:`'.$trainingData->courseContent.'`,
-															courseDuration:`'.$trainingData->courseDuration.'`,
-															courseFee:`'.$trainingData->courseFee.'`,
-															empNicNo:`'.$trainingData->empNicNo.'`,}	
-														)"><i class="fa fa-edit"></i> Edit</button>';
-													}
+												<tr role="row" class="odd">
+												
+												<td>'.$EPFreportData->year.'</td>
+												<td>'.$EPFreportData->month.'</td>
+												<td>'.$EPFreportData->empNo.'</td>
+												<td>'.$EPFreportData->empName.'</td>
+												
+												<td>'.$EPFreportData->basicSalary.'</td>
+												<td>'.$EPFreportData->EPFNo.'</td>
+												<td>'.$EPFreportData->EPF.'</td>
+											
 													
 
+													<td>Admin</td>
+													<td><div class="btn-group">';
+											if($resignationData->empStatus==0){
+												echo '<button type="button" onclick="approvalFunction('.$resignationData->empResigId.')" class="btn btn-info">Approve</button>
+												<button type="button" onclick="rejectFucntion('.$resignationData->empResigId.')" class="btn btn-danger">Decline</button>
+												<button type="button" data-toggle="modal"  class="btn btn-info" onclick="editFunction({
+													empResigId:`'.$resignationData->empResigId.'`,
+													empNo:`'.$resignationData->empNo.'`,
+													empName:`'.$resignationData->empName.'`,
+													empNic:`'.$resignationData->empNic.'`,
+													resigDate:`'.$resignationData->resigDate.'`,
+													resigDetails:`'.$resignationData->resigDetails.'`,})"><i class="fa fa-edit"></i> Edit</button>';
+											}
+											
+
+										
+											  echo '</div></td>
 												
-													  echo '</div></td>
-														
-														</tr>
-														 
-													';
+												</tr>
+												 
+											';
 										}
 											
 											?>

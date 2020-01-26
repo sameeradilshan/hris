@@ -690,8 +690,19 @@
                                         </div>
                                         <div class="form-group col-md-6" id="">
                                             <label>Department</label>
-                                            <input type="text" class="form-control form-control-sm"
-                                                placeholder="Jhon Doe" name="department" id="department">
+											<select class="form-control  form-control-sm" name="department" id="department">
+												<option value="">Select Department</option>
+												<option value="humanResource">Human Resource</option>
+												<option value="Operation">Operation</option>
+												<option value="Finance">Finance</option>
+												<option value="Admin">Admin</option>
+												<option value="Production">Production</option>
+												<option value="Engineering">Engineering</option>
+												<option value="Marketing">Marketing</option>
+												<option value="QualityAssurance">Quality Assurance</option>
+
+
+                                    </select>
                                         </div>
                                         <div class="form-group col-md-6 " id="">
                                             <label>EPF No</label>
