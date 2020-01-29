@@ -53,7 +53,7 @@ class Admin extends CI_Controller{
 		//$data['attendance']=sizeof($this->Admin_model-> getEmployeeaAttendance($startDate,$enddata));
 		$data['resignation']=sizeof($this->Admin_model-> getEmployeeResignation($startDate,$enddata));
 
-		var_dump($data);
+		//var_dump($data);
 		$this->load->view('adminViews\home',$data);
 	}
 	public function employeeDetails()
@@ -94,6 +94,8 @@ class Admin extends CI_Controller{
 	{
 		$this->load->view('adminViews\attendance');
 	}
+	
+	
 	
 	public function leaveManagement()
 	{
@@ -1328,12 +1330,39 @@ public function userProfileData(){
 				} 	
 
 //-----------------------------------user Management Data view---------------
+				
 				public function userManagementDataView(){
+
+					$data['AdminCount']=sizeof($this->Admin_model-> getAdminUserDetails());
+					$data['ExrCount']=sizeof($this->Admin_model-> getExeUserDetails());
+					$data['StaffCount']=sizeof($this->Admin_model-> getStaffUserDetails());
+
 					$data['userManagementDataView']=$this->Admin_model->getUserManagementDataView();
 					$this->load->view('adminViews\userManagement',$data);
 
 				} 
+				//-----------------------------------user Management Data ---------------
+				// Admin User----
+				public function userManagementData(){
+					$data['userManagementData']=$this->Admin_model->getUserManagementData();
+					$this->load->view('adminViews\userManagementData',$data);
 
+				} 
+				//Staff user---
+				public function userManagementDataTwo(){
+					$data['userManagementDataTwo']=$this->Admin_model->getUserManagementDataTwo();
+					$this->load->view('adminViews\userManagementDataTwo',$data);
+
+				} 
+				//Exe user---
+				public function userManagementDataThree(){
+					$data['userManagementDataThree']=$this->Admin_model->getUserManagementDataThree();
+					$this->load->view('adminViews\userManagementDataThree',$data);
+
+				} 
+
+
+ 
 
 //-----------------------------------employee Details---------------------------------------------------------
 			public function employeeDetailView(){
@@ -1411,10 +1440,10 @@ public function userProfileData(){
 
 				//var_dump($type);
 					if($type=='Permanent'){
-						
-						$data['reportDeptEmpDataView']=$this->Admin_model->getreportDeptEmpDataView($type, $Department);
+						var_dump($type=='Permanent');
+						//$data['reportDeptEmpDataView']=$this->Admin_model->getreportDeptEmpDataView($type, $Department);
 						//var_dump($data);
-						$this->load->view('adminViews\report8',$data);
+						//$this->load->view('adminViews\report8',$data);
 					}elseif($type=='Contract'){
 
 						$data['reportDeptEmpDataView']=$this->Admin_model->getreportDeptEmpDataView($type, $Department);
@@ -2185,31 +2214,8 @@ public function maonthPerformaceEdit(){
 
 		);
 		$result=$this->Admin_model-> timeSheetData($timeData);
-		if($result){
-
-			echo json_encode(
-				array(
-
-					'result' => $result,
-					'status' => true,
-					  
-				)
-			);
-
-		}else{
-
-			echo json_encode(
-				array(
-					  
-					'status' => false,
-					  
-				)
-			);
-		}
-
+	
 		
-		// var_dump($data);
-		// echo $line. "<br>";
 		
 		}
 
@@ -2247,7 +2253,44 @@ public function getempData(){
 		$endDate='2019-12-01'; 
 		
 		$countPermonth=$this->Admin_model->getAttendacebymonth($employee->empNo,$startDate,$endDate);
-		//var_dump();
+		$attendanceData=$this->Admin_model->getAttendacebymonthAll($employee->empNo,$startDate,$endDate);
+		$numberOfLeaveMonth=$this->Admin_model->getnumberOfLeaveMonth($employee->empNo,$startDate,$endDate);
+		
+		//$onOfLeave= intval ( $numberOfLeaveMonth );
+		$onOfLeave=0;
+		foreach($numberOfLeaveMonth as $leave){
+			$onOfLeave+=$leave->noOfDate;
+		}
+		//var_dump($onOfLeave) ;
+		$noOfWorkingDays=22-$onOfLeave;
+		//var_dump($noOfWorkingDays);
+
+		//ot calculation
+		$time=0;
+
+		foreach ($attendanceData as $attendace) {
+			//$diff=
+			
+			$dattTime = new DateTime($attendace->in_time);
+			$dateTime2 = new DateTime($attendace->out_time);
+			$interval = $dateTime2->diff($dattTime);
+			$hours=$interval->h;
+			$minutes=$interval->i;
+			$totalMinutes=$hours * 60 +$minutes;
+
+			$time=$time+$totalMinutes;
+		}
+
+		
+		$shouldComeMinutes=60*8*22;
+		$otTime=$time-$shouldComeMinutes;
+		if($otTime>0){
+			$othours=$otTime/60;
+		}else{
+			$othours=0;
+		}
+		
+		
 		//select count(empNo) as datecame from attendancetable where empNO=$empNo AND date BETWEEN $startDate AND $endDate;
 		
 		if($salaryInfo){
@@ -2268,12 +2311,16 @@ public function getempData(){
 			$payeTax=$salaryInfo->payeTax;
 			$reduction1=0;
 			
-			if($countPermonth[0]->datecame < 22){
-				$reduction1=(22-($countPermonth[0]->datecame)) *458;
+
+			
+
+			//date came 
+			if($countPermonth[0]->datecame < $noOfWorkingDays){
+				$reduction1=($noOfWorkingDays-($countPermonth[0]->datecame)) *458;
 
 				
 			}
-			
+			var_dump($reduction1);
 			//++++++items--------------------------
 			$gSalary=$basicSalary+$increments+ $livingExpenses;
 			$reduction=$reduction1 +$epf;
@@ -2290,6 +2337,9 @@ public function getempData(){
 				$payrollYear=$year;
 			}
 
+			//ot Amount calculation
+			$otamount=$othours*$OTrate;
+
 
 			$arrayName = array(
 				'empNo' 		=>$employee->empNo,
@@ -2298,7 +2348,7 @@ public function getempData(){
 				'departmentName'=> $department,
 				'brAllowance' 	=> $brAllowance,
 				'increment'		=> $increments,
-				'ot' 			=> $OTrate,
+				'ot' 			=> $otamount,
 				'EPF' 			=> $epf,
 				'ETF' 			=> $etf,
 				'EPFCompany'	=>$epfCompany,
@@ -2359,7 +2409,7 @@ public function getempData(){
 
 			$paybankName		=$this->input->post('bankName');
 			$payYear			=$this->input->post('Year');
-			$payMonth		=$this->input->post('bankReportMonth');
+			$payMonth			=$this->input->post('bankReportMonth');
 			
 			//var_dump($payYear);
 			if($paybankName=='All'){
@@ -2593,13 +2643,196 @@ public function ETFReport(){
 								)
 							);
 						}
-				
-			
-
+	
 			
 }	
+//---------------------------get EMP Data-----------------------------
+public function EmpformData(){
+	$date	=$this->input->post('empNo');
+	//var_dump($date);
+	$result=$this->Admin_model-> getEmpformData($date);
+	//var_dump($result);
+	if($result){
 
-
+		//var_dump($result);
+						echo json_encode(
+							array(
+				
+								'result' => $result,
+								'status' => true,
+								  
+							)
+						);
+				
+					}else{
+				
+						echo json_encode(
+							array(
+								  
+								'status' => false,
+								  
+							)
+						);
+					}
 }
 
+
+//---------------------------Over time calculation----------------
+
+public function overTimeCal(){
+	$StartDate	=$this->input->post('startDate');
+	$EndDate	=$this->input->post('endDate');
+
+	$result['overTimeCal']=$this->Admin_model->getOverTimeCal($StartDate,$EndDate);
+
+	
+	
+}
+//---------------------- Remove Admin-------------------------------------
+public function RemoveAdmin(){
+	$adminId=$this->input->post('adminId');
+	$Status=$this->input->post('Status');
+
+	$data = array('Status' => $Status);
+	$wherearray = array('adminId' => $adminId);
+
+	$result=$this->Admin_model->removeAdminModal($data,$wherearray);
+
+	if($result){
+
+		echo json_encode(
+			array(
+
+				'result' => $result,
+				'status' => true,
+				  
+			)
+		);
+
+	}else{
+
+		echo json_encode(
+			array(
+				  
+				'status' => false,
+				  
+			)
+		);
+	}
+}
+
+//-------------------------remove hr Exe---------------------------------
+public function RemoveExe(){
+	$hrExeId=$this->input->post('hrExeId');
+	$Status=$this->input->post('Status');
+
+	$data = array('Status' => $Status);
+	$wherearray = array('hrExeId' => $hrExeId);
+
+	$result=$this->Admin_model->removeExeModal($data,$wherearray);
+
+	if($result){
+
+		echo json_encode(
+			array(
+
+				'result' => $result,
+				'status' => true,
+				  
+			)
+		);
+
+	}else{
+
+		echo json_encode(
+			array(
+				  
+				'status' => false,
+				  
+			)
+		);
+	}
+}
+//------------------------------hr staff remover------------
+
+
+public function RemoveStaff(){
+	$hrUserId=$this->input->post('hrUserId');
+	$Status=$this->input->post('Status');
+
+	$data = array('Status' => $Status);
+	$wherearray = array('hrUserId' => $hrUserId);
+
+	$result=$this->Admin_model->removeStaffModal($data,$wherearray);
+
+	if($result){
+
+		echo json_encode(
+			array(
+
+				'result' => $result,
+				'status' => true,
+				  
+			)
+		);
+
+	}else{
+
+		echo json_encode(
+			array(
+				  
+				'status' => false,
+				  
+			)
+		);
+	}
+}
+public function editAdmindata(){
+
+	$adminId=$this->input->post('adminId');
+	$EditempName		=$this->input->post('EditempName');
+	$EditempNo			=$this->input->post('EditempNo');
+	$EditempNICNo		=$this->input->post('EditempNICNo');
+	$Editemail			=$this->input->post('Editemail');
+	$EdituserAddDate	=$this->input->post('EdituserAddDate');
+	
+
+	//var_dump($userId);
+	
+	$wherearray =array('adminId' => $adminId);
+	$datarr= array(
+
+		'adminName'=>	$EditempName,
+		'adminEmail'=>	$Editemail,
+		'adminNIC'=>	$EditempNICNo,
+		'empNo'		=>	$EditempNo,
+		
+		'adminAddData'=>$EdituserAddDate,
+		
+
+	);//var_dump($datarr);
+	$result=$this->Admin_model->EditAdmin($datarr,$wherearray);
+	if($result){
+		echo json_encode(
+			array(
+
+				'result' => $result,
+				'status' => true,
+				  
+			)
+		);
+
+	}else{
+
+		echo json_encode(
+			array(
+				  
+				'status' => false,
+				  
+			)
+		);
+	}
+}
+
+}
 ?>

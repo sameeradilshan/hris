@@ -61,7 +61,7 @@
                                 <i class="fa fa-plus"></i> Add New User
                             </button>
                             <!-- The Modal -->
-                            <form >
+                            <form>
                                 <div class="modal" id="addNewUser">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -139,37 +139,66 @@
                 <div class="card-body">
 
 
-				<div class="row" style="background-color:#efefef; padding:20px;   border-radius: 25px;">
-                            
-                               
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <button style="margin-top:32px; width:200px;" type="button"
-                                        class="btn btn-sm btn-primary" data-toggle="modal" target="_blank" onclick="window.open('approvedLeaveDatalView')">
-                                        <i class="fa fa-check-circle-o"></i> Approved Leave
-                                    </button>
+                    <div class="row" style="background-color:#efefef; padding:20px;   border-radius: 25px;">
+
+
+                       
+
+                       
+						<div class="col-lg-3 col-6">
+                            <!-- small card -->
+                            <div class="small-box bg-info">
+                                <div class="inner">
+                                    <h3><?php echo $AdminCount ? $AdminCount : '0';?></h3>
+
+                                    <p>Admin Users</p>
                                 </div>
-							</div>
-							      
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <button style="margin-top:32px; width:200px;" type="button"
-                                        class="btn btn-sm btn-primary" data-toggle="modal" data-target="#DeclineLeave" onclick="window.open('declineLeaveDatalView')">
-                                        <i class="fa fa-minus-circle"></i> Decline Leave
-                                    </button>
+                                <div class="icon">
+                                    <i class=" fa fa-check-circle-o"></i>
                                 </div>
-							</div>
-							      
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <button style="margin-top:32px; width:200px;" type="button"
-                                        class="btn btn-sm btn-primary" data-toggle="modal" data-target="#AllLeaves" onclick="window.open('reportLeaveDatalView')">
-                                        <i class="fa fa-search"></i> All Leaves
-                                    </button>
-                                </div>
+                                <a href="<?php echo base_url(); ?>index.php/Admin/userManagementData"
+                                    class="small-box-footer">
+                                    HR Admin Users info <i class="fa fa-arrow-circle-right"></i>
+                                </a>
                             </div>
-						
-					</div>
+                        </div>
+                        <div class="col-lg-3 col-6">
+                            <!-- small card -->
+                            <div class="small-box bg-info">
+                                <div class="inner">
+                                    <h3><?php echo $ExrCount ? $ExrCount : '0';?></h3>
+
+                                    <p>Executive Users</p>
+                                </div>
+                                <div class="icon">
+                                    <i class=" fa fa-check-circle-o"></i>
+                                </div>
+                                <a href="<?php echo base_url(); ?>index.php/Admin/userManagementDataTwo"
+                                    class="small-box-footer">
+									HR Executive Users info <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-6">
+                            <!-- small card -->
+                            <div class="small-box bg-info">
+                                <div class="inner">
+                                    <h3><?php echo $StaffCount ? $StaffCount : '0';?></h3>
+
+                                    <p>HR Staff Users</p>
+                                </div>
+                                <div class="icon">
+                                    <i class=" fa fa-check-circle-o"></i>
+                                </div>
+                                <a href="<?php echo base_url(); ?>index.php/Admin/userManagementDataThree"
+                                    class="small-box-footer">
+                                    Hr Staff Users info <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
 
                     <div class="card-body">
                         <!-- row start -->
@@ -178,7 +207,7 @@
                                 <div style="overflow-x :auto; min-width:800px; ">
                                     <div class="col-md-12">
                                         <br><br>
-                                        <table id="example1" class="table table-bordered table-striped">
+                                        <!-- <table id="example1" class="table table-bordered table-striped">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">EMP No</th>
@@ -194,81 +223,36 @@
                                             </thead>
 
                                             <tbody>
-                                                <?php
-												foreach($userManagementDataView as $usermanageData){
+                                                //<?php
+												//foreach($userManagementDataView as $usermanageData){
 													
 													//var_dump($resignationDataView);
 													
-													echo'  
-														<tr role="row" class="odd">
+													//echo'  
+														// <tr role="row" class="odd">
 														
-															<td>'.$usermanageData->empNo.'</td>
-															<td>'.$usermanageData->empName.'</td>
-															<td>'.$usermanageData->empNic.'</td>
-															<td>'.$usermanageData->resigDate.'</td>
-															<td>'.$usermanageData->resigDetails.'</td>
-															<td>Admin</td>
+														// 	<td>'.$usermanageData->empNo.'</td>
+														// 	<td>'.$usermanageData->adminName.'</td>
+														// 	<td>'.$usermanageData->type.'</td>
+														// 	<td>'.$usermanageData->adminNIC.'</td>
+														// 	<td>'.$usermanageData->adminAddData.'</td>
+														// 	<td>Admin</td>
 															
 														
-														</tr>
+														// </tr>
 														 
-													 ';
-												}
-												?>
+													// ';
+												//}
+												//?>
 
 
-                                            </tbody>
+                                            </tbody> -->
 
                                         </table>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-sm-12 col-md-5">
-                                    <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">
-                                        <!-- Showing 1 to 10 of 57 entries</div> -->
-                                    </div>
-                                    <div class="col-sm-12 col-md-7">
-                                        <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
-                                            <ul class="pagination">
-                                                <li class="paginate_button page-item previous disabled"
-                                                    id="example1_previous">
-                                                    <a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0"
-                                                        class="page-link">Previous</a>
-                                                </li>
-                                                <li class="paginate_button page-item active">
-                                                    <a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0"
-                                                        class="page-link">1</a>
-                                                </li>
-                                                <li class="paginate_button page-item ">
-                                                    <a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0"
-                                                        class="page-link">2</a>
-                                                </li>
-                                                <li class="paginate_button page-item ">
-                                                    <a href="#" aria-controls="example1" data-dt-idx="3" tabindex="0"
-                                                        class="page-link">3</a>
-                                                </li>
-                                                <li class="paginate_button page-item ">
-                                                    <a href="#" aria-controls="example1" data-dt-idx="4" tabindex="0"
-                                                        class="page-link">4</a>
-                                                </li>
-                                                <li class="paginate_button page-item ">
-                                                    <a href="#" aria-controls="example1" data-dt-idx="5" tabindex="0"
-                                                        class="page-link">5</a>
-                                                </li>
-                                                <li class="paginate_button page-item ">
-                                                    <a href="#" aria-controls="example1" data-dt-idx="6" tabindex="0"
-                                                        class="page-link">6</a>
-                                                </li>
-                                                <li class="paginate_button page-item next" id="example1_next">
-                                                    <a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0"
-                                                        class="page-link">Next</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                             <!-- /.card-body -->
                             <div class="card-footer">
 
@@ -277,6 +261,8 @@
                         </div>
                         <!-- /.card -->
 
+                    </div>
+                </div>
             </section>
             <!-- /.content -->
         </div>
@@ -308,51 +294,49 @@
             "scrollX": true
         });
     });
-</script>
-    //-----------------------form Handling --------------------------------------------------
-<script>
+    </script>
+    <!-- //-----------------------form Handling -------------------------------------------------- -->
+    <script>
     $('#formSubmit').click(function() {
-                //alert($('#userName').val())
-                var param2 = {
+        //alert($('#userName').val())
+        var param2 = {
 
-                    userName: $('#userName').val(),
-                    userEmail: $('#userEmail').val(),
-                    userNIC: $('#userNIC').val(),
-                    empId: $('#empId').val(),
-                    userType: $('#userType').val(),
-                    userAddDate: $('#userAddDate').val(), 
+            userName: $('#userName').val(),
+            userEmail: $('#userEmail').val(),
+            userNIC: $('#userNIC').val(),
+            empId: $('#empId').val(),
+            userType: $('#userType').val(),
+            userAddDate: $('#userAddDate').val(),
 
 
 
-                }
-               console.log(param2);
-                $.post("<?php echo base_url(); ?>index.php/Admin/UserManagementHandler", param2, function(
-                            data1) {
+        }
+        console.log(param2);
+        $.post("<?php echo base_url(); ?>index.php/Admin/UserManagementHandler", param2, function(
+            data1) {
 
-			window.alert(data1)
+            window.alert(data1)
             var response = JSON.parse(data1);
-			window.alert(response)
+            window.alert(response)
 
-             if (response.status) {
-				
-				alert("sucess");
+            if (response.status) {
 
-				window.location.href = "userManagementDataView";
-             } else {
-					Swal.fire({
-					icon: 'error',
-					title: 'Oops...',
-					text: 'Something went wrong!',
-					footer: '<a href>Why do I have this issue?</a>'
-					})
-         }
-   
-							
+                alert("sucess");
+
+                window.location.href = "userManagementDataView";
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    footer: '<a href>Why do I have this issue?</a>'
+                })
+            }
+
+
         });
-	
-    })
 
-             
+    })
     </script>
 </body>
 

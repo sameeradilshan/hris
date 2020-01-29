@@ -104,7 +104,12 @@
 										<p>Time Sheet </p>
 									</a>
               </li>
-                                         
+							<li class="nav-item">
+								<a href="<?php echo base_url(); ?>index.php/Admin/overTime" class="nav-link">
+								<i class="nav-icon fa fa-hourglass-end"></i>
+										<p>Over Time </p>
+									</a>
+              </li>                       
             </ul>
 					</li>
 

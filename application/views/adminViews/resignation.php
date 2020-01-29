@@ -209,7 +209,7 @@
                                                         <th scope="col">EMP No</th>
                                                         <th scope="col">Employee Name</th>
                                                         <th scope="col">Emp NIC</th>
-                                                        <!-- <th scope="col">Department</th> -->
+                                                        <th scope="col">Department</th> 
                                                         <th scope="col">Resignation Date</th>
                                                         <th scope="col">Resignation Details</th>
                                                         <!-- <th scope="col">Edit Details</th> -->
@@ -232,6 +232,7 @@
 															<td>'.$resignationData->empNo.'</td>
 															<td>'.$resignationData->empName.'</td>
 															<td>'.$resignationData->empNic.'</td>
+															<td>'.$resignationData->department.'</td>
 															<td>'.$resignationData->resigDate.'</td>
 															<td>'.$resignationData->resigDetails.'</td>
 															<td>'.$resignationData->EnteredBy.'</td>

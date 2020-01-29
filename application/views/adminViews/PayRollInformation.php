@@ -130,12 +130,12 @@
                                                 <label>EPF Percentage</label>
                                                 <input type="text" class="form-control form-control-sm"
                                                     placeholder="Jhon Doe" name="epf" id="epf">
-											</div>
-											<div class="form-group">
+                                            </div>
+                                            <div class="form-group">
                                                 <label>EPF Percentage Company</label>
                                                 <input type="text" class="form-control form-control-sm"
                                                     placeholder="Jhon Doe" name="epfcomp" id="epfcomp">
-											</div>
+                                            </div>
                                             <div class="form-group">
                                                 <label>ETF Percentage</label>
                                                 <input type="text" class="form-control form-control-sm"
@@ -155,8 +155,8 @@
                                                 <label>Loan</label>
                                                 <input type="text" class="form-control form-control-sm"
                                                     placeholder="Jhon Doe" name="lone" id="lone">
-											</div>
-											<div class="form-group">
+                                            </div>
+                                            <div class="form-group">
                                                 <label>Leaving Expenses</label>
                                                 <input type="text" class="form-control form-control-sm"
                                                     placeholder="Jhon Doe" name="living" id="living">
@@ -236,25 +236,40 @@
                                                     <th scope="col">Increments</th>
                                                     <th scope="col">OT Rate</th>
                                                     <th scope="col">EPF% </th>
-                                                    <th scope="col">EPF</th>
-													<th scope="col">ETF%</th>
+													<th scope="col">EPF</th>
 													<th scope="col">EPF Company</th>
+                                                    <th scope="col">ETF%</th>
+                                                   
                                                     <th scope="col">ETF</th>
 
                                                     <th scope="col">NoPay Rate</th>
                                                     <th scope="col">Absent</th>
                                                     <th scope="col">Loan</th>
-													<th scope="col">Emp Leave</th>
-													<th scope="col">Living Expenses</th>
+                                                    <th scope="col">Emp Leave</th>
+                                                    <th scope="col">Living Expenses</th>
                                                     <th scope="col">Edit </th>
 
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
-										
+										$basicTotal=0;
+										$brAllowanceTotal=0;
+										$incrementsTotal=0;
+										$epfTotal=0;
+										$epfCompanyTotal=0;
+										$etfTotal=0;
+										$livingExpensesTotal=0;
+
 										foreach($payRollInfoDataView as $payRollData){
 											//var_dump($payRollInfoDataView);
+											$basicTotal=$basicTotal +$payRollData->basicSalary;
+											$brAllowanceTotal=$brAllowanceTotal +$payRollData->brAllowance;
+											$incrementsTotal=$incrementsTotal +$payRollData->increments;
+											$epfTotal=$epfTotal +$payRollData->epf;
+											$etfTotal=$etfTotal +$payRollData->etf;
+											$epfCompanyTotal=$epfCompanyTotal +$payRollData->epfCompany;
+											$livingExpensesTotal=$livingExpensesTotal +$payRollData->livingExpenses;
 											
 											echo'  
 											 	<tr role="row" class="odd">
@@ -269,9 +284,10 @@
 											 		<td>'.$payRollData->OTrate.'</td>
 													 <td>'.$payRollData->epfPresantage.'</td>
 													 <td>'.$payRollData->epf.'</td>
+													 <td>'.$payRollData->epfCompany.'</td>
 													 <td>'.$payRollData->etfPresantage.'</td>
 													 <td>'.$payRollData->etf.'</td>
-													 <td>'.$payRollData->epfCompany.'</td>
+													 
 											 		<td>'.$payRollData->noPayRate.'</td>
 											 		<td>'.$payRollData->absent.'</td>
 											 		<td>'.$payRollData->lone.'</td>
@@ -303,15 +319,43 @@
 														echo '</div></td>
 													
 														</tr>
+														 <tr>
 														 
+														 <th scope="col"></th>
+														 <th scope="col"> </th>
+														 <th scope="col"> </th>
+														 <th scope="col"></th>
+														 <th scope="col">'.$basicTotal.'</th>
+														 <th scope="col">'.$brAllowanceTotal.'</th>
+														 <th scope="col">'.$incrementsTotal.'</th>
+														 <th scope="col"> </th>
+														 <th scope="col"> </th>
+														 <th scope="col">'.$epfTotal.'</th>
+														 <th scope="col">'.$epfCompanyTotal.'</th>
+														 <th scope="col"> </th>
+														 <th scope="col">'.$etfTotal.'</th>
+														 <th scope="col"> </th>
+														 <th scope="col"></th>
+														 <th scope="col"></th>
+														 <th scope="col"> </th>
+														 <th scope="col"> '.$livingExpensesTotal.'</th>
+														 <th scope="col"> </th>
+													 </tr>
+														
 													';
 
 											
 												 
 											}
+
+											echo '
+											</tbody>
+                                            <tfoot>
+                                                
+                                            </tfoot>';
 											?>
 
-                                            </tbody>
+                                           
 
                                         </table>
                                     </div>
@@ -391,8 +435,8 @@
                             <label>ETF</label>
                             <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe" name="etf"
                                 id="editetfPresantage">
-						</div>
-						<div class="form-group">
+                        </div>
+                        <div class="form-group">
                             <label>ETF Company</label>
                             <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe" name="etf"
                                 id="editetfCompany">
@@ -411,11 +455,11 @@
                             <label>Loan</label>
                             <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe" name="lone"
                                 id="editlone">
-						</div>
-						<div class="form-group">
+                        </div>
+                        <div class="form-group">
                             <label>Living Expenses</label>
-                            <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe" name="editliving"
-                                id="editliving">
+                            <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe"
+                                name="editliving" id="editliving">
                         </div>
                         <div class="form-group">
 
@@ -445,19 +489,37 @@
     <!-- ./wrapper -->
 
     <?php $this->load->view('adminViews/components/js'); ?>
+    <script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.10.20/api/sum().js"></script>
+
 
     <!-- data table------------------ -->
     <script>
     $(function() {
 
-        $("#example1").DataTable({
+        var table =$("#example1").DataTable({
+
+
                 "scrollX": true,
                 scrollCollapse: true,
+
+                // drawCallback: function() {
+                //     var api = this.api();
+                //     $(api.table().footer()).html(
+                //         api.column(5, {
+                //             page: 'current'
+                //         }).data().sum()
+						
+                //     );
+                // }
+
             }
 
         );
-
+		table.column(5).data().sum();
     });
+    </script>
+    <script>
+    // Simply get the sum of a column
     </script>
     // form sunmission----------------------------------
     <script>
@@ -478,8 +540,8 @@
             payNoPayRate: $('#noPayRate').val(),
             payAbsents: $('#absents').val(),
             payLone: $('#lone').val(),
-			payEFTComp: $('#epfcomp').val(),
-			payLiving: $('#living').val(),
+            payEFTComp: $('#epfcomp').val(),
+            payLiving: $('#living').val(),
 
 
 
@@ -531,8 +593,8 @@
         $('#editabsents').val(object.absent);
         $('#editlone').val(object.lone);
         $('#editempleave').val(object.empleave);
-		$('#editetfCompany').val(object.etfCompany);
-		$('#editliving').val(object.livingExpenses);
+        $('#editetfCompany').val(object.etfCompany);
+        $('#editliving').val(object.livingExpenses);
 
 
         var modal = document.getElementById('editModal');
@@ -575,8 +637,8 @@
             payNoPayRate: $('#editnoPayRate').val(),
             payAbsents: $('#editabsents').val(),
             payLone: $('#editlone').val(),
-			payEPFComp: $('#editetfCompany').val(),
-			payLiving: $('#editliving').val(),
+            payEPFComp: $('#editetfCompany').val(),
+            payLiving: $('#editliving').val(),
 
 
         }

@@ -93,83 +93,83 @@
                             // ';    
                             // $sad=explode(",",$employeeDetails->specialization);
                             // echo'
-                            // specialization1:`'.$sad[0].'`;
-                            // specialization2:`'.$sad[1].'`;
-                            // specialization3:`'.$sad[2].'`;
-                            // specialization4:`'.$sad[3].'`;
-                            // specialization5:`'.$sad[4].'`;
+                            specialization1:`'.$sad[0].'`;
+                            specialization2:`'.$sad[1].'`;
+                            specialization3:`'.$sad[2].'`;
+                            specialization4:`'.$sad[3].'`;
+                            specialization5:`'.$sad[4].'`;
                                                             
                             // '; 
                             // $sad=explode(",",$employeeDetails->institute);
                             // echo'
-                            // institute1:`'.$sad[0].'`;
-                            // institute2:`'.$sad[1].'`;
-                            // institute3:`'.$sad[2].'`;
-                            // institute4:`'.$sad[3].'`;
-                            // institute5:`'.$sad[4].'`;
+                            institute1:`'.$sad[0].'`;
+                            institute2:`'.$sad[1].'`;
+                            institute3:`'.$sad[2].'`;
+                            institute4:`'.$sad[3].'`;
+                            institute5:`'.$sad[4].'`;
                                                             
                             // '; 
                             // $sad1=explode(",",$employeeDetails->qualifieddate);
 							// 	echo'
-							// 	qualifieddate1:`'.$sad1[0].'`;
-							// 	qualifieddate2:`'.$sad1[1].'`;
-							// 	qualifieddate3:`'.$sad1[2].'`;
-							// 	qualifieddate4:`'.$sad1[3].'`;
-							// 	qualifieddate5:`'.$sad1[4].'`;
+								qualifieddate1:`'.$sad1[0].'`;
+								qualifieddate2:`'.$sad1[1].'`;
+								qualifieddate3:`'.$sad1[2].'`;
+								qualifieddate4:`'.$sad1[3].'`;
+								qualifieddate5:`'.$sad1[4].'`;
 																
 							// 	'; 
 							// //------------al result
 							// $sad=explode(",",$employeeDetails->alIndexNo);
                             // echo'
-                            // alIndexNo1:'.$sad[0].';
-                            // alIndexNo2:'.$sad[1].';
-                            // alIndexNo3:'.$sad[2].';
-                            // alIndexNo4:'.$sad[3].';
+                            alIndexNo1:'.$sad[0].';
+                            alIndexNo2:'.$sad[1].';
+                            alIndexNo3:'.$sad[2].';
+                            alIndexNo4:'.$sad[3].';
                            
                                                             
 							// ';  
 							
 							// $sad=explode(",",$employeeDetails->alYear);
                             // echo'
-                            // alYear1:'.$sad[0].';
-                            // alYear2:'.$sad[1].';
-                            // alYear3:'.$sad[2].';
-                            // alYear1:'.$sad[3].';
+                            alYear1:'.$sad[0].';
+                            alYear2:'.$sad[1].';
+                            alYear3:'.$sad[2].';
+                            alYear1:'.$sad[3].';
                            
                                                             
 							// ';  
 							
 							// $sad=explode(",",$employeeDetails->alSubject);
                             // echo'
-                            // alSubject1:'.$sad[0].';
-                            // alSubject1:'.$sad[1].';
-                            // alSubject3:'.$sad[2].';
-                            // alSubject4:'.$sad[3].';
+                            alSubject1:'.$sad[0].';
+                            alSubject1:'.$sad[1].';
+                            alSubject3:'.$sad[2].';
+                            alSubject4:'.$sad[3].';
                            
                                                             
 							// '; 
 							// $sad=explode(",",$employeeDetails->alResult);
                             // echo'
-                            // alResult1:'.$sad[0].';
-                            // alResult2:'.$sad[1].';
-                            // alResult3:'.$sad[2].';
-                            // alResult4:'.$sad[3].';
+                            alResult1:'.$sad[0].';
+                            alResult2:'.$sad[1].';
+                            alResult3:'.$sad[2].';
+                            alResult4:'.$sad[3].';
                           
                                                             
 							// '; 
 							// //----------------ol result---
 							// $sad=explode(",",$employeeDetails->olIndexNo);
                             // echo'
-                            // olIndexNo1:'.$sad[0].';
-                            // olIndexNo2:'.$sad[1].';
-                            // olIndexNo3:'.$sad[2].';
-							// olIndexNo4:'.$sad[3].';
-							// olIndexNo5:'.$sad[4].';
-                            // olIndexNo6:'.$sad[5].';
-                            // olIndexNo7:'.$sad[6].';
-							// olIndexNo8:'.$sad[7].';
-							// olIndexNo9:'.$sad[8].';
-                            // olIndexNo10:'.$sad[9].';
+                            olIndexNo1:'.$sad[0].';
+                            olIndexNo2:'.$sad[1].';
+                            olIndexNo3:'.$sad[2].';
+							olIndexNo4:'.$sad[3].';
+							olIndexNo5:'.$sad[4].';
+                            olIndexNo6:'.$sad[5].';
+                            olIndexNo7:'.$sad[6].';
+							olIndexNo8:'.$sad[7].';
+							olIndexNo9:'.$sad[8].';
+                            olIndexNo10:'.$sad[9].';
                             
                            
                           
@@ -177,16 +177,16 @@
 							// '; 
 							// $sad=explode(",",$employeeDetails->olsubject);
                             // echo'
-                            // olsubject1:'.$sad[0].';
-                            // olsubject2:'.$sad[1].';
-                            // olsubject3:'.$sad[2].';
-							// olsubject4:'.$sad[3].';
-							// olsubject5:'.$sad[4].';
-                            // olsubject6:'.$sad[5].';
-                            // olsubject7:'.$sad[6].';
-							// olsubject8:'.$sad[7].';
-							// olsubject9:'.$sad[8].';
-							// olsubject10:'.$sad[9].';
+                            olsubject1:'.$sad[0].';
+                            olsubject2:'.$sad[1].';
+                            olsubject3:'.$sad[2].';
+							olsubject4:'.$sad[3].';
+							olsubject5:'.$sad[4].';
+                            olsubject6:'.$sad[5].';
+                            olsubject7:'.$sad[6].';
+							olsubject8:'.$sad[7].';
+							olsubject9:'.$sad[8].';
+							olsubject10:'.$sad[9].';
 							
 							
                           
@@ -1277,75 +1277,75 @@
             $('#r1QuaIns').val(object.institute1);
             $('#r1QuaDate').val(object.qualifieddate1);
 
-            // $('#r2QuaName').val(object.qualificationName2);
-            // $('#r2QuaQualification').val(object.qualification2);
-            // $('#r2QuaSp').val(object.specialization2);
-            // $('#r2QuaIns').val(object.institute2);
-            // $('#r2QuaDate').val(object.qualifieddate2);
+            $('#r2QuaName').val(object.qualificationName2);
+            $('#r2QuaQualification').val(object.qualification2);
+            $('#r2QuaSp').val(object.specialization2);
+            $('#r2QuaIns').val(object.institute2);
+            $('#r2QuaDate').val(object.qualifieddate2);
 
-            // $('#r3QuaName').val(object.qualificationName3);
-            // $('#r3QuaQualification').val(object.qualification3);
-            // $('#r3QuaSp').val(object.specialization3);
-            // $('#r3QuaIns').val(object.institute3);
-            // $('#r3QuaDate').val(object.qualifieddate3);
+            $('#r3QuaName').val(object.qualificationName3);
+            $('#r3QuaQualification').val(object.qualification3);
+            $('#r3QuaSp').val(object.specialization3);
+            $('#r3QuaIns').val(object.institute3);
+            $('#r3QuaDate').val(object.qualifieddate3);
 
-            // $('#r4QuaName').val(object.qualificationName4);
-            // $('#r4QuaQualification').val(object.qualification4);
-            // $('#r4QuaSp').val(object.specialization4);
-            // $('#r4QuaIns').val(object.institute4);
-            // $('#r4QuaDate').val(object.qualifieddate4);
+            $('#r4QuaName').val(object.qualificationName4);
+            $('#r4QuaQualification').val(object.qualification4);
+            $('#r4QuaSp').val(object.specialization4);
+            $('#r4QuaIns').val(object.institute4);
+            $('#r4QuaDate').val(object.qualifieddate4);
 
-            // $('#r5QuaName').val(object.qualificationName5);
-            // $('#r5QuaQualification').val(object.qualification5);
-            // $('#r5QuaSp').val(object.specialization5);
-            // $('#r5QuaIns').val(object.institute5);
-            // $('#r5QuaDate').val(object.qualifieddate5);
+            $('#r5QuaName').val(object.qualificationName5);
+            $('#r5QuaQualification').val(object.qualification5);
+            $('#r5QuaSp').val(object.specialization5);
+            $('#r5QuaIns').val(object.institute5);
+            $('#r5QuaDate').val(object.qualifieddate5);
 
-            // $('#alSubject1').val(object.alSubject1);
-            // $('#alSubject2').val(object.alSubject1);
-            // $('#alSubject3').val(object.alSubject3);
-            // $('#alSubject4').val(object.alSubject4);
-            // $('#alIndexNo1').val(object.);
-            // $('#alIndexNo2').val(object.);
-            // $('#alIndexNo3').val(object.);
-            // $('#alIndexNo4').val(object.);
-            // $('#alResult1').val(object.);
-            // $('#alResult2').val(object.);
-            // $('#alResult3').val(object.);
-            // $('#alResult4').val(object.);
-            // $('#alYear1').val(object.);
-            // $('#alYear2').val(object.);
-            // $('#alYear3').val(object.);
-            // $('#alYear4').val(object.);
-            // $('#olIndexNo1').val(object.);
-            // $('#olIndexNo2').val(object.);
-            // $('#olIndexNo3').val(object.);
-            // $('#olIndexNo4').val(object.);
-            // $('#olIndexNo6').val(object.);
-            // $('#olIndexNo7').val(object.);
-            // $('#olIndexNo8').val(object.);
-            // $('#olIndexNo9').val(object.);
-            // $('#olIndexNo10').val(object.);
-            // $('#olSubject1').val(object.);
-            // $('#olSubject2').val(object.);
-            // $('#olSubject3').val(object.);
-            // $('#olSubject4').val(object.);
-            // $('#olSubject5').val(object.);
-            // $('#olSubject6').val(object.);
-            // $('#olSubject7').val(object.);
-            // $('#olSubject8').val(object.);
-            // $('#olSubject9').val(object.);
-            // $('#olSubject10').val(object.);
-            // $('#olResult1').val(object.);
-            // $('#olResult2').val(object.);
-            // $('#olResult3').val(object.);
-            // $('#olResult4').val(object.);
-            // $('#olResult5').val(object.);
-            // $('#olResult6').val(object.);
-            // $('#olResult7').val(object.);
-            // $('#olResult8').val(object.);
-            // $('#olResult9').val(object.);
-            // $('#olResult10').val(object.);
+            $('#alSubject1').val(object.alSubject1);
+            $('#alSubject2').val(object.alSubject1);
+            $('#alSubject3').val(object.alSubject3);
+            $('#alSubject4').val(object.alSubject4);
+            $('#alIndexNo1').val(object.);
+            $('#alIndexNo2').val(object.);
+            $('#alIndexNo3').val(object.);
+            $('#alIndexNo4').val(object.);
+            $('#alResult1').val(object.);
+            $('#alResult2').val(object.);
+            $('#alResult3').val(object.);
+            $('#alResult4').val(object.);
+            $('#alYear1').val(object.);
+            $('#alYear2').val(object.);
+            $('#alYear3').val(object.);
+            $('#alYear4').val(object.);
+            $('#olIndexNo1').val(object.);
+            $('#olIndexNo2').val(object.);
+            $('#olIndexNo3').val(object.);
+            $('#olIndexNo4').val(object.);
+            $('#olIndexNo6').val(object.);
+            $('#olIndexNo7').val(object.);
+            $('#olIndexNo8').val(object.);
+            $('#olIndexNo9').val(object.);
+            $('#olIndexNo10').val(object.);
+            $('#olSubject1').val(object.);
+            $('#olSubject2').val(object.);
+            $('#olSubject3').val(object.);
+            $('#olSubject4').val(object.);
+            $('#olSubject5').val(object.);
+            $('#olSubject6').val(object.);
+            $('#olSubject7').val(object.);
+            $('#olSubject8').val(object.);
+            $('#olSubject9').val(object.);
+            $('#olSubject10').val(object.);
+            $('#olResult1').val(object.);
+            $('#olResult2').val(object.);
+            $('#olResult3').val(object.);
+            $('#olResult4').val(object.);
+            $('#olResult5').val(object.);
+            $('#olResult6').val(object.);
+            $('#olResult7').val(object.);
+            $('#olResult8').val(object.);
+            $('#olResult9').val(object.);
+            $('#olResult10').val(object.);
 
             // $('#empNoal').val(object.);
             $('#jobDesignation').val(object.jobDesignation);

@@ -164,16 +164,41 @@ class Admin_model extends CI_model{
 
 //------------------------usermanagement------------------
 public function getUserManagementDataView() {
-	$this->db->select('*');
-	$this->db->from('admin a');
-	$this->db->from('hrexecuitve e');
-	$this->db->from('hruser u');
-	$this->db->where('a.adminStatus' or'e.exeStatus' or'u.userStatus', 0);
-	$query=$this->db->query('select * from paysheetmaker where  year="" AND month="" AND departmentName ="" ;');
-	$query = $this->db->get();
-	return $query->result();
+	
+	
+	//$query=$this->db->query('SELECT `admin`.*,`hruser`.*, `hrexecuitve`.* FROM `admin` , `hruser` , `hrexecuitve`');
+	//var_dump($query);		
+	//return $query->result();
+			
 }
-
+//Admin
+public function getUserManagementData() {
+	
+	
+	$query=$this->db->query('SELECT * FROM `admin` where `Status`=0');
+	//var_dump($query);	
+		
+	return $query->result();
+			
+}
+//executive 
+public function getUserManagementDataTwo() {
+	
+	
+	$query=$this->db->query('SELECT * FROM `hrexecuitve` where`Status`=0');
+	//var_dump($query);		
+	return $query->result();
+			
+}
+//hr user--
+public function getUserManagementDataThree() {
+	
+	
+	$query=$this->db->query('SELECT * FROM `hruser` where`Status`=0 ');
+	//var_dump($query);		
+	return $query->result();
+			
+}
 
 
 
@@ -341,6 +366,7 @@ public function getDeclineMonthlyProformanceDatalView() {
 	$this->db->from('empmonthlyevaluation d');	
 	$this->db->where('d.promotionStatus',2);
 	$query = $this->db->get();
+	
 	return $query->result();
 
 }
@@ -491,7 +517,7 @@ public function getReportTrainingDatalView() {
 			
 			//var_dump($Department);
 			$query=$this->db->query('SELECT * FROM addemployee WHERE department="'.$Department.'" AND empType = "'.$type.'";');
-			//var_dump($query);
+			var_dump($query);
 			return $query->result();
 			
 		}
@@ -527,7 +553,11 @@ public function getReportTrainingDatalView() {
 
 				}
 
-
+//-----------------------------get emp form data---------------------------------
+public function getEmpformData($empNo) {
+	$query=$this->db->query('SELECT nameInitials,empNic,department FROM addemployee WHERE empNo="'.$empNo.'" ;');
+	return $query->result();
+}
 
 				//meke nic akan data ganna ona display karanna 
 				//mage code eka ekak penahang ..... 
@@ -703,9 +733,26 @@ public function getAttendacebymonth($empNo,$startDate,$endDate){
 
 	$query=$this->db->query('select count(empNo) as datecame from timesheet where empNo="'.$empNo.'" AND date BETWEEN "'.$startDate.'" AND "'.$endDate.'";');
 	return $query->result();
+
+}
+
+public function getAttendacebymonthAll($empNo,$startDate,$endDate){
+
+	$query=$this->db->query('select * from timesheet where empNo="'.$empNo.'" AND date BETWEEN "'.$startDate.'" AND "'.$endDate.'";');
+	return $query->result();
 	
 
 }
+public function getnumberOfLeaveMonth
+($empNo,$startDate,$endDate){
+
+	//var_dump($endDate);
+	$query=$this->db->query('SELECT * from empleave where empNo="'.$empNo.'" AND dateFrom BETWEEN "'.$startDate.'" AND "'.$endDate.'";');
+	return $query->result();
+	
+
+}
+
 
 public function getThisMonthPaySheets($startDate,$endDate){
 
@@ -916,6 +963,59 @@ public function getEmployeeResignation($startDate,$endDate){
 }
 
 
+//---------------------------------user Management view dashborad----------------------------------
+public function getAdminUserDetails(){
+	$e='select * from admin where `Status`=0  ;';
+	$query=$this->db->query($e);
+	return $query->result();
+}
+public function getExeUserDetails(){
+	$e='select * from hrexecuitve where `Status`=0  ;';
+	$query=$this->db->query($e);
+	return $query->result();
+}
+public function getStaffUserDetails(){
+	$e='select * from hruser where `Status`=0  ;';
+	$query=$this->db->query($e);
+	return $query->result();
+}
+
+//--------------------------------get OverTime Cal--------------------------
+
+public function getOverTimeCal($StartDate,$EndDate){
+	$query='select * from timesheet where `date` BETWEEN "'.$StartDate.'" AND "'.$EndDate.'" ;';
+	
+	
+	$rows = $query->custom_result_object('timesheet');
+
+foreach ($rows as $row)
+{
+        echo $row->id;
+        echo $row->email;
+        echo $row->last_login('Y-m-d');
+}
+}
+
+//-------------------------------------Remove Admin User -------------------------------
+
+public function removeAdminModal($dataArr, $whereArr){
+	$result =$this->db->update('admin',$dataArr,$whereArr );
+	return $result;
+}
+//-------------------------------------Remove Executive User -------------------------------
+
+public function removeExeModal($dataArr, $whereArr){
+
+	$result =$this->db->update('hrexecuitve',$dataArr,$whereArr );
+	return $result;
+}
+//-------------------------------------Remove staff User -------------------------------
+
+public function removeStaffModal($dataArr, $whereArr){
+	//var_dump($dataArr);
+	$result =$this->db->update('hruser',$dataArr,$whereArr );
+	return $result;
+}
 
 }
 

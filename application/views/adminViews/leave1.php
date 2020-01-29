@@ -10,12 +10,12 @@
 	<?php $this->load->view('adminViews/components/css'); ?>
 	
 	<script>
-		table{
-			border-collapse: collapse;
-			border-spacing :0;
-			width : 100%;
+		// table{
+		// 	border-collapse: collapse;
+		// 	border-spacing :0;
+		// 	width : 100%;
 
-		}
+		// }
 	</script>	
 
 </head>
