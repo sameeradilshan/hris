@@ -94,12 +94,7 @@
                                     <div class="modal-body">
 
                                         <form id="incrementdataform">
-                                            <div class="form-group">
-                                                <label>Employee Name</label>
-                                                <input type="text" class="form-control form-control-sm"
-                                                    placeholder="Jhon Doe" name="empName" id="promempName">
-                                            </div>
-                                            <div class="row">
+										<div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label>Employee No</label>
@@ -115,6 +110,12 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="form-group">
+                                                <label>Employee Name</label>
+                                                <input type="text" class="form-control form-control-sm"
+                                                    placeholder="Jhon Doe" name="empName" id="promempName">
+                                            </div>
+                                            
                                             <div class="form-group">
                                                 <label>Department</label>
                                                 <input type="text" class="form-control form-control-sm"
@@ -204,8 +205,9 @@
                                                     <th scope="col">Promotion Detailes</th>
                                                     <th scope="col">Date</th>
                                                     <th scope="col">Promotion/Increment</th>
-                                                    <th scope="col">Approval</th>
-                                                    <th scope="col">Approved By</th>
+                                                    
+													<th scope="col">Entered By</th>
+													<th scope="col">Approval</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -223,10 +225,11 @@
 															<td>'.$incrementData->incrementDetails.'</td>
 															<td>'.$incrementData->date.'</td>
 															<td>'.$incrementData->increment.'</td>
+															<td>'.$incrementData->EnteredBy.'</td>
 															
 															<td><div class="btn-group">';
 													if($incrementData->incrementStatus	==0){
-														echo '<button type="button" onclick="approvalFunction('.$incrementData->IncrementId.')" class="btn btn-info">Approve</button>
+														echo '<button type="button" onclick="approvalFunction('.$incrementData->IncrementId.')" class="btn btn-success">Approve</button>
 														<button type="button" onclick="rejectFucntion('.$incrementData->IncrementId.')" class="btn btn-danger">Decline</button>
 														<button type="button" data-toggle="modal"  class="btn btn-info" onclick="editFunction({
 															IncrementId:`'.$incrementData->IncrementId.'`,
@@ -243,7 +246,7 @@
 
 												
 													  echo '</div></td>
-													  <td>Admin</td>
+													 
 														</tr>
 														 
 													';
@@ -397,7 +400,7 @@
             "autoWidth": false
         });
     });
-
+//--------------------------form data fill---------
     $('#promempName').click(function() {
         //alert($('#empNo').val())
         var param = {
@@ -411,6 +414,8 @@
 
             console.log(response.nameInitials);
 			$('#promempName').val(response.nameInitials);
+			$('#department').val(response.department);
+			$('#empNICNo').val(response.empNic);
 		alert(result);
 			
             

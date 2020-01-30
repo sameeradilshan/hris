@@ -84,26 +84,37 @@
 
                                         <!-- Modal body -->
                                         <div class="modal-body">
-
-                                            <div class="form-group">
-                                                <label>Employee Name</label>
-                                                <input type="text" class="form-control form-control-sm"
-                                                    placeholder="Jhon Doe" name="empName" id="empName">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Employee No</label>
+                                                        <input type="text" class="form-control form-control-sm"
+                                                            placeholder="Jhon Doe" name="empNo" id="empNo">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>NIC No</label>
+                                                        <input type="text" class="form-control form-control-sm"
+                                                            placeholder="Jhon Doe" name="empNICNo" id="empNICNo">
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label>Employee No</label>
-                                                <input type="text" class="form-control form-control-sm"
-                                                    placeholder="Jhon Doe" name="empNo" id="empNo">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>NIC No</label>
-                                                <input type="text" class="form-control form-control-sm"
-                                                    placeholder="Jhon Doe" name="empNICNo" id="empNICNo">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Department</label>
-                                                <input type="text" class="form-control form-control-sm"
-                                                    placeholder="Jhon Doe" name="department" id="department">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Employee Name</label>
+                                                        <input type="text" class="form-control form-control-sm"
+                                                            placeholder="Jhon Doe" name="empName" id="empName">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Department</label>
+                                                        <input type="text" class="form-control form-control-sm"
+                                                            placeholder="Jhon Doe" name="department" id="department">
+                                                    </div>
+                                                </div>
                                             </div>
 
                                             <div class="form-group">
@@ -129,33 +140,33 @@
                                             <div class="form-group">
                                                 <label>EPF Percentage</label>
                                                 <input type="text" class="form-control form-control-sm"
-                                                    placeholder="Jhon Doe" name="epf" id="epf">
+                                                    placeholder=" 8" name="epf" id="epf">
                                             </div>
                                             <div class="form-group">
                                                 <label>EPF Percentage Company</label>
                                                 <input type="text" class="form-control form-control-sm"
-                                                    placeholder="Jhon Doe" name="epfcomp" id="epfcomp">
+                                                    placeholder=" 12" name="epfcomp" id="epfcomp">
                                             </div>
                                             <div class="form-group">
                                                 <label>ETF Percentage</label>
                                                 <input type="text" class="form-control form-control-sm"
-                                                    placeholder="Jhon Doe" name="etf" id="etf">
+                                                    placeholder=" 3" name="etf" id="etf">
                                             </div>
                                             <div class="form-group">
                                                 <label>NoPay Rate</label>
                                                 <input type="text" class="form-control form-control-sm"
-                                                    placeholder="Jhon Doe" name="noPayRate" id="noPayRate">
+                                                    placeholder="1.5 " name="noPayRate" id="noPayRate">
                                             </div>
-                                            <div class="form-group">
+                                            <!-- <div class="form-group">
                                                 <label>Absent</label>
                                                 <input type="text" class="form-control form-control-sm"
-                                                    placeholder="Jhon Doe" name="absents" id="absents">
+                                                    placeholder=" " name="absents" id="absents">
                                             </div>
                                             <div class="form-group">
                                                 <label>Loan</label>
                                                 <input type="text" class="form-control form-control-sm"
                                                     placeholder="Jhon Doe" name="lone" id="lone">
-                                            </div>
+                                            </div> -->
                                             <div class="form-group">
                                                 <label>Leaving Expenses</label>
                                                 <input type="text" class="form-control form-control-sm"
@@ -236,16 +247,16 @@
                                                     <th scope="col">Increments</th>
                                                     <th scope="col">OT Rate</th>
                                                     <th scope="col">EPF% </th>
-													<th scope="col">EPF</th>
-													<th scope="col">EPF Company</th>
+                                                    <th scope="col">EPF</th>
+                                                    <th scope="col">EPF Company</th>
                                                     <th scope="col">ETF%</th>
-                                                   
+
                                                     <th scope="col">ETF</th>
 
                                                     <th scope="col">NoPay Rate</th>
-                                                    <th scope="col">Absent</th>
-                                                    <th scope="col">Loan</th>
-                                                    <th scope="col">Emp Leave</th>
+                                                    
+                                                    <!-- <th scope="col">Loan</th>
+                                                   -->
                                                     <th scope="col">Living Expenses</th>
                                                     <th scope="col">Edit </th>
 
@@ -289,9 +300,7 @@
 													 <td>'.$payRollData->etf.'</td>
 													 
 											 		<td>'.$payRollData->noPayRate.'</td>
-											 		<td>'.$payRollData->absent.'</td>
-											 		<td>'.$payRollData->lone.'</td>
-													<td>'.$payRollData->empleave.'</td>
+											 	
 													<td>'.$payRollData->livingExpenses.'</td>
 													<td><div class="btn-group">';
 													echo'
@@ -310,9 +319,7 @@
 														etfPresantage:`'.$payRollData->etfPresantage.'`,
 														etfCompany:`'.$payRollData->epfCompany.'`,
 														noPayRate:`'.$payRollData->noPayRate.'`,
-														absent:`'.$payRollData->absent.'`,
-														lone:`'.$payRollData->lone.'`,
-														empleave:`'.$payRollData->empleave.'`,
+													
 														livingExpenses:`'.$payRollData->livingExpenses.'`,
 														})"><i class="fa fa-edit"></i> Edit</button>';
 												
@@ -320,8 +327,7 @@
 													
 														</tr>
 														 <tr>
-														 
-														 <th scope="col"></th>
+														 <th scope="col"> </th>
 														 <th scope="col"> </th>
 														 <th scope="col"> </th>
 														 <th scope="col"></th>
@@ -335,9 +341,9 @@
 														 <th scope="col"> </th>
 														 <th scope="col">'.$etfTotal.'</th>
 														 <th scope="col"> </th>
-														 <th scope="col"></th>
-														 <th scope="col"></th>
-														 <th scope="col"> </th>
+														
+														
+														
 														 <th scope="col"> '.$livingExpensesTotal.'</th>
 														 <th scope="col"> </th>
 													 </tr>
@@ -355,7 +361,7 @@
                                             </tfoot>';
 											?>
 
-                                           
+
 
                                         </table>
                                     </div>
@@ -441,21 +447,17 @@
                             <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe" name="etf"
                                 id="editetfCompany">
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label>NoPay Rate</label>
                             <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe"
                                 name="noPayRate" id="editnoPayRate">
                         </div>
-                        <div class="form-group">
-                            <label>Absent</label>
-                            <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe"
-                                name="absents" id="editabsents">
-                        </div>
+                        
                         <div class="form-group">
                             <label>Loan</label>
                             <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe" name="lone"
                                 id="editlone">
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <label>Living Expenses</label>
                             <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe"
@@ -494,34 +496,51 @@
 
     <!-- data table------------------ -->
     <script>
-    $(function() {
+      $(function() {
 
-        var table =$("#example1").DataTable({
+$("#example1").DataTable({
+		"scrollX": true,
+		
 
+	}
 
-                "scrollX": true,
-                scrollCollapse: true,
-
-                // drawCallback: function() {
-                //     var api = this.api();
-                //     $(api.table().footer()).html(
-                //         api.column(5, {
-                //             page: 'current'
-                //         }).data().sum()
-						
-                //     );
-                // }
-
-            }
-
-        );
-		table.column(5).data().sum();
-    });
+);
+});
     </script>
     <script>
     // Simply get the sum of a column
-    </script>
+	
+	
+	//--------------------------form data fill---------
+    $('#empNICNo').click(function() {
+        //alert($('#empNo').val())
+        var param = {
+            empNo: $('#empNo').val(),
+        }
+        console.log(param);
+        $.post("<?php echo base_url(); ?>index.php/Admin/EmpformData", param, function(
+            data) {
+		var response = JSON.parse(data);
+		response=response.result[0];
+
+            console.log(response.nameInitials);
+			$('#empName').val(response.nameInitials);
+			$('#department').val(response.department);
+			$('#empNICNo').val(response.empNic);
+		alert(result);
+			
+            
+            //bageta wada?
+
+        });
+
+
+
+    });
+
+    
     // form sunmission----------------------------------
+	</script>
     <script>
     $('#formSubmit').click(function() {
         //alert($('#epf').val())
@@ -538,7 +557,7 @@
             payEPFPresantage: $('#epf').val(),
             payETFPresantage: $('#etf').val(),
             payNoPayRate: $('#noPayRate').val(),
-            payAbsents: $('#absents').val(),
+          
             payLone: $('#lone').val(),
             payEFTComp: $('#epfcomp').val(),
             payLiving: $('#living').val(),
@@ -589,7 +608,7 @@
         $('#editotRate').val(object.OTrate);
         $('#editepfPresantage').val(object.epfPresantage);
         $('#editetfPresantage').val(object.etfPresantage);
-        $('#editnoPayRate').val(object.noPayRate);
+       
         $('#editabsents').val(object.absent);
         $('#editlone').val(object.lone);
         $('#editempleave').val(object.empleave);
@@ -634,7 +653,7 @@
             payOTRate: $('#editotRate').val(),
             payEPF: $('#editepf').val(),
             payETF: $('#editetf').val(),
-            payNoPayRate: $('#editnoPayRate').val(),
+           
             payAbsents: $('#editabsents').val(),
             payLone: $('#editlone').val(),
             payEPFComp: $('#editetfCompany').val(),

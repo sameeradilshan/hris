@@ -16,7 +16,7 @@
           <img src="<?php echo base_url(); ?>assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Admin Name</a>
+				<a href="<?php echo base_url(); ?>index.php/HrExecutive/userProfileData" class="d-block"> <?php echo $this->session->userdata['loggedHRExecutive']['empName']; ?> </a>  
         </div>
       </div>
 
@@ -93,12 +93,17 @@
 									</a>
 								</li>
               <li class="nav-item">
-								<a href="<?php echo base_url(); ?>index.php/HrExecutive/timeSheet" class="nav-link">
+								<a href="<?php echo base_url(); ?>index.php/HrExecutive/timeDataView" class="nav-link">
 								<i class="nav-icon fa fa-hourglass-end"></i>
 										<p>Time Sheet </p>
 									</a>
               </li>
-                                         
+							<li class="nav-item">
+								<a href="<?php echo base_url(); ?>index.php/HrExecutive/overTime" class="nav-link">
+								<i class="nav-icon fa fa-hourglass-end"></i>
+										<p>Over Time </p>
+									</a>
+              </li>                             
             </ul>
 					</li>
 
@@ -182,7 +187,7 @@
                 </a>
               </li>
               <li class="nav-item">
-							<a href="<?php echo base_url(); ?>index.php/HrExecutive/PaySheetMaker" class="nav-link">
+							<a href="<?php echo base_url(); ?>index.php/HrExecutive/paySheetDataView" class="nav-link">
 							<i class="nav-icon fa fa-file-o"></i>
                   <p>PaySheet Maker </p>
                 </a>
@@ -202,12 +207,12 @@
               <p>Departments</p>
             </a>
 					</li>
-					<li class="nav-item">
+					<!-- <li class="nav-item">
             <a href="<?php echo base_url(); ?>index.php/HrExecutive/userManagementDataView" class="nav-link">
               <i class="nav-icon fa fa-users"></i>
               <p>User Management</p>
             </a>
-					</li>
+					</li> -->
 
           
 					

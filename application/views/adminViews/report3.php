@@ -96,7 +96,7 @@
 											<td>'.$leaveData->dateTo.'</td>
 											<td>'.$leaveData->noOfDate.'</td>												
 											<td>'.$leaveData->reason.'</td>
-											<td>sameera </td>
+											<td>'.$leaveData->approvedBy.'</td>
 											
 											
 											

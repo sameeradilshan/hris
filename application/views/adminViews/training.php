@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->load->view('adminViews/components/css'); ?>
 
-	<style type="text/css">
+    <style type="text/css">
     .true_input {
         visibility: hidden;
     }
@@ -19,10 +19,11 @@
         font-size: 12px;
         font: right;
     }
-	#editModal{
-		max-height: 100%;
-		overflow-y: auto;
-	}
+
+    #editModal {
+        max-height: 100%;
+        overflow-y: auto;
+    }
     </style>
 </head>
 
@@ -92,24 +93,30 @@
                                             <!-- Modal body -->
 
                                             <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label>Emp No</label>
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                name="trainingEmpNo" id="trainingEmpNo"
+                                                                placeholder="Jhon Doe">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label>NIC No</label>
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                name="trainingEmpNIC" id="trainingEmpNIC"
+                                                                placeholder="Jhon Doe">
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <div class="form-group">
                                                     <label>Employee Name</label>
                                                     <input type="text" class="form-control form-control-sm" required
                                                         name="trainingEmpName" id="trainingEmpName"
                                                         placeholder="Jhon Doe">
                                                 </div>
-                                                <div class="form-group">
-                                                    <label>Emp No</label>
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        name="trainingEmpNo" id="trainingEmpNo" placeholder="Jhon Doe">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>NIC No</label>
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        name="trainingEmpNIC" id="trainingEmpNIC"
-                                                        placeholder="Jhon Doe">
-                                                </div>
-
                                                 <div class="form-group">
                                                     <label>Course/Programe Name</label>
                                                     <input type="text" class="form-control form-control-sm"
@@ -183,7 +190,8 @@
                                     <div class="form-group">
                                         <button style="margin-top:32px; width:200px;" type="button"
                                             class="btn btn-sm btn-primary" data-toggle="modal"
-                                            data-target="#DeclineLeave" onclick="window.open('declineTrainingDatalView')">
+                                            data-target="#DeclineLeave"
+                                            onclick="window.open('declineTrainingDatalView')">
                                             <i class="fa fa-minus-circle"></i> Decline Trainee
                                         </button>
                                     </div>
@@ -214,10 +222,10 @@
                                                         <th scope="col">EMP No</th>
                                                         <th scope="col">Employee Name</th>
                                                         <th scope="col">Emp NIC</th>
-                                                        <th scope="col">Department</th>
+                                                        <!-- <th scope="col">Department</th> -->
                                                         <th scope="col">Programe Name</th>
                                                         <th scope="col">Venue</th>
-                                                        <th scope="col">Date</th>
+                                                        <th scope="col">         Date   </th>
                                                         <th scope="col">Course Content</th>
                                                         <th scope="col">Course Duration</th>
                                                         <th scope="col">Course Fee</th>
@@ -240,7 +248,7 @@
 																<td>'.$trainingData->empNo.'</td>
 																<td>'.$trainingData->empName.'</td>
 																<td>'.$trainingData->empNicNo.'</td>
-																<td>'.$trainingData->department.'</td>
+															
 																<td>'.$trainingData->courseName.'</td>
 																<td>'.$trainingData->venue.'</td>
 																<td>'.$trainingData->date.'</td>
@@ -372,10 +380,10 @@
         <div id="editModal" class="modal">
             <div class="modal-dialog modal-md">
                 <div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Training Edit</h4>
-					<button type="button" class="close" onclick="closeStop()" data-dismiss="modal">&times;</button>
-				</div>
+                    <div class="modal-header">
+                        <h4 class="modal-title">Training Edit</h4>
+                        <button type="button" class="close" onclick="closeStop()" data-dismiss="modal">&times;</button>
+                    </div>
                     <!-- <div class="modal-header">
                         <h4 class="modal-title">Training Edit</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -383,68 +391,64 @@
                     </div> -->
                     <div class="modal-body" style="min-height:400px;">
 
-					<div class="modal-body">
-								<div class="form-group">
-									<label>Employee Name</label>
-									<input type="text" class="form-control form-control-sm" required
-										name="trainingEmpName" id="edittrainingEmpName"
-										placeholder="Jhon Doe">
-								</div>
-								<div class="form-group">
-									<label>Emp No</label>
-									<input type="text" class="form-control form-control-sm"
-										name="trainingEmpNo" id="edittrainingEmpNo" placeholder="Jhon Doe">
-								</div>
-								<div class="form-group">
-									<label>NIC No</label>
-									<input type="text" class="form-control form-control-sm"
-										name="trainingEmpNIC" id="edittrainingEmpNIC"
-										placeholder="Jhon Doe">
-								</div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label>Employee Name</label>
+                                <input type="text" class="form-control form-control-sm" required name="trainingEmpName"
+                                    id="edittrainingEmpName" placeholder="Jhon Doe">
+                            </div>
+                            <div class="form-group">
+                                <label>Emp No</label>
+                                <input type="text" class="form-control form-control-sm" name="trainingEmpNo"
+                                    id="edittrainingEmpNo" placeholder="Jhon Doe">
+                            </div>
+                            <div class="form-group">
+                                <label>NIC No</label>
+                                <input type="text" class="form-control form-control-sm" name="trainingEmpNIC"
+                                    id="edittrainingEmpNIC" placeholder="Jhon Doe">
+                            </div>
 
-								<div class="form-group">
-									<label>Course/Programe Name</label>
-									<input type="text" class="form-control form-control-sm"
-										name="trainingProgrameName" id="edittrainingProgrameName"
-										placeholder="Jhon Doe">
-								</div>
+                            <div class="form-group">
+                                <label>Course/Programe Name</label>
+                                <input type="text" class="form-control form-control-sm" name="trainingProgrameName"
+                                    id="edittrainingProgrameName" placeholder="Jhon Doe">
+                            </div>
 
-								<div class="form-group">
-									<label>Course Content</label>
-									<input type="text" class="form-control form-control-sm"
-										name="courseContent" id="editcourseContent" placeholder="Jhon Doe">
-								</div>
-								<div class="form-group">
-									<label>Institute/Venue</label>
-									<input type="text" class="form-control form-control-sm"
-										name="trainingVenue" id="edittrainingVenue" placeholder="Jhon Doe">
-								</div>
+                            <div class="form-group">
+                                <label>Course Content</label>
+                                <input type="text" class="form-control form-control-sm" name="courseContent"
+                                    id="editcourseContent" placeholder="Jhon Doe">
+                            </div>
+                            <div class="form-group">
+                                <label>Institute/Venue</label>
+                                <input type="text" class="form-control form-control-sm" name="trainingVenue"
+                                    id="edittrainingVenue" placeholder="Jhon Doe">
+                            </div>
 
-								<div class="form-group">
-									<label>Date</label>
-									<input type="date" class="form-control form-control-sm"
-										name="trainingDate" id="edittrainingDate" placeholder="Jhon Doe">
-								</div>
-								<div class="form-group">
-									<label>Course Duration</label>
-									<input type="text" class="form-control form-control-sm"
-										name="trainingDuration" id="edittrainingDuration"
-										placeholder="Jhon Doe">
-								</div>
-								<div class="form-group">
-									<label>Course/Programe Fee(Rs)</label>
-									<input type="text" class="form-control form-control-sm"
-										name="editcourseFee" id="editcourseFee" placeholder="Jhon Doe">
-								</div>
-								<div class="form-group">
-									
-									<input type="hidden" class="form-control form-control-sm"
-										name="trainingId" id="trainingId" placeholder="Jhon Doe">
-								</div>
+                            <div class="form-group">
+                                <label>Date</label>
+                                <input type="date" class="form-control form-control-sm" name="trainingDate"
+                                    id="edittrainingDate" placeholder="Jhon Doe">
+                            </div>
+                            <div class="form-group">
+                                <label>Course Duration</label>
+                                <input type="text" class="form-control form-control-sm" name="trainingDuration"
+                                    id="edittrainingDuration" placeholder="Jhon Doe">
+                            </div>
+                            <div class="form-group">
+                                <label>Course/Programe Fee(Rs)</label>
+                                <input type="text" class="form-control form-control-sm" name="editcourseFee"
+                                    id="editcourseFee" placeholder="Jhon Doe">
+                            </div>
+                            <div class="form-group">
+
+                                <input type="hidden" class="form-control form-control-sm" name="trainingId"
+                                    id="trainingId" placeholder="Jhon Doe">
+                            </div>
 
 
 
-							</div>
+                        </div>
 
                     </div>
                     <div class="modal-footer">
@@ -493,7 +497,33 @@
 
         );
     });
+//------------------------------data filling--------------------------------
+$('#trainingEmpNIC').click(function() {
+        //alert($('#empNo').val())
+        var param = {
+            empNo: $('#trainingEmpNo').val(),
+        }
+        console.log(param);
+        $.post("<?php echo base_url(); ?>index.php/Admin/EmpformData", param, function(
+            data) {
+		var response = JSON.parse(data);
+		response=response.result[0];
 
+            console.log(response.nameInitials);
+			$('#trainingEmpName').val(response.nameInitials);
+		
+			$('#trainingEmpNIC').val(response.empNic);
+		alert(result);
+			
+            
+            //bageta wada?
+
+        });
+
+
+
+    });
+//-----------------------form submit--------------------------------
     $('#formSubmit').click(function() {
         //alert($('#trainingEmpName').val())
         var param2 = {
@@ -502,7 +532,7 @@
             trainingEmpName: $('#trainingEmpName').val(),
             trainingEmpNo: $('#trainingEmpNo').val(),
             trainingEmpNICNo: $('#trainingEmpNIC').val(),
-            trainingProgrameName: $('#trainingProgrameName').val(),
+            trainingEmpNo: $('#trainingProgrameName').val(),
             courseContent: $('#courseContent').val(),
             trainingVenue: $('#trainingVenue').val(),
             trainingDate: $('#trainingDate').val(),
@@ -511,7 +541,8 @@
 
 
         }
-        console.log(param2);
+       
+		if (param2.trainingEmpNo !== '' && param2.trainingEmpNo !== '') {
         $.post("<?php echo base_url(); ?>index.php/Admin/trainingManagementData", param2, function(
             data1) {
 
@@ -537,13 +568,15 @@
             }
 
         });
-
+		} 
+		alert('Emp No filed is Required');
+		console.log(param2);
     })
-//------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------
 
-//---------------------------------Approval Function----------------------------------------------------------------------
+    //---------------------------------Approval Function----------------------------------------------------------------------
 
-function approvalFunction(trainingId) {
+    function approvalFunction(trainingId) {
         params = {
             trainingId: trainingId,
             trainingStatus: 1
@@ -599,19 +632,19 @@ function approvalFunction(trainingId) {
     // --------------------edit function---------------------
     function editFunction(object) {
         //var type=type;
-       // alert(JSON.stringify(object))
-	    $('#trainingId').val(object.trainingId);
+        // alert(JSON.stringify(object))
+        $('#trainingId').val(object.trainingId);
         $('#edittrainingEmpNo').val(object.empNo);
         $('#edittrainingEmpName').val(object.empName);
         $('#editresignationDate').val(object.department);
         $('#edittrainingProgrameName').val(object.courseName);
         $('#edittrainingVenue').val(object.venue);
-		$('#edittrainingDate').val(object.date);
+        $('#edittrainingDate').val(object.date);
         $('#editcourseContent').val(object.courseContent);
         $('#edittrainingDuration').val(object.courseDuration);
         $('#editcourseFee').val(object.courseFee);
-		$('#edittrainingEmpNIC').val(object.empNicNo);
-      
+        $('#edittrainingEmpNIC').val(object.empNicNo);
+
 
         //$('#empResigId').val(object.empResigId);
 
@@ -630,59 +663,58 @@ function approvalFunction(trainingId) {
         var modal = document.getElementById('editModal');
 
         modal.style.display = "none";
-	}
-
-	//----------------add edit data button----------------------------------------
-
-	function addStop() {
-
-		//alert($('#edittrainingEmpName').val());
-
-		var param = {
-
-			empName: $('#edittrainingEmpName').val(),
-			empNo: $('#edittrainingEmpNo').val(),
-			empNICNo: $('#edittrainingEmpNIC').val(),
-			trainingProgrameName: $('#edittrainingProgrameName').val(),
-			courseContent: $('#editcourseContent').val(),
-			trainingVenue: $('#edittrainingVenue').val(),
-			trainingDate: $('#edittrainingDate').val(),
-			trainingDuration: $('#edittrainingDuration').val(),
-			courseFee: $('#editcourseFee').val(),
-			trainingId: $('#trainingId').val(),
-			
-		}
-		console.log(param);
-		$.post("<?php echo base_url(); ?>index.php/Admin/trainingupdate", param, function(
-        data) {
-
-			console.log(data)
-            var response = JSON.parse(data);
-			console.log(response)
-
-             if (response.status) {
-				Swal.fire(
-				'Good job!',
-				'You clicked the button!',
-				'success'
-				)
-
-				window.location.href = "trainingDataView";
-             } else {
-					Swal.fire({
-					icon: 'error',
-					title: 'Oops...',
-					text: 'Something went wrong!',
-					footer: '<a href>Why do I have this issue?</a>'
-					})
-         }
-   
-        });
-	
     }
-				
-				</script>
 
-			</body>
+    //----------------add edit data button----------------------------------------
 
-			</html>
+    function addStop() {
+
+        //alert($('#edittrainingEmpName').val());
+
+        var param = {
+
+            empName: $('#edittrainingEmpName').val(),
+            empNo: $('#edittrainingEmpNo').val(),
+            empNICNo: $('#edittrainingEmpNIC').val(),
+            trainingProgrameName: $('#edittrainingProgrameName').val(),
+            courseContent: $('#editcourseContent').val(),
+            trainingVenue: $('#edittrainingVenue').val(),
+            trainingDate: $('#edittrainingDate').val(),
+            trainingDuration: $('#edittrainingDuration').val(),
+            courseFee: $('#editcourseFee').val(),
+            trainingId: $('#trainingId').val(),
+
+        }
+        console.log(param);
+        $.post("<?php echo base_url(); ?>index.php/Admin/trainingupdate", param, function(
+            data) {
+
+            console.log(data)
+            var response = JSON.parse(data);
+            console.log(response)
+
+            if (response.status) {
+                Swal.fire(
+                    'Good job!',
+                    'You clicked the button!',
+                    'success'
+                )
+
+                window.location.href = "trainingDataView";
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    footer: '<a href>Why do I have this issue?</a>'
+                })
+            }
+
+        });
+
+    }
+    </script>
+
+</body>
+
+</html>

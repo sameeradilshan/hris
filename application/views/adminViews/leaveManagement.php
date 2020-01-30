@@ -121,9 +121,11 @@
                         <div class="row ">
                             <div class="col-md-3">
                                 <label>Total Presantage</label>
-
+					<form action="" method="">
                                 <button type="button" class="btn btn-block btn-primary btn-lg" data-toggle="modal"
-                                    data-target="#totalemppresantage">View </button>
+									data-target="#totalemppresantage">View </button>
+								<>	
+
                                 <!-- The Modal view button------>
                                 <div class="modal" id="totalemppresantage">
                                     <div class="modal-dialog">

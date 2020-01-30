@@ -70,7 +70,7 @@
                                             <th scope="col">Promotion Detailes</th>
 											<th scope="col">Date</th>
 											<th scope="col">Promotion/Increment</th>
-											<th scope="col">Approval</th>
+											<th scope="col">Approved Date</th>
 											<th scope="col">Approved By</th>
                                                     
 											
@@ -93,20 +93,14 @@
 															<td>'.$incrementData->incrementDetails.'</td>
 															<td>'.$incrementData->date.'</td>
 															<td>'.$incrementData->increment.'</td>
-															
-															<td><div class="btn-group">';
-													if($incrementData->incrementStatus	==0){
-														echo '<button type="button" onclick="approvalFunction('.$incrementData->IncrementId.')" class="btn btn-info">Approve</button>
-														<button type="button" onclick="rejectFucntion('.$incrementData->IncrementId.')" class="btn btn-danger">Decline</button>';
-													}
+															<td>'.$incrementData->appDate.'</td>
+															<td>'.$incrementData->EnteredBy.'</td>
+															</tr>	
+														';
 													
-
-												
-													  echo '</div></td>
-													  <td>Admin</td>
-														</tr>
+														
 														 
-													';
+													
 										}
 											
 											?>

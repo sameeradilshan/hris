@@ -69,7 +69,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <button style="margin-top:32px; width:100px;" type="submit" onclick="editFunction2"
+                                    <button style="margin-top:32px; width:100px;" type="submit" onclick="editFunction()"
                                         class="btn btn-sm btn-primary" name="search" id="search" value="submit" data-toggle="modal" data-target="#myModal">
                                         <i class="fa fa-search"></i> Search
                                     </button>
@@ -84,11 +84,11 @@
 						</form>
 						
 						
-<?php error_reporting(0); ?>
-						<!-- <input type= "hidden" id='Object' value=">"/> -->
+
+						
 							<?php
 
-								// var_dump(json_encode($employeeDetail));
+								
 						foreach($employeeDetail as $employeeDetails){
 						
 							//var_dump($employeeDetails);
@@ -1192,106 +1192,106 @@ function editFunction(object) {
 		alert(sussce);
 		
 		console.log(object);
-		$('#firstname').val(object.alYear1);
+		$('#firstname').val(object.fullName);
 
-			$('#empFullName').val(object.fullName);
-            $('#initialName').val(object.nameInitials);
-            $('#empEmail').val(object.empEmail);
-            $('#otherName').val(object.otherName);
-            $('#empAddress1').val(object.address1);
-            $('#empAddress2').val(object.address2);
-            $('#empNicNo').val(object.empNic);
-            $('#officeNo').val(object.contactOffice);
-            $('#mobileNo').val(object.contactMobile);
-            $('#homeNo').val(object.contactHome);
-            $('#gender').val(object.gender);
-            $('#dob').val(object.dateOfBirth);
-            $('#civil').val(object.civilState);
-            $('#nationality').val(object.nationality);
-            $('#religious').val(object.religious);
+			// $('#empFullName').val(object.fullName);
+            // $('#initialName').val(object.nameInitials);
+            // $('#empEmail').val(object.empEmail);
+            // $('#otherName').val(object.otherName);
+            // $('#empAddress1').val(object.address1);
+            // $('#empAddress2').val(object.address2);
+            // $('#empNicNo').val(object.empNic);
+            // $('#officeNo').val(object.contactOffice);
+            // $('#mobileNo').val(object.contactMobile);
+            // $('#homeNo').val(object.contactHome);
+            // $('#gender').val(object.gender);
+            // $('#dob').val(object.dateOfBirth);
+            // $('#civil').val(object.civilState);
+            // $('#nationality').val(object.nationality);
+            // $('#religious').val(object.religious);
 
-            $('#r1QuaName').val(object.qualificationName1);
-            $('#r1QuaQualification').val(object.qualification1);
-            $('#r1QuaSp').val(object.specialization1);
-            $('#r1QuaIns').val(object.institute1);
-            $('#r1QuaDate').val(object.qualifieddate1);
+            // $('#r1QuaName').val(object.qualificationName1);
+            // $('#r1QuaQualification').val(object.qualification1);
+            // $('#r1QuaSp').val(object.specialization1);
+            // $('#r1QuaIns').val(object.institute1);
+            // $('#r1QuaDate').val(object.qualifieddate1);
 
-			$('#r2QuaName').val(object.qualificationName2);
-            $('#r2QuaQualification').val(object.qualification2);
-            $('#r2QuaSp').val(object.specialization2);
-            $('#r2QuaIns').val(object.institute2);
-            $('#r2QuaDate').val(object.qualifieddate2);
+			// $('#r2QuaName').val(object.qualificationName2);
+            // $('#r2QuaQualification').val(object.qualification2);
+            // $('#r2QuaSp').val(object.specialization2);
+            // $('#r2QuaIns').val(object.institute2);
+            // $('#r2QuaDate').val(object.qualifieddate2);
 
-            $('#r3QuaName').val(object.qualificationName3);
-            $('#r3QuaQualification').val(object.qualification3);
-            $('#r3QuaSp').val(object.specialization3);
-            $('#r3QuaIns').val(object.institute3);
-            $('#r3QuaDate').val(object.qualifieddate3);
+            // $('#r3QuaName').val(object.qualificationName3);
+            // $('#r3QuaQualification').val(object.qualification3);
+            // $('#r3QuaSp').val(object.specialization3);
+            // $('#r3QuaIns').val(object.institute3);
+            // $('#r3QuaDate').val(object.qualifieddate3);
 
-            $('#r4QuaName').val(object.qualificationName4);
-            $('#r4QuaQualification').val(object.qualification4);
-            $('#r4QuaSp').val(object.specialization4);
-            $('#r4QuaIns').val(object.institute4);
-            $('#r4QuaDate').val(object.qualifieddate4);
+            // $('#r4QuaName').val(object.qualificationName4);
+            // $('#r4QuaQualification').val(object.qualification4);
+            // $('#r4QuaSp').val(object.specialization4);
+            // $('#r4QuaIns').val(object.institute4);
+            // $('#r4QuaDate').val(object.qualifieddate4);
 
-            $('#r5QuaName').val(object.qualificationName5);
-            $('#r5QuaQualification').val(object.qualification5);
-            $('#r5QuaSp').val(object.specialization5);
-            $('#r5QuaIns').val(object.institute5);
-            $('#r5QuaDate').val(object.qualifieddate5);
+            // $('#r5QuaName').val(object.qualificationName5);
+            // $('#r5QuaQualification').val(object.qualification5);
+            // $('#r5QuaSp').val(object.specialization5);
+            // $('#r5QuaIns').val(object.institute5);
+            // $('#r5QuaDate').val(object.qualifieddate5);
 
-			$('#alSubject1').val(object.alSubject1);
-            $('#alSubject2').val(object.alSubject1);
-            $('#alSubject3').val(object.alSubject3);
-            $('#alSubject4').val(object.alSubject4);
+			// $('#alSubject1').val(object.alSubject1);
+            // $('#alSubject2').val(object.alSubject1);
+            // $('#alSubject3').val(object.alSubject3);
+            // $('#alSubject4').val(object.alSubject4);
 
-            $('#alIndexNo1').val(object.alIndexNo1);
-            $('#alIndexNo2').val(object.alIndexNo2);
-            $('#alIndexNo3').val(object.alIndexNo3);
-            $('#alIndexNo4').val(object.alIndexNo4);
+            // $('#alIndexNo1').val(object.alIndexNo1);
+            // $('#alIndexNo2').val(object.alIndexNo2);
+            // $('#alIndexNo3').val(object.alIndexNo3);
+            // $('#alIndexNo4').val(object.alIndexNo4);
 
-            $('#alResult1').val(object.alResult1);
-            $('#alResult2').val(object.alResult2);
-            $('#alResult3').val(object.alResult3);
-            $('#alResult4').val(object.alResult4);
+            // $('#alResult1').val(object.alResult1);
+            // $('#alResult2').val(object.alResult2);
+            // $('#alResult3').val(object.alResult3);
+            // $('#alResult4').val(object.alResult4);
 
-            $('#alYear1').val(object.alYear1);
-            $('#alYear2').val(object.alYear2);
-            $('#alYear3').val(object.alYear3);
-            $('#alYear4').val(object.alYear4);
+            // $('#alYear1').val(object.alYear1);
+            // $('#alYear2').val(object.alYear2);
+            // $('#alYear3').val(object.alYear3);
+            // $('#alYear4').val(object.alYear4);
 
-            $('#olIndexNo1').val(object.olIndexNo1);
-            $('#olIndexNo2').val(object.olIndexNo2);
-            $('#olIndexNo3').val(object.olIndexNo3);
-            $('#olIndexNo4').val(object.olIndexNo4);
-            $('#olIndexNo6').val(object.olIndexNo6);
-            $('#olIndexNo7').val(object.olIndexNo7);
-            $('#olIndexNo8').val(object.olIndexNo8);
-            $('#olIndexNo9').val(object.olIndexNo9);
-            $('#olIndexNo10').val(object.olIndexNo10);
-			$('#olIndexNo5').val(object.olIndexNo5);
+            // $('#olIndexNo1').val(object.olIndexNo1);
+            // $('#olIndexNo2').val(object.olIndexNo2);
+            // $('#olIndexNo3').val(object.olIndexNo3);
+            // $('#olIndexNo4').val(object.olIndexNo4);
+            // $('#olIndexNo6').val(object.olIndexNo6);
+            // $('#olIndexNo7').val(object.olIndexNo7);
+            // $('#olIndexNo8').val(object.olIndexNo8);
+            // $('#olIndexNo9').val(object.olIndexNo9);
+            // $('#olIndexNo10').val(object.olIndexNo10);
+			// $('#olIndexNo5').val(object.olIndexNo5);
 
-            $('#olSubject1').val(object.olsubject1);
-            $('#olSubject2').val(object.olsubject2);
-            $('#olSubject3').val(object.olsubject3);
-            $('#olSubject4').val(object.olsubject4);
-            $('#olSubject5').val(object.olsubject5);
-            $('#olSubject6').val(object.olsubject6);
-            $('#olSubject7').val(object.olsubject7);
-            $('#olSubject8').val(object.olsubject8);
-            $('#olSubject9').val(object.olsubject9);
-            $('#olSubject10').val(object.olsubject10);
+            // $('#olSubject1').val(object.olsubject1);
+            // $('#olSubject2').val(object.olsubject2);
+            // $('#olSubject3').val(object.olsubject3);
+            // $('#olSubject4').val(object.olsubject4);
+            // $('#olSubject5').val(object.olsubject5);
+            // $('#olSubject6').val(object.olsubject6);
+            // $('#olSubject7').val(object.olsubject7);
+            // $('#olSubject8').val(object.olsubject8);
+            // $('#olSubject9').val(object.olsubject9);
+            // $('#olSubject10').val(object.olsubject10);
 
-            $('#olResult1').val(object.olResult1);
-            $('#olResult2').val(object.olResult2);
-            $('#olResult3').val(object.olResult3);
-            $('#olResult4').val(object.olResult4);
-            $('#olResult5').val(object.olResult5);
-            $('#olResult6').val(object.olResult6);
-            $('#olResult7').val(object.olResult7);
-            $('#olResult8').val(object.olResult8);
-            $('#olResult9').val(object.olResult19);
-            $('#olResult10').val(object.olResult10);
+            // $('#olResult1').val(object.olResult1);
+            // $('#olResult2').val(object.olResult2);
+            // $('#olResult3').val(object.olResult3);
+            // $('#olResult4').val(object.olResult4);
+            // $('#olResult5').val(object.olResult5);
+            // $('#olResult6').val(object.olResult6);
+            // $('#olResult7').val(object.olResult7);
+            // $('#olResult8').val(object.olResult8);
+            // $('#olResult9').val(object.olResult19);
+            // $('#olResult10').val(object.olResult10);
 
 							
 

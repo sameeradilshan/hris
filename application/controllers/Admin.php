@@ -99,6 +99,7 @@ class Admin extends CI_Controller{
 	
 	public function leaveManagement()
 	{
+		
 		$this->load->view('adminViews\leaveManagement');
 	}
 	public function payRoll()
@@ -691,7 +692,7 @@ class Admin extends CI_Controller{
 			}
 
 	
-//-----------------------------------------------------------------
+//------------------------------resignationHandler-----------------------------------
 			public function resignationHandler(){
 				$empName			=$this->input->post('empName');
 				$empNo				=$this->input->post('empNo');
@@ -752,6 +753,8 @@ class Admin extends CI_Controller{
 				$leaveDateForm 	= $this->input->post('leaveDateForm');
 				$leaveDateTo 		= $this->input->post('leaveDateTo');
 
+				$userName=$this->session->userdata['loggedHRAdmin']['adminName'];
+
 				$leaverequestdata=array(
 
 					'empName' 		=> $leaveEmpName,
@@ -763,6 +766,7 @@ class Admin extends CI_Controller{
 					'leaveEmpNICNo' => $leaveEmpNICNo,
 					'dateFrom' 		=> $leaveDateForm,
 					'dateTo' 		=> $leaveDateTo,
+					'EnteredBy' 	=> $userName,
 					
 				);//var_dump($leaverequestdata);	
 				$result=$this->Admin_model-> addLeaveRequestdata($leaverequestdata);
@@ -853,6 +857,8 @@ class Admin extends CI_Controller{
 				$date				= $this->input->post('date');
 				$increment			= $this->input->post('increment');			
 				$department			= $this->input->post('department');
+
+				$userId=$this->session->userdata['loggedHRAdmin']['adminName'];
 				
 				$incrementManagement=array(
 
@@ -863,9 +869,10 @@ class Admin extends CI_Controller{
 					'date' 				=> $date,
 					'increment' 		=> $increment,
 					'departmentName' 	=> $department,
+					'EnteredBy' 		=> $userId,
 
 				);
-				//var_dump($monthlyPerformanceManagement);	
+				
 				$result=$this->Admin_model-> addIncrementManagement($incrementManagement);	
 				if($result){
 
@@ -1524,7 +1531,19 @@ public function userProfileData(){
 				$monthPromoId=$this->input->post('promotionId');
 				$monthPromoStatus=$this->input->post('promotionStatus');
 
-				$data = array('yearPromoStatus' => $monthPromoStatus);
+				$userName=$this->session->userdata['loggedHRAdmin']['adminName'];
+				$month = date('m');
+				$year = date('Y');
+				$date =date('d');
+				
+				$startDate=$year.'-'.$month.'-'.$date;
+
+				$data = array(
+					'yearPromoStatus' => $monthPromoStatus,
+					'approvedBy' => $userName,
+					'appDate' => $startDate,
+				
+				);
 				$wherearray = array('promotionId' => $monthPromoId);
 
 				$result=$this->Admin_model->approvalMonthPerformance($data,$wherearray);
@@ -1558,7 +1577,19 @@ public function userProfileData(){
 				$monthPromoId=$this->input->post('promotionId');
 				$monthPromoStatus=$this->input->post('promotionStatus');
 
-				$data = array('promotionStatus' => $monthPromoStatus);
+				$userName=$this->session->userdata['loggedHRAdmin']['adminName'];
+
+				$month = date('m');
+				$year = date('Y');
+				$date =date('d');
+				$startDate=$year.'-'.$month.'-'.$date;
+
+				$data = array(
+					'promotionStatus' => $monthPromoStatus,
+					'approvedBy' => $userName,
+					'appDate' => $startDate,
+				
+				);
 				$wherearray = array('promotionId' => $monthPromoId);
 
 				$result=$this->Admin_model->approvalMonthPerformance($data,$wherearray);
@@ -1593,7 +1624,20 @@ public function userProfileData(){
 				$leaveId=$this->input->post('leaveId');
 				$leaveStatus=$this->input->post('leaveStatus');
 
-				$data = array('leaveStatus'=> $leaveStatus);
+				$userName=$this->session->userdata['loggedHRAdmin']['adminName'];
+				$month = date('m');
+				$year = date('Y');
+				$date =date('d');
+				
+				$startDate=$year.'-'.$month.'-'.$date;
+
+
+				$data = array(
+					'leaveStatus'=> $leaveStatus,
+					'appDate'=> $startDate,
+					'approvedBy'=> $userName,
+				
+				);
 				$wherearray =array('leaveId' => $leaveId);
 
 				$result =$this ->Admin_model->updateLeaveApproval($data,$wherearray);
@@ -1622,16 +1666,22 @@ public function userProfileData(){
 				}
 			}
 //---------------------------training approval or rejction-------------------------------------------------
-//----------------------------------leave approval or rejection --------------------------------------
+
 public function approvalTraining(){
 	$trainingId=$this->input->post('trainingId');
 	$trainingStatus=$this->input->post('trainingStatus');
 
 $adminName=$this->session->userdata['loggedHRAdmin']['adminName'];
+		$month = date('m');
+		$year = date('Y');
+		$date =date('d');
+		
+		$startDate=$year.'-'.$month.'-'.$date;
 
 	$data = array(
 		'trainingStatus'=> $trainingStatus,
 		'approvedBy'=> $adminName,
+		'appDate'=> $startDate,
 
 	
 	);
@@ -1668,7 +1718,20 @@ $adminName=$this->session->userdata['loggedHRAdmin']['adminName'];
 				$IncrementId=$this->input->post('IncrementId');
 				$incrementStatus=$this->input->post('incrementStatus');
 
-				$data = array('incrementStatus'=> $incrementStatus);
+				$userName=$this->session->userdata['loggedHRAdmin']['adminName'];
+				$month = date('m');
+				$year = date('Y');
+				$date =date('d');
+				
+				$startDate=$year.'-'.$month.'-'.$date;
+
+
+				$data = array(
+					'incrementStatus'=> $incrementStatus,
+					'approvedBy'=> $userName,
+					'appDate'=> $startDate,
+				
+				);
 				$wherearray =array('IncrementId' => $IncrementId);
 
 				$result =$this ->Admin_model->updateIncrementApproval($data,$wherearray);
@@ -2003,7 +2066,7 @@ public function leaveUpdate(){
 //--------------------------monthly performance edit--------------------------------------
 public function maonthPerformaceEdit(){
 
-				
+	
 				$promotionYear		= $this->input->post('promotionYear');
 				$promotionMonth		= $this->input->post('promotionMonth');
 				$empName			= $this->input->post('empName');
@@ -2020,6 +2083,9 @@ public function maonthPerformaceEdit(){
 				$adhearance 		= $this->input->post('adhearance');
 				$abilityToWork 		= $this->input->post('abilityToWork');
 				$promotionId 		= $this->input->post('promotionId');
+
+				$monthlytotal =$knowledgeOfWork +  $achievements+$quality+$motivationOfTheWork+$relationship+$discipline+$attendence+$teamWork+ $adhearance+$abilityToWork;
+				//var_dump($promotionMonth);
 				
 				$maonthPerformaceEdit=array(
 
@@ -2038,6 +2104,7 @@ public function maonthPerformaceEdit(){
 					'teamWork' 			=> $teamWork,
 					'adhearance' 		=> $adhearance,
 					'abilityToWork' 	=> $abilityToWork,
+					'promotionTotal'	=> $monthlytotal,
 				);
 				$wherearray =array('promotionId' => $promotionId);
 				

@@ -80,7 +80,7 @@
 										<th scope="col">Adhearance</th>
 										<th scope="col">Ability To Work</th>
 										<th scope="col">Promotion Total</th>
-										<th scope="col">Approval</th>
+										<th scope="col">Declined By</th>
 							
                                             
                                         </tr>
@@ -112,34 +112,7 @@
 													<td>'.$mProfData->adhearance.'</td>
 													<td>'.$mProfData->abilityToWork.'</td>
 													<td>'.$mProfData->promotionTotal.'</td>
-													<td><div class="btn-group">';
-													if($mProfData->promotionStatus==0){
-														echo '<button type="button" onclick="approvalFunction('.$mProfData->promotionId.')" class="btn btn-success">Approve</button>
-														<button type="button" onclick="rejectFucntion('.$mProfData->promotionId.')" class="btn btn-danger">Decline</button>
-														<button type="button"  data-toggle="modal"  class="btn btn-info" onclick="editFunction({
-															
-															promotionId:`'.$mProfData->promotionId.'`,
-															empNo:`'.$mProfData->empNo.'`,
-															empName:`'.$mProfData->empName.'`,
-															empNICNo:`'.$mProfData->empNICNo.'`,
-															promotionYear:`'.$mProfData->promotionYear.'`,
-															promotionMonth:`'.$mProfData->promotionMonth.'`,
-															knowledgeOfWork:`'.$mProfData->knowledgeOfWork.'`,
-															achievements:`'.$mProfData->achievements.'`,
-															quality:`'.$mProfData->quality.'`,
-															relationship:`'.$mProfData->relationship.'`,
-															attendence:`'.$mProfData->attendence.'`,
-															discipline:`'.$mProfData->discipline.'`,
-															teamWork:`'.$mProfData->teamWork.'`,
-															adhearance:`'.$mProfData->adhearance.'`,
-															abilityToWork:`'.$mProfData->abilityToWork.'`,
-															motivationOfTheWork:`'.$mProfData->motivationOfTheWork.'`,})">Edit</button>';
-													}
-													
-		
-												
-													  echo '</div></td>
-													
+													td>'.$mProfData->approvedBy.'</td>
 													
 												</tr>
 																																						

@@ -109,7 +109,11 @@
                                                 </div>
 
                                             </div>
-
+                                            <div class="form-group">
+                                                <label>Employee Name</label>
+                                                <input type="text" class="form-control form-control-sm"
+                                                    placeholder="Jhon Doe" name="empName" id="empName">
+                                            </div>
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="form-group">
@@ -142,11 +146,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
-                                                <label>Employee Name</label>
-                                                <input type="text" class="form-control form-control-sm"
-                                                    placeholder="Jhon Doe" name="empName" id="empName">
-                                            </div>
+
 
 
 
@@ -606,8 +606,44 @@
     <!-- form handling------------------------------------------------------------------------- -->
 
     <script>
+
+//-------------------------------emp data filling--------------------
+$('#empNICNo').click(function() {
+        //alert($('#empNo').val())
+        var param = {
+            empNo: $('#empNo').val(),
+        }
+        console.log(param);
+        $.post("<?php echo base_url(); ?>index.php/Admin/EmpformData", param, function(
+            data) {
+		var response = JSON.parse(data);
+		response=response.result[0];
+
+            console.log(response.nameInitials);
+			$('#empName').val(response.nameInitials);
+			
+			$('#empNICNo').val(response.empNic);
+		alert(result);
+			
+            
+            //bageta wada?
+
+        });
+
+
+
+    });
+
+
+
+
+
+
+
+
+	//-------------------------form submitting-----------	
     $('#formSubmit').click(function() {
-        //alert($('#promotionYear').val())
+        //alert($('#promotionMonth').val())
         var param = {
 
             empid: $('#empId').val(),

@@ -13,4 +13,12 @@
 <!-- DataTables -->
 <script src="<?php echo base_url(); ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- form Validation -->
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.min.js"></script> 
+   <!-------------------------for validation part----------------------- -->
+
+<!-- data table  -->
+
 	

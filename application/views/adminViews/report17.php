@@ -75,8 +75,8 @@
                                                     <th scope="col">Course Content</th>
                                                     <th scope="col">Course Duration</th>
                                                     <th scope="col">Course Fee</th>
-                                                    <th scope="col"> Approved</th>
-                                                    <th scope="col"> Approved By</th>
+                                                    <th scope="col">Approved Date</th>
+                                                    <th scope="col">Approved By</th>
 
 
                                                 </tr>
@@ -102,31 +102,9 @@
 																<td>'.$trainingData->courseContent.'</td>
 																<td>'.$trainingData->courseDuration.'</td>
 																<td>'.$trainingData->courseFee.'</td>
-																<td>'.$trainingData->approvedBy.'</td>
 																
-																<td><div class="btn-group">';
-													if($trainingData->trainingStatus==0){
-														echo '<button type="button" onclick="approvalFunction('.$trainingData->trainingId.')" class="btn btn-success">Approve</button>
-														<button type="button" onclick="rejectFucntion('.$trainingData->trainingId.')" class="btn btn-danger">Decline</button>
-														<button type="button" data-toggle="modal"  class="btn btn-info" onclick="editFunction({
-
-															trainingId:`'.$trainingData->trainingId.'`,
-															empNo:`'.$trainingData->empNo.'`,
-															empName:`'.$trainingData->empName.'`,
-															department:`'.$trainingData->department.'`,
-															courseName:`'.$trainingData->courseName.'`,
-															venue:`'.$trainingData->venue.'`,
-															date:`'.$trainingData->date.'`,
-															courseContent:`'.$trainingData->courseContent.'`,
-															courseDuration:`'.$trainingData->courseDuration.'`,
-															courseFee:`'.$trainingData->courseFee.'`,
-															empNicNo:`'.$trainingData->empNicNo.'`,}	
-														)"><i class="fa fa-edit"></i> Edit</button>';
-													}
-													
-
-												
-													  echo '</div></td>
+																<td>'.$trainingData->appDate.'</td>
+																<td>'.$trainingData->approvedBy.'</td>
 														
 														</tr>
 														 

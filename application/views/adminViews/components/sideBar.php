@@ -116,7 +116,7 @@
 					
 
 					<li class="nav-item has-treeview">
-              <a href="<?php echo base_url(); ?>index.php/Admin/promotion" class="nav-link">
+              <a href="<?php echo base_url(); ?>index.php/Admin/incrementDataView" class="nav-link">
                 <i class="nav-icon fa fa-line-chart"></i>
                 <p>
                 Proformance 
@@ -127,7 +127,7 @@
 						<li class="nav-item">
               <a href="<?php echo base_url(); ?>index.php/Admin/incrementDataView" class="nav-link">
 							<i class="nav-icon fa fa-line-chart"></i>
-                  <p>Proformance </p>
+                  <p>Promotions </p>
                 </a>
               </li>
               <li class="nav-item">

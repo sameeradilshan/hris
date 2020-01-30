@@ -69,18 +69,10 @@
 										<th scope="col">NIC No</th>
 										<th scope="col">Performance Year</th>
 										<th scope="col">Performance Month</th>
-										<th scope="col">Knowledge Of Work</th>
-										<th scope="col">Achievements</th>
-										<th scope="col">Quality </th>
-										<th scope="col">Motivation Of The Work</th>
-										<th scope="col">Relationship</th>
-										<th scope="col">Attendence</th>
-										<th scope="col">Discipline</th>
-										<th scope="col">Team Work </th>
-										<th scope="col">Adhearance</th>
-										<th scope="col">Ability To Work</th>
+										
 										<th scope="col">Promotion Total</th>
-										<th scope="col">Approval</th>
+										<th scope="col">Approved By</th>
+										<th scope="col">Approvaed Date</th>
 							
                                             
                                         </tr>
@@ -101,48 +93,14 @@
 													<td>'.$mProfData->empNICNo.'</td>
 													<td>'.$mProfData->promotionYear.'</td>
 													<td>'.$mProfData->promotionMonth.'</td>
-													<td>'.$mProfData->knowledgeOfWork.'</td>
-													<td>'.$mProfData->achievements.'</td>
-													<td>'.$mProfData->quality.'</td>
-													<td>'.$mProfData->motivationOfTheWork.'</td>
-													<td>'.$mProfData->relationship.'</td>
-													<td>'.$mProfData->attendence.'</td>
-													<td>'.$mProfData->discipline.'</td>
-													<td>'.$mProfData->teamWork.'</td>
-													<td>'.$mProfData->adhearance.'</td>
-													<td>'.$mProfData->abilityToWork.'</td>
+													
 													<td>'.$mProfData->promotionTotal.'</td>
-													<td><div class="btn-group">';
-													if($mProfData->promotionStatus==0){
-														echo '<button type="button" onclick="approvalFunction('.$mProfData->promotionId.')" class="btn btn-success">Approve</button>
-														<button type="button" onclick="rejectFucntion('.$mProfData->promotionId.')" class="btn btn-danger">Decline</button>
-														<button type="button"  data-toggle="modal"  class="btn btn-info" onclick="editFunction({
-															
-															promotionId:`'.$mProfData->promotionId.'`,
-															empNo:`'.$mProfData->empNo.'`,
-															empName:`'.$mProfData->empName.'`,
-															empNICNo:`'.$mProfData->empNICNo.'`,
-															promotionYear:`'.$mProfData->promotionYear.'`,
-															promotionMonth:`'.$mProfData->promotionMonth.'`,
-															knowledgeOfWork:`'.$mProfData->knowledgeOfWork.'`,
-															achievements:`'.$mProfData->achievements.'`,
-															quality:`'.$mProfData->quality.'`,
-															relationship:`'.$mProfData->relationship.'`,
-															attendence:`'.$mProfData->attendence.'`,
-															discipline:`'.$mProfData->discipline.'`,
-															teamWork:`'.$mProfData->teamWork.'`,
-															adhearance:`'.$mProfData->adhearance.'`,
-															abilityToWork:`'.$mProfData->abilityToWork.'`,
-															motivationOfTheWork:`'.$mProfData->motivationOfTheWork.'`,})">Edit</button>';
-													}
-													
-		
+													<td>'.$mProfData->approvedBy.'</td>
+													<td>'.$mProfData->appDate.'</td>
 												
-													  echo '</div></td>
-													
-													
-												</tr>
-																																						
+												
+												 		
+													</tr>																									
 															
 													';
 										}

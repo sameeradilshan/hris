@@ -163,7 +163,7 @@
 
                         <div class="modal-footer">
 
-                            <input type="submit" class="btn btn-danger" name="submit" value="Generate" id="formSubmit"  onclick="window.open('')" >
+                            <input type="submit" class="btn btn-danger" name="submit" value="Generate" id="formSubmit"   >
 
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         </div>

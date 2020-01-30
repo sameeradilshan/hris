@@ -7,7 +7,23 @@
     <title>Home</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?php $this->load->view('adminViews/components/css'); ?>
+	<?php $this->load->view('adminViews/components/css'); ?>
+	
+	<style type="text/css">
+    .true_input {
+        visibility: hidden;
+    }
+
+    .error {
+        color: red;
+        font-size: 12px;
+    }
+
+    #editModal {
+        max-height: 100%;
+        overflow-y: auto;
+    }
+    </style>
 
 </head>
 
@@ -61,7 +77,7 @@
                                 <i class="fa fa-plus"></i> Add New User
                             </button>
                             <!-- The Modal -->
-                            <form>
+                            <form id="userManagementform">
                                 <div class="modal" id="addNewUser">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -120,7 +136,7 @@
 
                                             <!-- Modal footer -->
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-primary"
+                                                <button type="submit" class="btn btn-primary"
                                                     id="formSubmit">Submit</button>
 
                                                 <button type="" class="btn btn-danger"
@@ -284,7 +300,43 @@
     </div>
     <!-- ./wrapper -->
 
-    <?php $this->load->view('adminViews/components/js'); ?>
+	<?php $this->load->view('adminViews/components/js'); ?>
+	
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.min.js"></script> 
+	<script>
+		
+    $(document).ready(function() {
+		
+        $("#userManagementform").validate({
+			
+            rules: {
+
+                "userName": {
+                    required: true,
+                },
+                "userEmail": {
+                    required: true,
+                },
+				"empId": {
+                    required: true,
+                },
+				"userType": {
+                    required: true,
+                },
+				"userAddDate": {
+                    required: true,
+                },
+				"userNIC": {
+                    required: true,
+                }
+
+
+            }
+        });
+    });
+    </script>
 
     <script>
     //-------------------------data Table----------------------------------------------------
@@ -312,6 +364,7 @@
 
         }
         console.log(param2);
+		if (param2.userName !== '' && param2.userEmail !== ''&& param2.empId !== '' && param2.userType !== '') {
         $.post("<?php echo base_url(); ?>index.php/Admin/UserManagementHandler", param2, function(
             data1) {
 
@@ -335,7 +388,7 @@
 
 
         });
-
+		}
     })
     </script>
 </body>

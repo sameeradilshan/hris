@@ -7,8 +7,23 @@
     <title>Home</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?php $this->load->view('adminViews/components/css'); ?>
+	<?php $this->load->view('adminViews/components/css'); ?>
+	
+	<style type="text/css">
+    .true_input {
+        visibility: hidden;
+    }
 
+    .error {
+        color: red;
+        font-size: 12px;
+    }
+
+    #editModal {
+        max-height: 100%;
+        overflow-y: auto;
+    }
+    </style>
 
 </head>
 
@@ -63,7 +78,7 @@
                                     <i class="fa fa-plus"></i> Add Departments
                                 </button>
                                 <!-- The Modal -->
-                                <form id="department">
+                                <form id="departmentform">
                                     <div class="modal" id="addDepartments">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -95,7 +110,7 @@
 
                                                 <!-- Modal footer -->
                                                 <div class="modal-footer">
-                                                    <input type="button" class="btn btn-info" name="submit"
+                                                    <input type="submit" class="btn btn-info" name="submit"
                                                         value="Submit" id="formSubmit">
                                                     <button type="button" class="btn btn-danger"
                                                         data-dismiss="modal">Close</button>
@@ -113,7 +128,7 @@
                                     <i class="fa fa-plus"></i> Add Designations
                                 </button>
                                 <!-- The Modal -->
-                                <form>
+                                <form id="designation">
                                     <div class="modal" id="addDesignations">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -151,7 +166,7 @@
 
                                                 <!-- Modal footer -->
                                                 <div class="modal-footer">
-                                                    <input type="button" class="btn btn-danger" name="submit"
+                                                    <input type="submit" class="btn btn-danger" name="submit"
                                                         value="Submit" id="formSubmit2">
                                                     <button type="button" class="btn btn-danger"
                                                         data-dismiss="modal">Close</button>
@@ -405,7 +420,39 @@
     </div>
     <!-- ./wrapper -->
 
-    <?php $this->load->view('adminViews/components/js'); ?>
+	<?php $this->load->view('adminViews/components/js'); ?>
+	
+    <script>
+    $(document).ready(function() {
+        $("#departmentform").validate({
+            rules: {
+
+                "departmentName": {
+                    required: true,
+                },
+                "departmentId": {
+                    required: true,
+                }
+
+            }
+        });
+		$("#designation").validate({
+            rules: {
+
+                "departmentName1": {
+                    required: true,
+                },
+                "designationName": {
+                    required: true,
+                },
+				"designationNo": {
+                    required: true,
+                }
+
+            }
+        });
+    });
+    </script>
 
     <script>
     $(function() {
@@ -429,6 +476,7 @@
         }
 
         console.log(param1);
+		if (param.departmentName !== '' && param.departmentId !== '') {
         $.post("<?php echo base_url(); ?>index.php/Admin/departmentManagement", param1, function(
             data1) {
 
@@ -457,7 +505,7 @@
 
 
         });
-
+		}
     })
 
     //designation--------------------------------------------------------------------------
@@ -474,11 +522,12 @@
 
         }
 
-        window.alert(param2);
+        console.log(param2);
+		if (param2.departmentName !== '' && param2.designationName !== ''&& param2.designationNo !== '') {
         $.post("<?php echo base_url(); ?>index.php/Admin/designationManagement", param2, function(
             data2) {
 
-            window.alert(data2)
+			console.log(data2)
             var response = JSON.parse(data2);
             console.log(response)
 
@@ -504,7 +553,7 @@
 
 
         });
-
+		}
     })
     </script>
 

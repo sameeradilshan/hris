@@ -33,7 +33,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Wel Come HR executive</h1>
+                            <h1>Wel Come</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -62,7 +62,79 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        Human Resource Management System
+				
+						Human Resource Management System
+						
+					<div class="row">
+						<div class="col-lg-3 col-6">
+							<!-- small card -->
+							<div class="small-box bg-info">
+							<div class="inner">
+								<h3>150</h3>
+
+								<p>Attendance</p>
+							</div>
+							<div class="icon">
+								<i class=" fa fa-check-circle-o"></i>
+							</div>
+							<a href="<?php echo base_url(); ?>application\views\executiveViews\report1.html"class="small-box-footer">
+								More info <i class="fa fa-arrow-circle-right"></i>
+							</a>
+							</div>
+						</div>
+
+						<div class="col-lg-3 col-6">
+							<!-- small card -->
+							<div class="small-box bg-info">
+							<div class="inner">
+								<h3><?php echo $leave ? $leave : '0';?></h3>
+
+								<p>Leave</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-user-times"></i>
+							</div>
+							<a href="<?php echo base_url(); ?>index.php/HrExecutive/approvedLeaveDatalView" class="small-box-footer">
+								More info <i class="fa fa-arrow-circle-right"></i>
+							</a>
+							</div>
+						</div>
+
+						<div class="col-lg-3 col-6">
+							<!-- small card -->
+							<div class="small-box bg-info">
+							<div class="inner">
+							<h3><?php echo $resignation ? $resignation : '0';?></h3>
+
+								<p>Resignation</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-money"></i>
+							</div>
+							<a href="<?php echo base_url(); ?>index.php/HrExecutive/approvedResignationDatalView" class="small-box-footer">
+								More info <i class="fa fa-arrow-circle-right"></i>
+							</a>
+							</div>
+						</div>
+
+						<div class="col-lg-3 col-6">
+							<!-- small card -->
+							<div class="small-box bg-info">
+							<div class="inner">
+								<h3>150</h3>
+
+								<p>Proformance</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-line-chart"></i>
+							</div>
+							<a href="#" class="small-box-footer">
+								More info <i class="fa fa-arrow-circle-right"></i>
+							</a>
+							</div>
+						</div>
+
+						</div>
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
