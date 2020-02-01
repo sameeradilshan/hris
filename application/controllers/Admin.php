@@ -1385,35 +1385,49 @@ public function userProfileData(){
 
 				$empNo	=$this->input->post('SearchEmpNo');
 				$empNo=100;
-				$data ['employeeDetail']=$this->Admin_model->getemployeeParentData($empNo);
-				$data2['employeeDetail']=$this->Admin_model->getemployeeEducationallDetailView($empNo);
-				$data3['employeeDetail']=$this->Admin_model->getemployeeSubjectDetailView($empNo);
-				$data4['employeeDetail']=$this->Admin_model->getemployeeFamilyDetailView($empNo);
-				$data5['employeeDetail']=$this->Admin_model->getemployeeBankDetailView($empNo);
-				$data6['employeeDetail']=$this->Admin_model->getemployeeChildrenDetailView($empNo);
-				$data7['employeeDetail']=$this->Admin_model->getemployeeParentDetailView($empNo);
+				$data['employeeDetail']=$this->Admin_model->getemployeeParentData($empNo);
+
+				$employeeEducationallDetail=$this->Admin_model->getemployeeEducationallDetailView($empNo);
+				$employeeSubjectDetail=$this->Admin_model->getemployeeSubjectDetailView($empNo);
+				$employeeFamilyDetailView=$this->Admin_model->getemployeeFamilyDetailView($empNo);
+				$employeeChildrenDetail=$this->Admin_model->getemployeeChildrenDetailView($empNo);
+				$employeeParentDetailView=$this->Admin_model->getemployeeParentDetailView($empNo);
+
+				$data['employeeBankDetail']=$this->Admin_model->getemployeeBankDetailView($empNo);
+
+				$data ['qualificationName']=explode(",",$employeeEducationallDetail->qualificationName);
+				$data ['qualification']=explode(",",$employeeEducationallDetail->qualification);
+				$data ['specialization']=explode(",",$employeeEducationallDetail->specialization);
+				$data ['institute']=explode(",",$employeeEducationallDetail->institute);
+				$data ['qualifieddate']=explode(",",$employeeEducationallDetail->qualifieddate);
+
+				$data ['alSubject']=explode(",",$employeeSubjectDetail->alSubject);
+				$data ['alResult']=explode(",",$employeeSubjectDetail->alResult);
+				$data ['alYear']=explode(",",$employeeSubjectDetail->alYear);
 				
-				$sad=explode(",",$data['employeeDetail']->qualificationName);
-				$qua=explode(",",$data2['employeeDetail']->qualification);
-				$spe=explode(",",$data2['employeeDetail']->specialization);
-				$ins=explode(",",$data2['employeeDetail']->institute);
-				$qudate=explode(",",$data2['employeeDetail']->qualifieddate);
+				$data['employeAlSubjectDetail']=$employeeSubjectDetail;
+
+				$data ['olsubject']=explode(",",$employeeSubjectDetail->olsubject);
+				$data ['olResult']=explode(",",$employeeSubjectDetail->olResult);
+
+				// $data ['hwName']=explode(",",$employeeFamilyDetailView->hwName);
+				// $data ['hwNicNo']=explode(",",$employeeFamilyDetailView->hwNicNo);
+				// $data ['hwRelation']=explode(",",$employeeFamilyDetailView->hwRelation);
+				$data['employeeFamilyDetailView']=$employeeFamilyDetailView;
+
+				$data ['childrenName']=explode(",",$employeeChildrenDetail->childrenName);
+				$data ['childrenNicNo']=explode(",",$employeeChildrenDetail->childrenNicNo);
+				$data ['childrenBirthDay']=explode(",",$employeeChildrenDetail->childrenBirthDay);
+
+				$data ['parentName']=explode(",",$employeeParentDetailView->parentName);
+				$data ['parentNicNo']=explode(",",$employeeParentDetailView->parentNicNo);
+				$data ['parentRelation']=explode(",",$employeeParentDetailView->parentRelation);
 
 
 
-				// $alindex=explode(",",$employeeDetails->alIndexNo);
-				// $alyea=explode(",",$employeeDetails->alYear);
-				// $alsub=explode(",",$employeeDetails->alSubject);
-				// $alres=explode(",",$employeeDetails->alResult);
-				// $olindex=explode(",",$employeeDetails->olIndexNo);
-				// $olsub=explode(",",$employeeDetails->olsubject);
-				// $olres=explode(",",$employeeDetails->olResult);
+				//var_dump($employeeParentDetailView);
 
-
-
-var_dump($data);
-
-				//$this->load->view('adminViews\employeeDetails',$data);
+				$this->load->view('adminViews\employeeDetailsEdit',$data);
 
 			} 		
 //-----------------------------------paysheet Information data ---------------------------------
@@ -2468,7 +2482,7 @@ public function getempData(){
 				'paye'			=> $payeTax,
 				'datecame' 		=> $countPermonth[0]->datecame
 			);
-			$result=$this->Admin_model-> payRollSheetMker($arrayName,);
+			$result=$this->Admin_model->payRollSheetMker($arrayName);
 			if($result){
 
 				echo json_encode(
