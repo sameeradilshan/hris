@@ -257,7 +257,7 @@
 
                         <!-- Modal Header -->
                         <div class="modal-header">
-                            <h4 class="modal-title">Employee/Employeer ETF Report</h4>
+                            <h4 class="modal-title">Employee/Employer ETF Report</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
 
