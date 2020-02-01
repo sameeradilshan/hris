@@ -134,7 +134,7 @@
                             alYear1:'.$sad[0].';
                             alYear2:'.$sad[1].';
                             alYear3:'.$sad[2].';
-                            alYear1:'.$sad[3].';
+                           // alYear1:'.$sad[3].';
                            
                                                             
 							// ';  

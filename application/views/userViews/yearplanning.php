@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 3 | Calendar</title>
+    <title>HrUserLTE 3 | Calendar</title>
 
     <?php $this->load->view('userViews/components/css'); ?>
 
@@ -21,7 +21,7 @@
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
         <!-- Navbar -->
-        <?php $this->load->view('userViews/components/topBar'); ?>
+     
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
@@ -38,7 +38,7 @@
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>index.php/HrUser">Home</a></li>
                                 <li class="breadcrumb-item active">Calendar</li>
                             </ol>
                         </div>

@@ -4,22 +4,26 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Home</title>
+    <title>Leave Management</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?php $this->load->view('userViews/components/css'); ?>
-
+    <?php $this->load->view('adminViews/components/css'); ?>
+<style>
+	#color{
+		color: green;
+	}
+	</style>
 </head>
 
 <body class="hold-transition sidebar-mini">
     <!-- Site wrapper -->
     <div class="wrapper">
         <!-- Navbar -->
-        <?php $this->load->view('userViews/components/topBar'); ?>
+       
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <?php $this->load->view('userViews/components/sideBar'); ?>
+        <?php $this->load->view('adminViews/components/sideBar'); ?>
 
 
 
@@ -33,12 +37,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Blank Page</h1>
+                            <h1>Leave Management</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Blank Page</li>
+                                <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>index.php/Admin">Home</a></li>
+                                <li class="breadcrumb-item active">Leave Management</li>
                             </ol>
                         </div>
                     </div>
@@ -119,11 +123,13 @@
                         <br>
 
                         <div class="row ">
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <label>Total Presantage</label>
-
+					<form action="" method="">
                                 <button type="button" class="btn btn-block btn-primary btn-lg" data-toggle="modal"
-                                    data-target="#totalemppresantage">View </button>
+									data-target="#totalemppresantage">View </button>
+								<>	
+
                                 <!-- The Modal view button------>
                                 <div class="modal" id="totalemppresantage">
                                     <div class="modal-dialog">
@@ -139,14 +145,20 @@
                                             <!-- Modal body -->
                                             <div class="modal-body">
 
-
+											<div class="progress">
+											<div id="color" class="progress-bar bg-primary progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 88%" ,"color: green">
+												<span class="sr-only">80% Complete (success)</span>
+											</div>
+											</div>
                                             </div>
 
                                             <!-- Modal footer -->
                                             <div class="modal-footer">
-                                                <input type="button" class="btn btn-danger" name="submit"
-                                                    value="Submit">
-                                                <button type="button" class="btn btn-danger"
+                                                <!-- <input type="button" class="btn btn-info" name="submit"
+													value="Print"> -->
+													<button type="button" class="btn btn-info"
+                                                    data-dismiss="modal">Print</button>
+                                                <button type="button" class="btn btn-info"
                                                     data-dismiss="modal">Close</button>
                                             </div>
 
@@ -158,7 +170,7 @@
 
 
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <label>Planned Leaves</label>
                                 <button type="button" class="btn btn-block btn-primary btn-lg" data-toggle="modal"
                                     data-target="#empplannedleave">View </button>
@@ -192,10 +204,10 @@
 
                             </div>
 
-                        </div>
+                        
 
-                        <div class="row">
-                            <div class="col-md-6">
+                       
+                            <div class="col-md-3">
                                 <label>Pending Request</label>
                                 <button type="button" class="btn btn-block btn-primary btn-lg" data-toggle="modal"
                                     data-target="#pendingrequest">View </button>
@@ -228,7 +240,7 @@
                                 </div>
 
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <label>Unplanned Leaves</label>
                                 <button type="button" class="btn btn-block btn-primary btn-lg" data-toggle="modal"
                                     data-target="#unplannedleaves">View </button>
@@ -287,7 +299,7 @@
 
 
 
-        <?php $this->load->view('userViews/components/footer'); ?>
+        <?php $this->load->view('adminViews/components/footer'); ?>
 
         <!-- Control Sidebar -->
         <!-- <aside class="control-sidebar control-sidebar-dark"> 
@@ -296,7 +308,7 @@
     </div>
     <!-- ./wrapper -->
 
-    <?php $this->load->view('userViews/components/js'); ?>
+    <?php $this->load->view('adminViews/components/js'); ?>
 
 </body>
 

@@ -15,7 +15,7 @@
     <!-- Site wrapper -->
     <div class="wrapper">
         <!-- Navbar -->
-        <?php $this->load->view('userViews/components/topBar'); ?>
+      
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
@@ -33,12 +33,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Blank Page</h1>
+                            <h1>Employee Performance & Evaluation</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Blank Page</li>
+                                <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>index.php/HrUser">Home</a></li>
+                                <li class="breadcrumb-item active">Employee Performance & Evaluation</li>
                             </ol>
                         </div>
                     </div>
@@ -54,16 +54,116 @@
                         <h3 class="card-title">Title</h3>
 
                         <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-widget="collapse" data-toggle="tooltip"
-                                title="Collapse">
-                                <i class="fa fa-minus"></i></button>
-                            <button type="button" class="btn btn-tool" data-widget="remove" data-toggle="tooltip"
-                                title="Remove">
-                                <i class="fa fa-times"></i></button>
+                            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
+                                data-target="#training">
+                                <i class="fa fa-plus"></i> Add Training
+                            </button>
                         </div>
                     </div>
                     <div class="card-body">
-                        Start creating your amazing application!
+
+
+                        <!-- The Modal -->
+                        <div class="modal fade" id="training">
+                            <div class="modal-dialog modal-md">
+                                <div class="modal-content">
+
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Add New Training </h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+
+                                    <!-- Modal body -->
+
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label>Employee Name</label>
+                                            <input type="text" class="form-control form-control-sm" name="userName" id="userName"
+                                                placeholder="Jhon Doe">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Emp No</label>
+                                            <input type="text" class="form-control form-control-sm" name="userEmail" id="userEmail"
+                                                placeholder="Jhon Doe">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>NIC No</label>
+                                            <input type="text" class="form-control form-control-sm" name="userNIC" id="userNIC"
+                                                placeholder="Jhon Doe">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Knowledge of work & application</label>
+                                            <input type="text" class="form-control form-control-sm" name="knowledgeOfwork" id="knowledgeOfwork"
+                                                placeholder="Jhon Doe">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Achievement of targets</label>
+                                            <input type="text" class="form-control form-control-sm" name="achivement" id="achivement"
+                                                placeholder="Jhon Doe">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Quality & Acuracy Of Workc</label>
+                                            <input type="text" class="form-control form-control-sm" name="quality&acurace" id="quality&acurace"
+                                                placeholder="Jhon Doe">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Co-opration & motivation Of Workc</label>
+                                            <input type="text" class="form-control form-control-sm" name="motivation" id="motivation"
+                                                placeholder="Jhon Doe">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Relationship with subordinate, peers & supervisors</label>
+                                            <input type="text" class="form-control form-control-sm" name="relationship" id="relationship" 
+                                                placeholder="Jhon Doe">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Attendanc & punctuality</label>
+                                            <input type="text" class="form-control form-control-sm" name="attendance" id="attendance"
+                                                placeholder="Jhon Doe">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Discipline</label>
+                                            <input type="text" class="form-control form-control-sm" name="discipline" id="discipline"
+                                                placeholder="Jhon Doe">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Team Work</label>
+                                            <input type="text" class="form-control form-control-sm" name="teamwork" id="teamwork"
+                                                placeholder="Jhon Doe">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Adhearance to company rules & regulations</label>
+                                            <input type="text" class="form-control form-control-sm" name="regulation" id="regulation"
+                                                placeholder="Jhon Doe">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Ability to work with minimum supervision</label>
+                                            <input type="text" class="form-control form-control-sm" name="workwmsupervision" id="workwmsupervision"
+                                                placeholder="Jhon Doe">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Month</label>
+                                            <input type="date" class="form-control form-control-sm" name="month" id="month"
+                                                placeholder="Jhon Doe">
+                                        </div>
+
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                        <button type="Submit" class="btn btn-secondary" data-="modal"
+                                            value="submit">Submit</button>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="col-md-6">
                             <div class="card">
@@ -114,13 +214,6 @@
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-
-
-
-
-
-
-
 
         <?php $this->load->view('userViews/components/footer'); ?>
 

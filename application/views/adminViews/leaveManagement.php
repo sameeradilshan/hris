@@ -8,7 +8,11 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->load->view('adminViews/components/css'); ?>
-
+<style>
+	#color{
+		color: green;
+	}
+	</style>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -142,8 +146,8 @@
                                             <div class="modal-body">
 
 											<div class="progress">
-											<div class="progress-bar bg-primary progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-												<span class="sr-only">40% Complete (success)</span>
+											<div id="color" class="progress-bar bg-primary progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 88%" ,"color: green">
+												<span class="sr-only">80% Complete (success)</span>
 											</div>
 											</div>
                                             </div>

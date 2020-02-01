@@ -203,11 +203,11 @@ public function getResignationDataView() {
 }
 
 //----------------------------------------------user data display model---------------------------------
-public function getuserProfileData($adminId) {
+public function getuserProfileData($hrExeId) {
 	
 	$this->db->select('*');
-	$this->db->from('admin d');
-	$this->db->where('d.adminId',$adminId);
+	$this->db->from('hrexecuitve d');
+	$this->db->where('d.hrExeId',$hrExeId);
 	$query = $this->db->get();
 	return $query->result();
 }
@@ -614,7 +614,7 @@ public function gettData(){
 //-----------------------------------------------------------Year Promotion  Approval ---
 public function EditAdmin($datarr, $whereArr){
 			//var_dump($datarr);
-			$result =$this->db->update('admin',$datarr,$whereArr);
+			$result =$this->db->update('hrexecuitve',$datarr,$whereArr);
 			//var_dump($result);
 			return $result;
 }
@@ -907,7 +907,7 @@ public function ETFReportsix($payYear,$salaryMonth,$Department){
 /////////////////////////////////////////////////////////////
 			public function getpasswordChange($newPasswd, $wherearray){
 				//var_dump($newPasswd);
-				$result=$this->db->query('UPDATE admin SET  adminPassword = "'.$newPasswd.'"  WHERE  adminId =  "'.$wherearray.'" ;');
+				$result=$this->db->query('UPDATE hrexecuitve SET  hrExePassword = "'.$newPasswd.'"  WHERE  hrExeId =  "'.$wherearray.'" ;');
 				return $result;
 				//var_dump($result);
 

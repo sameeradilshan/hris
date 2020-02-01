@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="../../index3.html" class="brand-link">
+    <a  class="brand-link">
       <img src="<?php echo base_url(); ?>assets/dist/img/AdminLTELogo.png"
            alt="AdminLTE Logo"
            class="brand-image img-circle elevation-3"
@@ -43,10 +43,7 @@
             </a>
 					</li>
 					<li class="nav-item">
-            <a href="<?php echo base_url(); ?>index.php/HrExecutive/yearplanning" class="nav-link">
-              <i class="nav-icon fa fa-pencil-square-o"></i>
-              <p>Year Plaining</p>
-            </a>
+            
 					</li>
 
 
@@ -87,10 +84,7 @@
               </a>
             <ul class="nav nav-treeview">
 							<li class="nav-item">
-								<a href="<?php echo base_url(); ?>index.php/HrExecutive/attendance" class="nav-link">
-								<i class="nav-icon fa fa-check-circle-o"></i>
-										<p> Attendance  </p>
-									</a>
+								
 								</li>
               <li class="nav-item">
 								<a href="<?php echo base_url(); ?>index.php/HrExecutive/timeDataView" class="nav-link">
@@ -131,10 +125,7 @@
                 </a>
               </li>
               <li class="nav-item">
-              <a href="<?php echo base_url(); ?>index.php/HrExecutive/yearPerformanceDataView" class="nav-link">
-							<i class="nav-icon fa fa-calendar"></i>
-                  <p>Year </p>
-                </a>
+              
               </li>                            
             </ul>
 					</li>
@@ -156,10 +147,7 @@
 								</a>
 							</li>					
 							<li class="nav-item">
-								<a href="<?php echo base_url(); ?>index.php/HrExecutive/progress" class="nav-link">
-									<i class="nav-icon fa fa-tachometer"></i>
-									<p>Employee progress</p>
-								</a>
+								
 							</li>
 						</ul>
 					</li>

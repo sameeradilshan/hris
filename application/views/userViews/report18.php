@@ -5,18 +5,18 @@
     <title>Decline Leave DatalView</title>
     <!-- Tell the browser to be responsive to screen width -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">  
-	<?php $this->load->view('adminViews/components/css'); ?>
+	<?php $this->load->view('userViews/components/css'); ?>
 </head>
 
 <body class="hold-transition sidebar-mini">
     <!-- Site wrapper -->
     <div class="wrapper">
         <!-- Navbar -->
-        <?php $this->load->view('adminViews/components/topBar'); ?>
+        <?php $this->load->view('userViews/components/topBar'); ?>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <?php $this->load->view('adminViews/components/sideBar'); ?>
+        <?php $this->load->view('userViews/components/sideBar'); ?>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -95,7 +95,8 @@
 													<td>'.$bankreportData->empName.'</td>
 													
 													<td>'.$bankreportData->departmentName.'</td>
-													<td>'.$bankreportData->bankName.'</td>
+													<td>BOC</td>
+													
 													<td>'.$bankreportData->NetSalary.'</td>
 													<td>'.$bankreportData->grossSalary.'</td>
 													
@@ -185,7 +186,7 @@
         </div>
         <!-- /.content-wrapper -->
 
-        <?php $this->load->view('adminViews/components/footer'); ?>
+        <?php $this->load->view('userViews/components/footer'); ?>
 
         <!-- Control Sidebar -->
         <!-- <aside class="control-sidebar control-sidebar-dark"> 
@@ -194,7 +195,7 @@
     </div>
     <!-- ./wrapper -->
 
-	<?php $this->load->view('adminViews/components/js'); ?>
+	<?php $this->load->view('userViews/components/js'); ?>
 
 
 

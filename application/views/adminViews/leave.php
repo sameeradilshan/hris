@@ -515,8 +515,8 @@
 
         );
     });
-  //--------------------------form data fill---------
-  $('#leaveEmpNICNo').click(function() {
+//-----------------------------submit button disabled--------------
+$('#leaveEmpNICNo').click(function() {
         //alert($('#empNo').val())
         var param = {
             empNo: $('#leaveEmpNo').val(),
@@ -531,10 +531,40 @@
             $('#leaveEmpName').val(response.nameInitials);
             $('#leaveEmpDeprtment').val(response.department);
             $('#leaveEmpNICNo').val(response.empNic);
-            alert(result);
+         //   alert(result);
 
 
             //bageta wada?
+
+        });
+
+
+
+    });
+
+  //--------------------------form data fill---------
+  $('#leaveEmpNICNo').click(function() {
+        //alert($('#empNo').val())
+        var param = {
+            empNo: $('#leaveEmpNo').val(),
+        }
+        console.log(param);
+        $.post("<?php echo base_url(); ?>index.php/Admin/leaveCount", param, function(
+            data) {
+
+            var response = JSON.parse(data);
+           
+
+         
+               // console.log(response)
+                if (response.status) {
+					$("#formSubmit").attr("disabled", false);
+	
+                } else {
+					$("#formSubmit").attr("disabled", true);
+	
+
+                }
 
         });
 

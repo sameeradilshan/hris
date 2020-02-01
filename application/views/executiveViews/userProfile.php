@@ -30,7 +30,7 @@
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item"><a  href="<?php echo base_url(); ?>index.php/HrExecutive">Home</a></li>
                                 <li class="breadcrumb-item active">User Profile Page</li>
                             </ol>
                         </div>
@@ -68,26 +68,26 @@
                             <div class="col-3">
                                 <button type="button" class="btn btn-block btn-success btn-lg" data-toggle="modal"
                                     data-target="" onclick="viewFunction({
-										adminId:`'.$userData->adminId.'`,
-										empNo:`'.$userData->empNo.'`,
-										adminName:`'.$userData->adminName.'`,
-										adminEmail:`'.$userData->adminEmail.'`,
-										adminAddData:`'.$userData->adminAddData.'`,
-										type:`'.$userData->type.'`,
-										adminNIC:`'.$userData->adminNIC.'`,})">View User Profile</button>
+										adminId:`'.$userData->hrExeId.'`,
+										empNo:`'.$userData->empId.'`,
+										adminName:`'.$userData->empName.'`,
+										adminEmail:`'.$userData->hrExeEmail.'`,
+										adminAddData:`'.$userData->addedDate.'`,
+										type:`'.$userData->userType.'`,
+										adminNIC:`'.$userData->hrExeNIC.'`,})">View User Profile</button>
 							</div>
 							';
 							echo'
                             <div class="col-md-3">
                                 <button type="button" class="btn btn-block btn-success btn-lg" data-toggle="modal"
 								data-target="" onclick="editFunction({
-									EditadminId:`'.$userData->adminId.'`,
-									EditempNo:`'.$userData->empNo.'`,
-									EditadminName:`'.$userData->adminName.'`,
-									EditadminEmail:`'.$userData->adminEmail.'`,
-									EditadminAddData:`'.$userData->adminAddData.'`,
-									Edittype:`'.$userData->type.'`,
-									EditadminNIC:`'.$userData->adminNIC.'`,})">Edit User Profile</button>
+									EditadminId:`'.$userData->hrExeId.'`,
+									EditempNo:`'.$userData->empId.'`,
+									EditadminName:`'.$userData->empName.'`,
+									EditadminEmail:`'.$userData->hrExeEmail.'`,
+									EditadminAddData:`'.$userData->addedDate.'`,
+									Edittype:`'.$userData->userType.'`,
+									EditadminNIC:`'.$userData->hrExeNIC.'`,})">Edit User Profile</button>
 							</div>
 							';
 							echo'
@@ -378,7 +378,7 @@
 
         }
         console.log(param2);
-        $.post("<?php echo base_url(); ?>index.php/Admin/passwordChange", param2, function(
+        $.post("<?php echo base_url(); ?>index.php/HrExecutive/passwordChange", param2, function(
             data1) {
 
             window.alert(data1)
@@ -484,7 +484,7 @@
 
         }
         //window.alert(param);
-        $.post("<?php echo base_url(); ?>index.php/Admin/admindataEdit", param, function(
+        $.post("<?php echo base_url(); ?>index.php/HrExecutive/admindataEdit", param, function(
             data) {
 
             window.alert(data);

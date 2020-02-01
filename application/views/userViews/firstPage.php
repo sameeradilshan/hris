@@ -68,7 +68,7 @@
 
     <div>
 
-        <section class="welcome p-t-10" style="  background-image: url(<?php echo base_url();?>assets/dist/img/photo1.png);
+        <section class="welcome p-t-10" style="  background-image: url'(<?php echo base_url();?>assets/dist/img/photo1.png);
                  no-repeat center center fixed; 
                 -webkit-background-size: cover;
                 -moz-background-size: cover;

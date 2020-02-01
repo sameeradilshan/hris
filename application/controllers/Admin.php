@@ -82,8 +82,18 @@ class Admin extends CI_Controller{
 		$this->load->view('adminViews\firstPage');
 	}
 	public function overTime()
+
 	{
-		$this->load->view('adminViews\overTime');
+	$StartDate	=$this->input->post('startDate');
+	$EndDate	=$this->input->post('endDate');
+	$empNo	=$this->input->post('empNo');
+
+	// $StartDate=2019-11-01;
+	// $EndDate=2019-11-31;
+	// $empNo=100;
+	$otData['overTime']=$this->Admin_model->getOverTimeCaldata($empNo,$StartDate,$EndDate);
+
+		$this->load->view('adminViews\overTime',$otData);
 	}
 	public function userProfile()
 	{
@@ -99,7 +109,6 @@ class Admin extends CI_Controller{
 	
 	public function leaveManagement()
 	{
-		
 		$this->load->view('adminViews\leaveManagement');
 	}
 	public function payRoll()
@@ -1375,8 +1384,36 @@ public function userProfileData(){
 			public function employeeDetailView(){
 
 				$empNo	=$this->input->post('SearchEmpNo');
-				$data['employeeDetail']=$this->Admin_model->getemployeeDetailView($empNo);
-				$this->load->view('adminViews\employeeDetails',$data);
+				$empNo=100;
+				$data ['employeeDetail']=$this->Admin_model->getemployeeParentData($empNo);
+				$data2['employeeDetail']=$this->Admin_model->getemployeeEducationallDetailView($empNo);
+				$data3['employeeDetail']=$this->Admin_model->getemployeeSubjectDetailView($empNo);
+				$data4['employeeDetail']=$this->Admin_model->getemployeeFamilyDetailView($empNo);
+				$data5['employeeDetail']=$this->Admin_model->getemployeeBankDetailView($empNo);
+				$data6['employeeDetail']=$this->Admin_model->getemployeeChildrenDetailView($empNo);
+				$data7['employeeDetail']=$this->Admin_model->getemployeeParentDetailView($empNo);
+				
+				$sad=explode(",",$data['employeeDetail']->qualificationName);
+				$qua=explode(",",$data2['employeeDetail']->qualification);
+				$spe=explode(",",$data2['employeeDetail']->specialization);
+				$ins=explode(",",$data2['employeeDetail']->institute);
+				$qudate=explode(",",$data2['employeeDetail']->qualifieddate);
+
+
+
+				// $alindex=explode(",",$employeeDetails->alIndexNo);
+				// $alyea=explode(",",$employeeDetails->alYear);
+				// $alsub=explode(",",$employeeDetails->alSubject);
+				// $alres=explode(",",$employeeDetails->alResult);
+				// $olindex=explode(",",$employeeDetails->olIndexNo);
+				// $olsub=explode(",",$employeeDetails->olsubject);
+				// $olres=explode(",",$employeeDetails->olResult);
+
+
+
+var_dump($data);
+
+				//$this->load->view('adminViews\employeeDetails',$data);
 
 			} 		
 //-----------------------------------paysheet Information data ---------------------------------
@@ -2323,6 +2360,7 @@ public function getempData(){
 		$attendanceData=$this->Admin_model->getAttendacebymonthAll($employee->empNo,$startDate,$endDate);
 		$numberOfLeaveMonth=$this->Admin_model->getnumberOfLeaveMonth($employee->empNo,$startDate,$endDate);
 		
+		var_dump($numberOfLeaveMonth) ;
 		//$onOfLeave= intval ( $numberOfLeaveMonth );
 		$onOfLeave=0;
 		foreach($numberOfLeaveMonth as $leave){
@@ -2377,13 +2415,13 @@ public function getempData(){
 			$grossSalary=$salaryInfo->grossSalary;
 			$payeTax=$salaryInfo->payeTax;
 			$reduction1=0;
-			
+			$noPayrate=458;
 
 			
 
 			//date came 
 			if($countPermonth[0]->datecame < $noOfWorkingDays){
-				$reduction1=($noOfWorkingDays-($countPermonth[0]->datecame)) *458;
+				$reduction1=($noOfWorkingDays-($countPermonth[0]->datecame)) *$noPayrate;
 
 				
 			}
@@ -2747,12 +2785,38 @@ public function EmpformData(){
 //---------------------------Over time calculation----------------
 
 public function overTimeCal(){
-	$StartDate	=$this->input->post('startDate');
-	$EndDate	=$this->input->post('endDate');
+	// $StartDate	=$this->input->post('startDate');
+	// $EndDate	=$this->input->post('endDate');
+	// $empNo	=$this->input->post('empNo');
 
-	$result['overTimeCal']=$this->Admin_model->getOverTimeCal($StartDate,$EndDate);
+	$StartDate=2019-11-01;
+	$EndDate=2019-11-31;
+	$empNo=100;
+	$otData=$this->Admin_model->getOverTimeCaldata($empNo,$StartDate,$EndDate);
 
 	
+	$workedHours=8;
+	foreach($otData as $othours){
+
+			$empNo=$othours->empNo;
+			// $empName=$othours->empName;
+			// $date=$othours->date;
+			$dattTime = new DateTime($othours->in_time);
+			$dateTime2 = new DateTime($othours->out_time);
+			$interval = $dateTime2->diff($dattTime);
+			$hours=$interval->h;
+			
+			$otHourswork=$hours-$workedHours;
+			
+			$arrayName = array(
+						$othours->empNo,
+						$othours->nameInitials,
+				 	 	$othours->$hours,
+			 			$othours->$otHourswork,
+			);
+			$this->load->view('adminViews\overTime',$arrayName);	 	
+	}
+	var_dump($otHourswork);
 	
 }
 //---------------------- Remove Admin-------------------------------------
@@ -2901,5 +2965,50 @@ public function editAdmindata(){
 	}
 }
 
+//-------------------leave count-----------------------
+public function leaveCount(){
+	$empNo=$this->input->post('empNo');
+
+	//var_dump($empNo);
+	
+	$year = date('Y');
+	$month =01;
+	$endmonth=12;
+	$startDate=$year.'-'.$month.'-01';
+	$enddata=$year.'-'.$endmonth.'-31';
+
+	$data = array('empName' => $empNo);
+	//$data =100;
+
+	$numberOfLeaveMonth=$this->Admin_model->getleaveCount($data,$startDate,$enddata);
+	
+		//var_dump($numberOfLeaveMonth);
+		//$onOfLeave= intval ( $numberOfLeaveMonth );
+		$onOfLeave=0;
+		foreach($numberOfLeaveMonth as $leave){
+			$onOfLeave+=$leave->noOfDate;
+		}
+		if($onOfLeave<43){
+			echo json_encode(
+				array(
+	
+					'result' => $onOfLeave,
+					'status' => true,
+					  
+				)
+			);
+	
+		}else{
+	
+			echo json_encode(
+				array(
+					  
+					'status' => false,
+					  
+				)
+			);
+		}
+		
+}
 }
 ?>

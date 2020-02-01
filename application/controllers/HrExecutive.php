@@ -137,54 +137,54 @@ class HrExecutive extends CI_Controller {
 
 
 //--------------------------execuitive data edit--------------------------------------
-	// public function admindataEdit(){
+	 public function admindataEdit(){
 
-	// 	$EditempName		=$this->input->post('EditempName');
-	// 	$EditempNo			=$this->input->post('EditempNo');
-	// 	$EditempNICNo		=$this->input->post('EditempNICNo');
-	// 	$Editemail			=$this->input->post('Editemail');
-	// 	$EdituserAddDate	=$this->input->post('EdituserAddDate');
-	// 	$EdituserType		=$this->input->post('EdituserType');
+		$EditempName		=$this->input->post('EditempName');
+		$EditempNo			=$this->input->post('EditempNo');
+		$EditempNICNo		=$this->input->post('EditempNICNo');
+		$Editemail			=$this->input->post('Editemail');
+		$EdituserAddDate	=$this->input->post('EdituserAddDate');
+		$EdituserType		=$this->input->post('EdituserType');
 
-	// 	$userId=$this->session->userdata['loggedHRAdmin']['adminId'];
-	//$data['userName']=$this->session->userdata['loggedHRExecutive']['empName'];
+		$userId=$this->session->userdata['loggedHRExecutive']['hrExeId'];
+	$data['userName']=$this->session->userdata['loggedHRExecutive']['empName'];
 
-	// 	//var_dump($userId);
+		//var_dump($userId);
 		
-	// 	$wherearray =array('adminId' => $userId);
-	// 	$datarr= array(
+		$wherearray =array('hrExeId' => $userId);
+		$datarr= array(
 
-	// 		'adminName'=>	$EditempName,
-	// 		'adminEmail'=>	$Editemail,
-	// 		'adminNIC'=>	$EditempNICNo,
-	// 		'empNo'		=>	$EditempNo,
-	// 		'Type'		=>	$EdituserType,
-	// 		'adminAddData'=>$EdituserAddDate,
+			'empName'=>	$EditempName,
+			'hrExeEmail'=>	$Editemail,
+			'hrExeNIC'=>	$EditempNICNo,
+			'empId'		=>	$EditempNo,
+			'userType'		=>	$EdituserType,
+			'addedDate'=>$EdituserAddDate,
 			
 
-	// 	);//var_dump($datarr);
-	// 	$result=$this->HrExecutive_model->EditAdmin($datarr,$wherearray);
-	// 	if($result){
-	// 		echo json_encode(
-	// 			array(
+		);//var_dump($datarr);
+		$result=$this->HrExecutive_model->EditAdmin($datarr,$wherearray);
+		if($result){
+			echo json_encode(
+				array(
 
-	// 				'result' => $result,
-	// 				'status' => true,
+					'result' => $result,
+					'status' => true,
 					
-	// 			)
-	// 		);
+				)
+			);
 
-	// 	}else{
+		}else{
 
-	// 		echo json_encode(
-	// 			array(
+			echo json_encode(
+				array(
 					
-	// 				'status' => false,
+					'status' => false,
 					
-	// 			)
-	// 		);
-	// 	}
-	// }
+				)
+			);
+		}
+	}
 
 
 
@@ -1035,9 +1035,9 @@ public function designationManagement(){
 //------------------------------------------User Profile Management-----------------------------
 		public function userProfileData(){
 			
-			$adminId=$this->session->userdata['loggedHRExecutive']['hrExeId'];
+			$hrExeId=$this->session->userdata['loggedHRExecutive']['hrExeId'];
 
-			$data['userProfileData']=$this->HrExecutive_model->getuserProfileData($adminId);
+			$data['userProfileData']=$this->HrExecutive_model->getuserProfileData($hrExeId);
 			$this->load->view('executiveViews\userProfile',$data);
 
 
@@ -1353,7 +1353,7 @@ public function approvalTraining(){
 $trainingId=$this->input->post('trainingId');
 $trainingStatus=$this->input->post('trainingStatus');
 
-$adminName=$this->session->userdata['loggedHRAdmin']['adminName'];
+$adminName=$this->session->userdata['loggedHRExecutive']['adminName'];
 
 $data = array(
 	'trainingStatus'=> $trainingStatus,
@@ -1436,7 +1436,7 @@ $empStatus=$this->input->post('empStatus');
 	$date =date('d');
 	
 
-$adminName=$this->session->userdata['loggedHRAdmin']['adminName'];
+$adminName=$this->session->userdata['loggedHRExecutive']['adminName'];
 $appDate =$year."-".$month."-".$date;
 //$nameAndDate=$adminName." ".$date."".$month."".$year;
 //var_dump($appDate);
@@ -2297,8 +2297,8 @@ if($Department=='All' && $payYear!=='' && $salaryMonth !=='' ){
 //---------------------------passwoed change-------------------------------------
 	public function passwordChange(){
 		
-		$userId=$this->session->userdata['loggedHRAdmin']['adminId'];	
-		$hrAdminPasswd=$this->session->userdata['loggedHRAdmin']['adminPassword'];
+		$wherearray=$this->session->userdata['loggedHRExecutive']['hrExeId'];	
+		$hrAdminPasswd=$this->session->userdata['loggedHRExecutive']['hrExePassword'];
 		//var_dump($hrAdminPasswd);
 
 		$newPasswd			=$this->input->post('newPasswd');
@@ -2309,7 +2309,7 @@ if($Department=='All' && $payYear!=='' && $salaryMonth !=='' ){
 		if($hrAdminPasswd==$currentPasswd){
 			if($newPasswd==$reNewPasswd){
 				
-				$result=$this->HrExecutive_model->getpasswordChange($newPasswd,$userId);
+				$result=$this->HrExecutive_model->getpasswordChange($newPasswd,$wherearray);
 				if($result){
 
 		//var_dump($result);
@@ -2416,11 +2416,11 @@ $result['overTimeCal']=$this->HrExecutive_model->getOverTimeCal($StartDate,$EndD
 }
 //---------------------- Remove Admin-------------------------------------
 public function RemoveAdmin(){
-$adminId=$this->input->post('adminId');
+$hrExeId=$this->input->post('hrExeId');
 $Status=$this->input->post('Status');
 
 $data = array('Status' => $Status);
-$wherearray = array('adminId' => $adminId);
+$wherearray = array('hrExeId' => $hrExeId);
 
 $result=$this->HrExecutive_model->removeAdminModal($data,$wherearray);
 
@@ -2515,7 +2515,7 @@ if($result){
 }
 public function editAdmindata(){
 
-$adminId=$this->input->post('adminId');
+$hrExeId=$this->input->post('hrExeId');
 $EditempName		=$this->input->post('EditempName');
 $EditempNo			=$this->input->post('EditempNo');
 $EditempNICNo		=$this->input->post('EditempNICNo');
@@ -2525,7 +2525,7 @@ $EdituserAddDate	=$this->input->post('EdituserAddDate');
 
 //var_dump($userId);
 
-$wherearray =array('adminId' => $adminId);
+$wherearray =array('hrExeId' => $hrExeId);
 $datarr= array(
 
 	'adminName'=>	$EditempName,

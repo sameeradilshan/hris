@@ -5,18 +5,18 @@
     <title>Decline Promotion DatalView</title>
     <!-- Tell the browser to be responsive to screen width -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">  
-	<?php $this->load->view('adminViews/components/css'); ?>
+	<?php $this->load->view('userViews/components/css'); ?>
 </head>
 
 <body class="hold-transition sidebar-mini">
     <!-- Site wrapper -->
     <div class="wrapper">
         <!-- Navbar -->
-        <?php $this->load->view('adminViews/components/topBar'); ?>
+        <?php $this->load->view('userViews/components/topBar'); ?>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <?php $this->load->view('adminViews/components/sideBar'); ?>
+        <?php $this->load->view('userViews/components/sideBar'); ?>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -70,8 +70,8 @@
                                             <th scope="col">Promotion Detailes</th>
 											<th scope="col">Date</th>
 											<th scope="col">Promotion/Increment</th>
-											<th scope="col">Approval</th>
-											<th scope="col">Approved By</th>
+											<th scope="col">Declined Date</th>
+											<th scope="col">Declined By</th>
 											
                                             
                                         </tr>
@@ -93,17 +93,9 @@
 															<td>'.$incrementData->date.'</td>
 															<td>'.$incrementData->increment.'</td>
 															
-															<td><div class="btn-group">';
-													if($incrementData->incrementStatus	==0){
-														echo '<button type="button" onclick="approvalFunction('.$incrementData->IncrementId.')" class="btn btn-info">Approve</button>
-														<button type="button" onclick="rejectFucntion('.$incrementData->IncrementId.')" class="btn btn-danger">Decline</button>';
-													}
-													
-
-												
-													  echo '</div></td>
-													  <td>Admin</td>
-														</tr>
+															<td>'.$incrementData->appDate.'</td>
+															<td>'.$incrementData->EnteredBy.'</td>
+															</tr>	
 														 
 													';
 										}
@@ -181,7 +173,7 @@
         </div>
         <!-- /.content-wrapper -->
 
-        <?php $this->load->view('adminViews/components/footer'); ?>
+        <?php $this->load->view('userViews/components/footer'); ?>
 
         <!-- Control Sidebar -->
         <!-- <aside class="control-sidebar control-sidebar-dark"> 
@@ -190,7 +182,7 @@
     </div>
     <!-- ./wrapper -->
 
-	<?php $this->load->view('adminViews/components/js'); ?>
+	<?php $this->load->view('userViews/components/js'); ?>
 
 
 

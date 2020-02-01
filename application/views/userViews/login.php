@@ -17,7 +17,21 @@
     <!-- iCheck -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/iCheck/square/blue.css">
     <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+	<style type="text/css">
+    .true_input {
+        visibility: hidden;
+    }
+
+    .error {
+        color: red;
+        font-size: 12px;
+    }
+	#editModal{
+		max-height: 100%;
+		overflow-y: auto;
+	}
+    </style>
 </head>
 
 <body class="hold-transition login-page">
@@ -36,10 +50,11 @@
                 <p class="login-box-msg"></p>
 
 
-                <?php echo validation_errors(); ?>
+               
                 <?php echo form_open('Login/LoginUser'); ?>
-
+			<form id="log">
                 <div class="form-group has-feedback">
+					<span class="fa fa-envelope form-control-feedback"></span>
                     <input type="email" class="form-control" placeholder="Email" name="email">
                 </div>
                 <div class="form-group has-feedback">
@@ -61,7 +76,7 @@
                 </div>
                 <?php echo form_close(); ?>
                 <!-- /.social-auth-links -->
-
+			</form>
                 <p class="mb-1">
                     <a href="#">I forgot my password</a>
                 </p>
@@ -88,7 +103,32 @@
             increaseArea: '20%' // optional
         })
     })
+	
+	
+	</script>
+ <script href="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.min.js"></script>
+ <script href="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/additional-methods.min.js"></script>
+
+
+ 
+ <script>
+    $(document).ready(function() {
+        $("#log").validate({
+            rules: {
+
+                "email": {
+                    required: true,
+                },
+                "password": {
+                    required: true,
+                }
+
+            }
+        });
+    });
     </script>
+
+
 </body>
 
 </html>

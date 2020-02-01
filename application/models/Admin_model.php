@@ -302,10 +302,72 @@ public function getPayRollInfoDataViewOne($empNo) {
 
 //-------------------------------------Employee Details--------------------------------------------------
 
-public function getemployeeDetailView($empNo) {
+public function getemployeePresonalDetailView($empNo) {
 
 	$this->db->select('*');
 	$this->db->from('addemployee d');
+	$this->db->where('d.empNo ', $empNo );
+	$query = $this->db->get();
+	return $query->row();
+}
+public function getemployeeEducationallDetailView($empNo) {
+
+	$this->db->select('*');
+	$this->db->from('empedudetails e');
+	$this->db->where('e.empNo ', $empNo );
+	$query = $this->db->get();
+	return $query->row();
+}
+public function getemployeeSubjectDetailView($empNo) {
+
+	$this->db->select('*');
+	$this->db->from('empresultdetails f');
+	$this->db->where('f.empNo ', $empNo );
+	$query = $this->db->get();
+	return $query->row();
+}
+public function getemployeeJobDetailView($empNo) {
+
+	$this->db->select('*');
+	$this->db->from('empjobdetails g');
+	$this->db->where('g.empNo ', $empNo );
+	$query = $this->db->get();
+	return $query->row();
+}
+public function getemployeeFamilyDetailView($empNo) {
+
+	$this->db->select('*');
+	$this->db->from('empfamilydetails i');
+	$this->db->where('i.empNo ', $empNo );
+	$query = $this->db->get();
+	return $query->row();
+}
+public function getemployeeBankDetailView($empNo) {
+
+	$this->db->select('*');
+	$this->db->from('empbamkdetails h');
+	$this->db->where('h.empNo ', $empNo );
+	$query = $this->db->get();
+	return $query->row();
+}
+public function getemployeeChildrenDetailView($empNo) {
+
+	$this->db->select('*');
+	$this->db->from('empchilddetails j');
+	$this->db->where('j.empNo ', $empNo );
+	$query = $this->db->get();
+	return $query->row();
+}
+public function getemployeeParentDetailView($empNo) {
+
+	$this->db->select('*');
+	$this->db->from('empparentdetails k');
+	$this->db->where('k.empNo ', $empNo );
+	$query = $this->db->get();
+	return $query->row();
+}
+
+public function getemployeeParentData($empNo) {
 	$this->db->from('empedudetails e');
 	$this->db->from('empresultdetails f');
 	$this->db->from('empjobdetails g');
@@ -313,7 +375,10 @@ public function getemployeeDetailView($empNo) {
 	$this->db->from('empfamilydetails i');
 	$this->db->from('empchilddetails j');
 	$this->db->from('empparentdetails k');
+	$this->db->from('addemployee d');
+
 	$this->db->where('d.empNo ', $empNo );
+	
 	$this->db->where('e.empNo ', $empNo );
 	$this->db->where('f.empNo ', $empNo );
 	$this->db->where('g.empNo ', $empNo );
@@ -322,7 +387,7 @@ public function getemployeeDetailView($empNo) {
 	$this->db->where('j.empNo ', $empNo );
 	$this->db->where('k.empNo ', $empNo );
 	$query = $this->db->get();
-	return $query->result();
+	return $query->row();
 }
 //----------------------------------department--------------------------------------------------------------
 public function getDepartmentDataView() {
@@ -1017,6 +1082,29 @@ public function removeStaffModal($dataArr, $whereArr){
 	return $result;
 }
 
+
+	 public function getleaveCount
+($data,$startDate,$endDate){
+
+	//var_dump($startDate);
+	$query=$this->db->query('SELECT * from empleave ;');
+	return $query->result();
+	//var_dump($query);
+	
+}
+public function getOverTimeCaldata($empNo,$StartDate,$EndDate){
+	//var_dump($empNo);
+	$query=$this->db->query('select * from timesheet where empNo="'.$empNo.'"   ;');
+	//var_dump($query);
+	return $query->result();
+
+// foreach ($rows as $row)
+// {
+//         echo $row->id;
+//         echo $row->email;
+//         echo $row->last_login('Y-m-d');
+// }
+}
 }
 
 ?>

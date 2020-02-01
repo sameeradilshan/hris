@@ -95,7 +95,8 @@
 													<td>'.$bankreportData->empName.'</td>
 													
 													<td>'.$bankreportData->departmentName.'</td>
-													<td>'.$bankreportData->bankName.'</td>
+													<td>BOC</td>
+													
 													<td>'.$bankreportData->NetSalary.'</td>
 													<td>'.$bankreportData->grossSalary.'</td>
 													

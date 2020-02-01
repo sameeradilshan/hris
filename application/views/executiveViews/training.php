@@ -262,8 +262,7 @@
 																
 																<td><div class="btn-group">';
 													if($trainingData->trainingStatus==0){
-														echo '<button type="button" onclick="approvalFunction('.$trainingData->trainingId.')" class="btn btn-success">Approve</button>
-														<button type="button" onclick="rejectFucntion('.$trainingData->trainingId.')" class="btn btn-danger">Decline</button>
+														echo '
 														<button type="button" data-toggle="modal"  class="btn btn-info" onclick="editFunction({
 
 															trainingId:`'.$trainingData->trainingId.'`,

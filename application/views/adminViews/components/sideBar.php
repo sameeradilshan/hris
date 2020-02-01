@@ -36,10 +36,7 @@
             </a>
 					</li>
 					<li class="nav-item">
-            <a href="<?php echo base_url(); ?>index.php/FullCalendar/index" class="nav-link">
-              <i class="nav-icon fa fa-user"></i>
-              <p>calender</p>
-            </a>
+           
 					</li>
 
 					<li class="nav-item">
@@ -49,10 +46,7 @@
             </a>
 					</li>
 					<li class="nav-item">
-            <a href="<?php echo base_url(); ?>index.php/Admin/yearplanning" class="nav-link">
-              <i class="nav-icon fa fa-pencil-square-o"></i>
-              <p>Year Plaining</p>
-            </a>
+           
 					</li>
 
 
@@ -93,10 +87,7 @@
               </a>
             <ul class="nav nav-treeview">
 							<li class="nav-item">
-								<a href="<?php echo base_url(); ?>index.php/Admin/attendance" class="nav-link">
-								<i class="nav-icon fa fa-check-circle-o"></i>
-										<p> Attendance  </p>
-									</a>
+							
 								</li>
               <li class="nav-item">
 								<a href="<?php echo base_url(); ?>index.php/Admin/timeDataView" class="nav-link">
@@ -162,10 +153,7 @@
 								</a>
 							</li>					
 							<li class="nav-item">
-								<a href="<?php echo base_url(); ?>index.php/Admin/progress" class="nav-link">
-									<i class="nav-icon fa fa-tachometer"></i>
-									<p>Employee progress</p>
-								</a>
+								
 							</li>
 						</ul>
 					</li>

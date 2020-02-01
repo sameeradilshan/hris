@@ -238,8 +238,7 @@
 															<td>'.$resignationData->EnteredBy.'</td>
 															<td><div class="btn-group">';
 													if($resignationData->empStatus==0){
-														echo '<button type="button" onclick="approvalFunction('.$resignationData->empResigId.')" class="btn btn-info">Approve</button>
-														<button type="button" onclick="rejectFucntion('.$resignationData->empResigId.')" class="btn btn-danger">Decline</button>
+														echo '
 														<button type="button" data-toggle="modal"  class="btn btn-info" onclick="editFunction({
 															empResigId:`'.$resignationData->empResigId.'`,
 															empNo:`'.$resignationData->empNo.'`,

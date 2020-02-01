@@ -7,7 +7,23 @@
     <title>Home</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?php $this->load->view('userViews/components/css'); ?>
+	<?php $this->load->view('userViews/components/css'); ?>
+	
+	<style type="text/css">
+    .true_input {
+        visibility: hidden;
+    }
+
+    .error {
+        color: red;
+        font-size: 12px;
+    }
+
+    #editModal {
+        max-height: 100%;
+        overflow-y: auto;
+    }
+    </style>
 
 </head>
 
@@ -15,7 +31,7 @@
     <!-- Site wrapper -->
     <div class="wrapper">
         <!-- Navbar -->
-        <?php $this->load->view('userViews/components/topBar'); ?>
+
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
@@ -33,11 +49,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1></h1>
+                            <h1>User Management</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>index.php/HrUser">Home</a>
+                                </li>
                                 <li class="breadcrumb-item active">User Managenent</li>
                             </ol>
                         </div>
@@ -51,8 +68,8 @@
                 <!-- Default box -->
                 <div class="card">
                     <div class="card-header">
-												<h3 class="card-title">User Management</h3>
-												
+                        <h3 class="card-title">User Management</h3>
+
                         <!-- Modal Button -->
                         <div class="card-tools">
                             <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
@@ -60,175 +77,208 @@
                                 <i class="fa fa-plus"></i> Add New User
                             </button>
                             <!-- The Modal -->
-                            <div class="modal" id="addNewUser">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
+                            <form id="userManagementform">
+                                <div class="modal" id="addNewUser">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
 
-                                        <!-- Modal Header -->
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">Add New User</h4>
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        </div>
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Add New User</h4>
+                                                <button type="button" class="close"
+                                                    data-dismiss="modal">&times;</button>
+                                            </div>
 
-                                        <!-- Modal body -->
-                                        <div class="modal-body">
-                                            <div class="form-group">
-                                                <label>Full Name</label>
-                                                <input type="text" class="form-control form-control-sm"
-                                                    placeholder="Jhon Doe">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>NIC No</label>
-                                                <input type="text" class="form-control form-control-sm"
-                                                    placeholder="Jhon Doe">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Address</label>
-                                                <input type="text" class="form-control form-control-sm"
-                                                    placeholder="Jhon Doe">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Barcode No</label>
-                                                <input type="text" class="form-control form-control-sm"
-                                                    placeholder="Jhon Doe">
-                                            </div>
-                                            <div class="col-md-3">
+                                            <!-- Modal body -->
+                                            <div class="modal-body">
                                                 <div class="form-group">
-                                                    <label>Type</label>
-                                                    <select class="form-control  form-control-sm">
-                                                        <option>Admin</option>
-                                                        <option>Executive</option>
-                                                        <option>Staff</option>
-
-                                                    </select>
+                                                    <label>User Name</label>
+                                                    <input type="text" class="form-control form-control-sm"
+                                                        name="userName" id="userName" placeholder="Jhon Doe">
                                                 </div>
+                                                <div class="form-group">
+                                                    <label>Email</label>
+                                                    <input type="text" class="form-control form-control-sm"
+                                                        name="userEmail" id="userEmail" placeholder="Jhon Doe">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>NIC No</label>
+                                                    <input type="text" class="form-control form-control-sm"
+                                                        name="userNIC" id="userNIC" placeholder="Jhon Doe">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>Emp No</label>
+                                                    <input type="text" class="form-control form-control-sm" name="empId"
+                                                        id="empId" placeholder="Jhon Doe">
+                                                </div>
+
+
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label>Type</label>
+                                                        <select class="form-control  form-control-sm" name="userType"
+                                                            id="userType">
+                                                            <option>HrUser</option>
+                                                            <option>Executive</option>
+                                                            <option>Staff</option>
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Add Date</label>
+                                                    <input type="date" class="form-control form-control-sm"
+                                                        name="userAddDate" id="userAddDate" placeholder="Jhon Doe">
+                                                </div>
+
                                             </div>
-                                            <div class="form-group">
-                                                <label>Add Date</label>
-                                                <input type="date" class="form-control form-control-sm"
-                                                    placeholder="Jhon Doe">
+
+                                            <!-- Modal footer -->
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-primary"
+                                                    id="formSubmit">Submit</button>
+
+                                                <button type="" class="btn btn-danger"
+                                                    data-dismiss="modal">Close</button>
                                             </div>
 
                                         </div>
-
-                                        <!-- Modal footer -->
-                                        <div class="modal-footer">
-                                            <input type="button" class="btn btn-danger" name="submit" value="Submit">
-                                            <button type="button" class="btn btn-danger"
-                                                data-dismiss="modal">Close</button>
-                                        </div>
-
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
 
-                   
+
                 </div>
                 <div class="card-body">
 
 
                     <div class="row" style="background-color:#efefef; padding:20px;   border-radius: 25px;">
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Employee Name</label>
-                                <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">NIC</label>
-                                <input type="text" class="form-control  form-control-sm" placeholder="Jhon Doe">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>Type</label>
-                                <select class="form-control  form-control-sm">
-                                    <option>Admin</option>
-                                    <option>Executive</option>
-                                    <option>Staff</option>
 
-                                </select>
+
+                       
+
+                       
+						<div class="col-lg-3 col-6">
+                            <!-- small card -->
+                            <div class="small-box bg-info">
+                                <div class="inner">
+                                    <h3><?php echo $HrUserCount ? $HrUserCount : '0';?></h3>
+
+                                    <p>HrUser Users</p>
+                                </div>
+                                <div class="icon">
+                                    <i class=" fa fa-check-circle-o"></i>
+                                </div>
+                                <a href="<?php echo base_url(); ?>index.php/HrUser/userManagementData"
+                                    class="small-box-footer">
+                                    HR HrUser Users info <i class="fa fa-arrow-circle-right"></i>
+                                </a>
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <button style="margin-top:32px; width:100px;" type="button"
-                                    class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal">
-                                    <i class="fa fa-search"></i> Search
-                                </button>
+                        <div class="col-lg-3 col-6">
+                            <!-- small card -->
+                            <div class="small-box bg-info">
+                                <div class="inner">
+                                    <h3><?php echo $ExrCount ? $ExrCount : '0';?></h3>
+
+                                    <p>Executive Users</p>
+                                </div>
+                                <div class="icon">
+                                    <i class=" fa fa-check-circle-o"></i>
+                                </div>
+                                <a href="<?php echo base_url(); ?>index.php/HrUser/userManagementDataTwo"
+                                    class="small-box-footer">
+									HR Executive Users info <i class="fa fa-arrow-circle-right"></i>
+                                </a>
                             </div>
                         </div>
+
+                        <div class="col-lg-3 col-6">
+                            <!-- small card -->
+                            <div class="small-box bg-info">
+                                <div class="inner">
+                                    <h3><?php echo $StaffCount ? $StaffCount : '0';?></h3>
+
+                                    <p>HR Staff Users</p>
+                                </div>
+                                <div class="icon">
+                                    <i class=" fa fa-check-circle-o"></i>
+                                </div>
+                                <a href="<?php echo base_url(); ?>index.php/HrUser/userManagementDataThree"
+                                    class="small-box-footer">
+                                    Hr Staff Users info <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <br><br>
-                            <table id="example1" class="table table-bordered table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>NIC No</th>
-                                        <th>Employee Name</th>
-                                        <th>Type</th>
-                                        <th>Date</th>
+                    <div class="card-body">
+                        <!-- row start -->
+                        <div class="row">
+                            <div class="table-responsive">
+                                <div style="overflow-x :auto; min-width:800px; ">
+                                    <div class="col-md-12">
+                                        <br><br>
+                                        <!-- <table id="example1" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">EMP No</th>
+                                                    <th scope="col">NIC No</th>
+                                                    <th scope="col">User Name</th>
+                                                    <th scope="col">User Type</th>
+                                                    <th scope="col">Add Date</th>
 
-                                    </tr>
-                                </thead>
-                                <tbody >
-                                    <tr>
-                                        <td>963240V</td>
-                                        <td>amail
-                                        </td>
-                                        <td>Admin</td>
-                                        <td> 4/2/2019</td>
-                                       
-                                    </tr>
-                                    <tr>
-                                        <td>123458V</td>
-                                        <td>saman
-                                        </td>
-                                        <td>Staff</td>
-                                        <td>5/2/2019</td>
-                                       
-                                    </tr>
-                                    <tr>
-                                    <td>1234668V</td>
-                                        <td>kasun
-                                        </td>
-                                        <td>Execuitive</td>
-                                        <td>5/2/2019</td>
-                                        
-                                    </tr>
-                                    <tr>
-                                        <td>Other browsers</td>
-                                        <td>All others</td>
-                                        <td>-</td>
-                                        <td>-</td>
-                                      
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>Rendering engine</th>
-                                        <th>Browser</th>
-                                        <th>Platform(s)</th>
-                                        <th>Engine version</th>
-                                        
-                                    </tr>
-                                </tfoot>
-                            </table>
+
+
+
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                //<?php
+												//foreach($userManagementDataView as $usermanageData){
+													
+													//var_dump($resignationDataView);
+													
+													//echo'  
+														// <tr role="row" class="odd">
+														
+														// 	<td>'.$usermanageData->empNo.'</td>
+														// 	<td>'.$usermanageData->HrUserName.'</td>
+														// 	<td>'.$usermanageData->type.'</td>
+														// 	<td>'.$usermanageData->HrUserNIC.'</td>
+														// 	<td>'.$usermanageData->HrUserAddData.'</td>
+														// 	<td>HrUser</td>
+															
+														
+														// </tr>
+														 
+													// ';
+												//}
+												//?>
+
+
+                                            </tbody> -->
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- /.card-body -->
+                            <div class="card-footer">
+
+                            </div>
+                            <!-- /.card-footer-->
                         </div>
+                        <!-- /.card -->
+
                     </div>
-                    <!-- /.card-body -->
-                    <div class="card-footer">
-                        Footer
-                    </div>
-                    <!-- /.card-footer-->
                 </div>
-                <!-- /.card -->
-
             </section>
             <!-- /.content -->
         </div>
@@ -250,8 +300,97 @@
     </div>
     <!-- ./wrapper -->
 
-    <?php $this->load->view('userViews/components/js'); ?>
+	<?php $this->load->view('userViews/components/js'); ?>
+	
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.min.js"></script> 
+	<script>
+		
+    $(document).ready(function() {
+		
+        $("#userManagementform").validate({
+			
+            rules: {
+
+                "userName": {
+                    required: true,
+                },
+                "userEmail": {
+                    required: true,
+                },
+				"empId": {
+                    required: true,
+                },
+				"userType": {
+                    required: true,
+                },
+				"userAddDate": {
+                    required: true,
+                },
+				"userNIC": {
+                    required: true,
+                }
+
+
+            }
+        });
+    });
+    </script>
+
+    <script>
+    //-------------------------data Table----------------------------------------------------
+    $(function() {
+
+        $("#example1").DataTable({
+            "scrollX": true
+        });
+    });
+    </script>
+    <!-- //-----------------------form Handling -------------------------------------------------- -->
+    <script>
+    $('#formSubmit').click(function() {
+        //alert($('#userName').val())
+        var param2 = {
+
+            userName: $('#userName').val(),
+            userEmail: $('#userEmail').val(),
+            userNIC: $('#userNIC').val(),
+            empId: $('#empId').val(),
+            userType: $('#userType').val(),
+            userAddDate: $('#userAddDate').val(),
+
+
+
+        }
+        console.log(param2);
+		if (param2.userName !== '' && param2.userEmail !== ''&& param2.empId !== '' && param2.userType !== '') {
+        $.post("<?php echo base_url(); ?>index.php/HrUser/UserManagementHandler", param2, function(
+            data1) {
+
+            window.alert(data1)
+            var response = JSON.parse(data1);
+            window.alert(response)
+
+            if (response.status) {
+
+                alert("sucess");
+
+                window.location.href = "userManagementDataView";
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    footer: '<a href>Why do I have this issue?</a>'
+                })
+            }
+
+
+        });
+		}
+    })
+    </script>
 </body>
 
 </html>

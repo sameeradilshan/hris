@@ -6,18 +6,18 @@
     <title>User Profile Manage</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?php $this->load->view('adminViews/components/css'); ?>
+    <?php $this->load->view('userViews/components/css'); ?>
 </head>
 
 <body class="hold-transition sidebar-mini">
     <!-- Site wrapper -->
     <div class="wrapper">
         <!-- Navbar -->
-        <?php $this->load->view('adminViews/components/topBar'); ?>
+        <?php $this->load->view('userViews/components/topBar'); ?>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <?php $this->load->view('adminViews/components/sideBar'); ?>
+        <?php $this->load->view('userViews/components/sideBar'); ?>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -26,7 +26,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>User Profile Manage Page</h1>
+                            <h1>User Profile Manager</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -68,26 +68,26 @@
                             <div class="col-3">
                                 <button type="button" class="btn btn-block btn-success btn-lg" data-toggle="modal"
                                     data-target="" onclick="viewFunction({
-										adminId:`'.$userData->adminId.'`,
-										empNo:`'.$userData->empNo.'`,
-										adminName:`'.$userData->adminName.'`,
-										adminEmail:`'.$userData->adminEmail.'`,
-										adminAddData:`'.$userData->adminAddData.'`,
-										type:`'.$userData->type.'`,
-										adminNIC:`'.$userData->adminNIC.'`,})">View User Profile</button>
+										adminId:`'.$userData->hrUserId.'`,
+										empNo:`'.$userData->empId.'`,
+										adminName:`'.$userData->empName.'`,
+										adminEmail:`'.$userData->hrUserEmail.'`,
+										adminAddData:`'.$userData->userAddDate.'`,
+										type:`'.$userData->userType	.'`,
+										adminNIC:`'.$userData->hrUserNIC.'`,})">View User Profile</button>
 							</div>
 							';
 							echo'
                             <div class="col-md-3">
                                 <button type="button" class="btn btn-block btn-success btn-lg" data-toggle="modal"
 								data-target="" onclick="editFunction({
-									EditadminId:`'.$userData->adminId.'`,
-									EditempNo:`'.$userData->empNo.'`,
-									EditadminName:`'.$userData->adminName.'`,
-									EditadminEmail:`'.$userData->adminEmail.'`,
-									EditadminAddData:`'.$userData->adminAddData.'`,
-									Edittype:`'.$userData->type.'`,
-									EditadminNIC:`'.$userData->adminNIC.'`,})">Edit User Profile</button>
+									EditadminId:`'.$userData->hrUserId.'`,
+									EditempNo:`'.$userData->empId.'`,
+									EditadminName:`'.$userData->empName.'`,
+									EditadminEmail:`'.$userData->hrUserEmail.'`,
+									EditadminAddData:`'.$userData->userAddDate.'`,
+									Edittype:`'.$userData->userType.'`,
+									EditadminNIC:`'.$userData->hrUserNIC.'`,})">Edit User Profile</button>
 							</div>
 							';
 							echo'
@@ -353,7 +353,7 @@
         </div>
         <!-- /.content-wrapper -->
 
-        <?php $this->load->view('adminViews/components/footer'); ?>
+        <?php $this->load->view('userViews/components/footer'); ?>
 
         <!-- Control Sidebar -->
         <!-- <aside class="control-sidebar control-sidebar-dark"> 
@@ -362,7 +362,7 @@
     </div>
     <!-- ./wrapper -->
 
-    <?php $this->load->view('adminViews/components/js'); ?>
+    <?php $this->load->view('userViews/components/js'); ?>
 
     <script>
     $('#changePasswordBtn').click(function() {
@@ -378,7 +378,7 @@
 
         }
         console.log(param2);
-        $.post("<?php echo base_url(); ?>index.php/Admin/passwordChange", param2, function(
+        $.post("<?php echo base_url(); ?>index.php/HrUser/passwordChange", param2, function(
             data1) {
 
             window.alert(data1)
@@ -484,7 +484,7 @@
 
         }
         //window.alert(param);
-        $.post("<?php echo base_url(); ?>index.php/Admin/admindataEdit", param, function(
+        $.post("<?php echo base_url(); ?>index.php/HrUser/admindataEdit", param, function(
             data) {
 
             window.alert(data);
