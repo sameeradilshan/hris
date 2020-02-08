@@ -98,24 +98,10 @@
 											
 													
 
-													<td>Admin</td>
-													<td><div class="btn-group">';
-											if($resignationData->empStatus==0){
-												echo '<button type="button" onclick="approvalFunction('.$resignationData->empResigId.')" class="btn btn-info">Approve</button>
-												<button type="button" onclick="rejectFucntion('.$resignationData->empResigId.')" class="btn btn-danger">Decline</button>
-												<button type="button" data-toggle="modal"  class="btn btn-info" onclick="editFunction({
-													empResigId:`'.$resignationData->empResigId.'`,
-													empNo:`'.$resignationData->empNo.'`,
-													empName:`'.$resignationData->empName.'`,
-													empNic:`'.$resignationData->empNic.'`,
-													resigDate:`'.$resignationData->resigDate.'`,
-													resigDetails:`'.$resignationData->resigDetails.'`,})"><i class="fa fa-edit"></i> Edit</button>';
-											}
+													
+													
 											
-
-										
-											  echo '</div></td>
-												
+											 
 												</tr>
 												 
 											';

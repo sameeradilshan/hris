@@ -310,7 +310,7 @@ function rejectFucntion(adminId) {
 
             console.log(data)
             var response = JSON.parse(data);
-            console.log(response)
+           // window.alert(response)
             if (response.status) {
                 alert("succes")
 
@@ -319,7 +319,7 @@ function rejectFucntion(adminId) {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: 'Something went wrong!',
+                    text: 'You Can not Delete!',
                     footer: '<a href>Why do I have this issue?</a>'
                 })
             }

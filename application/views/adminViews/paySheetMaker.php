@@ -577,7 +577,7 @@
 	
 	
 	if(countofgenerated!==0){
-		if(1<day<31){
+		if(1<day<10){
 			$("#generatebtn").attr("disabled", false);
 	
 		}

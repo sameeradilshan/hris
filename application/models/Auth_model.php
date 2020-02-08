@@ -9,7 +9,8 @@ class Auth_model extends CI_model{
 
          $loggedHRAdmin = $this->db->select('*')
          ->where('adminEmail',$email)
-         ->where('adminPassword',$password)
+		 ->where('adminPassword',$password)
+		-> where('Status',0)
              ->get('admin');
 
         return $loggedHRAdmin->row_array();

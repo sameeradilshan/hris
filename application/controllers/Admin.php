@@ -22,7 +22,7 @@ class Admin extends CI_Controller{
 	public function userName(){
 		//-------------------Admin Name------------
 		$data['userName']=$this->session->userdata['loggedHRAdmin']['adminName'];
-		var_dump($data);
+		//var_dump($data);
 	}
 // admin views ..................................................................................
 
@@ -47,18 +47,18 @@ class Admin extends CI_Controller{
 		$enddata=$endyear.'-'.$endmonth.'-01';
 		
 		$data['leave']=sizeof($this->Admin_model-> getEmployeeLeave($startDate,$enddata));
-		//var_dump($result);
+		////var_dump($result);
 		//emp attendance
 
 		//$data['attendance']=sizeof($this->Admin_model-> getEmployeeaAttendance($startDate,$enddata));
 		$data['resignation']=sizeof($this->Admin_model-> getEmployeeResignation($startDate,$enddata));
 
-		//var_dump($data);
+		////var_dump($data);
 		$this->load->view('adminViews\home',$data);
 	}
 	public function employeeDetails()
 	{
-		$this->load->view('adminViews\employeeDetails');
+		$this->load->view('adminViews\employeeDetails2');
 	}
 	public function addEmploye()
 	{
@@ -194,7 +194,7 @@ class Admin extends CI_Controller{
 				'adminAddData'=>$userAddDate,
 				'adminPassword'=>$hruserpassword,
 
-			);//var_dump($data);
+			);////var_dump($data);
 			
 			$msg="Dear  ".$userName.",<br>
 			Welcome to Sri Lanka Thriposha Ltd. 
@@ -209,7 +209,7 @@ class Admin extends CI_Controller{
 				
 
 			 $result1=$this->Admin_model->sendEmail($msg,$userEmail);
-			 var_dump($result1);
+			 //var_dump($result1);
 			 if($result1){
 			$result=$this->Admin_model->addAdmin($data);
 			
@@ -260,10 +260,10 @@ class Admin extends CI_Controller{
 				
 
 			 $result1=$this->Admin_model->sendEmail($msg,$userEmail);
-			 var_dump($result1);
+			 //var_dump($result1);
 			 if($result1){
 			$result=$this->Admin_model-> addExecutive($data);
-			//var_dump($result);
+			////var_dump($result);
 
 			if($result){
 				echo json_encode(
@@ -309,7 +309,7 @@ class Admin extends CI_Controller{
 				
 
 			 $result1=$this->Admin_model->sendEmail($msg,$userEmail);
-			 var_dump($result1);
+			 //var_dump($result1);
 			 if($result1){
 			$result=$this->Admin_model-> addStaffUser($data);
 			if($result){
@@ -360,7 +360,7 @@ class Admin extends CI_Controller{
 				$userId=$this->session->userdata['loggedHRAdmin']['adminId'];
 
 
-				//var_dump($userId);
+				////var_dump($userId);
 				
 				$wherearray =array('adminId' => $userId);
 				$datarr= array(
@@ -373,7 +373,7 @@ class Admin extends CI_Controller{
 					'adminAddData'=>$EdituserAddDate,
 					
 	
-				);//var_dump($datarr);
+				);////var_dump($datarr);
 				$result=$this->Admin_model->EditAdmin($datarr,$wherearray);
 				if($result){
 					echo json_encode(
@@ -399,7 +399,7 @@ class Admin extends CI_Controller{
 
 // employee add ------------------------------------------------------------------------- 
 			public function EmployeeDetailshandler(){
-				// var_dump($this->input->post());
+				// //var_dump($this->input->post());
 				// die();
 				
 				$empFullName	=$this->input->post('empFullName');
@@ -618,7 +618,7 @@ class Admin extends CI_Controller{
 						'empId '	=> $empId,
 						
 					);
-					//var_dump($empedudata);
+					////var_dump($empedudata);
 					$result=$this->Admin_model-> addEmployeeEducationalResult($empresultdata);
 					
 
@@ -692,9 +692,11 @@ class Admin extends CI_Controller{
 					);
 					$result=$this->Admin_model-> addEmployeeParentDetails($empparentdata);
 					if($result){
-						echo("Employee Data adding Succesfully");
+						echo("Employee Data adding Succesfully"
+					
+					);
 					}else{
-
+						echo("something  wrong");
 					}
 					
 					
@@ -723,7 +725,7 @@ class Admin extends CI_Controller{
 					'EnteredBy'		=>$adminName,
 
 
-				);//var_dump($resignationdata);
+				);////var_dump($resignationdata);
 				$result=$this->Admin_model-> addResignation($resignationdata);
 				if($result ){
 					
@@ -777,7 +779,7 @@ class Admin extends CI_Controller{
 					'dateTo' 		=> $leaveDateTo,
 					'EnteredBy' 	=> $userName,
 					
-				);//var_dump($leaverequestdata);	
+				);////var_dump($leaverequestdata);	
 				$result=$this->Admin_model-> addLeaveRequestdata($leaverequestdata);
 				if($result){
 
@@ -831,7 +833,7 @@ class Admin extends CI_Controller{
 					'courseFee' 	=> $courseFee,
 					'EnteredBy' 	=> $adminName,
 				);
-				//var_dump($trainingManagementData);	
+				////var_dump($trainingManagementData);	
 				$result=$this->Admin_model-> addTrainingManagementData($trainingManagementData);	
 				if($result){
 				
@@ -951,7 +953,7 @@ class Admin extends CI_Controller{
 					'promotionTotal'	=> $monthlytotal,
 
 				);
-				//var_dump($monthlyPerformanceManagement);	
+				////var_dump($monthlyPerformanceManagement);	
 				$result=$this->Admin_model-> addMonthlyPerformanceData($monthlyPerformanceManagement);	
 				if($result){
 
@@ -985,9 +987,9 @@ public function yearPerformanceManagement(){
 	$x=0;
 	foreach($data ->result_array() as $row){
 		//echo $row['title'];
-		var_dump($row);
+		//var_dump($row);
 	}
-			//var_dump('yearPerformanceManagement');
+			////var_dump('yearPerformanceManagement');
 
 			
 }
@@ -1071,7 +1073,7 @@ public function yearPerformanceManagement(){
 //----------------------------------payroll information----------------------------------------------------
 			public function payRollInformationMgt(){
 
-				//var_dump('payEmpName');
+			//var_dump('payEmpName');
 
 				$payEmpName			=$this->input->post('payinfoEmpName');
 				$payEmpNo			=$this->input->post('payEmpNo');
@@ -1134,7 +1136,7 @@ public function yearPerformanceManagement(){
 
 
 				);
-				//var_dump($payRollInformationMgt);
+				////var_dump($payRollInformationMgt);
 				$result=$this->Admin_model-> addayRollInformationData($payRollInformationMgt);
 				if($result){
 
@@ -1384,7 +1386,8 @@ public function userProfileData(){
 			public function employeeDetailView(){
 
 				$empNo	=$this->input->post('SearchEmpNo');
-				$empNo=100;
+				
+				//$empNo=100;
 				$data['employeeDetail']=$this->Admin_model->getemployeeParentData($empNo);
 
 				$employeeEducationallDetail=$this->Admin_model->getemployeeEducationallDetailView($empNo);
@@ -1425,7 +1428,7 @@ public function userProfileData(){
 
 
 
-				//var_dump($employeeParentDetailView);
+				////var_dump($employeeParentDetailView);
 
 				$this->load->view('adminViews\employeeDetailsEdit',$data);
 
@@ -1496,11 +1499,11 @@ public function userProfileData(){
 				$Department	=$this->input->post('Department');
 				$type		=$this->input->post('type');
 
-				//var_dump($type);
+				////var_dump($type);
 					if($type=='Permanent'){
-						var_dump($type=='Permanent');
+						//var_dump($type=='Permanent');
 						//$data['reportDeptEmpDataView']=$this->Admin_model->getreportDeptEmpDataView($type, $Department);
-						//var_dump($data);
+						////var_dump($data);
 						//$this->load->view('adminViews\report8',$data);
 					}elseif($type=='Contract'){
 
@@ -1827,7 +1830,7 @@ public function updateResignation(){
 	$adminName=$this->session->userdata['loggedHRAdmin']['adminName'];
 	$appDate =$year."-".$month."-".$date;
 	//$nameAndDate=$adminName." ".$date."".$month."".$year;
-//var_dump($appDate);
+////var_dump($appDate);
 	$data = array(
 		'empStatus'=> $empStatus,
 		'resignationApproved' =>$adminName,
@@ -1866,7 +1869,7 @@ public function approvalPaysheet(){
 	$payid=$this->input->post('payid');
 	$approvalStatus=$this->input->post('approvalStatus');
 
-	//var_dump($payid);
+	////var_dump($payid);
 	$wherearray= array('payid'=> $payid);
 	 $data =array('approvalStatus' => $approvalStatus);
 
@@ -1919,7 +1922,7 @@ public function approvalPaysheet(){
 				);
 				$wherearray =array('empResigId' => $resignationId);
 
-				//var_dump($resignationdata);
+				////var_dump($resignationdata);
 				$result =$this ->Admin_model->editResignation($resignationdata,$wherearray);
 
 				if($result ){
@@ -1972,7 +1975,7 @@ public function promotionEdit(){
 	);
 	$wherearray =array('IncrementId' => $IncrementId);
 
-				//var_dump($promotionEdit);
+				////var_dump($promotionEdit);
 				$result =$this ->Admin_model->editPromotion($promotionEdit,$wherearray);
 
 				if($result ){
@@ -2136,7 +2139,7 @@ public function maonthPerformaceEdit(){
 				$promotionId 		= $this->input->post('promotionId');
 
 				$monthlytotal =$knowledgeOfWork +  $achievements+$quality+$motivationOfTheWork+$relationship+$discipline+$attendence+$teamWork+ $adhearance+$abilityToWork;
-				//var_dump($promotionMonth);
+				////var_dump($promotionMonth);
 				
 				$maonthPerformaceEdit=array(
 
@@ -2288,7 +2291,7 @@ public function maonthPerformaceEdit(){
         {
                 $error = array('error' => $this->upload->display_errors());
 
-                //var_dump($error);
+                ////var_dump($error);
 
                 //$this->load->view('upload_form', $error);
                 //echo "not insder";
@@ -2338,8 +2341,10 @@ public function maonthPerformaceEdit(){
 		}
 
 		fclose($file);
-
-		 var_dump(base_url().$timesheet);
+		
+		var_dump(base_url().$timesheet);
+		redirect('Admin/timeDataView');
+		
 		 
 	}
 //--------------------------------------------------Paysheet makeing------------------------------
@@ -2363,7 +2368,7 @@ public function getempData(){
 
 	//view
 
-	//var_dump($data['getempData']);
+	////var_dump($data['getempData']);
 	
 	foreach ($data['getempData'] as $employee) {
 		$salaryInfo=$this->Admin_model->getPayRollInfoDataViewOne($employee->empNo);
@@ -2374,15 +2379,15 @@ public function getempData(){
 		$attendanceData=$this->Admin_model->getAttendacebymonthAll($employee->empNo,$startDate,$endDate);
 		$numberOfLeaveMonth=$this->Admin_model->getnumberOfLeaveMonth($employee->empNo,$startDate,$endDate);
 		
-		var_dump($numberOfLeaveMonth) ;
+		////var_dump($numberOfLeaveMonth) ;
 		//$onOfLeave= intval ( $numberOfLeaveMonth );
 		$onOfLeave=0;
 		foreach($numberOfLeaveMonth as $leave){
 			$onOfLeave+=$leave->noOfDate;
 		}
-		//var_dump($onOfLeave) ;
+		////var_dump($onOfLeave) ;
 		$noOfWorkingDays=22-$onOfLeave;
-		//var_dump($noOfWorkingDays);
+		////var_dump($noOfWorkingDays);
 
 		//ot calculation
 		$time=0;
@@ -2439,7 +2444,7 @@ public function getempData(){
 
 				
 			}
-			var_dump($reduction1);
+			////var_dump($reduction1);
 			//++++++items--------------------------
 			$gSalary=$basicSalary+$increments+ $livingExpenses;
 			$reduction=$reduction1 +$epf;
@@ -2516,7 +2521,7 @@ public function getempData(){
 	// echo $stDate;
 	// echo $endDate;
 
-	//var_dump($data['salaryInfo']);
+	////var_dump($data['salaryInfo']);
 		
 		echo '<br/>';
 
@@ -2530,15 +2535,15 @@ public function getempData(){
 			$payYear			=$this->input->post('Year');
 			$payMonth			=$this->input->post('bankReportMonth');
 			
-			//var_dump($payYear);
+			////var_dump($payYear);
 			if($paybankName=='All'){
 				$result['bankreport']=$this->Admin_model->bankReport($payYear,$payMonth);
 				$this->load->view('adminViews\report18',$result);
-				//var_dump($result);
+				////var_dump($result);
 			}else{
 				$result['bankreport']=$this->Admin_model->bankReporttwo($payYear,$payMonth,$paybankName);
 				$this->load->view('adminViews\report18',$result);
-				//var_dump($result);
+				////var_dump($result);
 			}		
 			
 			
@@ -2551,33 +2556,33 @@ public function salaryreport(){
 	$payYear			=$this->input->post('Year');
 	$salaryMonth		=$this->input->post('salaryMonth');
 	
-	//var_dump($Department);
-	if($Department=='All' && $payYear!=='' && $salaryMonth !=='' ){
-		$result['salaryreport']=$this->Admin_model->salaryReport($payYear,$salaryMonth);
-		$this->load->view('adminViews\report19',$result);
-		//var_dump($result);
+	////var_dump($Department);
+	// if($Department=='All' && $payYear!=='' && $salaryMonth !=='' ){
+	// 	$result['salaryreport']=$this->Admin_model->salaryReport($payYear,$salaryMonth);
+	// 	$this->load->view('adminViews\report19',$result);
+	// 	////var_dump($result);
 	
-	}elseif($Department=='All' && $payYear==''){
-		$result['salaryreport']=$this->Admin_model->salaryReportfore($salaryMonth);
-		$this->load->view('adminViews\fhjkl',$result);
-		//var_dump($result);	
-	}elseif($Department=='All' && $salaryMonth==''){
-		$result['salaryreport']=$this->Admin_model->salaryReportfive($payYear);
-		$this->load->view('adminViews\fhjkl',$result);
-		//var_dump($result);	
-	}elseif($payYear==''){
-		$result['salaryreport']=$this->Admin_model->salaryReporttwo($salaryMonth,$Department);
-		$this->load->view('adminViews\fhjkl',$result);
-		//var_dump($result);
-	}elseif($salaryMonth==''){
-		$result['salaryreport']=$this->Admin_model->salaryReportthree($payYear,$Department);
-		$this->load->view('adminViews\fhjkl',$result);
-		//var_dump($result);			
-	}else{
+	// }elseif($Department=='All' && $payYear==''){
+	// 	$result['salaryreport']=$this->Admin_model->salaryReportfore($salaryMonth);
+	// 	$this->load->view('adminViews\fhjkl',$result);
+	// 	////var_dump($result);	
+	// }elseif($Department=='All' && $salaryMonth==''){
+	// 	$result['salaryreport']=$this->Admin_model->salaryReportfive($payYear);
+	// 	$this->load->view('adminViews\fhjkl',$result);
+	// 	////var_dump($result);	
+	// }elseif($payYear==''){
+	// 	$result['salaryreport']=$this->Admin_model->salaryReporttwo($salaryMonth,$Department);
+	// 	$this->load->view('adminViews\fhjkl',$result);
+	// 	////var_dump($result);
+	// }elseif($salaryMonth==''){
+	// 	$result['salaryreport']=$this->Admin_model->salaryReportthree($payYear,$Department);
+	// 	$this->load->view('adminViews\fhjkl',$result);
+	// 	////var_dump($result);			
+	// }else{
 		$result['salaryreport']=$this->Admin_model->salaryReportsix($payYear,$salaryMonth,$Department);
-		$this->load->view('adminViews\fhjkl',$result);
-		//var_dump($result);	
-}
+		$this->load->view('adminViews\report19',$result);
+		////var_dump($result);	
+
 
 
 }
@@ -2589,63 +2594,63 @@ public function EPFreport(){
 	$payYear			=$this->input->post('epfMonth');
 	$salaryMonth		=$this->input->post('epfMonth');
 
-	//var_dump($EPF);	
+	////var_dump($EPF);	
 	if($EPF=='EPF'){
 
-		if($Department=='All' && $payYear!=='' && $salaryMonth !=='' ){
-		$result['EPFreport']=$this->Admin_model->epfyReport($payYear,$salaryMonth,$EPF);
-		$this->load->view('adminViews\report20',$result);
-		var_dump($result);
+		// if($Department=='All' && $payYear!=='' && $salaryMonth !=='' ){
+		// $result['EPFreport']=$this->Admin_model->epfyReport($payYear,$salaryMonth,$EPF);
+		// $this->load->view('adminViews\report20',$result);
+		// //var_dump($result);
 	
-		}elseif($Department=='All' && $payYear==''){
-			$result['EPFreport']=$this->Admin_model->epfyReportfore($salaryMonth,$EPF);
-			$this->load->view('adminViews\report20',$result);
-			//var_dump($result);	
-		}elseif($Department=='All' && $salaryMonth==''){
-			$result['EPFreport']=$this->Admin_model->epfyReportfive($payYear,$EPF);
-			$this->load->view('adminViews\report20',$result);
-			//var_dump($result);	
-		}elseif($payYear==''){
-			$result['EPFreport']=$this->Admin_model->epfyReporttwo($salaryMonth,$Department,$EPF);
-			$this->load->view('adminViews\report20',$result);
-			//var_dump($result);
-		}elseif($salaryMonth==''){
-			$result['EPFreport']=$this->Admin_model->epfyReportthree($payYear,$Department,$EPF);
-			$this->load->view('adminViews\report20',$result);
-			//var_dump($result);			
-		}else{
+		// }elseif($Department=='All' && $payYear==''){
+		// 	$result['EPFreport']=$this->Admin_model->epfyReportfore($salaryMonth,$EPF);
+		// 	$this->load->view('adminViews\report20',$result);
+		// 	////var_dump($result);	
+		// }elseif($Department=='All' && $salaryMonth==''){
+		// 	$result['EPFreport']=$this->Admin_model->epfyReportfive($payYear,$EPF);
+		// 	$this->load->view('adminViews\report20',$result);
+		// 	////var_dump($result);	
+		// }elseif($payYear==''){
+		// 	$result['EPFreport']=$this->Admin_model->epfyReporttwo($salaryMonth,$Department,$EPF);
+		// 	$this->load->view('adminViews\report20',$result);
+		// 	////var_dump($result);
+		// }elseif($salaryMonth==''){
+		// 	$result['EPFreport']=$this->Admin_model->epfyReportthree($payYear,$Department,$EPF);
+		// 	$this->load->view('adminViews\report20',$result);
+		// 	////var_dump($result);			
+		// }else{
 			$result['EPFreport']=$this->Admin_model->epfyReportsix($payYear,$salaryMonth,$Department,$EPF);
 			$this->load->view('adminViews\report20',$result);
-			//var_dump($result);	
+			////var_dump($result);	
 		}
-	}else{
-		if($Department=='All'&& $payYear!=='' && $salaryMonth !=='' ){
-			$result['EPFreport']=$this->Admin_model->epfyReport($payYear,$salaryMonth,$EPF);
-			//var_dump($EPF);
-			$this->load->view('adminViews\report21',$result);
-			//var_dump($result);
+	else{
+		// if($Department=='All'&& $payYear!=='' && $salaryMonth !=='' ){
+		// 	$result['EPFreport']=$this->Admin_model->epfyReport($payYear,$salaryMonth,$EPF);
+		// 	////var_dump($EPF);
+		// 	$this->load->view('adminViews\report21',$result);
+		// 	////var_dump($result);
 		
-			}elseif($Department=='All' && $payYear==''){
-				$result['EPFreport']=$this->Admin_model->epfyReportfore($salaryMonth,$EPF);
-				$this->load->view('adminViews\report21',$result);
-				//var_dump($result);	
-			}elseif($Department=='All' && $salaryMonth==''){
-				$result['EPFreport']=$this->Admin_model->epfyReportfive($payYear,$EPF);
-				$this->load->view('adminViews\report21',$result);
-				//var_dump($result);	
-			}elseif($payYear==''){
-				$result['EPFreport']=$this->Admin_model->epfyReporttwo($salaryMonth,$Department,$EPF);
-				$this->load->view('adminViews\report21',$result);
-				//var_dump($result);
-			}elseif($salaryMonth==''){
-				$result['EPFreport']=$this->Admin_model->epfyReportthree($payYear,$Department,$EPF);
-				$this->load->view('adminViews\report21',$result);
-				//var_dump($result);			
-			}else{
+		// 	}elseif($Department=='All' && $payYear==''){
+		// 		$result['EPFreport']=$this->Admin_model->epfyReportfore($salaryMonth,$EPF);
+		// 		$this->load->view('adminViews\report21',$result);
+		// 		////var_dump($result);	
+		// 	}elseif($Department=='All' && $salaryMonth==''){
+		// 		$result['EPFreport']=$this->Admin_model->epfyReportfive($payYear,$EPF);
+		// 		$this->load->view('adminViews\report21',$result);
+		// 		////var_dump($result);	
+		// 	}elseif($payYear==''){
+		// 		$result['EPFreport']=$this->Admin_model->epfyReporttwo($salaryMonth,$Department,$EPF);
+		// 		$this->load->view('adminViews\report21',$result);
+		// 		////var_dump($result);
+		// 	}elseif($salaryMonth==''){
+		// 		$result['EPFreport']=$this->Admin_model->epfyReportthree($payYear,$Department,$EPF);
+		// 		$this->load->view('adminViews\report21',$result);
+		// 		////var_dump($result);			
+		// 	}else{
 				$result['EPFreport']=$this->Admin_model->epfyReportsix($payYear,$salaryMonth,$Department,$EPF);
 				$this->load->view('adminViews\report21',$result);
-				//var_dump($result);	
-			}
+				////var_dump($result);	
+			
 	}
 }
 
@@ -2658,46 +2663,46 @@ public function ETFReport(){
 	$salaryMonth		=$this->input->post('etfMonth');
 
 	
-	if($Department=='All' && $payYear!=='' && $salaryMonth !=='' ){
-		$result['ETFReport']=$this->Admin_model->ETFReport($payYear,$salaryMonth);
-		$this->load->view('adminViews\report22',$result);
-		//($result);
+	// if($Department=='All' && $payYear!=='' && $salaryMonth !=='' ){
+	// 	$result['ETFReport']=$this->Admin_model->ETFReport($payYear,$salaryMonth);
+	// 	$this->load->view('adminViews\report22',$result);
+	// 	//($result);
 	
-	}elseif($Department=='All' && $payYear==''){
-		//var_dump($Department=='All' && $payYear=='');
-		$result['ETFReport']=$this->Admin_model->ETFReportfore($salaryMonth);
-		$this->load->view('adminViews\report22',$result);
-		//var_dump($result);	
-	}elseif($Department=='All' && $salaryMonth==''){
-		$result['ETFReport']=$this->Admin_model->ETFReportfive($payYear);
-		$this->load->view('adminViews\report22',$result);
-		//var_dump($result);	
-	}elseif($payYear==''){
-		$result['ETFReport']=$this->Admin_model->ETFReporttwo($salaryMonth,$Department);
-		$this->load->view('adminViews\report22',$result);
-		//var_dump($result);
-	}elseif($salaryMonth==''){
-		$result['ETFReport']=$this->Admin_model->ETFReportthree($payYear,$Department);
-		$this->load->view('adminViews\report22',$result);
-		//var_dump($result);			
-	}else{
+	// }elseif($Department=='All' && $payYear==''){
+	// 	////var_dump($Department=='All' && $payYear=='');
+	// 	$result['ETFReport']=$this->Admin_model->ETFReportfore($salaryMonth);
+	// 	$this->load->view('adminViews\report22',$result);
+	// 	////var_dump($result);	
+	// }elseif($Department=='All' && $salaryMonth==''){
+	// 	$result['ETFReport']=$this->Admin_model->ETFReportfive($payYear);
+	// 	$this->load->view('adminViews\report22',$result);
+	// 	////var_dump($result);	
+	// }elseif($payYear==''){
+	// 	$result['ETFReport']=$this->Admin_model->ETFReporttwo($salaryMonth,$Department);
+	// 	$this->load->view('adminViews\report22',$result);
+	// 	////var_dump($result);
+	// }elseif($salaryMonth==''){
+	// 	$result['ETFReport']=$this->Admin_model->ETFReportthree($payYear,$Department);
+	// 	$this->load->view('adminViews\report22',$result);
+	// 	////var_dump($result);			
+	// }else{
 		$result['ETFReport']=$this->Admin_model->ETFReportsix($payYear,$salaryMonth,$Department);
 		$this->load->view('adminViews\report22',$result);
-		//var_dump($result);	
+		////var_dump($result);	
 }
 
-}
+
 //---------------------------passwoed change-------------------------------------
 		public function passwordChange(){
 			
 			$userId=$this->session->userdata['loggedHRAdmin']['adminId'];	
 			$hrAdminPasswd=$this->session->userdata['loggedHRAdmin']['adminPassword'];
-			//var_dump($hrAdminPasswd);
+			////var_dump($hrAdminPasswd);
 
 			$newPasswd			=$this->input->post('newPasswd');
 			$reNewPasswd		=$this->input->post('reNewPasswd');
 			$currentPasswd		=$this->input->post('currentPasswd');
-			//var_dump($currentPasswd);
+			////var_dump($currentPasswd);
 
 			if($hrAdminPasswd==$currentPasswd){
 				if($newPasswd==$reNewPasswd){
@@ -2705,7 +2710,7 @@ public function ETFReport(){
 					$result=$this->Admin_model->getpasswordChange($newPasswd,$userId);
 					if($result){
 
-			//var_dump($result);
+			////var_dump($result);
 							echo json_encode(
 								array(
 					
@@ -2729,7 +2734,7 @@ public function ETFReport(){
 			}
 				
 
-							//var_dump($currentPasswd==$hrAdminPasswd);
+							////var_dump($currentPasswd==$hrAdminPasswd);
 					
 			
 		}
@@ -2738,11 +2743,11 @@ public function ETFReport(){
 	public function timeSheetChecker(){
 
 		$date	=$this->input->post('fileName');
-		//var_dump($date);
+		////var_dump($date);
 		$result=$this->Admin_model-> TimeSheetChecker($date);
 		if($result){
 
-			//var_dump($result);
+			////var_dump($result);
 							echo json_encode(
 								array(
 					
@@ -2768,12 +2773,12 @@ public function ETFReport(){
 //---------------------------get EMP Data-----------------------------
 public function EmpformData(){
 	$date	=$this->input->post('empNo');
-	//var_dump($date);
+	////var_dump($date);
 	$result=$this->Admin_model-> getEmpformData($date);
-	//var_dump($result);
+	////var_dump($result);
 	if($result){
 
-		//var_dump($result);
+		////var_dump($result);
 						echo json_encode(
 							array(
 				
@@ -2830,40 +2835,77 @@ public function overTimeCal(){
 			);
 			$this->load->view('adminViews\overTime',$arrayName);	 	
 	}
-	var_dump($otHourswork);
+	//var_dump($otHourswork);
 	
 }
 //---------------------- Remove Admin-------------------------------------
 public function RemoveAdmin(){
+
+
 	$adminId=$this->input->post('adminId');
 	$Status=$this->input->post('Status');
+	$idData=12356;
+	$userId=$this->session->userdata['loggedHRAdmin']['adminId'];
 
-	$data = array('Status' => $Status);
-	$wherearray = array('adminId' => $adminId);
+	//var_dump($userId );
+	$userstatus=0;
+	$datacount=sizeof($this->Admin_model-> admincount($userstatus));
 
-	$result=$this->Admin_model->removeAdminModal($data,$wherearray);
+	if($userId !==$adminId){
+		//var_dump($userId !==$adminId);
+		if($datacount >1){
 
-	if($result){
+			$data = array('Status' => $Status);
+			$wherearray = array(
+				'adminId' => $adminId,
+				
+			);
+			$result=$this->Admin_model->removeAdminModal($data,$wherearray);
+		
+			if($result){
+		
+				echo json_encode(
+					array(
+		
+						'result' => $result,
+						'status' => true,
+						  
+					)
+				);
+		
+			}else{
+		
+				echo json_encode(
+					array(
+						  
+						'status' => false,
+						  
+					)
+				);
+			}
+			
+			
 
-		echo json_encode(
-			array(
-
-				'result' => $result,
-				'status' => true,
-				  
-			)
-		);
-
-	}else{
-
-		echo json_encode(
-			array(
-				  
-				'status' => false,
-				  
-			)
-		);
 	}
+}else{
+		
+	echo json_encode(
+		array(
+			  
+			'status' => false,
+			  
+		)
+	);
+}
+		
+
+//var_dump($datacount);
+	
+
+
+	
+
+	
 }
 
 //-------------------------remove hr Exe---------------------------------
@@ -2942,7 +2984,7 @@ public function editAdmindata(){
 	$EdituserAddDate	=$this->input->post('EdituserAddDate');
 	
 
-	//var_dump($userId);
+	////var_dump($userId);
 	
 	$wherearray =array('adminId' => $adminId);
 	$datarr= array(
@@ -2955,7 +2997,7 @@ public function editAdmindata(){
 		'adminAddData'=>$EdituserAddDate,
 		
 
-	);//var_dump($datarr);
+	);////var_dump($datarr);
 	$result=$this->Admin_model->EditAdmin($datarr,$wherearray);
 	if($result){
 		echo json_encode(
@@ -2983,7 +3025,7 @@ public function editAdmindata(){
 public function leaveCount(){
 	$empNo=$this->input->post('empNo');
 
-	//var_dump($empNo);
+	////var_dump($empNo);
 	
 	$year = date('Y');
 	$month =01;
@@ -2996,7 +3038,7 @@ public function leaveCount(){
 
 	$numberOfLeaveMonth=$this->Admin_model->getleaveCount($data,$startDate,$enddata);
 	
-		//var_dump($numberOfLeaveMonth);
+		////var_dump($numberOfLeaveMonth);
 		//$onOfLeave= intval ( $numberOfLeaveMonth );
 		$onOfLeave=0;
 		foreach($numberOfLeaveMonth as $leave){
@@ -3024,5 +3066,357 @@ public function leaveCount(){
 		}
 		
 }
+//----------------------------emp details edit------------------------------------
+public function EmployeeDetailEditshandler(){
+	// //var_dump($this->input->post());
+	// die();
+	$empId	=$this->input->post('empId');
+	
+	$empFullName	=$this->input->post('empFullName');
+	$empInitialName	=$this->input->post('initialName');
+	$empNameEmail	=$this->input->post('empEmail');
+	$otherName		=$this->input->post('otherName');
+	$empAdress1		=$this->input->post('empAddress1');
+	$empAdress2		=$this->input->post('empAddress2');
+	$empNicNo		=$this->input->post('empNicNo');
+	$officeNo		=$this->input->post('officeNo');
+	$mobileNo		=$this->input->post('mobileNo');
+	$homeNo			=$this->input->post('homeNo');
+	$gender			=$this->input->post('gender');
+	$dob			=$this->input->post('dob');
+	$civil			=$this->input->post('civil');
+	$nationality	=$this->input->post('nationality');
+	$religious		=$this->input->post('religious');
+		
+	$qualificationName1	=$this->input->post('r1QuaName');
+	$qualification1		=$this->input->post('r1QuaQualification');				
+	$quaSpecilization1	=$this->input->post('r1QuaSp');
+	$quaInstitute1		=$this->input->post('r1QuaIns');
+	$quaDate1			=$this->input->post('r1QuaDate');
+	$qualificationName2	=$this->input->post('r2QuaName');
+	$qualification2		=$this->input->post('r2QuaQualification');
+	$quaSpecilization2	=$this->input->post('r2QuaSp');
+	$quaInstitute2		=$this->input->post('r2QuaIns');
+	$quaDate2			=$this->input->post('r2QuaDate');
+	$qualificationName3	=$this->input->post('r3QuaName');
+	$qualification3		=$this->input->post('r3QuaQualification');
+	$quaSpecilization3	=$this->input->post('r3QuaSp');
+	$quaInstitute3		=$this->input->post('r3QuaIns');
+	$quaDate3			=$this->input->post('r3QuaDate');
+	$qualificationName4	=$this->input->post('r4QuaName');
+	$qualification4		=$this->input->post('r4QuaQualification');
+	$quaSpecilization4	=$this->input->post('r4QuaSp');
+	$quaInstitute4		=$this->input->post('r4QuaIns');
+	$quaDate4			=$this->input->post('r4QuaDate');
+	$qualificationName5	=$this->input->post('r5QuaName');
+	$qualification5		=$this->input->post('r5QuaQualification');
+	$quaSpecilization5	=$this->input->post('r5QuaSp');
+	$quaInstitute5		=$this->input->post('r5QuaIns');
+	$quaDate5			=$this->input->post('r5QuaDate');
+	
+	$alSubject1	=$this->input->post('alSubject1');
+	$alSubject2	=$this->input->post('alSubject2');
+	$alSubject3	=$this->input->post('alSubject3');
+	$alSubject4	=$this->input->post('alSubject4');
+	$alIndexNo1	=$this->input->post('alIndexNo1');
+	$alIndexNo2	=$this->input->post('alIndexNo2');
+	$alIndexNo3	=$this->input->post('alIndexNo3');
+	$alIndexNo4	=$this->input->post('alIndexNo4');
+	$alResult1	=$this->input->post('alResult1');
+	$alResult2	=$this->input->post('alResult2');
+	$alResult3	=$this->input->post('alResult3');
+	$alResult4	=$this->input->post('alResult4');
+	$alYear1	=$this->input->post('alYear1');
+	$alYear2	=$this->input->post('alYear2');
+	$alYear3	=$this->input->post('alYear3');
+	$alYear4	=$this->input->post('alYear4');
+	
+	$olIndexNo1	 =$this->input->post('olIndexNo1');
+	$olIndexNo2  =$this->input->post('olIndexNo2');
+	$olIndexNo3  =$this->input->post('olIndexNo3');
+	$olIndexNo4  =$this->input->post('olIndexNo4');
+	$olIndexNo5  =$this->input->post('olIndexNo5');
+	$olIndexNo6  =$this->input->post('olIndexNo6');
+	$olIndexNo7  =$this->input->post('olIndexNo7');
+	$olIndexNo8  =$this->input->post('olIndexNo8');
+	$olIndexNo9  =$this->input->post('olIndexNo9');
+	$olIndexNo10 =$this->input->post('olIndexNo10'); 
+	$olSubject1  =$this->input->post('olSubject1');
+	$olSubject2  =$this->input->post('olSubject2');
+	$olSubject3  =$this->input->post('olSubject3');
+	$olSubject4  =$this->input->post('olSubject4');
+	$olSubject5  =$this->input->post('olSubject5');
+	$olSubject6  =$this->input->post('olSubject6');
+	$olSubject7  =$this->input->post('olSubject7');
+	$olSubject8  =$this->input->post('olSubject8');
+	$olSubject9 =$this->input->post('olSubject9');
+	$olSubject10=$this->input->post('olSubject10');				
+	$olResult1	=$this->input->post('olResult1');
+	$olResult2	=$this->input->post('olResult2');
+	$olResult3	=$this->input->post('olResult3');
+	$olResult4	=$this->input->post('olResult4');
+	$olResult5	=$this->input->post('olResult5');
+	$olResult6	=$this->input->post('olResult6');
+	$olResult7	=$this->input->post('olResult7');
+	$olResult8	=$this->input->post('olResult8');
+	$olResult9	=$this->input->post('olResult9');
+	$olResult10	=$this->input->post('olResult10');
+	
+	$empNo					=$this->input->post('empNo');
+	$jobDesignation 		=$this->input->post('jobDesignation');
+	$dateOfDesignation		=$this->input->post('dateOfDesignation');
+	$department				=$this->input->post('department');
+	$epfNo					=$this->input->post('EPFNo');
+	$etfNo					=$this->input->post('ETFNo');
+	$contractperiod			=$this->input->post('contractPeriod');
+	$contractExpireDate		=$this->input->post('contractExpireDate');
+	$trainingPeriod			=$this->input->post('trainingPeriod');
+	$trainingFinishDate		=$this->input->post('trainingFinishedDate');
+	$trainingInstituteName	=$this->input->post('trainingInstituteName');
+
+	$accNo			=$this->input->post('accNo');
+	$bankName		=$this->input->post('bankName');
+	$branchName		=$this->input->post('branchName');
+	$accType		=$this->input->post('accType');
+	$childName1		=$this->input->post('childName1');
+	$childDOB1		=$this->input->post('childDOB1');
+	$childNIC1		=$this->input->post('childNIC1');
+	$childName2		=$this->input->post('childName2');
+	$childDOB2		=$this->input->post('childDOB2');
+	$childNIC2		=$this->input->post('childNIC2');
+	$childName3		=$this->input->post('childName3');
+	$childDOB3		=$this->input->post('childDOB3');
+	$childNIC3		=$this->input->post('childNIC3');
+	$childName4		=$this->input->post('childName4');
+	$childDOB4		=$this->input->post('childDOB4');
+	$childNIC4		=$this->input->post('childNIC4');
+	$hwName			=$this->input->post('hwName');
+	$hwNICNo		=$this->input->post('hwNICNo');
+	$hwRelation		=$this->input->post('hwRelation');
+	$parentsName1	=$this->input->post('parentsName1');
+	$parentsRelation1	=$this->input->post('parentsRelation1');
+	$parentsNIC1		=$this->input->post('parentsNIC1');
+	$parentsName2		=$this->input->post('parentsName2');
+	$parentsRelation2	=$this->input->post('parentsRelation2');
+	$parentsNIC2		=$this->input->post('parentsNIC2');
+
+
+	 if($contractperiod==''&& $trainingPeriod==''){
+		$empType ='Permanent';
+	 }elseif($contractperiod !==''&& $trainingPeriod==''){
+		$empType ='Contract';
+	 }else{
+		$empType ='Training';
+	 }
+		
+	
+$wherearray=array('empId'	=>$empId,);
+	
+	
+	// $idTail=date('Y-m-d H:i:s');
+	// $idTail=strtotime($idTail);
+
+
+	// $empId='EMP'.$idTail;
+
+
+		$empdata= array(
+			'empId'			=>$empId,
+			'fullname'		=>$empFullName,
+			'nameInitials'	=>$empInitialName,
+			'empEmail'		=>$empNameEmail,
+			'otherName'		=>$otherName,
+			'address1'		=>$empAdress1	,
+			'address2'		=>$empAdress2	,
+			'empNic'		=>$empNicNo	,
+			'contactOffice'	=>$officeNo,
+			'contactMobile' =>$mobileNo,
+			'contactHome'	=>$homeNo,
+			'gender'		=>$gender,
+			'dateOfBirth'	=>$dob,
+			'civilState'	=>$civil,
+			'nationality'	=>$nationality,
+			'religious'		=>$religious,
+			'empNo'			=>$empNo,
+			'EPFNo'			=>$epfNo,
+			'ETFNo'			=>$etfNo,
+			'bankName'		=>$bankName,
+			'empType'		=>$empType,
+			'department'	=>$department,
+			'designation'	=>$jobDesignation,
+		);
+		 $result=$this->Admin_model-> updateaddEmployeePersonalDetails($empdata,$wherearray);
+		
+		$qualificationnamed= $qualificationName1.",".$qualificationName2.",".$qualificationName3.",". $qualificationName4.",".$qualificationName5;
+		$qualification=$qualification1.",".$qualification2.",".$qualification3.",".$qualification4.",".$qualification5;
+		$quaSpecilization=$quaSpecilization1.",".$quaSpecilization2.",".$quaSpecilization3.",".$quaSpecilization4.",".$quaSpecilization5;
+		$institute=$quaInstitute1.",".$quaInstitute2.",".$quaInstitute3.",".$quaInstitute4.",".$quaInstitute5;
+		$qualificationdata=$quaDate1.",".$quaDate2.",".$quaDate3.",".$quaDate4.",".$quaDate5;
+
+		$empedudata=array(
+				
+			'empName' 			=> $empInitialName,
+			'empNic '			=> $empNicNo,
+			'empId '			=> $empId,
+			'qualificationName'	=> $qualificationnamed,
+			'qualification' 	=>	$qualification,
+			'specialization'	=> $quaSpecilization,
+			'institute'			=> $institute,
+			'qualifieddate' 	=> $qualificationdata,
+			'empNo'				=>$empNo,
+		);
+		$result=$this->Admin_model-> updateaddEmployeeEducationalDetails($empedudata,$wherearray);
+
+		$alSubject	= $alSubject1.",".$alSubject2.",".$alSubject3.",".$alSubject4;
+		$alIndexNo	= $alIndexNo1.",".$alIndexNo2.",".$alIndexNo3.",".$alIndexNo4;
+		$alResult 	= $alResult1.",".$alResult2.",".$alResult3.",".$alResult4;
+		$alYear 	= $alYear1.",".$alYear2.",".$alYear3.",".$alYear4;
+		$olSubject	=$olSubject1.",".$olSubject2.",".$olSubject3.",".$olSubject4.",".$olSubject5.",".$olSubject6.",".$olSubject7.",".$olSubject8.",".$olSubject9.",".$olSubject10;
+		$olIndexNo	=$olIndexNo1.",".$olIndexNo2.",".$olIndexNo3.",".$olIndexNo4.",".$olIndexNo5.",".$olIndexNo6.",".$olIndexNo7.",".$olIndexNo8.",".$olIndexNo9.",".$olIndexNo10;
+		$olResult	=$olResult1.",".$olResult2.",".$olResult3.",".$olResult4.",".$olResult5.",".$olResult6.",".$olResult7.",".$olResult8.",".$olResult9.",".$olResult10;
+
+		$empresultdata=array(
+			'alSubject'			=> $alSubject,
+			'alIndexNo'			=> $alIndexNo,
+			'alResult '			=> $alResult,
+			'alYear'			=> $alYear,
+									
+			'olsubject'	=>  $olSubject,          
+			'olIndexNo'	=>  $olIndexNo ,          
+			'olResult'	=>  $olResult,
+			'empNo'		=>$empNo,
+			'empId '	=> $empId,
+			
+		);
+		////var_dump($empedudata);
+		$result=$this->Admin_model-> updateaddEmployeeEducationalResult($empresultdata,$wherearray);
+		
+
+		$empjobdata=array(
+			'empName'				=>$empInitialName,
+			'empNic'				=>$empNicNo,
+			'empNo'					=>$empNo,
+			'jobDesignation'		=>$jobDesignation ,
+			'department'			=>$department,	
+			'EPFNo'					=>$epfNo,
+			'ETFNo'					=>$etfNo,
+			'contractPeriod'		=>$contractperiod,	
+			'contractExpireDate'	=>$contractExpireDate,	
+			'trainingPeriod'		=>$trainingPeriod,
+			'trainingFinishedDate'	=>$trainingFinishDate,
+			'traineeInstituteName'	=>$trainingInstituteName,
+			'designationDate'		=>$dateOfDesignation,
+			'empId '				=> $empId,
+		); 
+		$result=$this->Admin_model-> updateaddEmployeeJobDetails($empjobdata,$wherearray);
+		
+
+		$empbankdata=array(
+			'empId '		=> $empId,
+			'empNo'			=>$empNo,
+			'empName' 		=>$empInitialName,
+			'empNic' 		=>$empNicNo,
+			'accountNo'		=>$accNo,
+			'bankName' 		=>$bankName,
+			'branchName' 	=>$branchName,
+			'accountType' 	=>$accType,
+		);
+		$result=$this->Admin_model-> updateaddEmployeeBankDetails($empbankdata,$wherearray);	
+
+
+		$empfamily=array(
+			'empName'		=>$empInitialName,
+			'empNic'		=>$empNicNo,
+			'empId '		=> $empId,
+			'empNo'			=>$empNo,						
+			'hwName'  		=>$hwName,
+			'hwNicNo' 		=>$hwNICNo,
+			'hwRelation'	=>$hwRelation
+		);
+		$result=$this->Admin_model-> updateaddEmployeeFamilyDetails($empfamily,$wherearray);	
+
+		$childName	=$childName1.",".$childName2.",".$childName3.",".$childName4;
+		$childDOB	=$childDOB1.",".$childDOB2.",".$childDOB3.",".$childDOB4;
+		$childNIC	=$childNIC1.",".$childNIC2.",".$childNIC3.",".$childNIC4;
+
+		$empchildrendata=array(
+			'empNo'				=>$empNo,	
+			'empId '			=> $empId,
+			'childrenName'		=>$childName,
+			'childrenBirthDay'	=>$childDOB,
+			'childrenNicNo'		=>$childNIC,
+		);
+		$result=$this->Admin_model-> updateaddEmployeeChildrenkDetails($empchildrendata,$wherearray);
+
+		$parentsName	=$parentsName1.",".$parentsName2;
+		$parentsNIC		=$parentsNIC1.",".$parentsNIC2;
+		$parentsRelation=$parentsRelation1.",".$parentsRelation2;
+
+		$empparentdata=array(
+			'empNo'			=>$empNo,	
+			'empId '		=> $empId,
+			'parentName' 	=>$parentsName,
+			'parentNicNo' 	=>$parentsNIC,
+			'parentRelation'=>$parentsRelation,
+
+		);
+		$result=$this->Admin_model-> updateaddEmployeeParentDetails($empparentdata,$wherearray);
+		if($result){
+			echo("Employee Data Editing Succesfully"
+		
+		);
+		}else{
+			echo("something  wrong");
+		}
+		
+		
+}
+//-----------------------delete employee------------------------------
+
+
+public function deleteEmployee(){
+	$empId=$this->input->post('empId');
+	$empStatus=$this->input->post('empStatus');
+
+	$wherearray=array('empId'	=>$empId);
+	$dataArr=array('empStatus'	=>$empStatus);
+
+	
+	
+	$result=$this->Admin_model->DeleteddEmployeePersonalDetails($dataArr,$wherearray);
+	$result=$this->Admin_model->DeleteaddEmployeeEducationalDetails($dataArr,$wherearray);
+	$result=$this->Admin_model->DeleteaddEmployeeEducationalResult($dataArr,$wherearray);
+	$result=$this->Admin_model->DeleteaddEmployeeJobDetails($dataArr,$wherearray);
+	$result=$this->Admin_model->DeleteaddEmployeeBankDetails($dataArr,$wherearray);
+	$result=$this->Admin_model->DeleteaddEmployeeFamilyDetails($dataArr,$wherearray);
+	$result=$this->Admin_model->uDeleteaddEmployeeChildrenkDetails($dataArr,$wherearray);
+	$result=$this->Admin_model->DeleteaddEmployeeParentDetails($dataArr,$wherearray);
+
+	if($result){
+
+		echo json_encode(
+			array(
+
+				'result' => $result,
+				'status' => true,
+				  
+			)
+		);
+
+	}else{
+
+		echo json_encode(
+			array(
+				  
+				'status' => false,
+				  
+			)
+		);
+	}
+}
+
+//----------------------------------------userdel----------------------------
+
+
 }
 ?>

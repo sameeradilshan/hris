@@ -89,7 +89,7 @@
                             <div class="form-group">
                                 <label>Full Name</label>
                                 <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe"
-                                    name="empFullName" id="empFullName">
+                                    name="empFullName" id="empFullName" required>
                             </div>
                             <div class="form-group test3" id="test1">
                                 <label>Name With Initial</label>
@@ -104,7 +104,7 @@
                             <div class="form-group test3" id="test1">
                                 <label>Address(Permanent)</label>
                                 <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe"
-                                    name="empAddress1" id="empAddress1">
+                                    name="empAddress1" id="empAddress1" required>
                             </div>
                             <div class="form-group test3" id="test1">
                                 <label>Address(Tempary)</label>
@@ -120,7 +120,7 @@
                                 <div class="form-group col-md-4" id="test1">
                                     <label>NIC Number</label>
                                     <input type="text" class="form-control form-control-sm" placeholder="1999xxxxxx"
-                                        name="empNicNo" id="empNicNo">
+                                        name="empNicNo" id="empNicNo" required>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label>Date Of Birth</label><br>
@@ -673,7 +673,7 @@
                                         <div class="form-group col-md-6 " id="test1">
                                             <label>Employee Number</label>
                                             <input type="text" class="form-control form-control-sm"
-                                                placeholder="1999xxxxxx" name="empNo" id="empNo">
+                                                placeholder="1999xxxxxx" name="empNo" id="empNo" required>
                                         </div>
 
                                         <div class="form-group col-md-6">

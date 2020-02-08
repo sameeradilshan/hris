@@ -188,72 +188,74 @@
                         </div>
                     </div>
                 </div>
-       
-        <div class="card-body">
 
-            <!-- row start -->
-            <div class="row" style="background-color:#efefef; padding:20px;   border-radius: 25px;">
+                <div class="card-body">
+
+                    <!-- row start -->
+                    <div class="row" style="background-color:#efefef; padding:20px;   border-radius: 25px;">
 
 
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <button style="margin-top:32px; width:200px;" type="button" class="btn btn-sm btn-primary"
-                            data-toggle="modal" target="_blank" onclick="window.open('approvedLeaveDatalView')">
-                            <i class="fa fa-check-circle-o"></i> Approved Leave
-                        </button>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <button style="margin-top:32px; width:200px;" type="button"
+                                    class="btn btn-sm btn-primary" data-toggle="modal" target="_blank"
+                                    onclick="window.open('approvedLeaveDatalView')">
+                                    <i class="fa fa-check-circle-o"></i> Approved Leave
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <button style="margin-top:32px; width:200px;" type="button"
+                                    class="btn btn-sm btn-primary" data-toggle="modal" data-target="#DeclineLeave"
+                                    onclick="window.open('declineLeaveDatalView')">
+                                    <i class="fa fa-minus-circle"></i> Decline Leave
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <button style="margin-top:32px; width:200px;" type="button"
+                                    class="btn btn-sm btn-primary" data-toggle="modal" data-target="#AllLeaves"
+                                    onclick="window.open('reportLeaveDatalView')">
+                                    <i class="fa fa-search"></i> All Leaves
+                                </button>
+                            </div>
+                        </div>
+
                     </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <button style="margin-top:32px; width:200px;" type="button" class="btn btn-sm btn-primary"
-                            data-toggle="modal" data-target="#DeclineLeave"
-                            onclick="window.open('declineLeaveDatalView')">
-                            <i class="fa fa-minus-circle"></i> Decline Leave
-                        </button>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <button style="margin-top:32px; width:200px;" type="button" class="btn btn-sm btn-primary"
-                            data-toggle="modal" data-target="#AllLeaves" onclick="window.open('reportLeaveDatalView')">
-                            <i class="fa fa-search"></i> All Leaves
-                        </button>
-                    </div>
-                </div>
-
-            </div>
 
 
-            <!-- row end -->
-            <div class="row">
-                <div class="table-responsive">
-                    <div style="overflow-x :auto; min-width:800px; ">
-                        <div class="col-md-12">
-                            <br><br>
-                            <table id="example1" class="table table-bordered table-striped">
-                                <thead>
-                                    <tr>
-                                    <tr>
-                                        <th scope="col">Emp No</th>
-                                        <th scope="col">Employee Name</th>
-                                        <th scope="col">Department</th>
-                                        <th scope="col">Leave Type</th>
-                                        <th scope="col">Date From</th>
-                                        <th scope="col">Date To</th>
-                                        <th scope="col">No Of Date</th>
-                                        <th scope="col">Reason</th>
-                                        <th scope="col">Approved By</th>
-                                        <th scope="col">Action</th>
-                                    </tr>
+                    <!-- row end -->
+                    <div class="row">
+                        <div class="table-responsive">
+                            <div style="overflow-x :auto; min-width:800px; ">
+                                <div class="col-md-12">
+                                    <br><br>
+                                    <table id="example1" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                            <tr>
+                                                <th scope="col">Emp No</th>
+                                                <th scope="col">Employee Name</th>
+                                                <th scope="col">Department</th>
+                                                <th scope="col">Leave Type</th>
+                                                <th scope="col">Date From</th>
+                                                <th scope="col">Date To</th>
+                                                <th scope="col">No Of Date</th>
+                                                <th scope="col">Reason</th>
+                                                <th scope="col">Approved By</th>
+                                                <th scope="col">Action</th>
+                                            </tr>
 
 
-                                    </tr>
-                                </thead>
+                                            </tr>
+                                        </thead>
 
-                                <tbody>
-                                    <?php
+                                        <tbody>
+                                            <?php
 										
 										foreach($leaveDataView as $leaveData){
 										//var_dump($leaveDataView);
@@ -303,76 +305,76 @@
 											?>
 
 
-                                </tbody>
+                                        </tbody>
 
-                            </table>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-5">
+                                <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">
+                                    <!-- Showing 1 to 10 of 57 entries -->
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-7">
+                                <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                                    <ul class="pagination">
+                                        <li class="paginate_button page-item previous disabled" id="example1_previous">
+                                            <a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0"
+                                                class="page-link">Previous</a>
+                                        </li>
+                                        <li class="paginate_button page-item active">
+                                            <a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0"
+                                                class="page-link">1</a>
+                                        </li>
+                                        <li class="paginate_button page-item ">
+                                            <a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0"
+                                                class="page-link">2</a>
+                                        </li>
+                                        <li class="paginate_button page-item ">
+                                            <a href="#" aria-controls="example1" data-dt-idx="3" tabindex="0"
+                                                class="page-link">3</a>
+                                        </li>
+                                        <li class="paginate_button page-item ">
+                                            <a href="#" aria-controls="example1" data-dt-idx="4" tabindex="0"
+                                                class="page-link">4</a>
+                                        </li>
+                                        <li class="paginate_button page-item ">
+                                            <a href="#" aria-controls="example1" data-dt-idx="5" tabindex="0"
+                                                class="page-link">5</a>
+                                        </li>
+                                        <li class="paginate_button page-item ">
+                                            <a href="#" aria-controls="example1" data-dt-idx="6" tabindex="0"
+                                                class="page-link">6</a>
+                                        </li>
+                                        <li class="paginate_button page-item next" id="example1_next">
+                                            <a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0"
+                                                class="page-link">Next</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+
+
                 </div>
-                <div class="row">
-                    <div class="col-sm-12 col-md-5">
-                        <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">
-                            <!-- Showing 1 to 10 of 57 entries -->
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-7">
-                        <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
-                            <ul class="pagination">
-                                <li class="paginate_button page-item previous disabled" id="example1_previous">
-                                    <a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0"
-                                        class="page-link">Previous</a>
-                                </li>
-                                <li class="paginate_button page-item active">
-                                    <a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0"
-                                        class="page-link">1</a>
-                                </li>
-                                <li class="paginate_button page-item ">
-                                    <a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0"
-                                        class="page-link">2</a>
-                                </li>
-                                <li class="paginate_button page-item ">
-                                    <a href="#" aria-controls="example1" data-dt-idx="3" tabindex="0"
-                                        class="page-link">3</a>
-                                </li>
-                                <li class="paginate_button page-item ">
-                                    <a href="#" aria-controls="example1" data-dt-idx="4" tabindex="0"
-                                        class="page-link">4</a>
-                                </li>
-                                <li class="paginate_button page-item ">
-                                    <a href="#" aria-controls="example1" data-dt-idx="5" tabindex="0"
-                                        class="page-link">5</a>
-                                </li>
-                                <li class="paginate_button page-item ">
-                                    <a href="#" aria-controls="example1" data-dt-idx="6" tabindex="0"
-                                        class="page-link">6</a>
-                                </li>
-                                <li class="paginate_button page-item next" id="example1_next">
-                                    <a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0"
-                                        class="page-link">Next</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    Footer
                 </div>
-            </div>
-
-
-
+                <!-- /.card-footer-->
         </div>
-        <!-- /.card-body -->
-        <div class="card-footer">
-            Footer
-        </div>
-        <!-- /.card-footer-->
-    </div>
-    <!-- /.card -->
+        <!-- /.card -->
 
-    </section>
-    <!-- /.content -->
+        </section>
+        <!-- /.content -->
     </div>
-	<!-- /.content-wrapper -->
-	
-	 <!-- edit leave data----------------------------------------------------------------------->
+    <!-- /.content-wrapper -->
+
+    <!-- edit leave data----------------------------------------------------------------------->
     <!-- Modal -->
     <div id="editModal" class="modal">
         <div class="modal-dialog modal-md">
@@ -515,8 +517,8 @@
 
         );
     });
-//-----------------------------submit button disabled--------------
-$('#leaveEmpNICNo').click(function() {
+    //-----------------------------submit button disabled--------------
+    $('#leaveEmpNICNo').click(function() {
         //alert($('#empNo').val())
         var param = {
             empNo: $('#leaveEmpNo').val(),
@@ -531,7 +533,7 @@ $('#leaveEmpNICNo').click(function() {
             $('#leaveEmpName').val(response.nameInitials);
             $('#leaveEmpDeprtment').val(response.department);
             $('#leaveEmpNICNo').val(response.empNic);
-         //   alert(result);
+            //   alert(result);
 
 
             //bageta wada?
@@ -542,8 +544,8 @@ $('#leaveEmpNICNo').click(function() {
 
     });
 
-  //--------------------------form data fill---------
-  $('#leaveEmpNICNo').click(function() {
+    //--------------------------form data fill---------
+    $('#leaveEmpNICNo').click(function() {
         //alert($('#empNo').val())
         var param = {
             empNo: $('#leaveEmpNo').val(),
@@ -553,18 +555,18 @@ $('#leaveEmpNICNo').click(function() {
             data) {
 
             var response = JSON.parse(data);
-           
 
-         
-               // console.log(response)
-                if (response.status) {
-					$("#formSubmit").attr("disabled", false);
-	
-                } else {
-					$("#formSubmit").attr("disabled", true);
-	
 
-                }
+
+            // console.log(response)
+            if (response.status) {
+                $("#formSubmit").attr("disabled", false);
+
+            } else {
+                $("#formSubmit").attr("disabled", true);
+
+
+            }
 
         });
 
@@ -638,7 +640,11 @@ $('#leaveEmpNICNo').click(function() {
             var response = JSON.parse(data);
             console.log(response)
             if (response.status) {
-                alert("succes")
+                Swal.fire(
+                    'Good job!',
+                    'You clicked the button!',
+                    'success'
+                )
 
                 window.location.href = "leaveDataView";
             } else {
@@ -666,7 +672,11 @@ $('#leaveEmpNICNo').click(function() {
             var response = JSON.parse(data);
             console.log(response)
             if (response.status) {
-                alert("succes")
+                Swal.fire(
+                    'Good job!',
+                    'You clicked the button!',
+                    'success'
+                )
 
                 window.location.href = "leaveDataView";
             } else {
@@ -684,7 +694,7 @@ $('#leaveEmpNICNo').click(function() {
 
     function editFunction(object) {
         //var type=type;
-        alert(JSON.stringify(object))
+        // alert(JSON.stringify(object))
 
         $('#leaveId').val(object.leaveId);
         $('#editleaveEmpNo').val(object.empNo);
@@ -718,7 +728,7 @@ $('#leaveEmpNICNo').click(function() {
 
     function addStop() {
 
-        alert($('#editleaveEmpNo').val());
+        // alert($('#editleaveEmpNo').val());
 
         var param = {
 
@@ -742,7 +752,11 @@ $('#leaveEmpNICNo').click(function() {
             var response = JSON.parse(data);
             console.log(response)
             if (response.status) {
-                alert("successssss");
+                Swal.fire(
+                    'Good job!',
+                    'You clicked the button!',
+                    'success'
+                )
 
                 window.location.href = "leaveDataView";
             } else {

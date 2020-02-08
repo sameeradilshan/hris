@@ -29,7 +29,7 @@
         <?php $this->load->view('adminViews/components/sideBar'); ?>
 
 
-
+<?php error_reporting(0); ?>
 
 
 
@@ -77,7 +77,7 @@
                         </ul>
                     </nav> -->
                     <div class="card-body">
-
+                        
                         <form action="<?php echo base_url(); ?>index.php/Admin/EmployeeDetailEditshandler" method="POST"
                             id="body1">
 
@@ -85,6 +85,11 @@
                             <h1>Personal Details</h1>
 
 
+                            <div class="form-group">
+                                
+                                <input type="hidden" class="form-control form-control-sm" placeholder="Jhon Doe"
+                                    name="empId" id="empId" value="<?php echo $employeeDetail->empId?>">
+                            </div>
 
                             <div class="form-group">
                                 <label>Full Name</label>
@@ -94,38 +99,40 @@
                             <div class="form-group test3" id="test1">
                                 <label>Name With Initial</label>
                                 <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe"
-                                    name="initialName" id="initialName">
+                                    name="initialName" id="initialName"
+                                    value="<?php echo $employeeDetail->nameInitials?>">
                             </div>
                             <div class="form-group test3" id="test1">
                                 <label>Other Name</label>
                                 <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe"
-                                    name="otherName" id="otherName">
+                                    name="otherName" id="otherName" value="<?php echo $employeeDetail->otherName?>">
                             </div>
                             <div class="form-group test3" id="test1">
                                 <label>Address(Permanent)</label>
                                 <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe"
-                                    name="empAddress1" id="empAddress1">
+                                    name="empAddress1" id="empAddress1" value="<?php echo $employeeDetail->address1?>">
                             </div>
                             <div class="form-group test3" id="test1">
                                 <label>Address(Tempary)</label>
                                 <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe"
-                                    name="empAddress2" id="empAddress2">
+                                    name="empAddress2" id="empAddress2" value="<?php echo $employeeDetail->address2?>">
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-4" id="test1">
                                     <label>Email</label>
                                     <input type="email" class="form-control form-control-sm" placeholder="Jhon Doe"
-                                        name="empEmail" id="empEmail">
+                                        name="empEmail" id="empEmail" value="<?php echo $employeeDetail->empEmail?>">
                                 </div>
                                 <div class="form-group col-md-4" id="test1">
                                     <label>NIC Number</label>
                                     <input type="text" class="form-control form-control-sm" placeholder="1999xxxxxx"
-                                        name="empNicNo" id="empNicNo">
+                                        name="empNicNo" id="empNicNo" value="<?php echo $employeeDetail->empNic?>">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label>Date Of Birth</label><br>
 
-                                    <input type="date" class="form-control control form-control-sm" name="dob" id="dob">
+                                    <input type="date" class="form-control control form-control-sm" name="dob" id="dob"
+                                        value="<?php echo $employeeDetail->dateOfBirth?>">
                                 </div>
                             </div>
 
@@ -138,7 +145,8 @@
                                         </div>
                                         <input type="text" class="form-control control form-control-sm"
                                             data-inputmask="&quot;mask&quot;: &quot;(+94) 999-999-999&quot;"
-                                            data-mask="" name="officeNo" id="officeNo">
+                                            data-mask="" name="officeNo" id="officeNo"
+                                            value="<?php echo $employeeDetail->contactOffice?>">
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
@@ -149,7 +157,8 @@
                                         </div>
                                         <input type="text" class="form-control form-control-sm"
                                             data-inputmask="&quot;mask&quot;: &quot;(+94) 999-999-999&quot;"
-                                            data-mask="" name="mobileNo" id="mobileNo">
+                                            data-mask="" name="mobileNo" id="mobileNo"
+                                            value="<?php echo $employeeDetail->contactMobile?>">
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
@@ -160,7 +169,8 @@
                                         </div>
                                         <input type="text" class="form-control control form-control-sm"
                                             data-inputmask="&quot;mask&quot;: &quot;(+94) 999-999-999&quot;"
-                                            data-mask="" name="homeNo" id="">
+                                            data-mask="" name="homeNo" id=""
+                                            value="<?php echo $employeeDetail->contactHome?>">
                                     </div>
                                 </div>
                             </div>
@@ -171,8 +181,8 @@
                                     <label>Gender</label>
                                     <br>
 
-                                    <input type="radio" name="gender" id="gender" value="female">Female
-                                    <input type="radio" name="gender" id="gender" value="male">Male
+                                    <input type="text" name="gender" id="gender" value="<?php echo $employeeDetail->gender?>">
+                                   
 
                                 </div>
 
@@ -241,13 +251,15 @@
                             <div class="form-row">
                                 <div class="form-group col-md-2">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="r1QuaName" id="r1QuaName" value="<?php if($qualificationName[0]) echo $qualificationName[0];?>">
+                                        name="r1QuaName" id="r1QuaName"
+                                        value="<?php if($qualificationName[0]) echo $qualificationName[0];?>">
                                 </div>
 
 
                                 <div class="form-group col-md-2">
                                     <select id="qualificationType" class="form-control form-control-sm"
-                                        name="r1QuaQualification" id="r1QuaQualification" value ="<?php if($qualification[0]) echo $qualification[0];?>">
+                                        name="r1QuaQualification" id="r1QuaQualification"
+                                        value="<?php if($qualification[0]) echo $qualification[0];?>">
                                         <option value="Certificate">Certificate</option>
                                         <option value="diploma">Diploma</option>
                                         <option value="AdvancedDiploma">Advanced Diploma
@@ -259,26 +271,31 @@
                                 </div>
                                 <div class="form-group col-md-3">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="r1QuaSp" id="r1QuaSp" value ="<?php if($specialization[0]) echo $specialization[0];?>">
+                                        name="r1QuaSp" id="r1QuaSp"
+                                        value="<?php if($specialization[0]) echo $specialization[0];?>">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="r1QuaIns" id="r1QuaIns" value ="<?php if($institute[0]) echo $institute[0];?>">
+                                        name="r1QuaIns" id="r1QuaIns"
+                                        value="<?php if($institute[0]) echo $institute[0];?>">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <input type="date" class="form-control form-control-sm" placeholder=""
-                                        name="r1QuaDate" id="r1QuaDate" value ="<?php if($qualifieddate[0]) echo $qualifieddate[0];?>">
+                                        name="r1QuaDate" id="r1QuaDate"
+                                        value="<?php if($qualifieddate[0]) echo $qualifieddate[0];?>">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col-md-2">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="r2QuaName" id="r2QuaName" value ="<?php if($qualificationName[1]) echo $qualificationName[1];?>">
+                                        name="r2QuaName" id="r2QuaName"
+                                        value="<?php if($qualificationName[1]) echo $qualificationName[1];?>">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <select id="qualificationType" class="form-control form-control-sm"
-                                        name="r2QuaQualification" id="r2QuaQualification" value ="<?php if($qualification[1]) echo $qualification[1];?>">
+                                        name="r2QuaQualification" id="r2QuaQualification"
+                                        value="<?php if($qualification[1]) echo $qualification[1];?>">
                                         <option value="Certificate">Certificate</option>
                                         <option value="diploma">Diploma</option>
                                         <option value="AdvancedDiploma">Advanced Diploma
@@ -290,26 +307,31 @@
                                 </div>
                                 <div class="form-group col-md-3">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="r2QuaSp" id="r2QuaSp" value ="<?php if($specialization[1]) echo $specialization[1];?>">
+                                        name="r2QuaSp" id="r2QuaSp"
+                                        value="<?php if($specialization[1]) echo $specialization[1];?>">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="r2QuaIns" id="r2QuaIns" value ="<?php if($institute[1]) echo $institute[1];?>">
+                                        name="r2QuaIns" id="r2QuaIns"
+                                        value="<?php if($institute[1]) echo $institute[1];?>">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <input type="date" class="form-control form-control-sm" placeholder=""
-                                        name="r2QuaDate" id="r2QuaDate" value ="<?php if($qualifieddate[1]) echo $qualifieddate[1];?>">
+                                        name="r2QuaDate" id="r2QuaDate"
+                                        value="<?php if($qualifieddate[1]) echo $qualifieddate[1];?>">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col-md-2">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="r3QuaName" id="r3QuaName" value ="<?php if(isset($qualificationName[2])) echo $qualificationName[2];?>">
+                                        name="r3QuaName" id="r3QuaName"
+                                        value="<?php if(isset($qualificationName[2])) echo $qualificationName[2];?>">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <select id="qualificationType" class="form-control form-control-sm"
-                                        name="r3QuaQualification" id="r3QuaQualification" value ="<?php if(isset($qualification[2])) echo $qualification[2];?>">
+                                        name="r3QuaQualification" id="r3QuaQualification"
+                                        value="<?php if(isset($qualification[2])) echo $qualification[2];?>">
                                         <option value="Certificate">Certificate</option>
                                         <option value="diploma">Diploma</option>
                                         <option value="AdvancedDiploma">Advanced Diploma
@@ -321,26 +343,31 @@
                                 </div>
                                 <div class="form-group col-md-3">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="r3QuaSp" id="r3QuaSp" value ="<?php if(isset($specialization[2])) echo $specialization[2];?>">
+                                        name="r3QuaSp" id="r3QuaSp"
+                                        value="<?php if(isset($specialization[2])) echo $specialization[2];?>">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="r3QuaIns" id="r3QuaIns" value ="<?php if(isset($institute[2])) echo $institute[2];?>">
+                                        name="r3QuaIns" id="r3QuaIns"
+                                        value="<?php if(isset($institute[2])) echo $institute[2];?>">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <input type="date" class="form-control form-control-sm" placeholder=""
-                                        name="r3QuaDate" id="r3QuaDate" value ="<?php if(isset($qualifieddate[2])) echo $qualifieddate[2];?>">
+                                        name="r3QuaDate" id="r3QuaDate"
+                                        value="<?php if(isset($qualifieddate[2])) echo $qualifieddate[2];?>">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col-md-2">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="r4QuaName" id="r4QuaName" value ="<?php if(isset($qualificationName[3])) echo $qualificationName[3];?>">
+                                        name="r4QuaName" id="r4QuaName"
+                                        value="<?php if(isset($qualificationName[3])) echo $qualificationName[3];?>">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <select id="qualificationType" class="form-control form-control-sm"
-                                        name="r4QuaQualification" id="qualification" value ="<?php if(isset($qualification[3])) echo $qualificationName[3];?>">
+                                        name="r4QuaQualification" id="qualification"
+                                        value="<?php if(isset($qualification[3])) echo $qualificationName[3];?>">
                                         <option value="Certificate">Certificate</option>
                                         <option value="diploma">Diploma</option>
                                         <option value="AdvancedDiploma">Advanced Diploma
@@ -352,26 +379,31 @@
                                 </div>
                                 <div class="form-group col-md-3">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="r4QuaSp" id="r4QuaSp" value ="<?php if(isset($specialization[3])) echo $specialization[3];?>">
+                                        name="r4QuaSp" id="r4QuaSp"
+                                        value="<?php if(isset($specialization[3])) echo $specialization[3];?>">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="r4QuaIns" id="r4QuaIns" value ="<?php if(isset($institute[3])) echo $institute[3];?>">
+                                        name="r4QuaIns" id="r4QuaIns"
+                                        value="<?php if(isset($institute[3])) echo $institute[3];?>">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <input type="date" class="form-control form-control-sm" placeholder=""
-                                        name="r4QuaDate" id="r4QuaDate" value ="<?php if(isset($qualifieddate[3])) echo $qualifieddate[3];?>">
+                                        name="r4QuaDate" id="r4QuaDate"
+                                        value="<?php if(isset($qualifieddate[3])) echo $qualifieddate[3];?>">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col-md-2">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="r5QuaName" id="r5QuaName" value ="<?php if(isset($qualificationName[4])) echo $qualificationName[4];?>">
+                                        name="r5QuaName" id="r5QuaName"
+                                        value="<?php if(isset($qualificationName[4])) echo $qualificationName[4];?>">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <select id="qualificationType" class="form-control form-control-sm"
-                                        name="r5QuaQualification" id="r5QuaQualification" value ="<?php if(isset($qualification[4])) echo $qualification[4];?>">
+                                        name="r5QuaQualification" id="r5QuaQualification"
+                                        value="<?php if(isset($qualification[4])) echo $qualification[4];?>">
                                         <option value="Certificate">Certificate</option>
                                         <option value="diploma">Diploma</option>
                                         <option value="AdvancedDiploma">Advanced Diploma
@@ -383,15 +415,18 @@
                                 </div>
                                 <div class="form-group col-md-3">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="r5QuaSp" id="r5QuaSp" value ="<?php if(isset($specialization[4])) echo $specialization[4];?>">
+                                        name="r5QuaSp" id="r5QuaSp"
+                                        value="<?php if(isset($specialization[4])) echo $specialization[4];?>">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="r5QuaIns" id="r5QuaIns" value ="<?php if(isset($institute[4])) echo $institute[4];?>">
+                                        name="r5QuaIns" id="r5QuaIns"
+                                        value="<?php if(isset($institute[4])) echo $institute[4];?>">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <input type="date" class="form-control form-control-sm" placeholder=""
-                                        name="r5QuaDate" id="r5QuaDate" value ="<?php if(isset($qualifieddate[4])) echo $qualifieddate[4];?>">
+                                        name="r5QuaDate" id="r5QuaDate"
+                                        value="<?php if(isset($qualifieddate[4])) echo $qualifieddate[4];?>">
                                 </div>
                             </div>
                             <!-- table finish------------------------------------------------- -->
@@ -416,73 +451,89 @@
                             <div class="form-row">
                                 <div class="form-group col-md-3">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="alSubject1" id="alSubject1" value="<?php if(isset($alSubject[0])) echo $alSubject[0];?>">
+                                        name="alSubject1" id="alSubject1"
+                                        value="<?php if(isset($alSubject[0])) echo $alSubject[0];?>">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="alResult1" id="alResult1" value="<?php if(isset($alResult[0])) echo $alResult[0];?>">
+                                        name="alResult1" id="alResult1"
+                                        value="<?php if(isset($alResult[0])) echo $alResult[0];?>">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="alIndexNo1" id="alIndexNo1" value="<?php if(isset($employeAlSubjectDetail)) echo$employeAlSubjectDetail->alIndexNo ;?>">
+                                        name="alIndexNo1" id="alIndexNo1"
+                                        value="<?php if(isset($employeAlSubjectDetail)) echo$employeAlSubjectDetail->alIndexNo ;?>">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="alYear1" id="alYear1" value="<?php if(isset($alYear[0])) echo $alYear[0];?>">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-3">
-                                    <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="alSubject2" id="alSubject2" value="<?php if(isset($alSubject[1])) echo $alSubject[1];?>">
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="alResult2" id="alResult2" value="<?php if(isset($alResult[1])) echo $alResult[1];?>">
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="alIndexNo2" id="alIndexNo2" value="<?php if(isset($employeAlSubjectDetail)) echo$employeAlSubjectDetail->alIndexNo ;?>">
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="alYear2" id="alYear2" value="<?php if(isset($alYear[1])) echo $alYear[1];?>">
+                                        name="alYear1" id="alYear1"
+                                        value="<?php if(isset($alYear[0])) echo $alYear[0];?>">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-3">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="alSubject3" id="alSubject3" value="<?php if(isset($alSubject[2])) echo $alSubject[2];?>">
+                                        name="alSubject2" id="alSubject2"
+                                        value="<?php if(isset($alSubject[1])) echo $alSubject[1];?>">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="alResult3" id="alResult3" value="<?php if(isset($alResult[2])) echo $alResult[2];?>">
+                                        name="alResult2" id="alResult2"
+                                        value="<?php if(isset($alResult[1])) echo $alResult[1];?>">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="alIndexNo3" id="alIndexNo3" value="<?php if(isset($employeAlSubjectDetail)) echo$employeAlSubjectDetail->alIndexNo ;?>">
+                                        name="alIndexNo2" id="alIndexNo2"
+                                        value="<?php if(isset($employeAlSubjectDetail)) echo$employeAlSubjectDetail->alIndexNo ;?>">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="alYear3" id="alYear3" value="<?php if(isset($alYear[2])) echo $alYear[2];?>">
+                                        name="alYear2" id="alYear2"
+                                        value="<?php if(isset($alYear[1])) echo $alYear[1];?>">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-3">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="alSubject4" id="alSubject4" value="<?php if(isset($alSubject[3])) echo $alSubject[3];?>">
+                                        name="alSubject3" id="alSubject3"
+                                        value="<?php if(isset($alSubject[2])) echo $alSubject[2];?>">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="alResult4" id="alResult4" value="<?php if(isset($alResult[3])) echo $alResult[3];?>">
+                                        name="alResult3" id="alResult3"
+                                        value="<?php if(isset($alResult[2])) echo $alResult[2];?>">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="alIndexNo4" id="alIndexNo4" value="<?php if(isset($employeAlSubjectDetail)) echo$employeAlSubjectDetail->alIndexNo ;?>">
+                                        name="alIndexNo3" id="alIndexNo3"
+                                        value="<?php if(isset($employeAlSubjectDetail)) echo$employeAlSubjectDetail->alIndexNo ;?>">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="alYear4" id="alYear4" value="<?php if(isset($alYear[3])) echo $alYear[3];?>">
+                                        name="alYear3" id="alYear3"
+                                        value="<?php if(isset($alYear[2])) echo $alYear[2];?>">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-3">
+                                    <input type="text" class="form-control form-control-sm" placeholder=""
+                                        name="alSubject4" id="alSubject4"
+                                        value="<?php if(isset($alSubject[3])) echo $alSubject[3];?>">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <input type="text" class="form-control form-control-sm" placeholder=""
+                                        name="alResult4" id="alResult4"
+                                        value="<?php if(isset($alResult[3])) echo $alResult[3];?>">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <input type="text" class="form-control form-control-sm" placeholder=""
+                                        name="alIndexNo4" id="alIndexNo4"
+                                        value="<?php if(isset($employeAlSubjectDetail)) echo$employeAlSubjectDetail->alIndexNo ;?>">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <input type="text" class="form-control form-control-sm" placeholder=""
+                                        name="alYear4" id="alYear4"
+                                        value="<?php if(isset($alYear[3])) echo $alYear[3];?>">
                                 </div>
                             </div>
 
@@ -524,131 +575,161 @@
                             <div class="form-row">
                                 <div class="form-group col-md-2">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="olSubject1" id="olSubject1" value="<?php if(isset($olsubject[0])) echo $olsubject[0];?>">
+                                        name="olSubject1" id="olSubject1"
+                                        value="<?php if(isset($olsubject[0])) echo $olsubject[0];?>">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="olIndexNo1" id="olIndexNo1" value="<?php if(isset($employeAlSubjectDetail->olIndexNo)) echo $employeAlSubjectDetail->olIndexNo;?>">
+                                        name="olIndexNo1" id="olIndexNo1"
+                                        value="<?php if(isset($employeAlSubjectDetail->olIndexNo)) echo $employeAlSubjectDetail->olIndexNo;?>">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="olResult1" id="olResult1" value="<?php if(isset($olResult[0])) echo $olResult[0];?>">
+                                        name="olResult1" id="olResult1"
+                                        value="<?php if(isset($olResult[0])) echo $olResult[0];?>">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="olSubject2" id="olSubject2" value="<?php if(isset($olsubject[1])) echo $olsubject[1];?>">
+                                        name="olSubject2" id="olSubject2"
+                                        value="<?php if(isset($olsubject[1])) echo $olsubject[1];?>">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="olIndexNo2" id="olIndexNo2" value="<?php if(isset($employeAlSubjectDetail->olIndexNo)) echo $employeAlSubjectDetail->olIndexNo;?>">
+                                        name="olIndexNo2" id="olIndexNo2"
+                                        value="<?php if(isset($employeAlSubjectDetail->olIndexNo)) echo $employeAlSubjectDetail->olIndexNo;?>">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="olResult2" id="olResult2" value="<?php if(isset($olResult[1])) echo $olResult[1];?>">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-2">
-                                    <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="olSubject3" id="olSubject3" value="<?php if(isset($olsubject[2])) echo $olsubject[2];?>">
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="olIndexNo3" id="olIndexNo3" value="<?php if(isset($employeAlSubjectDetail->olIndexNo)) echo $employeAlSubjectDetail->olIndexNo;?>">
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="olResult3" id="olResult3" value="<?php if(isset($olResult[2])) echo $olResult[2];?>">
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="olSubject4" id="olSubject4" value="<?php if(isset($olsubject[3])) echo $olsubject[3];?>">
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="olIndexNo4" id="olIndexNo4" value="<?php if(isset($employeAlSubjectDetail->olIndexNo)) echo $employeAlSubjectDetail->olIndexNo;?>">
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="olResult4" id="olResult4" value="<?php if(isset($olResult[3])) echo $olResult[3];?>">
+                                        name="olResult2" id="olResult2"
+                                        value="<?php if(isset($olResult[1])) echo $olResult[1];?>">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-2">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="olSubject5" id="olSubject5" value="<?php if(isset($olsubject[4])) echo $olsubject[4];?>">
+                                        name="olSubject3" id="olSubject3"
+                                        value="<?php if(isset($olsubject[2])) echo $olsubject[2];?>">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="olIndexNo5" id="olIndexNo5" value="<?php if(isset($employeAlSubjectDetail->olIndexNo)) echo $employeAlSubjectDetail->olIndexNo;?>">
+                                        name="olIndexNo3" id="olIndexNo3"
+                                        value="<?php if(isset($employeAlSubjectDetail->olIndexNo)) echo $employeAlSubjectDetail->olIndexNo;?>">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="olResult5" id="olResult5" value="<?php if(isset($olResult[4])) echo $olResult[4];?>">
+                                        name="olResult3" id="olResult3"
+                                        value="<?php if(isset($olResult[2])) echo $olResult[2];?>">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="olSubject6" id="olSubject6" value="<?php if(isset($olsubject[5])) echo $olsubject[5];?>">
+                                        name="olSubject4" id="olSubject4"
+                                        value="<?php if(isset($olsubject[3])) echo $olsubject[3];?>">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="olIndexNo6" id="olIndexNo6" value="<?php if(isset($employeAlSubjectDetail->olIndexNo)) echo $employeAlSubjectDetail->olIndexNo;?>">
+                                        name="olIndexNo4" id="olIndexNo4"
+                                        value="<?php if(isset($employeAlSubjectDetail->olIndexNo)) echo $employeAlSubjectDetail->olIndexNo;?>">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="olResult6" id="olResult6" value="<?php if(isset($olResult[5])) echo $olResult[5];?>">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-2">
-                                    <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="olSubject7" id="olSubject7" value="<?php if(isset($olsubject[6])) echo $olsubject[6];?>">
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="olIndexNo7" id="olIndexNo7" value="<?php if(isset($employeAlSubjectDetail->olIndexNo)) echo $employeAlSubjectDetail->olIndexNo;?>">
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="olResult7" id="olResult7" value="<?php if(isset($olResult[6])) echo $olResult[6];?>">
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="olSubject8" id="olSubject8" value="<?php if(isset($olsubject[7])) echo $olsubject[7];?>">
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="olIndexNo8" id="olIndexNo8" value="<?php if(isset($employeAlSubjectDetail->olIndexNo)) echo $employeAlSubjectDetail->olIndexNo;?>">
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="olResult8" id="olResult8" value="<?php if(isset($olResult[7])) echo $olResult[7];?>">
+                                        name="olResult4" id="olResult4"
+                                        value="<?php if(isset($olResult[3])) echo $olResult[3];?>">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-2">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="olSubject9" id="olSubject9" value="<?php if(isset($olsubject[8])) echo $olsubject[8];?>">
+                                        name="olSubject5" id="olSubject5"
+                                        value="<?php if(isset($olsubject[4])) echo $olsubject[4];?>">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="olIndexNo9" id="olIndexNo9" value="<?php if(isset($employeAlSubjectDetail->olIndexNo)) echo $employeAlSubjectDetail->olIndexNo;?>">
+                                        name="olIndexNo5" id="olIndexNo5"
+                                        value="<?php if(isset($employeAlSubjectDetail->olIndexNo)) echo $employeAlSubjectDetail->olIndexNo;?>">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="olResult9" id="olResult9" value="<?php if(isset($olResult[8])) echo $olResult[8];?>">
+                                        name="olResult5" id="olResult5"
+                                        value="<?php if(isset($olResult[4])) echo $olResult[4];?>">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="olSubject10" id="olSubject10" value="<?php if(isset($olsubject[9])) echo $olsubject[9];?>">
+                                        name="olSubject6" id="olSubject6"
+                                        value="<?php if(isset($olsubject[5])) echo $olsubject[5];?>">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="olIndexNo10" id="olIndexNo10"value="<?php if(isset($employeAlSubjectDetail->olIndexNo)) echo $employeAlSubjectDetail->olIndexNo;?>">
+                                        name="olIndexNo6" id="olIndexNo6"
+                                        value="<?php if(isset($employeAlSubjectDetail->olIndexNo)) echo $employeAlSubjectDetail->olIndexNo;?>">
                                 </div>
                                 <div class="form-group col-md-2">
                                     <input type="text" class="form-control form-control-sm" placeholder=""
-                                        name="olResult10" id="olResult10" value="<?php if(isset($olResult[9])) echo $olResult[9];?>">
+                                        name="olResult6" id="olResult6"
+                                        value="<?php if(isset($olResult[5])) echo $olResult[5];?>">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-2">
+                                    <input type="text" class="form-control form-control-sm" placeholder=""
+                                        name="olSubject7" id="olSubject7"
+                                        value="<?php if(isset($olsubject[6])) echo $olsubject[6];?>">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <input type="text" class="form-control form-control-sm" placeholder=""
+                                        name="olIndexNo7" id="olIndexNo7"
+                                        value="<?php if(isset($employeAlSubjectDetail->olIndexNo)) echo $employeAlSubjectDetail->olIndexNo;?>">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <input type="text" class="form-control form-control-sm" placeholder=""
+                                        name="olResult7" id="olResult7"
+                                        value="<?php if(isset($olResult[6])) echo $olResult[6];?>">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <input type="text" class="form-control form-control-sm" placeholder=""
+                                        name="olSubject8" id="olSubject8"
+                                        value="<?php if(isset($olsubject[7])) echo $olsubject[7];?>">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <input type="text" class="form-control form-control-sm" placeholder=""
+                                        name="olIndexNo8" id="olIndexNo8"
+                                        value="<?php if(isset($employeAlSubjectDetail->olIndexNo)) echo $employeAlSubjectDetail->olIndexNo;?>">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <input type="text" class="form-control form-control-sm" placeholder=""
+                                        name="olResult8" id="olResult8"
+                                        value="<?php if(isset($olResult[7])) echo $olResult[7];?>">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-2">
+                                    <input type="text" class="form-control form-control-sm" placeholder=""
+                                        name="olSubject9" id="olSubject9"
+                                        value="<?php if(isset($olsubject[8])) echo $olsubject[8];?>">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <input type="text" class="form-control form-control-sm" placeholder=""
+                                        name="olIndexNo9" id="olIndexNo9"
+                                        value="<?php if(isset($employeAlSubjectDetail->olIndexNo)) echo $employeAlSubjectDetail->olIndexNo;?>">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <input type="text" class="form-control form-control-sm" placeholder=""
+                                        name="olResult9" id="olResult9"
+                                        value="<?php if(isset($olResult[8])) echo $olResult[8];?>">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <input type="text" class="form-control form-control-sm" placeholder=""
+                                        name="olSubject10" id="olSubject10"
+                                        value="<?php if(isset($olsubject[9])) echo $olsubject[9];?>">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <input type="text" class="form-control form-control-sm" placeholder=""
+                                        name="olIndexNo10" id="olIndexNo10"
+                                        value="<?php if(isset($employeAlSubjectDetail->olIndexNo)) echo $employeAlSubjectDetail->olIndexNo;?>">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <input type="text" class="form-control form-control-sm" placeholder=""
+                                        name="olResult10" id="olResult10"
+                                        value="<?php if(isset($olResult[9])) echo $olResult[9];?>">
                                 </div>
                             </div>
 
@@ -673,46 +754,41 @@
                                         <div class="form-group col-md-6 " id="test1">
                                             <label>Employee Number</label>
                                             <input type="text" class="form-control form-control-sm"
-                                                placeholder="1999xxxxxx" name="empNo" id="empNo">
+                                                placeholder="1999xxxxxx" name="empNo" id="empNo"
+                                                value="<?php echo $employeeDetail->empNo?>">
                                         </div>
 
                                         <div class="form-group col-md-6">
                                             <label>Job Designation</label>
                                             <input type="text" class="form-control form-control-sm"
-                                                placeholder="Jhon Doe" name="jobDesignation" id="jobDesignation">
+                                                placeholder="Jhon Doe" name="jobDesignation" id="jobDesignation"
+                                                value="<?php echo $employeeDetail->jobDesignation?>">
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6" id="">
                                             <label>Date of Designation</label>
                                             <input type="date" class="form-control form-control-sm"
-                                                placeholder="Jhon Doe" name="dateOfDesignation" id="dateOfDesignation">
+                                                placeholder="Jhon Doe" name="dateOfDesignation" id="dateOfDesignation"
+                                                value="<?php echo $employeeDetail->designationDate?>">
                                         </div>
                                         <div class="form-group col-md-6" id="">
                                             <label>Department</label>
-											<select class="form-control  form-control-sm" name="department" id="department">
-												<option value="">Select Department</option>
-												<option value="humanResource">Human Resource</option>
-												<option value="Operation">Operation</option>
-												<option value="Finance">Finance</option>
-												<option value="Admin">Admin</option>
-												<option value="Production">Production</option>
-												<option value="Engineering">Engineering</option>
-												<option value="Marketing">Marketing</option>
-												<option value="QualityAssurance">Quality Assurance</option>
-
-
-                                    </select>
+                                            <input type="text" class="form-control form-control-sm"
+                                                placeholder="Jhon Doe" name="dateOfDesignation" id="dateOfDesignation"
+                                                value="<?php echo $employeeDetail->Department?>">
                                         </div>
                                         <div class="form-group col-md-6 " id="">
                                             <label>EPF No</label>
                                             <input type="text" class="form-control form-control-sm"
-                                                placeholder="Jhon Doe" name="EPFNo" id="EPFNo">
+                                                placeholder="Jhon Doe" name="EPFNo" id="EPFNo"
+                                                value="<?php echo $employeeDetail->EPFNo?>">
                                         </div>
                                         <div class="form-group col-md-6" id="">
                                             <label>ETF No</label>
                                             <input type="text" class="form-control form-control-sm"
-                                                placeholder="Jhon Doe" name="ETFNo" id="ETFNo">
+                                                placeholder="Jhon Doe" name="ETFNo" id="ETFNo"
+                                                value="<?php echo $employeeDetail->ETFNo?>">
                                         </div>
                                     </div>
                                 </div>
@@ -729,7 +805,8 @@
                                         <div class="form-group col-md-6" id="contract">
                                             <label>Contract Period </label>
                                             <input type="text" class="form-control form-control-sm"
-                                                placeholder="Jhon Doe" name="contractPeriod" id="contractPeriod">
+                                                placeholder="Jhon Doe" name="contractPeriod" id="contractPeriod"
+                                                value="<?php echo $employeeDetail->contractPeriod?>">
                                         </div>
 
 
@@ -737,27 +814,30 @@
                                         <div class="form-group col-md-6" id="contract">
                                             <label>Contract Expire Date </label>
                                             <input type="date" class="form-control form-control-sm"
-                                                placeholder="Jhon Doe" name="contractExpireDate"
-                                                id="contractExpireDate">
+                                                placeholder="Jhon Doe" name="contractExpireDate" id="contractExpireDate"
+                                                value="<?php echo $employeeDetail->contractExpireDate?>">
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6" id="contract">
                                             <label>Department</label>
                                             <input type="text" class="form-control form-control-sm"
-                                                placeholder="Jhon Doe" name="department" id="department">
+                                                placeholder="Jhon Doe" name="department" id="department"
+                                                value="<?php echo $employeeDetail->Department?>">
                                         </div>
                                         <div class="form-group col-md-6" id="contract">
                                             <label>EPF No</label>
                                             <input type="text" class="form-control form-control-sm"
-                                                placeholder="Jhon Doe" name="EPFNo" id="EPFNo">
+                                                placeholder="Jhon Doe" name="EPFNo" id="EPFNo"
+                                                value="<?php echo $employeeDetail->ETFNo?>">
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6" id="contract">
                                             <label>ETF No</label>
                                             <input type="text" class="form-control form-control-sm"
-                                                placeholder="Jhon Doe" name="ETFNo" id="ETFNo">
+                                                placeholder="Jhon Doe" name="ETFNo" id="ETFNo"
+                                                value="<?php echo $employeeDetail->ETFNo?>">
                                         </div>
                                     </div>
                                 </div>
@@ -768,13 +848,15 @@
                                     <div class="form-group col-md-6" id="training">
                                         <label>Training Period</label>
                                         <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe"
-                                            name="trainingPeriod" id="trainingPeriod">
+                                            name="trainingPeriod" id="trainingPeriod"
+                                            value="<?php echo $employeeDetail->trainingPeriod?>">
                                     </div>
 
                                     <div class="form-group col-md-6" id="training">
                                         <label>Training Finished Date </label>
                                         <input type="date" class="form-control form-control-sm" placeholder="Jhon Doe"
-                                            name="trainingFinishedDate" id="trainingFinishedDate">
+                                            name="trainingFinishedDate" id="trainingFinishedDate"
+                                            value="<?php echo $employeeDetail->trainingFinishedDate?>">
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -782,12 +864,14 @@
                                     <div class="form-group col-md-6" id="training">
                                         <label>Training Institute Name </label>
                                         <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe"
-                                            name="trainingInstituteName" id="trainingInstituteName">
+                                            name="trainingInstituteName" id="trainingInstituteName"
+                                            value="<?php echo $employeeDetail->traineeInstituteName?>">
                                     </div>
                                     <div class="form-group col-md-6" id="training">
                                         <label>Department</label>
                                         <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe"
-                                            name="department" id="department">
+                                            name="department" id="department"
+                                            value="<?php echo $employeeDetail->department?>">
                                     </div>
 
                                 </div>
@@ -811,203 +895,224 @@
                                     <div class="form-group col-md-6" id="">
                                         <label>Account No </label>
                                         <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe"
-                                            name="accNo" id="accNo">
+                                            name="accNo" id="accNo" value="<?php echo $employeeDetail->accountNo?>">
                                     </div>
                                     <div class="form-group col-md-6" id="">
                                         <label>Bank Name </label>
-                                        <select class="form-control  form-control-sm" name="bankName" id="bankName">
-                                            <option value="all">All</option>
-                                            <option value="BOC">Bank Of Ceylon</option>
-                                            <option value="PEOPLES">Peoples' Bank</option>
-                                            <option value="NSB">National Savings Bank</option>
-
-
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6" id="">
-                                        <label>Branch Name</label>
                                         <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe"
-                                            name="branchName" id="branchName">
-                                    </div>
-                                    <div class="form-group col-md-6" id="">
-                                        <label>Account Type</label>
-                                        <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe"
-                                            name="accType" id="accType">
-                                    </div>
-                                </div>
-                                <br>
-
-                                <div class="row">
-                                    <div class="col-md-12" id="page4">
-
-                                        <h1>Family Details</h1>
-                                        <hr>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <label>Parents Detailes</label>
-
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <label>Name</label>
-                                            </div>
-
-                                            <div class="col-md-4">
-                                                <label>NIC No</label>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>Relation</label>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-4">
-                                                <input type="text" class="form-control form-control-sm" placeholder=""
-                                                    name="parentsName1" id="parentsName1" value="<?php if(isset($parentName[0])) echo $parentName[0];?>">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <input type="text" class="form-control form-control-sm" placeholder=""
-                                                    name="parentsNIC1" id="parentsNIC1" value="<?php if(isset($parentNicNo[0])) echo $parentNicNo[0];?>">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <input type="text" class="form-control form-control-sm" placeholder=""
-                                                    name="parentsRelation1" id="parentsRelation1" value="<?php if(isset($parentRelation[0])) echo $parentRelation[0];?>">
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-4">
-                                                <input type="text" class="form-control form-control-sm" placeholder=""
-                                                    name="parentsName2" id="parentsName2" value="<?php if(isset($parentName[1])) echo $parentName[1];?>">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <input type="text" class="form-control form-control-sm" placeholder=""
-                                                    name="parentsNIC2" id="parentsNIC2" value="<?php if(isset($parentNicNo[1])) echo $parentNicNo[1];?>">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <input type="text" class="form-control form-control-sm" placeholder=""
-                                                    name="parentsRelation2" id="parentsRelation2" value="<?php if(isset($parentRelation[1])) echo $parentRelation[1];?>">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <label>Children Details</label>
-
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <label>Name</label>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>BirthDay</label>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>NIC No</label>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-4">
-                                                <input type="text" class="form-control form-control-sm" placeholder=""
-                                                    name="childName1" id="childName1" value="<?php if(isset($childrenName[0])) echo $childrenName[0];?>">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <input type="date" class="form-control form-control-sm" placeholder=""
-                                                    name="childDOB1" id="childDOB1" value="<?php if(isset($childrenBirthDay[0])) echo $childrenBirthDay[0];?>">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <input type="text" class="form-control form-control-sm" placeholder=""
-                                                    name="childNIC1" id="childNIC1" value="<?php if(isset($childrenNicNo[0])) echo $childrenNicNo[0];?>">
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-4">
-                                                <input type="text" class="form-control form-control-sm" placeholder=""
-                                                    name="childName2" id="childName2" value="<?php if(isset($childrenName[1])) echo $childrenName[1];?>">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <input type="date" class="form-control form-control-sm" placeholder=""
-                                                    name="childDOB2" id="childDOB2" value="<?php if(isset($childrenBirthDay[1])) echo $childrenBirthDay[1];?>">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <input type="text" class="form-control form-control-sm" placeholder=""
-                                                    name="childNIC2" id="childNIC2" value="<?php if(isset($childrenNicNo[1])) echo $childrenNicNo[1];?>">
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-4">
-                                                <input type="text" id="childName3" class="form-control form-control-sm"
-                                                    placeholder="" name="childName3" id="childName3" value="<?php if(isset($childrenName[2])) echo $childrenName[2];?>">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <input type="date" class="form-control form-control-sm" placeholder=""
-                                                    name="childDOB3" id="childDOB3" value="<?php if(isset($childrenBirthDay[2])) echo $childrenBirthDay[2];?>">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <input type="text" class="form-control form-control-sm" placeholder=""
-                                                    name="childNIC3" id="childNIC3" value="<?php if(isset($childrenNicNo[2])) echo $childrenNicNo[2];?>">
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-4">
-                                                <input type="text" class="form-control form-control-sm" placeholder=""
-                                                    name="childName4" id="childName4" value="<?php if(isset($childrenName[3])) echo $childrenName[3];?>">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <input type="date" class="form-control form-control-sm" placeholder=""
-                                                    name="childDOB4" id="childDOB4" value="<?php if(isset($childrenBirthDay[3])) echo $childrenBirthDay[3];?>">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <input type="text" class="form-control form-control-sm" placeholder=""
-                                                    name="childNIC4" id="childNIC4" value="<?php if(isset($childrenNicNo[3])) echo $childrenNicNo[3];?>">
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-
-
-
-                                    <div class="col-md-12">
-                                        <label>Wife/Husband Details</label>
-
-
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <label>Name</label>
-                                            </div>
-
-                                            <div class="col-md-4">
-                                                <label>NIC No</label>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>Relation</label>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-4">
-                                                <input type="text" class="form-control form-control-sm" placeholder=""
-                                                    name="hwName" id="hwName" value="<?php echo $employeeFamilyDetailView->hwName ;?>">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <input type="text" class="form-control form-control-sm" placeholder=""
-                                                    name="hwNICNo" id="hwNICNo" value="<?php echo $employeeFamilyDetailView->hwNicNo ;?>">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <input type="text" class="form-control form-control-sm" placeholder=""
-                                                    name="hwRelation" id="hwRelation" value="<?php echo $employeeFamilyDetailView->hwRelation ;?>">
-                                            </div>
-                                        </div>
-
-
-
-
-
+                                            name="accNo" id="accNo" value="<?php echo $employeeDetail->bankName?>">
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6" id="">
+                                    <label>Branch Name</label>
+                                    <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe"
+                                        name="branchName" id="branchName"
+                                        value="<?php echo $employeeDetail->branchName?>">
+                                </div>
+                                <div class="form-group col-md-6" id="">
+                                    <label>Account Type</label>
+                                    <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe"
+                                        name="accType" id="accType" value="<?php echo $employeeDetail->accountType?>">
+                                </div>
+                            </div>
+                            <br>
 
-                            <input name="Submit" id="submit" class="btn btn-primary" type="submit" value="submit">
+                            <div class="row">
+                                <div class="col-md-12" id="page4">
+
+                                    <h1>Family Details</h1>
+                                    <hr>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label>Parents Detailes</label>
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Name</label>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label>NIC No</label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Relation</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <input type="text" class="form-control form-control-sm" placeholder=""
+                                                name="parentsName1" id="parentsName1"
+                                                value="<?php if(isset($parentName[0])) echo $parentName[0];?>">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <input type="text" class="form-control form-control-sm" placeholder=""
+                                                name="parentsNIC1" id="parentsNIC1"
+                                                value="<?php if(isset($parentNicNo[0])) echo $parentNicNo[0];?>">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <input type="text" class="form-control form-control-sm" placeholder=""
+                                                name="parentsRelation1" id="parentsRelation1"
+                                                value="<?php if(isset($parentRelation[0])) echo $parentRelation[0];?>">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <input type="text" class="form-control form-control-sm" placeholder=""
+                                                name="parentsName2" id="parentsName2"
+                                                value="<?php if(isset($parentName[1])) echo $parentName[1];?>">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <input type="text" class="form-control form-control-sm" placeholder=""
+                                                name="parentsNIC2" id="parentsNIC2"
+                                                value="<?php if(isset($parentNicNo[1])) echo $parentNicNo[1];?>">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <input type="text" class="form-control form-control-sm" placeholder=""
+                                                name="parentsRelation2" id="parentsRelation2"
+                                                value="<?php if(isset($parentRelation[1])) echo $parentRelation[1];?>">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label>Children Details</label>
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Name</label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>BirthDay</label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>NIC No</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <input type="text" class="form-control form-control-sm" placeholder=""
+                                                name="childName1" id="childName1"
+                                                value="<?php if(isset($childrenName[0])) echo $childrenName[0];?>">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <input type="date" class="form-control form-control-sm" placeholder=""
+                                                name="childDOB1" id="childDOB1"
+                                                value="<?php if(isset($childrenBirthDay[0])) echo $childrenBirthDay[0];?>">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <input type="text" class="form-control form-control-sm" placeholder=""
+                                                name="childNIC1" id="childNIC1"
+                                                value="<?php if(isset($childrenNicNo[0])) echo $childrenNicNo[0];?>">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <input type="text" class="form-control form-control-sm" placeholder=""
+                                                name="childName2" id="childName2"
+                                                value="<?php if(isset($childrenName[1])) echo $childrenName[1];?>">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <input type="date" class="form-control form-control-sm" placeholder=""
+                                                name="childDOB2" id="childDOB2"
+                                                value="<?php if(isset($childrenBirthDay[1])) echo $childrenBirthDay[1];?>">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <input type="text" class="form-control form-control-sm" placeholder=""
+                                                name="childNIC2" id="childNIC2"
+                                                value="<?php if(isset($childrenNicNo[1])) echo $childrenNicNo[1];?>">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <input type="text" id="childName3" class="form-control form-control-sm"
+                                                placeholder="" name="childName3" id="childName3"
+                                                value="<?php if(isset($childrenName[2])) echo $childrenName[2];?>">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <input type="date" class="form-control form-control-sm" placeholder=""
+                                                name="childDOB3" id="childDOB3"
+                                                value="<?php if(isset($childrenBirthDay[2])) echo $childrenBirthDay[2];?>">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <input type="text" class="form-control form-control-sm" placeholder=""
+                                                name="childNIC3" id="childNIC3"
+                                                value="<?php if(isset($childrenNicNo[2])) echo $childrenNicNo[2];?>">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <input type="text" class="form-control form-control-sm" placeholder=""
+                                                name="childName4" id="childName4"
+                                                value="<?php if(isset($childrenName[3])) echo $childrenName[3];?>">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <input type="date" class="form-control form-control-sm" placeholder=""
+                                                name="childDOB4" id="childDOB4"
+                                                value="<?php if(isset($childrenBirthDay[3])) echo $childrenBirthDay[3];?>">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <input type="text" class="form-control form-control-sm" placeholder=""
+                                                name="childNIC4" id="childNIC4"
+                                                value="<?php if(isset($childrenNicNo[3])) echo $childrenNicNo[3];?>">
+										</div>
+										
+                                    </div>
+                                </div>
+
+
+
+
+
+
+                                <div class="col-md-12">
+                                    <label>Wife/Husband Details</label>
+
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label>Name</label>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label>NIC No</label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Relation</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <input type="text" class="form-control form-control-sm" placeholder=""
+                                                name="hwName" id="hwName"
+                                                value="<?php echo $employeeFamilyDetailView->hwName ;?>">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <input type="text" class="form-control form-control-sm" placeholder=""
+                                                name="hwNICNo" id="hwNICNo"
+                                                value="<?php echo $employeeFamilyDetailView->hwNicNo ;?>">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <input type="text" class="form-control form-control-sm" placeholder=""
+                                                name="hwRelation" id="hwRelation"
+                                                value="<?php echo $employeeFamilyDetailView->hwRelation ;?>">
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                </div>
+                            </div>
+                    </div>
+                    <div class="row" ><div class="btn-group"> 
+                        <input name="SAVE" id="submit" class="btn btn-primary" type="submit" value="Save">
+                        <input name="DELETE" id="submit2" class="btn btn-primary" type="button" value="Delete">
+					</div>
+                    </div>
                         </form>
                         <!--form finished ----------------------------------------------------------------------------------- -->
 
@@ -1043,6 +1148,7 @@
     $('#submit').click(function() {
         alert($('#empFullName').val())
         var param = {
+			empId: $('#empId').val(),
             empFullName: $('#empFullName').val(),
             empInitialName: $('#initialName').val(),
             empNameEmail: $('#empEmail').val(),
@@ -1170,36 +1276,64 @@
 
 
         }
-        // alert(JSON.stringify(param));
-        // console.log(param);
-        // $.post("<?php echo base_url(); ?>index.php/Admin/EmployeeDetailshandler", param, function(
-        // data) {
+        //alert(JSON.stringify(param));
+        console.log(param);
+        $.post("<?php echo base_url(); ?>index.php/Admin/EmployeeDetailEdit", param, function(
+        data) {
 
-        // 	console.log(data)
-        //     var response = JSON.parse(data);
-        // 	console.log(response)
-        //      if (response.status) {
-        // 		Swal.fire(
-        // 		'Good job!',
-        // 		'You clicked the button!',
-        // 		'success'
-        // 		)
+        	console.log(data)
+            var response = JSON.parse(data);
+        	console.log(response)
+             if (response.status) {
+        		Swal.fire(
+        		'Good job!',
+        		'You clicked the button!',
+        		'success'
+        		)
 
-        // 		window.location.href = "leaveDataView";
-        //      } else {
-        // 			Swal.fire({
-        // 			icon: 'error',
-        // 			title: 'Oops...',
-        // 			text: 'Something went wrong!',
-        // 			footer: '<a href>Why do I have this issue?</a>'
-        // 			})
+        		window.location.href = "employeeDetailView";
+             } else {
+        			Swal.fire({
+        			icon: 'error',
+        			title: 'Oops...',
+        			text: 'Something went wrong!',
+        			footer: '<a href>Why do I have this issue?</a>'
+        			})
 
-        //  }
+         }
 
-        // });
+        });
 
 
     });
+
+	//----------------------------------delete--------------------------------
+	$('#submit2').click(function() {
+      var  params2 = {
+			empId: empId,
+            empStatus: 1
+        }
+        $.post("<?php echo base_url(); ?>index.php/Admin/deleteEmployee", params2, function(
+            data) {
+
+            console.log(data)
+            var response = JSON.parse(data);
+            console.log(response)
+            if (response.status) {
+                alert("succes")
+
+                window.location.href = "home";
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    footer: '<a href>Why do I have this issue?</a>'
+                })
+            }
+        });
+	});
+
     </script>
 </body>
 

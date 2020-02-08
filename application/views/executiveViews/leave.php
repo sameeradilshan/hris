@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->load->view('executiveViews/components/css'); ?>
 
-	<!-- form validation css -->
+    <!-- form validation css -->
     <style type="text/css">
     .true_input {
         visibility: hidden;
@@ -49,7 +49,8 @@
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-							<li class="breadcrumb-item"><a href="<?php echo base_url(); ?>index.php/HrExecutive">Home</a>
+                                <li class="breadcrumb-item"><a
+                                        href="<?php echo base_url(); ?>index.php/HrExecutive">Home</a>
                                 </li>
                                 <li class="breadcrumb-item active">Leaves</li>
                             </ol>
@@ -92,15 +93,14 @@
                                                 <div class="form-group">
                                                     <label>Employee Name</label>
                                                     <input type="text" class="form-control form-control-sm"
-                                                        placeholder="Jhon Doe"  id="leaveEmpName"
-                                                        name="leaveEmpName" >
+                                                        placeholder="Jhon Doe" id="leaveEmpName" name="leaveEmpName">
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>Employee No</label>
                                                             <input type="text" class="form-control form-control-sm"
-                                                                placeholder="Jhon Doe"  id="leaveEmpNo"
+                                                                placeholder="Jhon Doe" id="leaveEmpNo"
                                                                 name="leaveEmpNo">
                                                         </div>
                                                     </div>
@@ -256,7 +256,7 @@
                                                             <th scope="col">Reason</th>
                                                             <th scope="col">Approved By</th>
                                                             <th scope="col">Action</th>
-                                                        </tr>		
+                                                        </tr>
                                                     </thead>
                                                     <tbody>
                                                         <?php
@@ -468,9 +468,9 @@
                                 <label>Reason</label>
                                 <input type="text" class="form-control form-control-sm" placeholder="Jhon Doe"
                                     id="editleaveReason">
-							</div>
-							<div class="form-group">
-                                
+                            </div>
+                            <div class="form-group">
+
                                 <input type="hidden" class="form-control form-control-sm" placeholder="Jhon Doe"
                                     id="leaveId">
                             </div>
@@ -550,9 +550,10 @@
             ]
         });
     });
+	//-----------------------form submit--------------------------------
     $('#formSubmit').click(function() {
-        
-       // alert($('#leaveEmpName').val());
+
+        // alert($('#leaveEmpName').val());
         var param = {
 
             leaveEmpName: $('#leaveEmpName').val(),
@@ -570,7 +571,7 @@
         }
         // alert(JSON.stringify(param));
 
-         if (param.leaveEmpName !== '' && param.leaveEmpNo !== '') {
+        if (param.leaveEmpName !== '' && param.leaveEmpNo !== '') {
             console.log(param);
             $.post("<?php echo base_url(); ?>index.php/HrExecutive/leaveRequestManagement", param, function(
                 data) {
@@ -579,9 +580,9 @@
                 var response = JSON.parse(data);
                 console.log(response)
                 if (response.status) {
-                    
-                       alert('success');
-                    
+
+                    alert('success');
+
 
                     window.location.href = "leaveDataView";
                 } else {
@@ -595,7 +596,7 @@
                 }
 
             });
-         }
+        }
     })
 
 
@@ -613,7 +614,11 @@
             var response = JSON.parse(data);
             console.log(response)
             if (response.status) {
-                alert("succes")
+                Swal.fire(
+                    'Good job!',
+                    'You clicked the button!',
+                    'success'
+                )
 
                 window.location.href = "leaveDataView";
             } else {
@@ -641,7 +646,11 @@
             var response = JSON.parse(data);
             console.log(response)
             if (response.status) {
-                alert("succes")
+                Swal.fire(
+                    'Good job!',
+                    'You clicked the button!',
+                    'success'
+                )
 
                 window.location.href = "leaveDataView";
             } else {
@@ -659,7 +668,7 @@
 
     function editFunction(object) {
         //var type=type;
-        alert(JSON.stringify(object))
+       // alert(JSON.stringify(object))
 
         $('#leaveId').val(object.leaveId);
         $('#editleaveEmpNo').val(object.empNo);
@@ -669,8 +678,8 @@
         $('#editleaveDateTo').val(object.dateTo);
         $('#editleaveDate').val(object.noOfDate);
         $('#editleaveReason').val(object.reason);
-		$('#editleaveType').val(object.leaveType);
-		$('#editleaveEmpNICNo').val(object.leaveEmpNICNo);
+        $('#editleaveType').val(object.leaveType);
+        $('#editleaveEmpNICNo').val(object.leaveEmpNICNo);
 
 
 
@@ -681,43 +690,47 @@
 
     }
 
-	// modal close button-----------------------------------
-	
+    // modal close button-----------------------------------
+
     function closeStop() {
         var modal = document.getElementById('editModal');
 
         modal.style.display = "none";
 
     }
-	//------------add button-----------------------------
+    //------------add button-----------------------------
 
     function addStop() {
 
-alert($('#editleaveEmpNo').val());
+        //alert($('#editleaveEmpNo').val());
 
-var param = {
+        var param = {
 
-	leaveId: 			$('#leaveId').val(),
-	leaveEmpNo: 				$('#editleaveEmpNo').val(),
-	leaveEmpName: 		$('#editleaveEmpName').val(),
-	leaveEmpDeprtment: 	$('#editleaveEmpDeprtment').val(),
-	leaveDateForm: 		$('#editleaveDateForm').val(),
-	leaveDateTo: 		$('#editleaveDateTo').val(),
-	leaveDate: 			$('#editleaveDate').val(),
-	leaveReason: 		$('#editleaveReason').val(),
-	leaveType: 			$('#editleaveType').val(),
-	leaveEmpNICNo: 		$('#editleaveEmpNICNo').val(),
+            leaveId: $('#leaveId').val(),
+            leaveEmpNo: $('#editleaveEmpNo').val(),
+            leaveEmpName: $('#editleaveEmpName').val(),
+            leaveEmpDeprtment: $('#editleaveEmpDeprtment').val(),
+            leaveDateForm: $('#editleaveDateForm').val(),
+            leaveDateTo: $('#editleaveDateTo').val(),
+            leaveDate: $('#editleaveDate').val(),
+            leaveReason: $('#editleaveReason').val(),
+            leaveType: $('#editleaveType').val(),
+            leaveEmpNICNo: $('#editleaveEmpNICNo').val(),
 
-}
-		window.alert(param);
-		$.post("<?php echo base_url(); ?>index.php/HrExecutive/leaveUpdate", param, function(
+        }
+        //window.alert(param);
+        $.post("<?php echo base_url(); ?>index.php/HrExecutive/leaveUpdate", param, function(
             data) {
 
-			console.log(data);
+            console.log(data);
             var response = JSON.parse(data);
             console.log(response)
             if (response.status) {
-                alert("successssss");
+                Swal.fire(
+                    'Good job!',
+                    'You clicked the button!',
+                    'success'
+                )
 
                 window.location.href = "leaveDataView";
             } else {
@@ -729,9 +742,9 @@ var param = {
                 })
             }
         });
-			}
+    }
     </script>
-	
+
 
 
 </body>

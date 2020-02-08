@@ -70,7 +70,7 @@
 										<th scope="col">Employee Name</th>
 										
 										<th scope="col">Basic Salary </th>
-										<th scope="col">EPFNo </th>
+										<!-- <th scope="col">EPFNo </th> -->
 										<!-- <th scope="col">Edit Details</th> -->
 										<th scope="col">EPF </th>
 										
@@ -94,7 +94,7 @@
 													<td>'.$EPFreportData->empName.'</td>
 													
 													<td>'.$EPFreportData->basicSalary.'</td>
-													<td>'.$EPFreportData->EPFNo.'</td>
+													
 													<td>'.$EPFreportData->EPF.'</td>
 												
 													';

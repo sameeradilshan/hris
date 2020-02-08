@@ -949,7 +949,7 @@ public function epfyReportthree($payYear,$ETF){
 }
 public function epfyReportsix($payYear,$salaryMonth,$Department,$ETF){
 	
-	$query=$this->db->query('select * from paysheetmaker where  year="'.$payYear.'" AND month="'.$salaryMonth.'" AND departmentName ="'.$Department.'" ;');
+	$query=$this->db->query('select * from paysheetmaker  ;');
 	//var_dump($query);
 	return $query->result();
 }
@@ -1105,6 +1105,94 @@ public function getOverTimeCaldata($empNo,$StartDate,$EndDate){
 //         echo $row->last_login('Y-m-d');
 // }
 }
+
+
+//-------------------------------emp data edit-------------------------
+public function updateaddEmployeePersonalDetails($dataArr, $whereArr){
+	$result =$this->db->update('addemployee',$dataArr,$whereArr );
+	return $result;
+}
+public function updateaddEmployeeEducationalDetails($dataArr, $whereArr){
+	$result =$this->db->update('empedudetails',$dataArr,$whereArr );
+	return $result;
+}
+public function updateaddEmployeeEducationalResult($dataArr, $whereArr){
+	$result =$this->db->update('empresultdetails',$dataArr,$whereArr );
+	return $result;
 }
 
+public function updateaddEmployeeJobDetails($dataArr, $whereArr){
+	$result =$this->db->update('empjobdetails',$dataArr,$whereArr );
+	return $result;
+}
+public function updateaddEmployeeBankDetails($dataArr, $whereArr){
+	$result =$this->db->update('empbamkdetails',$dataArr,$whereArr );
+	return $result;
+}
+public function updateaddEmployeeFamilyDetails($dataArr, $whereArr){
+	$result =$this->db->update('empfamilydetails',$dataArr,$whereArr );
+	return $result;
+}
+public function updateaddEmployeeChildrenkDetails($dataArr, $whereArr){
+	$result =$this->db->update('empchilddetails',$dataArr,$whereArr );
+	return $result;
+}
+public function updateaddEmployeeParentDetails($dataArr, $whereArr){
+	$result =$this->db->update('empparentdetails',$dataArr,$whereArr );
+	return $result;
+}
+
+
+//------------------------------------------delete employee details--------------
+public function DeleteddEmployeePersonalDetails($dataArr, $whereArr){
+
+	$result=$this->db->query('UPDATE addemployee SET  empStatus = "'.$dataArr.'"  WHERE  empId =  "'.$whereArr.'" ;');
+	return $result;
+}
+public function DeleteaddEmployeeEducationalDetails($dataArr, $whereArr){
+	$result=$this->db->query('UPDATE empedudetails SET  empStatus = "'.$dataArr.'"  WHERE  empId =  "'.$whereArr.'" ;');
+	
+	return $result;
+}
+public function DeleteaddEmployeeEducationalResult($dataArr, $whereArr){
+	$result=$this->db->query('UPDATE empresultdetails SET  empStatus = "'.$dataArr.'"  WHERE  empId =  "'.$whereArr.'" ;');
+	
+	return $result;
+}
+
+public function DeleteaddEmployeeJobDetails($dataArr, $whereArr){
+	$result=$this->db->query('UPDATE empjobdetails SET  empStatus = "'.$dataArr.'"  WHERE  empId =  "'.$whereArr.'" ;');
+
+	return $result;
+}
+public function DeleteaddEmployeeBankDetails($dataArr, $whereArr){
+	$result=$this->db->query('UPDATE empbamkdetails SET  empStatus = "'.$dataArr.'"  WHERE  empId =  "'.$whereArr.'" ;');
+
+	return $result;
+}
+public function DeleteaddEmployeeFamilyDetails($dataArr, $whereArr){
+	$result=$this->db->query('UPDATE empfamilydetails SET  empStatus = "'.$dataArr.'"  WHERE  empId =  "'.$whereArr.'" ;');
+
+	return $result;
+}
+public function uDeleteaddEmployeeChildrenkDetails($dataArr, $whereArr){
+	$result=$this->db->query('UPDATE empchilddetails SET  empStatus = "'.$dataArr.'"  WHERE  empId =  "'.$whereArr.'" ;');
+	
+	return $result;
+}
+public function DeleteaddEmployeeParentDetails($dataArr, $whereArr){
+	$result=$this->db->query('UPDATE empparentdetails SET  empStatus = "'.$dataArr.'"  WHERE  empId =  "'.$whereArr.'" ;');
+
+	return $result;
+}
+
+//-------------------------------------------------modification
+public function admincount($userstatus){
+	//var_dump($userstatus);
+	$query=$this->db->query('select * from admin where Status=0   ;');
+	//var_dump($query);
+	return $query->result();
+
+}
+}
 ?>

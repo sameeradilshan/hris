@@ -104,9 +104,9 @@
                 <!-- /.social-auth-links -->
                 </form>
 
-                <p class="mb-1">
+                <!-- <p class="mb-1">
                     <a href="#">I forgot my password</a>
-                </p>
+                </p> -->
                 <p class="mb-0">
                     <a href="register.html" class="text-center"></a>
                 </p>

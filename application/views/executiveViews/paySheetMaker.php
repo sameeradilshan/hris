@@ -116,7 +116,7 @@
 
 
 
-                            /////////////////////////////////////////////////////////////////////////
+                           
                             <!-- The Modal -->
                             <form action="<?php echo base_url(); ?>index.php/HrExecutive/payRollInformationMgt" method="post">
                                 <div class="modal" id="editModal">

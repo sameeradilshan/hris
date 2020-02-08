@@ -30,7 +30,7 @@
            
           <!-- <li class="nav-header">MISCELLANEOUS</li> -->
           <li class="nav-item">
-            <a href="<?php echo base_url(); ?>index.php/Admin/employeeDetailView" class="nav-link">
+            <a href="<?php echo base_url(); ?>index.php/Admin/employeeDetails" class="nav-link">
               <i class="nav-icon fa fa-user"></i>
               <p>Emplyee Details</p>
             </a>
@@ -67,10 +67,10 @@
                 </a>
               </li>
               <li class="nav-item">
-							<a href="<?php echo base_url(); ?>index.php/Admin/leaveManagement" class="nav-link">
+							<!-- <a href="<?php echo base_url(); ?>index.php/Admin/leaveManagement" class="nav-link">
 							<i class="nav-icon fa fa-tasks"></i>
                   <p>Leave Management </p>
-                </a>
+                </a> -->
               </li>
                                          
             </ul>

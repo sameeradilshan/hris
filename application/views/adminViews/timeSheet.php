@@ -339,9 +339,9 @@
         $.post("<?php echo base_url(); ?>index.php/Admin/timeSheetChecker", param2, function(
             data1) {
 
-            window.alert(data1)
+            //window.alert(data1)
             var response = JSON.parse(data1);
-            window.alert(response)
+           // window.alert(response)
             if (response.status) {
 				$("#upload").attr("disabled", ture);
 
